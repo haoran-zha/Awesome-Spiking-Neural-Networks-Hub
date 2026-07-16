@@ -1,0 +1,20 @@
+\section{Neuron Models}
+\label{sec:neuron_models}
+
+% Leaky Integrate-and-Fire (LIF), Integrate-and-Fire (IF), Izhikevich, Hodgkin-Huxley,
+% Adaptive Exponential (AdEx), Spike Response Model (SRM).
+% Trade-offs between biological realism and computational cost.
+
+\subsection{Integrate-and-Fire Family}
+The Leaky Integrate-and-Fire (LIF) neuron models the membrane potential $V(t)$ as
+\begin{equation}
+  \tau_m \frac{dV(t)}{dt} = -\big(V(t) - V_{\text{rest}}\big) + R\, I(t),
+  \label{eq:lif}
+\end{equation}
+emitting a spike and resetting when $V(t)$ crosses a threshold $V_{\text{th}}$.
+
+\subsection{Biophysical Models}
+% Hodgkin-Huxley, Izhikevich, AdEx.
+
+\subsection{Spike Response Model}
+% SRM as a generalization.

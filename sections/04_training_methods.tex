@@ -1,0 +1,31 @@
+\section{Training Methods}
+\label{sec:training}
+
+% Three main families: ANN-to-SNN conversion, direct training with surrogate gradients,
+% and biologically plausible local learning rules.
+
+\subsection{ANN-to-SNN Conversion}
+% Weight/threshold normalization, near-lossless conversion, latency trade-offs.
+
+\subsection{Surrogate Gradient Backpropagation}
+% Backpropagation Through Time (BPTT), surrogate gradient functions for the
+% non-differentiable spike, spatio-temporal backpropagation (STBP).
+
+\subsection{Biologically Plausible Learning}
+% Spike-Timing-Dependent Plasticity (STDP), reward-modulated STDP, local learning rules.
+
+\subsection{Comparison}
+\begin{table}[h]
+  \centering
+  \caption{Comparison of SNN training paradigms.}
+  \label{tab:training}
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    Method & Accuracy & Latency & Bio-plausibility \\
+    \midrule
+    ANN-to-SNN conversion & High & High & Low \\
+    Surrogate gradient     & High & Low  & Medium \\
+    STDP / local rules     & Medium & Low & High \\
+    \bottomrule
+  \end{tabular}
+\end{table}
