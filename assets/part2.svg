@@ -1,0 +1,16 @@
+<svg width="132" height="112" viewBox="0 0 132 112" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Learning and Models">
+  <defs><linearGradient id="g2" x1="10" y1="15" x2="120" y2="100" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+  <g stroke="url(#g2)" stroke-width="3" stroke-linecap="round" fill="none" stroke-opacity="0.85">
+    <!-- edges: 3-layer net -->
+    <path d="M28 30 L64 26 M28 30 L64 56 M28 30 L64 86 M28 60 L64 26 M28 60 L64 56 M28 60 L64 86 M28 90 L64 26 M28 90 L64 56 M28 90 L64 86"/>
+    <path d="M64 26 L100 43 M64 56 L100 43 M64 86 L100 43 M64 26 L100 73 M64 56 L100 73 M64 86 L100 73"/>
+  </g>
+  <g fill="url(#g2)">
+    <circle cx="28" cy="30" r="5.5"/><circle cx="28" cy="60" r="5.5"/><circle cx="28" cy="90" r="5.5"/>
+    <circle cx="64" cy="26" r="5.5"/><circle cx="64" cy="56" r="5.5"/><circle cx="64" cy="86" r="5.5"/>
+    <circle cx="100" cy="43" r="5.5"/><circle cx="100" cy="73" r="5.5"/>
+  </g>
+  <!-- gradient/learning arrow -->
+  <path d="M112 22 V92 M112 92 l-7 -9 M112 92 l7 -9" stroke="#22d3ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

@@ -73,6 +73,21 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ---
 
+## 🗓️ Recent Updates
+
+<details open>
+<summary><b>Changelog</b> — newest first (click to collapse)</summary>
+
+- **2026-07** — 🎉 **Launched the Hub.** 350+ bilingual entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
+- **2026-07** — 🎨 **Visual overhaul.** SVG banner, per-Part illustrations, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
+- **2026-07** — 📚 **Coverage push.** Added SpikingBrain, Sorbet, SpikeCLIP, Spike2Former, SDiT; Darwin3, Intel Hala Point, IBM NorthPole, Lynxi / BrainChip / Innatera / Xylo / GrAI; plus foundational works (Mead 1990, Missing Memristor 2008, Tempotron 2006) and frameworks (SPAIC, SNNAX, BrainPy, CARLsim…).
+
+> New paper / model / chip / dataset / tool? [Open a PR](#-contributing) and add a line here.
+
+</details>
+
+---
+
 ## 📑 Table of Contents
 
 **🧩 Part I · Fundamentals**
@@ -107,6 +122,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 ---
 
 ## 🧩 Part I · Fundamentals
+
+<div align="center"><img src="assets/part1.svg" width="108" alt=""></div>
 
 ### 1 · Foundations & Neural Coding
 
@@ -188,6 +205,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ## 🎓 Part II · Learning & Models
+
+<div align="center"><img src="assets/part2.svg" width="108" alt=""></div>
 
 ### 3 · Training Methods
 
@@ -435,6 +454,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## ⚙️ Part III · Hardware & Systems
 
+<div align="center"><img src="assets/part3.svg" width="108" alt=""></div>
+
 ### 6 · Neuromorphic Hardware
 
 > **In one breath:** SNNs only pay off when the *chip* is event-driven too. **Digital** platforms (TrueNorth, Loihi, SpiNNaker, Tianjic) route spikes as packets and idle between them; **analog/in-memory** designs (BrainScaleS, memristor/RRAM crossbars) compute inside the memory to kill the von-Neumann data-movement cost. **Event cameras** (DVS) are the matching sensor.
@@ -557,6 +578,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🚀 Part IV · Applications
 
+<div align="center"><img src="assets/part4.svg" width="108" alt=""></div>
+
 ### 7 · Applications
 
 > **In one breath:** SNNs shine wherever **power and latency** dominate and data is **naturally temporal/sparse** — event-camera vision, always-on audio, robotics/control, and increasingly language models.
@@ -670,6 +693,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🧪 Part V · Cross-Cutting Topics
 
+<div align="center"><img src="assets/part5.svg" width="108" alt=""></div>
+
 ### 8 · Energy, Robustness & Security
 
 > Quantifying the energy story honestly, plus how SNNs behave under adversarial attack and how to defend them.
@@ -735,35 +760,43 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🧰 Part VI · Resources & Ecosystem
 
+<div align="center"><img src="assets/part6.svg" width="108" alt=""></div>
+
 ### 10 · Datasets & Benchmarks
 
 > The event-native datasets (DVS-converted or camera-recorded) and audio/temporal benchmarks the field measures itself on.
 
-#### Neuromorphic Vision
+**Neuromorphic Vision**
 
-- **N-MNIST / N-Caltech101** — MNIST and Caltech101 recorded by a moving ATIS event camera (saccades). The standard entry-level neuromorphic classification benchmarks. \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2015.00437/full)\]\[[data](https://www.garrickorchard.com/datasets/n-mnist)\]
-- **CIFAR10-DVS** — 10,000 event streams from displaying moving CIFAR-10 images to a DVS; a mid-scale event object-classification benchmark. \[[paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full)\]
-- **N-CARS** — First large real-world event classification set: 12,336 car / 11,693 background 100 ms samples from urban driving (released with HATS). \[[paper](https://arxiv.org/abs/1803.07913)\]\[[data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/)\]
-- **ASL-DVS** — 100,800 real DVS recordings of 24 ASL handshapes; introduced for graph-based event classification. \[[paper](https://arxiv.org/abs/1908.06648)\]\[[code](https://github.com/PIX2NVS/NVS2Graph)\]
-- **ES-ImageNet** — ~1.3M ImageNet images converted to event streams (1,000 classes); the largest neuromorphic classification set. \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full)\]\[[code](https://github.com/lyh983012/ES-imagenet-master)\]
-- **DVS128 Gesture** — 11 hand/arm gesture classes from 29 subjects under 3 lighting conditions; from IBM's TrueNorth gesture system. \[[paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html)\]\[[data](https://research.ibm.com/interactive/dvsgesture/)\]
-- **HARDVS** — Largest event-based human activity recognition benchmark: 300 classes, 107,646 sequences from a DAVIS346. \[[paper](https://arxiv.org/abs/2211.09648)\]\[[code](https://github.com/Event-AHU/HARDVS)\]
-- **Prophesee GEN1 Automotive** — 39 h of driving events with 25.5M annotated car/pedestrian boxes; large-scale event detection. \[[paper](https://arxiv.org/abs/2001.08499)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
-- **Prophesee 1 Megapixel (1Mpx)** — 14 h of 1280×720 automotive events with ~25M auto-labeled boxes; first high-resolution event detection dataset. \[[paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
-- **MVSEC** — Multi-Vehicle Stereo Event Camera dataset with stereo DAVIS + LiDAR/IMU/GPS; ground-truth pose/depth for 3D perception. \[[paper](https://arxiv.org/abs/1801.10202)\]\[[data](https://daniilidis-group.github.io/mvsec/)\]
-- **DDD17 / DDD20** — Open annotated DAVIS end-to-end driving datasets (12+ h / 51+ h) with vehicle control signals. \[[paper](https://arxiv.org/abs/2005.08605)\]\[[code](https://github.com/SensorsINI/ddd20-utils)\]
-- **DSEC** — A large stereo event-camera driving dataset with LiDAR/GPS ground truth for depth, flow and SLAM. \[[paper](https://arxiv.org/abs/2103.06011)\]\[[data](https://dsec.ifi.uzh.ch/)\]
-- **Event-Camera Dataset & Simulator** — The reference DVS/DAVIS dataset for pose estimation, visual odometry and SLAM, plus the widely-used ESIM simulator. \[[paper](https://arxiv.org/abs/1610.08336)\]\[[data](https://rpg.ifi.uzh.ch/davis_data.html)\]
+| Dataset | Scale / Content | Task | Links |
+|---|---|---|---|
+| **N-MNIST / N-Caltech101** | MNIST & Caltech101 via a moving ATIS camera (saccades) | Classification (entry-level) | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2015.00437/full) · [data](https://www.garrickorchard.com/datasets/n-mnist) |
+| **CIFAR10-DVS** | 10,000 event streams from moving CIFAR-10 | Classification | [paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full) |
+| **N-CARS** | 24k real urban 100 ms samples (car / background) | Classification | [paper](https://arxiv.org/abs/1803.07913) · [data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/) |
+| **ASL-DVS** | 100,800 real DVS clips, 24 ASL handshapes | Classification (graph) | [paper](https://arxiv.org/abs/1908.06648) · [code](https://github.com/PIX2NVS/NVS2Graph) |
+| **ES-ImageNet** | ~1.3M ImageNet images → events, 1,000 classes | Classification (largest) | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
+| **DVS128 Gesture** | 11 gestures, 29 subjects, 3 lightings | Gesture recognition | [paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html) · [data](https://research.ibm.com/interactive/dvsgesture/) |
+| **HARDVS** | 300 classes, 107,646 sequences (DAVIS346) | Action recognition (largest) | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
+| **Prophesee GEN1** | 39 h driving, 25.5M boxes | Detection | [paper](https://arxiv.org/abs/2001.08499) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
+| **Prophesee 1Mpx** | 14 h @1280×720, ~25M boxes | Detection (HD) | [paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
+| **MVSEC** | Stereo DAVIS + LiDAR/IMU/GPS | Depth / flow / SLAM | [paper](https://arxiv.org/abs/1801.10202) · [data](https://daniilidis-group.github.io/mvsec/) |
+| **DDD17 / DDD20** | 12+ h / 51+ h DAVIS driving + controls | End-to-end driving | [paper](https://arxiv.org/abs/2005.08605) · [code](https://github.com/SensorsINI/ddd20-utils) |
+| **DSEC** | Large stereo event driving + LiDAR/GPS | Depth / flow / SLAM | [paper](https://arxiv.org/abs/2103.06011) · [data](https://dsec.ifi.uzh.ch/) |
+| **Event-Camera Dataset & Simulator** | Reference DVS/DAVIS set + ESIM simulator | Pose / VO / SLAM | [paper](https://arxiv.org/abs/1610.08336) · [data](https://rpg.ifi.uzh.ch/davis_data.html) |
 
-#### Neuromorphic Audio & Speech
+**Neuromorphic Audio & Speech**
 
-- **Spiking Heidelberg Digits (SHD)** — ~10,000 spoken-digit recordings converted to spikes over 700 channels via an inner-ear model. \[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
-- **Spiking Speech Commands (SSC)** — Spike-encoded Google Speech Commands (35 word classes); larger/harder companion to SHD. \[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
-- **N-TIDIGITS** — 64-channel CochleaAMS1b spike responses to spoken digits from 111 speakers; a standard spiking-audio temporal benchmark. \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2018.00023/full)\]
+| Dataset | Content | Links |
+|---|---|---|
+| **Spiking Heidelberg Digits (SHD)** | ~10k spoken digits → 700-channel spikes (inner-ear model) | [paper](https://doi.org/10.1109/TNNLS.2020.3044364) · [data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/) |
+| **Spiking Speech Commands (SSC)** | Spike-encoded Google Speech Commands (35 classes) | [paper](https://doi.org/10.1109/TNNLS.2020.3044364) · [data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/) |
+| **N-TIDIGITS** | 64-channel silicon-cochlea spike responses, 111 speakers | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2018.00023/full) |
 
-#### Benchmark Suites
+**Benchmark Suites**
 
-- **NeuroBench** — A community framework of standardized tasks and metrics for fairly benchmarking neuromorphic algorithms and systems. \[[paper](https://arxiv.org/abs/2304.04640)\]\[[code](https://github.com/NeuroBench/neurobench)\]
+| Suite | What | Links |
+|---|---|---|
+| **NeuroBench** | Standardized tasks & metrics to fairly benchmark neuromorphic algorithms/systems | [paper](https://arxiv.org/abs/2304.04640) · [code](https://github.com/NeuroBench/neurobench) |
 
 ---
 
@@ -771,39 +804,45 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 > PyTorch/JAX libraries for training SNNs, event-data tooling, and vendor stacks for deploying to neuromorphic chips.
 
-#### Deep-SNN Training (PyTorch / JAX)
+**Deep-SNN Training (PyTorch / JAX)**
 
-- **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** — PyTorch-native full-stack SNN framework (data → training → deployment) with fused CUDA neurons; the de-facto research platform. \[[paper](https://www.science.org/doi/10.1126/sciadv.adi1480)\]
-- **[snnTorch](https://github.com/jeshraghian/snntorch)** — Spiking neurons as recurrent units in PyTorch for gradient-based/online learning; extensive tutorials. \[[paper](https://arxiv.org/abs/2109.12894)\]
-- **[Norse](https://github.com/norse/norse)** — PyTorch library adding sparse, event-driven bio-inspired neuron/synapse primitives.
-- **[BindsNET](https://github.com/BindsNET/bindsnet)** — ML-oriented SNN simulation on PyTorch, strong for STDP/RL. \[[paper](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2018.00089/full)\]
-- **[SpykeTorch](https://github.com/miladmozafari/SpykeTorch)** — Convolutional SNNs with at most one spike per neuron; STDP and reward-modulated STDP. \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2019.00625/full)\]
-- **[Spyx](https://github.com/kmheckel/spyx)** — SNNs in JAX with JIT-compiled surrogate-gradient training and neuroevolution. \[[paper](https://arxiv.org/abs/2402.18994)\]
-- **[SPAIC](https://github.com/zju-bmi-lab/SPAIC)** — Spike-based AI Computing platform (Zhejiang Univ.) with a neuroscience-style frontend and PyTorch backend.
-- **[SNNAX](https://github.com/PGI15/snnax)** — SNNs in JAX built on Equinox (Jülich) — autodiff + JIT for fast training and neuromorphic deployment.
-- **[jaxsnn](https://github.com/electronicvisions/jaxsnn)** — Event-driven, gradient-based SNN training in JAX (EventProp) with BrainScaleS-2 hardware-in-the-loop.
-- **[ANNarchy](https://github.com/ANNarchy/ANNarchy)** — Code-generation simulator for rate + spiking networks, compiling equation-based specs to parallel C++/CUDA.
+| Library | What it's for | Ref |
+|---|---|---|
+| **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** | PyTorch full-stack SNN framework (data → train → deploy), fused CUDA neurons; de-facto platform | [paper](https://www.science.org/doi/10.1126/sciadv.adi1480) |
+| **[snnTorch](https://github.com/jeshraghian/snntorch)** | Spiking neurons as recurrent units in PyTorch; superb tutorials | [paper](https://arxiv.org/abs/2109.12894) |
+| **[Norse](https://github.com/norse/norse)** | Sparse, event-driven bio-inspired primitives in PyTorch | — |
+| **[BindsNET](https://github.com/BindsNET/bindsnet)** | ML-oriented SNN simulation on PyTorch (STDP / RL) | [paper](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2018.00089/full) |
+| **[SpykeTorch](https://github.com/miladmozafari/SpykeTorch)** | Convolutional SNNs, ≤1 spike/neuron; STDP / R-STDP | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2019.00625/full) |
+| **[Spyx](https://github.com/kmheckel/spyx)** | JAX SNNs, JIT-compiled surrogate-gradient training | [paper](https://arxiv.org/abs/2402.18994) |
+| **[SPAIC](https://github.com/zju-bmi-lab/SPAIC)** | Spike-based AI computing platform (ZJU); neuroscience frontend + PyTorch backend | — |
+| **[SNNAX](https://github.com/PGI15/snnax)** | JAX + Equinox SNNs (Jülich); autodiff + JIT | — |
+| **[jaxsnn](https://github.com/electronicvisions/jaxsnn)** | Event-driven gradient training in JAX (EventProp); BrainScaleS-2 in-the-loop | — |
+| **[ANNarchy](https://github.com/ANNarchy/ANNarchy)** | Code-generation simulator (rate + spiking) → C++/CUDA | — |
 
-#### Computational-Neuroscience Simulators
+**Computational-Neuroscience Simulators**
 
-- **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** — Large-scale functional brain models (Neural Engineering Framework); backend-agnostic, TF-trainable. \[[paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full)\]
-- **[Brian2](https://github.com/brian-team/brian2)** — Equation-based spiking simulator with runtime code generation. \[[paper](https://elifesciences.org/articles/47314)\]
-- **[NEST](https://github.com/nest/nest-simulator)** — Large heterogeneous spiking point-neuron networks, laptop to supercomputer.
-- **[GeNN](https://github.com/genn-team/genn)** — GPU-enhanced code-generation SNN simulator (CUDA / HIP). \[[paper](https://www.nature.com/articles/srep18854)\]
-- **[BrainPy](https://github.com/brainpy/BrainPy)** — JAX-based framework for general-purpose brain dynamics programming (spiking, rate, ODE/SDE). \[[paper](https://elifesciences.org/articles/86365)\]
-- **[BrainCog](https://github.com/BrainCog-X/Brain-Cog)** — A spiking-neural-network brain-inspired cognitive-intelligence engine spanning perception, decision and cognition. \[[paper](https://arxiv.org/abs/2207.08533)\]
-- **[CARLsim](https://github.com/UCI-CARL/CARLsim6)** — C++/CUDA library for large-scale, biologically-detailed SNN simulation with on-line learning. \[[paper](https://ieeexplore.ieee.org/document/9892644/)\]
-- **[PyNN](https://github.com/NeuralEnsemble/PyNN)** — A simulator-independent Python API for building spiking-network models (runs on NEST, NEURON, Brian, SpiNNaker…). \[[paper](https://doi.org/10.3389/neuro.11.011.2008)\]
+| Library | What it's for | Ref |
+|---|---|---|
+| **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** | Large-scale functional brain models (NEF); backend-agnostic, TF-trainable | [paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full) |
+| **[Brian2](https://github.com/brian-team/brian2)** | Equation-based simulator with runtime code generation | [paper](https://elifesciences.org/articles/47314) |
+| **[NEST](https://github.com/nest/nest-simulator)** | Large heterogeneous spiking point-neuron nets, laptop → supercomputer | — |
+| **[GeNN](https://github.com/genn-team/genn)** | GPU code-generation SNN simulator (CUDA / HIP) | [paper](https://www.nature.com/articles/srep18854) |
+| **[BrainPy](https://github.com/brainpy/BrainPy)** | JAX brain-dynamics programming (spiking / rate / ODE-SDE) | [paper](https://elifesciences.org/articles/86365) |
+| **[BrainCog](https://github.com/BrainCog-X/Brain-Cog)** | SNN brain-inspired cognitive-intelligence engine (CAS) | [paper](https://arxiv.org/abs/2207.08533) |
+| **[CARLsim](https://github.com/UCI-CARL/CARLsim6)** | C++/CUDA large-scale biologically-detailed SNN sim + online learning | [paper](https://ieeexplore.ieee.org/document/9892644/) |
+| **[PyNN](https://github.com/NeuralEnsemble/PyNN)** | Simulator-independent Python API (NEST / NEURON / Brian / SpiNNaker) | [paper](https://doi.org/10.3389/neuro.11.011.2008) |
 
-#### Neuromorphic-Hardware Deployment & Data Tooling
+**Neuromorphic-Hardware Deployment & Data Tooling**
 
-- **[Lava](https://github.com/lava-nc/lava)** — Intel's open framework for developing/deploying neuro-inspired apps across CPUs and Loihi.
-- **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** — SynSense libraries to train and deploy spiking networks onto DynapCNN/Speck hardware.
-- **[Tonic](https://github.com/neuromorphs/tonic)** — "TorchVision for events" — download/load/transform public event-based vision & audio datasets.
-- **[v2e](https://github.com/SensorsINI/v2e)** — Converts conventional video frames into realistic DVS event streams (with noise models) for training/testing without a camera. \[[paper](https://openaccess.thecvf.com/content/CVPR2021W/EventVision/html/Hu_v2e_From_Video_Frames_to_Realistic_DVS_Events_CVPRW_2021_paper.html)\]
-- **[snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox)** — The de-facto ANN→SNN conversion toolbox (INI), accepting Keras/PyTorch and deploying to pyNN/Brian2/SpiNNaker/Loihi.
-- **[N2D2](https://github.com/CEA-LIST/N2D2)** — CEA-List CAD framework to design, quantize and deploy DNNs to embedded targets, with a spiking/neuromorphic simulation paradigm.
-- **[Whetstone](https://github.com/sandialabs/Whetstone)** — Sandia's Keras add-on that "sharpens" activations into single-timestep binary spikes for neuromorphic deployment.
+| Tool | What it's for | Ref |
+|---|---|---|
+| **[Lava](https://github.com/lava-nc/lava)** | Intel's framework to develop/deploy across CPUs & Loihi | — |
+| **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** | SynSense libs to train & deploy onto DynapCNN / Speck | — |
+| **[Tonic](https://github.com/neuromorphs/tonic)** | "TorchVision for events" — event vision/audio datasets & transforms | — |
+| **[v2e](https://github.com/SensorsINI/v2e)** | Video frames → realistic DVS events (no camera needed) | [paper](https://openaccess.thecvf.com/content/CVPR2021W/EventVision/html/Hu_v2e_From_Video_Frames_to_Realistic_DVS_Events_CVPRW_2021_paper.html) |
+| **[snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox)** | De-facto ANN→SNN conversion toolbox → pyNN/Brian2/SpiNNaker/Loihi | — |
+| **[N2D2](https://github.com/CEA-LIST/N2D2)** | CEA-List CAD to design/quantize/deploy DNNs to embedded, with spiking sim | — |
+| **[Whetstone](https://github.com/sandialabs/Whetstone)** | Sandia Keras add-on "sharpening" activations to single-step spikes | — |
 
 ---
 
@@ -811,42 +850,48 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 > **In one breath:** notable open-source **model implementations** you can build on, plus sibling awesome-lists and communities that keep the field discoverable. (Training frameworks live in [§11 · Software & Frameworks](#11--software--frameworks); star counts are approximate, ~2025–2026.)
 
-#### Landmark Model Implementations
+**Landmark Model Implementations**
 
-- **[BICLab/SpikingBrain-7B](https://github.com/BICLab/SpikingBrain-7B)** — Spiking brain-inspired 7B LLM with hybrid efficient attention, MoE and spike encoding (CAS, 2025). ⭐ ~1.3k
-- **[ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT)** — Generative pre-trained language model built with SNNs. ⭐ ~910
-- **[ZK-Zhou/spikformer](https://github.com/ZK-Zhou/spikformer)** — Spikformer (ICLR 2023) — the spiking self-attention that launched Spiking Transformers. ⭐ ~410
-- **[BICLab/Spike-Driven-Transformer](https://github.com/BICLab/Spike-Driven-Transformer)** — Spike-driven Transformer (NeurIPS 2023). ⭐ ~315
-- **[BICLab/SpikeYOLO](https://github.com/BICLab/SpikeYOLO)** — Integer-training + spike-driven inference detector (ECCV 2024). ⭐ ~250
-- **[BICLab/Spike-Driven-Transformer-V2](https://github.com/BICLab/Spike-Driven-Transformer-V2)** — Meta-SpikeFormer (ICLR 2024). ⭐ ~230
-- **[BICLab/EMS-YOLO](https://github.com/BICLab/EMS-YOLO)** — Directly-trained deep SNN object detector (ICCV 2023). ⭐ ~195
-- **[fangwei123456/Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet)** — SEW-ResNet (NeurIPS 2021). ⭐ ~195
-- **[zhouchenlin2096/QKFormer](https://github.com/zhouchenlin2096/QKFormer)** — Hierarchical spiking Transformer with Q-K attention (NeurIPS 2024). ⭐ ~150
-- **[TheBrainLab/Spikingformer](https://github.com/TheBrainLab/Spikingformer)** — Fully spike-driven Transformer (AAAI 2026). ⭐ ~145
-- **[BICLab/Spike-Driven-Transformer-V3](https://github.com/BICLab/Spike-Driven-Transformer-V3)** — Scaling spike-driven Transformers (T-PAMI 2025). ⭐ ~115
-- **[Intelligent-Computing-Lab-Panda/STAtten](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)** — Spatial-temporal spiking attention (CVPR 2025). ⭐ ~80
-- **[brain-intelligence-lab/temporal_efficient_training](https://github.com/brain-intelligence-lab/temporal_efficient_training)** — TET (ICLR 2022). ⭐ ~75
-- **[stonezwr/TSSL-BP](https://github.com/stonezwr/TSSL-BP)** — Temporal spike-sequence learning backprop (NeurIPS 2020). ⭐ ~70
-- **[combra-lab/pop-spiking-deep-rl](https://github.com/combra-lab/pop-spiking-deep-rl)** — Population-coded spiking deep RL (PopSAN). ⭐ ~70
-- **[putshua/ANN_SNN_QCFS](https://github.com/putshua/ANN_SNN_QCFS)** — Optimal ANN-SNN conversion, QCFS (ICLR 2022). ⭐ ~44
-- **[Lvchangze/SpikeBERT](https://github.com/Lvchangze/SpikeBERT)** — A language Spikformer distilled from BERT. ⭐ ~31
+| Repo | What | ⭐ |
+|---|---|:--:|
+| **[BICLab/SpikingBrain-7B](https://github.com/BICLab/SpikingBrain-7B)** | Spiking brain-inspired 7B LLM (CAS, 2025) | ~1.3k |
+| **[ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT)** | Generative pre-trained spiking language model | ~910 |
+| **[ZK-Zhou/spikformer](https://github.com/ZK-Zhou/spikformer)** | Spikformer (ICLR 2023) — launched spiking Transformers | ~410 |
+| **[BICLab/Spike-Driven-Transformer](https://github.com/BICLab/Spike-Driven-Transformer)** | Spike-driven Transformer (NeurIPS 2023) | ~315 |
+| **[BICLab/SpikeYOLO](https://github.com/BICLab/SpikeYOLO)** | Integer-training + spike-driven detector (ECCV 2024) | ~250 |
+| **[BICLab/Spike-Driven-Transformer-V2](https://github.com/BICLab/Spike-Driven-Transformer-V2)** | Meta-SpikeFormer (ICLR 2024) | ~230 |
+| **[BICLab/EMS-YOLO](https://github.com/BICLab/EMS-YOLO)** | Directly-trained deep SNN detector (ICCV 2023) | ~195 |
+| **[fangwei123456/Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet)** | SEW-ResNet (NeurIPS 2021) | ~195 |
+| **[zhouchenlin2096/QKFormer](https://github.com/zhouchenlin2096/QKFormer)** | Hierarchical Q-K spiking Transformer (NeurIPS 2024) | ~150 |
+| **[TheBrainLab/Spikingformer](https://github.com/TheBrainLab/Spikingformer)** | Fully spike-driven Transformer (AAAI 2026) | ~145 |
+| **[BICLab/Spike-Driven-Transformer-V3](https://github.com/BICLab/Spike-Driven-Transformer-V3)** | Scaling spike-driven Transformers (T-PAMI 2025) | ~115 |
+| **[Intelligent-Computing-Lab-Panda/STAtten](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)** | Spatial-temporal spiking attention (CVPR 2025) | ~80 |
+| **[brain-intelligence-lab/temporal_efficient_training](https://github.com/brain-intelligence-lab/temporal_efficient_training)** | TET (ICLR 2022) | ~75 |
+| **[stonezwr/TSSL-BP](https://github.com/stonezwr/TSSL-BP)** | Temporal spike-sequence learning backprop (NeurIPS 2020) | ~70 |
+| **[combra-lab/pop-spiking-deep-rl](https://github.com/combra-lab/pop-spiking-deep-rl)** | Population-coded spiking deep RL (PopSAN) | ~70 |
+| **[putshua/ANN_SNN_QCFS](https://github.com/putshua/ANN_SNN_QCFS)** | Optimal ANN-SNN conversion, QCFS (ICLR 2022) | ~44 |
+| **[Lvchangze/SpikeBERT](https://github.com/Lvchangze/SpikeBERT)** | Language Spikformer distilled from BERT | ~31 |
 
-#### Awesome Lists & Paper Collections
+**Awesome Lists & Paper Collections**
 
-- **[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)** — Broad SNN paper list (papers, code, websites). ⭐ ~805
-- **[AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)** — Top-conference/journal SNN papers + code, by year. ⭐ ~460
-- **[coderonion/awesome-snn](https://github.com/coderonion/awesome-snn)** — A collection of awesome public SNN projects. ⭐ ~235
-- **[open-neuromorphic/awesome-neuromorphic-hw](https://github.com/open-neuromorphic/awesome-neuromorphic-hw)** — Neuromorphic-hardware papers (ASIC/FPGA SNN). ⭐ ~215
-- **[yfguo91/Awesome-Spiking-Neural-Networks](https://github.com/yfguo91/Awesome-Spiking-Neural-Networks)** — Curated SNN resource list. ⭐ ~150
-- **[vvvityaaa/awesome-spiking-neural-networks](https://github.com/vvvityaaa/awesome-spiking-neural-networks)** — Materials on SNNs, the "3rd generation." ⭐ ~70
+| Repo | What | ⭐ |
+|---|---|:--:|
+| **[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)** | Broad SNN paper list (papers, code, sites) | ~805 |
+| **[AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)** | Top-conf/journal SNN papers + code, by year | ~460 |
+| **[coderonion/awesome-snn](https://github.com/coderonion/awesome-snn)** | Collection of public SNN projects | ~235 |
+| **[open-neuromorphic/awesome-neuromorphic-hw](https://github.com/open-neuromorphic/awesome-neuromorphic-hw)** | Neuromorphic-hardware papers (ASIC/FPGA) | ~215 |
+| **[yfguo91/Awesome-Spiking-Neural-Networks](https://github.com/yfguo91/Awesome-Spiking-Neural-Networks)** | Curated SNN resource list | ~150 |
+| **[vvvityaaa/awesome-spiking-neural-networks](https://github.com/vvvityaaa/awesome-spiking-neural-networks)** | Materials on SNNs, the "3rd generation" | ~70 |
 
-#### Communities & Tooling
+**Communities & Tooling**
 
-- **[open-neuromorphic/open-neuromorphic](https://github.com/open-neuromorphic/open-neuromorphic)** — Global community hub cataloguing the neuromorphic software ecosystem. ⭐ ~315
-- **[fzenke/spytorch](https://github.com/fzenke/spytorch)** — The classic surrogate-gradient learning tutorial. ⭐ ~360
-- **[prophesee-ai/openeb](https://github.com/prophesee-ai/openeb)** — Open SDK for event-based vision hardware. ⭐ ~295
-- **[SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker)** — PyNN on the million-core SpiNNaker machine. ⭐ ~117
-- **[electronicvisions/hxtorch](https://github.com/electronicvisions/hxtorch)** — PyTorch interface to BrainScaleS-2 analog hardware. ⭐ ~17
+| Repo | What | ⭐ |
+|---|---|:--:|
+| **[fzenke/spytorch](https://github.com/fzenke/spytorch)** | The classic surrogate-gradient learning tutorial | ~360 |
+| **[open-neuromorphic/open-neuromorphic](https://github.com/open-neuromorphic/open-neuromorphic)** | Global community hub for the neuromorphic ecosystem | ~315 |
+| **[prophesee-ai/openeb](https://github.com/prophesee-ai/openeb)** | Open SDK for event-based vision hardware | ~295 |
+| **[SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker)** | PyNN on the million-core SpiNNaker machine | ~117 |
+| **[electronicvisions/hxtorch](https://github.com/electronicvisions/hxtorch)** | PyTorch interface to BrainScaleS-2 analog hardware | ~17 |
 
 ---
 

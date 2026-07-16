@@ -1,0 +1,12 @@
+<svg width="132" height="112" viewBox="0 0 132 112" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hardware and Systems">
+  <defs><linearGradient id="g3" x1="20" y1="20" x2="112" y2="92" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+  <g stroke="url(#g3)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- die -->
+    <rect x="40" y="30" width="52" height="52" rx="9" fill="#8b5cf6" fill-opacity="0.12"/>
+    <!-- pins -->
+    <path d="M52 30 V18 M66 30 V16 M80 30 V18 M52 82 V94 M66 82 V96 M80 82 V94 M40 44 H28 M40 56 H26 M40 68 H28 M92 44 H104 M92 56 H106 M92 68 H104"/>
+    <!-- spike inside -->
+    <path d="M50 62 h7 l6 -20 l6 20 h13" stroke-width="3.5"/>
+  </g>
+</svg>

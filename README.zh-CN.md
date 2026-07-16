@@ -73,6 +73,21 @@
 
 ---
 
+## 🗓️ 最近更新
+
+<details open>
+<summary><b>更新日志</b> —— 最新在前（点击折叠）</summary>
+
+- **2026-07** —— 🎉 **知识库上线。** 6 大 Part、350+ 中英双语条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
+- **2026-07** —— 🎨 **视觉改版。** SVG banner、各 Part 示意图、"必读入门"表，并把数据集/框架/模型库转为表格。
+- **2026-07** —— 📚 **内容扩充。** 新增 SpikingBrain、Sorbet、SpikeCLIP、Spike2Former、SDiT；Darwin3、Intel Hala Point、IBM NorthPole、灵汐/BrainChip/Innatera/Xylo/GrAI；以及奠基工作（Mead 1990、Missing Memristor 2008、Tempotron 2006）与框架（SPAIC、SNNAX、BrainPy、CARLsim…）。
+
+> 有新的论文/模型/芯片/数据集/工具？[提交 PR](#-贡献指南) 并在此加一行。
+
+</details>
+
+---
+
 ## 📑 目录
 
 **🧩 第一部分 · 基础**
@@ -107,6 +122,8 @@
 ---
 
 ## 🧩 第一部分 · 基础
+
+<div align="center"><img src="assets/part1.svg" width="108" alt=""></div>
 
 ### 1 · 基础与神经编码
 
@@ -188,6 +205,8 @@
 <p align="right"><a href="#-目录">↑ 回到顶部</a></p>
 
 ## 🎓 第二部分 · 学习与模型
+
+<div align="center"><img src="assets/part2.svg" width="108" alt=""></div>
 
 ### 3 · 训练方法
 
@@ -436,6 +455,8 @@
 
 ## ⚙️ 第三部分 · 硬件与系统
 
+<div align="center"><img src="assets/part3.svg" width="108" alt=""></div>
+
 ### 6 · 神经形态硬件
 
 > **一句话：** 只有当*芯片*本身也是事件驱动时，SNN 的优势才真正兑现。**数字**平台（TrueNorth、Loihi、SpiNNaker、天机）把脉冲当作数据包路由、空闲时休眠；**模拟 / 存内计算**方案（BrainScaleS、忆阻器 / RRAM 交叉阵列）在存储器内部做运算，消灭冯·诺依曼式的数据搬运开销。**事件相机**（DVS）则是与之匹配的传感器。
@@ -558,6 +579,8 @@
 
 ## 🚀 第四部分 · 应用
 
+<div align="center"><img src="assets/part4.svg" width="108" alt=""></div>
+
 ### 7 · 应用
 
 > **一句话：** 凡是**功耗与延迟**为王、且数据**天然带时间/稀疏性**的场景，SNN 都能发光——事件相机视觉、常开音频、机器人/控制，以及日渐兴起的语言模型。
@@ -671,6 +694,8 @@
 
 ## 🧪 第五部分 · 交叉专题
 
+<div align="center"><img src="assets/part5.svg" width="108" alt=""></div>
+
 ### 8 · 能耗、鲁棒性与安全
 
 > 诚实地量化能耗故事，以及 SNN 在对抗攻击下的表现与防御。
@@ -736,35 +761,43 @@
 
 ## 🧰 第六部分 · 资源与生态
 
+<div align="center"><img src="assets/part6.svg" width="108" alt=""></div>
+
 ### 10 · 数据集与基准
 
 > 领域用来自我衡量的事件原生数据集（DVS 转换或相机录制）以及音频/时序基准。
 
-#### 神经形态视觉
+**神经形态视觉**
 
-- **N-MNIST / N-Caltech101** —— 用移动的 ATIS 事件相机（扫视）拍摄 MNIST 与 Caltech101，SNN 最常用的入门级分类基准。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2015.00437/full)\]\[[data](https://www.garrickorchard.com/datasets/n-mnist)\]
-- **CIFAR10-DVS** —— 用 DVS 拍摄移动的 CIFAR-10 得到的 1 万条事件流，中等规模事件物体分类基准。\[[paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full)\]
-- **N-CARS** —— 首个大规模真实世界事件二分类（车/非车）数据集，随 HATS 方法发布。\[[paper](https://arxiv.org/abs/1803.07913)\]\[[data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/)\]
-- **ASL-DVS** —— 24 类美国手语字母的 10 万余条真实事件相机记录，用于基于图的事件分类。\[[paper](https://arxiv.org/abs/1908.06648)\]\[[code](https://github.com/PIX2NVS/NVS2Graph)\]
-- **ES-ImageNet** —— 把约 130 万张 ImageNet 图像转成事件流（1000 类），最大规模神经形态分类集。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full)\]\[[code](https://github.com/lyh983012/ES-imagenet-master)\]
-- **DVS128 Gesture** —— 29 名受试者、3 种光照下的 11 类手势，出自 IBM TrueNorth 手势系统。\[[paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html)\]\[[data](https://research.ibm.com/interactive/dvsgesture/)\]
-- **HARDVS** —— 最大规模事件相机人体行为识别基准：300 类、107,646 条序列（DAVIS346）。\[[paper](https://arxiv.org/abs/2211.09648)\]\[[code](https://github.com/Event-AHU/HARDVS)\]
-- **Prophesee GEN1 Automotive** —— 39 小时驾驶事件、2550 万个人工标注框，大规模事件检测。\[[paper](https://arxiv.org/abs/2001.08499)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
-- **Prophesee 1 Megapixel (1Mpx)** —— 14 小时 1280×720 事件、约 2500 万自动标注框，首个高分辨率事件检测集。\[[paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
-- **MVSEC** —— 多载具立体事件相机数据集（立体 DAVIS + LiDAR/IMU/GPS），提供位姿/深度真值。\[[paper](https://arxiv.org/abs/1801.10202)\]\[[data](https://daniilidis-group.github.io/mvsec/)\]
-- **DDD17 / DDD20** —— 开放的 DAVIS 端到端驾驶数据集（12+ / 51+ 小时），含车辆控制信号。\[[paper](https://arxiv.org/abs/2005.08605)\]\[[code](https://github.com/SensorsINI/ddd20-utils)\]
-- **DSEC** —— 大规模立体事件相机驾驶数据集，含 LiDAR/GPS 真值，用于深度、光流与 SLAM。\[[paper](https://arxiv.org/abs/2103.06011)\]\[[data](https://dsec.ifi.uzh.ch/)\]
-- **Event-Camera Dataset & Simulator** —— 位姿估计/视觉里程计/SLAM 的基准 DVS/DAVIS 数据集，并附广泛使用的 ESIM 仿真器。\[[paper](https://arxiv.org/abs/1610.08336)\]\[[data](https://rpg.ifi.uzh.ch/davis_data.html)\]
+| 数据集 | 规模 / 内容 | 任务 | 链接 |
+|---|---|---|---|
+| **N-MNIST / N-Caltech101** | 用移动 ATIS 相机（扫视）拍摄 MNIST 与 Caltech101 | 分类（入门级） | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2015.00437/full) · [data](https://www.garrickorchard.com/datasets/n-mnist) |
+| **CIFAR10-DVS** | DVS 拍摄移动 CIFAR-10 得到的 1 万条事件流 | 分类 | [paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full) |
+| **N-CARS** | 2.4 万条真实城区 100ms 样本（车/非车） | 分类 | [paper](https://arxiv.org/abs/1803.07913) · [data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/) |
+| **ASL-DVS** | 24 类美国手语字母、10 万余条真实事件 | 分类（图） | [paper](https://arxiv.org/abs/1908.06648) · [code](https://github.com/PIX2NVS/NVS2Graph) |
+| **ES-ImageNet** | 约 130 万张 ImageNet → 事件，1000 类 | 分类（最大） | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
+| **DVS128 Gesture** | 11 类手势、29 名受试者、3 种光照 | 手势识别 | [paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html) · [data](https://research.ibm.com/interactive/dvsgesture/) |
+| **HARDVS** | 300 类、107,646 条序列（DAVIS346） | 行为识别（最大） | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
+| **Prophesee GEN1** | 39 小时驾驶、2550 万标注框 | 检测 | [paper](https://arxiv.org/abs/2001.08499) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
+| **Prophesee 1Mpx** | 14 小时 1280×720、约 2500 万框 | 检测（高清） | [paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
+| **MVSEC** | 立体 DAVIS + LiDAR/IMU/GPS | 深度/光流/SLAM | [paper](https://arxiv.org/abs/1801.10202) · [data](https://daniilidis-group.github.io/mvsec/) |
+| **DDD17 / DDD20** | 12+ / 51+ 小时 DAVIS 驾驶 + 控制信号 | 端到端驾驶 | [paper](https://arxiv.org/abs/2005.08605) · [code](https://github.com/SensorsINI/ddd20-utils) |
+| **DSEC** | 大规模立体事件驾驶 + LiDAR/GPS | 深度/光流/SLAM | [paper](https://arxiv.org/abs/2103.06011) · [data](https://dsec.ifi.uzh.ch/) |
+| **Event-Camera Dataset & Simulator** | 基准 DVS/DAVIS 数据集 + ESIM 仿真器 | 位姿/里程计/SLAM | [paper](https://arxiv.org/abs/1610.08336) · [data](https://rpg.ifi.uzh.ch/davis_data.html) |
 
-#### 神经形态音频与语音
+**神经形态音频与语音**
 
-- **Spiking Heidelberg Digits (SHD)** —— 用耳蜗模型把约 1 万条语音数字转成 700 通道脉冲的分类基准。\[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
-- **Spiking Speech Commands (SSC)** —— 基于 Google 语音命令构建的脉冲语音识别集，是 SHD 更大更难的姊妹集。\[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
-- **N-TIDIGITS** —— 用硅耳蜗对 TIDIGITS 录制的 64 通道脉冲语音数字数据集。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2018.00023/full)\]
+| 数据集 | 内容 | 链接 |
+|---|---|---|
+| **Spiking Heidelberg Digits (SHD)** | 用耳蜗模型把约 1 万条语音数字转成 700 通道脉冲 | [paper](https://doi.org/10.1109/TNNLS.2020.3044364) · [data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/) |
+| **Spiking Speech Commands (SSC)** | 脉冲编码的 Google 语音命令（35 类） | [paper](https://doi.org/10.1109/TNNLS.2020.3044364) · [data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/) |
+| **N-TIDIGITS** | 硅耳蜗录制的 64 通道脉冲语音数字、111 说话人 | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2018.00023/full) |
 
-#### 基准套件
+**基准套件**
 
-- **NeuroBench** —— 面向神经形态算法与系统、提供标准化任务与指标的社区基准框架。\[[paper](https://arxiv.org/abs/2304.04640)\]\[[code](https://github.com/NeuroBench/neurobench)\]
+| 套件 | 说明 | 链接 |
+|---|---|---|
+| **NeuroBench** | 面向神经形态算法/系统的标准化任务与指标社区基准 | [paper](https://arxiv.org/abs/2304.04640) · [code](https://github.com/NeuroBench/neurobench) |
 
 ---
 
@@ -772,39 +805,45 @@
 
 > 用于训练 SNN 的 PyTorch/JAX 库、事件数据处理工具，以及部署到神经形态芯片的厂商工具链。
 
-#### 深度 SNN 训练（PyTorch / JAX）
+**深度 SNN 训练（PyTorch / JAX）**
 
-- **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** —— PyTorch 原生全栈 SNN 框架（数据→训练→部署），融合 CUDA 神经元，事实上的研究标准平台。\[[paper](https://www.science.org/doi/10.1126/sciadv.adi1480)\]
-- **[snnTorch](https://github.com/jeshraghian/snntorch)** —— 把脉冲神经元当作循环单元的 PyTorch 训练库，教程丰富。\[[paper](https://arxiv.org/abs/2109.12894)\]
-- **[Norse](https://github.com/norse/norse)** —— 以 PyTorch 为基础、面向深度学习的稀疏事件驱动神经元组件库。
-- **[BindsNET](https://github.com/BindsNET/bindsnet)** —— 面向机器学习的 SNN 仿真库，擅长 STDP/强化学习。\[[paper](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2018.00089/full)\]
-- **[SpykeTorch](https://github.com/miladmozafari/SpykeTorch)** —— 单脉冲卷积 SNN 仿真器，支持 STDP / R-STDP。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2019.00625/full)\]
-- **[Spyx](https://github.com/kmheckel/spyx)** —— 基于 JAX 的高性能 SNN 库，JIT 加速代理梯度训练与神经进化。\[[paper](https://arxiv.org/abs/2402.18994)\]
-- **[SPAIC](https://github.com/zju-bmi-lab/SPAIC)** —— 浙大类脑脉冲 AI 计算平台，兼具神经科学式前端与 PyTorch 后端。
-- **[SNNAX](https://github.com/PGI15/snnax)** —— 于利希基于 JAX + Equinox 的脉冲网络库，自动微分 + JIT 高速训练。
-- **[jaxsnn](https://github.com/electronicvisions/jaxsnn)** —— 事件驱动、梯度式 JAX 脉冲训练（EventProp），支持 BrainScaleS-2 硬件在环。
-- **[ANNarchy](https://github.com/ANNarchy/ANNarchy)** —— 面向速率+脉冲网络的代码生成式模拟器，编译为并行 C++/CUDA。
+| 库 | 用途 | 参考 |
+|---|---|---|
+| **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** | PyTorch 全栈 SNN 框架（数据→训练→部署），融合 CUDA 神经元；事实标准平台 | [paper](https://www.science.org/doi/10.1126/sciadv.adi1480) |
+| **[snnTorch](https://github.com/jeshraghian/snntorch)** | 把脉冲神经元当循环单元的 PyTorch 库；教程丰富 | [paper](https://arxiv.org/abs/2109.12894) |
+| **[Norse](https://github.com/norse/norse)** | PyTorch 中的稀疏事件驱动生物启发组件 | — |
+| **[BindsNET](https://github.com/BindsNET/bindsnet)** | 面向机器学习的 PyTorch SNN 仿真（STDP/RL） | [paper](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2018.00089/full) |
+| **[SpykeTorch](https://github.com/miladmozafari/SpykeTorch)** | 单脉冲卷积 SNN 仿真器；STDP / R-STDP | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2019.00625/full) |
+| **[Spyx](https://github.com/kmheckel/spyx)** | 基于 JAX 的高性能 SNN，JIT 代理梯度训练 | [paper](https://arxiv.org/abs/2402.18994) |
+| **[SPAIC](https://github.com/zju-bmi-lab/SPAIC)** | 浙大类脑脉冲 AI 计算平台；神经科学前端 + PyTorch 后端 | — |
+| **[SNNAX](https://github.com/PGI15/snnax)** | 于利希 JAX + Equinox 脉冲库；自动微分 + JIT | — |
+| **[jaxsnn](https://github.com/electronicvisions/jaxsnn)** | 事件驱动 JAX 梯度训练（EventProp）；BrainScaleS-2 在环 | — |
+| **[ANNarchy](https://github.com/ANNarchy/ANNarchy)** | 代码生成式模拟器（速率+脉冲）→ C++/CUDA | — |
 
-#### 计算神经科学仿真器
+**计算神经科学仿真器**
 
-- **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** —— 基于神经工程框架的大规模功能性脑模型，后端无关、可用 TF 训练。\[[paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full)\]
-- **[Brian2](https://github.com/brian-team/brian2)** —— 方程描述 + 代码生成的高效脉冲仿真器。\[[paper](https://elifesciences.org/articles/47314)\]
-- **[NEST](https://github.com/nest/nest-simulator)** —— 大规模异构脉冲点神经元仿真器，可从笔记本扩展到超算。
-- **[GeNN](https://github.com/genn-team/genn)** —— 基于代码生成的 GPU 脉冲网络仿真环境（CUDA / HIP）。\[[paper](https://www.nature.com/articles/srep18854)\]
-- **[BrainPy](https://github.com/brainpy/BrainPy)** —— 基于 JAX 的通用脑动力学编程框架（脉冲/发放率/ODE-SDE）。\[[paper](https://elifesciences.org/articles/86365)\]
-- **[BrainCog](https://github.com/BrainCog-X/Brain-Cog)** —— 基于脉冲网络的类脑认知智能引擎，覆盖感知、决策与认知。\[[paper](https://arxiv.org/abs/2207.08533)\]
-- **[CARLsim](https://github.com/UCI-CARL/CARLsim6)** —— C++/CUDA 大规模、生物细节脉冲网络仿真库，支持在线学习。\[[paper](https://ieeexplore.ieee.org/document/9892644/)\]
-- **[PyNN](https://github.com/NeuralEnsemble/PyNN)** —— 仿真器无关的 Python 建模接口（可跑在 NEST、NEURON、Brian、SpiNNaker…）。\[[paper](https://doi.org/10.3389/neuro.11.011.2008)\]
+| 库 | 用途 | 参考 |
+|---|---|---|
+| **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** | 大规模功能性脑模型（NEF）；后端无关、可 TF 训练 | [paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full) |
+| **[Brian2](https://github.com/brian-team/brian2)** | 方程描述 + 运行时代码生成的脉冲仿真器 | [paper](https://elifesciences.org/articles/47314) |
+| **[NEST](https://github.com/nest/nest-simulator)** | 大规模异构脉冲点神经元仿真，笔记本→超算 | — |
+| **[GeNN](https://github.com/genn-team/genn)** | 代码生成的 GPU 脉冲仿真（CUDA / HIP） | [paper](https://www.nature.com/articles/srep18854) |
+| **[BrainPy](https://github.com/brainpy/BrainPy)** | JAX 脑动力学编程（脉冲/发放率/ODE-SDE） | [paper](https://elifesciences.org/articles/86365) |
+| **[BrainCog](https://github.com/BrainCog-X/Brain-Cog)** | 脉冲网络类脑认知智能引擎（中科院） | [paper](https://arxiv.org/abs/2207.08533) |
+| **[CARLsim](https://github.com/UCI-CARL/CARLsim6)** | C++/CUDA 大规模生物细节脉冲仿真 + 在线学习 | [paper](https://ieeexplore.ieee.org/document/9892644/) |
+| **[PyNN](https://github.com/NeuralEnsemble/PyNN)** | 仿真器无关 Python 接口（NEST/NEURON/Brian/SpiNNaker） | [paper](https://doi.org/10.3389/neuro.11.011.2008) |
 
-#### 神经形态硬件部署与数据工具
+**神经形态硬件部署与数据工具**
 
-- **[Lava](https://github.com/lava-nc/lava)** —— Intel 开源神经形态框架，面向 Loihi 的分布式事件驱动应用。
-- **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** —— SynSense 出品，训练/部署脉冲网络到 DynapCNN/Speck 芯片。
-- **[Tonic](https://github.com/neuromorphs/tonic)** —— "事件版 TorchVision"，统一下载/加载/变换神经形态视觉与音频数据集。
-- **[v2e](https://github.com/SensorsINI/v2e)** —— 把普通视频帧转换为带噪声模型的逼真 DVS 事件流，无需相机即可训练/测试。\[[paper](https://openaccess.thecvf.com/content/CVPR2021W/EventVision/html/Hu_v2e_From_Video_Frames_to_Realistic_DVS_Events_CVPRW_2021_paper.html)\]
-- **[snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox)** —— 主流 ANN→SNN 转换工具箱，支持 Keras/PyTorch 前端，可部署到 pyNN/Brian2/SpiNNaker/Loihi。
-- **[N2D2](https://github.com/CEA-LIST/N2D2)** —— CEA-List 的嵌入式神经网络设计/量化/部署框架，含脉冲/神经形态仿真范式。
-- **[Whetstone](https://github.com/sandialabs/Whetstone)** —— Sandia 的 Keras 扩展，"锐化"激活为单步二值脉冲以部署到神经形态硬件。
+| 工具 | 用途 | 参考 |
+|---|---|---|
+| **[Lava](https://github.com/lava-nc/lava)** | Intel 框架，跨 CPU 与 Loihi 开发/部署 | — |
+| **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** | SynSense 库，训练/部署到 DynapCNN / Speck | — |
+| **[Tonic](https://github.com/neuromorphs/tonic)** | "事件版 TorchVision"，事件视觉/音频数据集与变换 | — |
+| **[v2e](https://github.com/SensorsINI/v2e)** | 视频帧 → 逼真 DVS 事件（无需相机） | [paper](https://openaccess.thecvf.com/content/CVPR2021W/EventVision/html/Hu_v2e_From_Video_Frames_to_Realistic_DVS_Events_CVPRW_2021_paper.html) |
+| **[snn_toolbox](https://github.com/NeuromorphicProcessorProject/snn_toolbox)** | 主流 ANN→SNN 转换工具箱 → pyNN/Brian2/SpiNNaker/Loihi | — |
+| **[N2D2](https://github.com/CEA-LIST/N2D2)** | CEA-List 嵌入式设计/量化/部署，含脉冲仿真 | — |
+| **[Whetstone](https://github.com/sandialabs/Whetstone)** | Sandia 的 Keras 扩展，"锐化"激活为单步脉冲 | — |
 
 ---
 
@@ -812,42 +851,48 @@
 
 > **一句话：** 可直接复用的重要**模型实现**，以及让领域更易被发现的兄弟 awesome 清单与社区。（训练框架见 [§11 · 软件与框架](#11--软件与框架)；star 数为约值，约 2025–2026。）
 
-#### 里程碑式模型实现
+**里程碑式模型实现**
 
-- **[BICLab/SpikingBrain-7B](https://github.com/BICLab/SpikingBrain-7B)** —— 中科院类脑脉冲大模型（高效注意力+MoE+脉冲编码，2025）。⭐ ~1.3k
-- **[ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT)** —— 基于 SNN 的生成式预训练语言模型。⭐ ~910
-- **[ZK-Zhou/spikformer](https://github.com/ZK-Zhou/spikformer)** —— Spikformer（ICLR 2023），脉冲自注意力开山之作。⭐ ~410
-- **[BICLab/Spike-Driven-Transformer](https://github.com/BICLab/Spike-Driven-Transformer)** —— 脉冲驱动 Transformer（NeurIPS 2023）。⭐ ~315
-- **[BICLab/SpikeYOLO](https://github.com/BICLab/SpikeYOLO)** —— 整数训练+脉冲推理检测器（ECCV 2024）。⭐ ~250
-- **[BICLab/Spike-Driven-Transformer-V2](https://github.com/BICLab/Spike-Driven-Transformer-V2)** —— Meta-SpikeFormer（ICLR 2024）。⭐ ~230
-- **[BICLab/EMS-YOLO](https://github.com/BICLab/EMS-YOLO)** —— 直接训练的深层 SNN 检测器（ICCV 2023）。⭐ ~195
-- **[fangwei123456/Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet)** —— SEW-ResNet（NeurIPS 2021）。⭐ ~195
-- **[zhouchenlin2096/QKFormer](https://github.com/zhouchenlin2096/QKFormer)** —— 层级 Q-K 注意力脉冲 Transformer（NeurIPS 2024）。⭐ ~150
-- **[TheBrainLab/Spikingformer](https://github.com/TheBrainLab/Spikingformer)** —— 全脉冲驱动 Transformer（AAAI 2026）。⭐ ~145
-- **[BICLab/Spike-Driven-Transformer-V3](https://github.com/BICLab/Spike-Driven-Transformer-V3)** —— 脉冲 Transformer 扩展（T-PAMI 2025）。⭐ ~115
-- **[Intelligent-Computing-Lab-Panda/STAtten](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)** —— 时空脉冲注意力（CVPR 2025）。⭐ ~80
-- **[brain-intelligence-lab/temporal_efficient_training](https://github.com/brain-intelligence-lab/temporal_efficient_training)** —— TET（ICLR 2022）。⭐ ~75
-- **[stonezwr/TSSL-BP](https://github.com/stonezwr/TSSL-BP)** —— 时序脉冲序列反传（NeurIPS 2020）。⭐ ~70
-- **[combra-lab/pop-spiking-deep-rl](https://github.com/combra-lab/pop-spiking-deep-rl)** —— 群体编码脉冲深度强化学习（PopSAN）。⭐ ~70
-- **[putshua/ANN_SNN_QCFS](https://github.com/putshua/ANN_SNN_QCFS)** —— 最优 ANN-SNN 转换 QCFS（ICLR 2022）。⭐ ~44
-- **[Lvchangze/SpikeBERT](https://github.com/Lvchangze/SpikeBERT)** —— 从 BERT 蒸馏的语言 Spikformer。⭐ ~31
+| 仓库 | 说明 | ⭐ |
+|---|---|:--:|
+| **[BICLab/SpikingBrain-7B](https://github.com/BICLab/SpikingBrain-7B)** | 中科院类脑脉冲 7B 大模型（2025） | ~1.3k |
+| **[ridgerchu/SpikeGPT](https://github.com/ridgerchu/SpikeGPT)** | 基于 SNN 的生成式预训练语言模型 | ~910 |
+| **[ZK-Zhou/spikformer](https://github.com/ZK-Zhou/spikformer)** | Spikformer（ICLR 2023），脉冲 Transformer 开山 | ~410 |
+| **[BICLab/Spike-Driven-Transformer](https://github.com/BICLab/Spike-Driven-Transformer)** | 脉冲驱动 Transformer（NeurIPS 2023） | ~315 |
+| **[BICLab/SpikeYOLO](https://github.com/BICLab/SpikeYOLO)** | 整数训练+脉冲推理检测器（ECCV 2024） | ~250 |
+| **[BICLab/Spike-Driven-Transformer-V2](https://github.com/BICLab/Spike-Driven-Transformer-V2)** | Meta-SpikeFormer（ICLR 2024） | ~230 |
+| **[BICLab/EMS-YOLO](https://github.com/BICLab/EMS-YOLO)** | 直接训练的深层 SNN 检测器（ICCV 2023） | ~195 |
+| **[fangwei123456/Spike-Element-Wise-ResNet](https://github.com/fangwei123456/Spike-Element-Wise-ResNet)** | SEW-ResNet（NeurIPS 2021） | ~195 |
+| **[zhouchenlin2096/QKFormer](https://github.com/zhouchenlin2096/QKFormer)** | 层级 Q-K 注意力脉冲 Transformer（NeurIPS 2024） | ~150 |
+| **[TheBrainLab/Spikingformer](https://github.com/TheBrainLab/Spikingformer)** | 全脉冲驱动 Transformer（AAAI 2026） | ~145 |
+| **[BICLab/Spike-Driven-Transformer-V3](https://github.com/BICLab/Spike-Driven-Transformer-V3)** | 脉冲 Transformer 扩展（T-PAMI 2025） | ~115 |
+| **[Intelligent-Computing-Lab-Panda/STAtten](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)** | 时空脉冲注意力（CVPR 2025） | ~80 |
+| **[brain-intelligence-lab/temporal_efficient_training](https://github.com/brain-intelligence-lab/temporal_efficient_training)** | TET（ICLR 2022） | ~75 |
+| **[stonezwr/TSSL-BP](https://github.com/stonezwr/TSSL-BP)** | 时序脉冲序列反传（NeurIPS 2020） | ~70 |
+| **[combra-lab/pop-spiking-deep-rl](https://github.com/combra-lab/pop-spiking-deep-rl)** | 群体编码脉冲深度强化学习（PopSAN） | ~70 |
+| **[putshua/ANN_SNN_QCFS](https://github.com/putshua/ANN_SNN_QCFS)** | 最优 ANN-SNN 转换 QCFS（ICLR 2022） | ~44 |
+| **[Lvchangze/SpikeBERT](https://github.com/Lvchangze/SpikeBERT)** | 从 BERT 蒸馏的语言 Spikformer | ~31 |
 
-#### Awesome 清单与论文合集
+**Awesome 清单与论文合集**
 
-- **[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)** —— 覆盖面最广的 SNN 论文清单（论文+代码+网站）。⭐ ~805
-- **[AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)** —— 按年份整理的顶会顶刊 SNN 论文+代码。⭐ ~460
-- **[coderonion/awesome-snn](https://github.com/coderonion/awesome-snn)** —— 优秀公开 SNN 项目合集。⭐ ~235
-- **[open-neuromorphic/awesome-neuromorphic-hw](https://github.com/open-neuromorphic/awesome-neuromorphic-hw)** —— 神经形态硬件论文（ASIC/FPGA 脉冲实现）。⭐ ~215
-- **[yfguo91/Awesome-Spiking-Neural-Networks](https://github.com/yfguo91/Awesome-Spiking-Neural-Networks)** —— 精选 SNN 资源清单。⭐ ~150
-- **[vvvityaaa/awesome-spiking-neural-networks](https://github.com/vvvityaaa/awesome-spiking-neural-networks)** —— "第三代神经网络"资料集。⭐ ~70
+| 仓库 | 说明 | ⭐ |
+|---|---|:--:|
+| **[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)** | 覆盖面最广的 SNN 论文清单 | ~805 |
+| **[AXYZdong/awesome-snn-conference-paper](https://github.com/AXYZdong/awesome-snn-conference-paper)** | 按年份整理的顶会顶刊 SNN 论文+代码 | ~460 |
+| **[coderonion/awesome-snn](https://github.com/coderonion/awesome-snn)** | 优秀公开 SNN 项目合集 | ~235 |
+| **[open-neuromorphic/awesome-neuromorphic-hw](https://github.com/open-neuromorphic/awesome-neuromorphic-hw)** | 神经形态硬件论文（ASIC/FPGA） | ~215 |
+| **[yfguo91/Awesome-Spiking-Neural-Networks](https://github.com/yfguo91/Awesome-Spiking-Neural-Networks)** | 精选 SNN 资源清单 | ~150 |
+| **[vvvityaaa/awesome-spiking-neural-networks](https://github.com/vvvityaaa/awesome-spiking-neural-networks)** | "第三代神经网络"资料集 | ~70 |
 
-#### 社区与工具
+**社区与工具**
 
-- **[open-neuromorphic/open-neuromorphic](https://github.com/open-neuromorphic/open-neuromorphic)** —— 全球类脑/神经形态软件生态社区。⭐ ~315
-- **[fzenke/spytorch](https://github.com/fzenke/spytorch)** —— 经典的代理梯度学习教程。⭐ ~360
-- **[prophesee-ai/openeb](https://github.com/prophesee-ai/openeb)** —— 事件相机硬件的开源 SDK。⭐ ~295
-- **[SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker)** —— 百万核 SpiNNaker 上的 PyNN 实现。⭐ ~117
-- **[electronicvisions/hxtorch](https://github.com/electronicvisions/hxtorch)** —— BrainScaleS-2 模拟硬件的 PyTorch 接口。⭐ ~17
+| 仓库 | 说明 | ⭐ |
+|---|---|:--:|
+| **[fzenke/spytorch](https://github.com/fzenke/spytorch)** | 经典代理梯度学习教程 | ~360 |
+| **[open-neuromorphic/open-neuromorphic](https://github.com/open-neuromorphic/open-neuromorphic)** | 全球类脑/神经形态软件生态社区 | ~315 |
+| **[prophesee-ai/openeb](https://github.com/prophesee-ai/openeb)** | 事件相机硬件的开源 SDK | ~295 |
+| **[SpiNNakerManchester/sPyNNaker](https://github.com/SpiNNakerManchester/sPyNNaker)** | 百万核 SpiNNaker 上的 PyNN 实现 | ~117 |
+| **[electronicvisions/hxtorch](https://github.com/electronicvisions/hxtorch)** | BrainScaleS-2 模拟硬件的 PyTorch 接口 | ~17 |
 
 ---
 
