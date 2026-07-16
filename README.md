@@ -57,6 +57,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 - [Building the PDF](#-building-the-pdf)
 - [Contributing](#-contributing)
 - [Citation](#-citation)
+- [Star History](#-star-history)
 - [License & Acknowledgements](#-license--acknowledgements)
 
 **Legend:** 🧠 seminal / must-read · 📄 paper · 💻 official code · 🏆 SOTA at publication
@@ -771,6 +772,12 @@ Contributions are very welcome — this is a **living** list.
   note   = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
 }
 ```
+
+## ⭐ Star History
+
+<a href="https://star-history.com/#ZHR-HEU/Awesome-Spiking-Neural-Networks&Date">
+  <img src="https://api.star-history.com/svg?repos=ZHR-HEU/Awesome-Spiking-Neural-Networks&type=Date" alt="Star History Chart" width="640">
+</a>
 
 ## 📜 License & Acknowledgements
 

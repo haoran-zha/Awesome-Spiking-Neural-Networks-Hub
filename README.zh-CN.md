@@ -57,6 +57,7 @@
 - [编译 PDF](#-编译-pdf)
 - [贡献指南](#-贡献指南)
 - [引用](#-引用)
+- [Star 增长曲线](#-star-增长曲线)
 - [许可与致谢](#-许可与致谢)
 
 **图例：** 🧠 奠基 / 必读 · 📄 论文 · 💻 官方代码 · 🏆 发表时的 SOTA
@@ -772,6 +773,12 @@ Awesome-Spiking-Neural-Networks/
   note   = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
 }
 ```
+
+## ⭐ Star 增长曲线
+
+<a href="https://star-history.com/#ZHR-HEU/Awesome-Spiking-Neural-Networks&Date">
+  <img src="https://api.star-history.com/svg?repos=ZHR-HEU/Awesome-Spiking-Neural-Networks&type=Date" alt="Star History Chart" width="640">
+</a>
 
 ## 📜 许可与致谢
 
