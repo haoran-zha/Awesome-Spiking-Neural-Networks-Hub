@@ -1,52 +1,340 @@
 %==============================================================
 %  Bibliography for the SNN survey
-%  Add references here as BibTeX entries.
+%  Curated seminal references. Add new entries as BibTeX.
 %==============================================================
+
+% ---------- Foundations ----------
+@article{mcculloch1943logical,
+  title   = {A logical calculus of the ideas immanent in nervous activity},
+  author  = {McCulloch, Warren S. and Pitts, Walter},
+  journal = {The Bulletin of Mathematical Biophysics},
+  volume  = {5}, number = {4}, pages = {115--133}, year = {1943},
+  publisher = {Springer}
+}
+
+@article{hodgkin1952quantitative,
+  title   = {A quantitative description of membrane current and its application to conduction and excitation in nerve},
+  author  = {Hodgkin, Alan L. and Huxley, Andrew F.},
+  journal = {The Journal of Physiology},
+  volume  = {117}, number = {4}, pages = {500--544}, year = {1952},
+  publisher = {Wiley}
+}
 
 @article{maass1997networks,
   title   = {Networks of spiking neurons: The third generation of neural network models},
   author  = {Maass, Wolfgang},
   journal = {Neural Networks},
-  volume  = {10},
-  number  = {9},
-  pages   = {1659--1671},
-  year    = {1997},
+  volume  = {10}, number = {9}, pages = {1659--1671}, year = {1997},
   publisher = {Elsevier}
 }
 
-@article{gerstner2002spiking,
-  title     = {Spiking neuron models: Single neurons, populations, plasticity},
+@book{gerstner2002spiking,
+  title     = {Spiking Neuron Models: Single Neurons, Populations, Plasticity},
   author    = {Gerstner, Wulfram and Kistler, Werner M.},
   year      = {2002},
   publisher = {Cambridge University Press}
+}
+
+@article{maass2002real,
+  title   = {Real-time computing without stable states: A new framework for neural computation based on perturbations},
+  author  = {Maass, Wolfgang and Natschl{\"a}ger, Thomas and Markram, Henry},
+  journal = {Neural Computation},
+  volume  = {14}, number = {11}, pages = {2531--2560}, year = {2002}
+}
+
+% ---------- Neuron models ----------
+@article{izhikevich2003simple,
+  title   = {Simple model of spiking neurons},
+  author  = {Izhikevich, Eugene M.},
+  journal = {IEEE Transactions on Neural Networks},
+  volume  = {14}, number = {6}, pages = {1569--1572}, year = {2003}
+}
+
+@article{brette2005adaptive,
+  title   = {Adaptive exponential integrate-and-fire model as an effective description of neuronal activity},
+  author  = {Brette, Romain and Gerstner, Wulfram},
+  journal = {Journal of Neurophysiology},
+  volume  = {94}, number = {5}, pages = {3637--3642}, year = {2005}
+}
+
+@inproceedings{fang2021plif,
+  title     = {Incorporating learnable membrane time constant to enhance learning of spiking neural networks},
+  author    = {Fang, Wei and Yu, Zhaofei and Chen, Yanqi and Masquelier, Timoth{\'e}e and Huang, Tiejun and Tian, Yonghong},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  pages     = {2661--2671}, year = {2021}
+}
+
+% ---------- Neural coding ----------
+@article{thorpe2001spike,
+  title   = {Spike-based strategies for rapid processing},
+  author  = {Thorpe, Simon and Delorme, Arnaud and Van Rullen, Rufin},
+  journal = {Neural Networks},
+  volume  = {14}, number = {6-7}, pages = {715--725}, year = {2001}
+}
+
+% ---------- ANN-to-SNN conversion ----------
+@article{diehl2015fast,
+  title     = {Fast-classifying, high-accuracy spiking deep networks through weight and threshold balancing},
+  author    = {Diehl, Peter U. and Neil, Daniel and Binas, Jonathan and Cook, Matthew and Liu, Shih-Chii and Pfeiffer, Michael},
+  booktitle = {International Joint Conference on Neural Networks (IJCNN)},
+  year      = {2015}
+}
+
+@article{rueckauer2017conversion,
+  title   = {Conversion of continuous-valued deep networks to efficient event-driven networks for image classification},
+  author  = {Rueckauer, Bodo and Lungu, Iulia-Alexandra and Hu, Yuhuang and Pfeiffer, Michael and Liu, Shih-Chii},
+  journal = {Frontiers in Neuroscience},
+  volume  = {11}, pages = {682}, year = {2017}
+}
+
+@article{sengupta2019going,
+  title   = {Going deeper in spiking neural networks: VGG and residual architectures},
+  author  = {Sengupta, Abhronil and Ye, Yuting and Wang, Robert and Liu, Chiao and Roy, Kaushik},
+  journal = {Frontiers in Neuroscience},
+  volume  = {13}, pages = {95}, year = {2019}
+}
+
+@inproceedings{bu2022optimal,
+  title     = {Optimal ANN-SNN conversion for high-accuracy and ultra-low-latency spiking neural networks},
+  author    = {Bu, Tong and Fang, Wei and Ding, Jianhao and Dai, PengLin and Yu, Zhaofei and Huang, Tiejun},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+% ---------- Surrogate-gradient / direct training ----------
+@article{bohte2002error,
+  title   = {Error-backpropagation in temporally encoded networks of spiking neurons},
+  author  = {Bohte, Sander M. and Kok, Joost N. and La Poutr{\'e}, Han},
+  journal = {Neurocomputing},
+  volume  = {48}, number = {1-4}, pages = {17--37}, year = {2002}
+}
+
+@article{wu2018spatio,
+  title   = {Spatio-temporal backpropagation for training high-performance spiking neural networks},
+  author  = {Wu, Yujie and Deng, Lei and Li, Guoqi and Zhu, Jun and Shi, Luping},
+  journal = {Frontiers in Neuroscience},
+  volume  = {12}, pages = {331}, year = {2018}
+}
+
+@inproceedings{shrestha2018slayer,
+  title     = {SLAYER: Spike layer error reassignment in time},
+  author    = {Shrestha, Sumit Bam and Orchard, Garrick},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2018}
+}
+
+@article{zenke2018superspike,
+  title   = {SuperSpike: Supervised learning in multilayer spiking neural networks},
+  author  = {Zenke, Friedemann and Ganguli, Surya},
+  journal = {Neural Computation},
+  volume  = {30}, number = {6}, pages = {1514--1541}, year = {2018}
 }
 
 @article{neftci2019surrogate,
   title   = {Surrogate gradient learning in spiking neural networks},
   author  = {Neftci, Emre O. and Mostafa, Hesham and Zenke, Friedemann},
   journal = {IEEE Signal Processing Magazine},
-  volume  = {36},
-  number  = {6},
-  pages   = {51--63},
-  year    = {2019}
+  volume  = {36}, number = {6}, pages = {51--63}, year = {2019}
+}
+
+@inproceedings{fang2021deep,
+  title     = {Deep residual learning in spiking neural networks},
+  author    = {Fang, Wei and Yu, Zhaofei and Chen, Yanqi and Huang, Tiejun and Masquelier, Timoth{\'e}e and Tian, Yonghong},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2021}
+}
+
+@inproceedings{zheng2021going,
+  title     = {Going deeper with directly-trained larger spiking neural networks},
+  author    = {Zheng, Hanle and Wu, Yujie and Deng, Lei and Hu, Yifan and Li, Guoqi},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2021}
+}
+
+@inproceedings{deng2022temporal,
+  title     = {Temporal efficient training of spiking neural network via gradient re-weighting},
+  author    = {Deng, Shikuang and Li, Yuhang and Zhang, Shanghang and Gu, Shi},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+@article{bellec2020solution,
+  title   = {A solution to the learning dilemma for recurrent networks of spiking neurons},
+  author  = {Bellec, Guillaume and Scherr, Franz and Subramoney, Anand and Hajek, Elias and Salaj, Darjan and Legenstein, Robert and Maass, Wolfgang},
+  journal = {Nature Communications},
+  volume  = {11}, number = {1}, pages = {3625}, year = {2020}
+}
+
+% ---------- Bio-plausible learning ----------
+@article{bi1998synaptic,
+  title   = {Synaptic modifications in cultured hippocampal neurons: dependence on spike timing, synaptic strength, and postsynaptic cell type},
+  author  = {Bi, Guo-qiang and Poo, Mu-ming},
+  journal = {Journal of Neuroscience},
+  volume  = {18}, number = {24}, pages = {10464--10472}, year = {1998}
+}
+
+@article{diehl2015unsupervised,
+  title   = {Unsupervised learning of digit recognition using spike-timing-dependent plasticity},
+  author  = {Diehl, Peter U. and Cook, Matthew},
+  journal = {Frontiers in Computational Neuroscience},
+  volume  = {9}, pages = {99}, year = {2015}
+}
+
+% ---------- Architectures ----------
+@inproceedings{zhou2023spikformer,
+  title     = {Spikformer: When spiking neural network meets transformer},
+  author    = {Zhou, Zhaokun and Zhu, Yuesheng and He, Chao and Wang, Yaowei and Yan, Shuicheng and Tian, Yonghong and Yuan, Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+@inproceedings{yao2023spike,
+  title     = {Spike-driven transformer},
+  author    = {Yao, Man and Hu, Jiakui and Zhou, Zhaokun and Yuan, Li and Tian, Yonghong and Xu, Bo and Li, Guoqi},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2023}
+}
+
+% ---------- Hardware ----------
+@article{merolla2014million,
+  title   = {A million spiking-neuron integrated circuit with a scalable communication network and interface},
+  author  = {Merolla, Paul A. and others},
+  journal = {Science},
+  volume  = {345}, number = {6197}, pages = {668--673}, year = {2014}
+}
+
+@article{furber2014spinnaker,
+  title   = {The SpiNNaker project},
+  author  = {Furber, Steve B. and Galluppi, Francesco and Temple, Steve and Plana, Luis A.},
+  journal = {Proceedings of the IEEE},
+  volume  = {102}, number = {5}, pages = {652--665}, year = {2014}
 }
 
 @article{davies2018loihi,
   title   = {Loihi: A neuromorphic manycore processor with on-chip learning},
   author  = {Davies, Mike and others},
   journal = {IEEE Micro},
-  volume  = {38},
-  number  = {1},
-  pages   = {82--99},
-  year    = {2018}
+  volume  = {38}, number = {1}, pages = {82--99}, year = {2018}
+}
+
+@article{pei2019towards,
+  title   = {Towards artificial general intelligence with hybrid Tianjic chip architecture},
+  author  = {Pei, Jing and others},
+  journal = {Nature},
+  volume  = {572}, number = {7767}, pages = {106--111}, year = {2019}
+}
+
+@article{lichtsteiner2008128,
+  title   = {A 128$\times$128 120 dB 15 $\mu$s latency asynchronous temporal contrast vision sensor},
+  author  = {Lichtsteiner, Patrick and Posch, Christoph and Delbruck, Tobi},
+  journal = {IEEE Journal of Solid-State Circuits},
+  volume  = {43}, number = {2}, pages = {566--576}, year = {2008}
+}
+
+@article{prezioso2015training,
+  title   = {Training and operation of an integrated neuromorphic network based on metal-oxide memristors},
+  author  = {Prezioso, Mirko and Merrikh-Bayat, Farnood and Hoskins, Brian D. and Adam, Gina C. and Likharev, Konstantin K. and Strukov, Dmitri B.},
+  journal = {Nature},
+  volume  = {521}, number = {7550}, pages = {61--64}, year = {2015}
 }
 
 @article{roy2019towards,
   title   = {Towards spike-based machine intelligence with neuromorphic computing},
   author  = {Roy, Kaushik and Jaiswal, Akhilesh and Panda, Priyadarshini},
   journal = {Nature},
-  volume  = {575},
-  number  = {7784},
-  pages   = {607--617},
-  year    = {2019}
+  volume  = {575}, number = {7784}, pages = {607--617}, year = {2019}
+}
+
+% ---------- Applications ----------
+@inproceedings{amir2017low,
+  title     = {A low power, fully event-based gesture recognition system},
+  author    = {Amir, Arnon and others},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2017}
+}
+
+@inproceedings{kim2020spiking,
+  title     = {Spiking-YOLO: Spiking neural network for energy-efficient object detection},
+  author    = {Kim, Seijoon and Park, Seongsik and Na, Byunggook and Yoon, Sungroh},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2020}
+}
+
+@article{zhu2023spikegpt,
+  title   = {SpikeGPT: Generative pre-trained language model with spiking neural networks},
+  author  = {Zhu, Rui-Jie and Zhao, Qihang and Li, Guoqi and Eshraghian, Jason K.},
+  journal = {arXiv preprint arXiv:2302.13939},
+  year    = {2023}
+}
+
+% ---------- Datasets & tools ----------
+@article{orchard2015converting,
+  title   = {Converting static image datasets to spiking neuromorphic datasets using saccades},
+  author  = {Orchard, Garrick and Jayawant, Ajinkya and Cohen, Gregory K. and Thakor, Nitish},
+  journal = {Frontiers in Neuroscience},
+  volume  = {9}, pages = {437}, year = {2015}
+}
+
+@article{cramer2022heidelberg,
+  title   = {The Heidelberg spiking data sets for the systematic evaluation of spiking neural networks},
+  author  = {Cramer, Benjamin and Stradmann, Yannik and Schemmel, Johannes and Zenke, Friedemann},
+  journal = {IEEE Transactions on Neural Networks and Learning Systems},
+  volume  = {33}, number = {7}, pages = {2744--2757}, year = {2022}
+}
+
+@article{fang2023spikingjelly,
+  title   = {SpikingJelly: An open-source machine learning infrastructure platform for spike-based intelligence},
+  author  = {Fang, Wei and Chen, Yanqi and Ding, Jianhao and Yu, Zhaofei and Masquelier, Timoth{\'e}e and Chen, Ding and Huang, Liwei and Zhou, Huihui and Li, Guoqi and Tian, Yonghong},
+  journal = {Science Advances},
+  volume  = {9}, number = {40}, pages = {eadi1480}, year = {2023}
+}
+
+@article{eshraghian2023training,
+  title   = {Training spiking neural networks using lessons from deep learning},
+  author  = {Eshraghian, Jason K. and Ward, Max and Neftci, Emre O. and Wang, Xinxin and Lenz, Gregor and Dwivedi, Girish and Bennamoun, Mohammed and Jeong, Doo Seok and Lu, Wei D.},
+  journal = {Proceedings of the IEEE},
+  volume  = {111}, number = {9}, pages = {1016--1054}, year = {2023}
+}
+
+% ---------- Additional foundational works ----------
+@article{mead1990neuromorphic,
+  title   = {Neuromorphic electronic systems},
+  author  = {Mead, Carver},
+  journal = {Proceedings of the IEEE},
+  volume  = {78}, number = {10}, pages = {1629--1636}, year = {1990}
+}
+
+@article{mahowald1991silicon,
+  title   = {A silicon neuron},
+  author  = {Mahowald, Misha and Douglas, Rodney},
+  journal = {Nature},
+  volume  = {354}, number = {6354}, pages = {515--518}, year = {1991}
+}
+
+@article{strukov2008missing,
+  title   = {The missing memristor found},
+  author  = {Strukov, Dmitri B. and Snider, Gregory S. and Stewart, Duncan R. and Williams, R. Stanley},
+  journal = {Nature},
+  volume  = {453}, number = {7191}, pages = {80--83}, year = {2008}
+}
+
+@article{gutig2006tempotron,
+  title   = {The tempotron: a neuron that learns spike timing-based decisions},
+  author  = {G{\"u}tig, Robert and Sompolinsky, Haim},
+  journal = {Nature Neuroscience},
+  volume  = {9}, number = {3}, pages = {420--428}, year = {2006}
+}
+
+@article{masquelier2007unsupervised,
+  title   = {Unsupervised learning of visual features through spike timing dependent plasticity},
+  author  = {Masquelier, Timoth{\'e}e and Thorpe, Simon J.},
+  journal = {PLoS Computational Biology},
+  volume  = {3}, number = {2}, pages = {e31}, year = {2007}
+}
+
+@article{paredes2024fully,
+  title   = {Fully neuromorphic vision and control for autonomous drone flight},
+  author  = {Paredes-Vall{\'e}s, Federico and Hagenaars, Jesse J. and Dupeyroux, Julien and Stroobants, Stein and Xu, Yingfu and de Croon, Guido C. H. E.},
+  journal = {Science Robotics},
+  volume  = {9}, number = {90}, pages = {eadi0591}, year = {2024}
 }

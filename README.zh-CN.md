@@ -1,0 +1,778 @@
+<div align="center">
+
+# Awesome 脉冲神经网络（Spiking Neural Networks, SNN）
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Survey](https://img.shields.io/badge/Survey-PDF-b31b1b.svg)](main.tex)
+![Stars](https://img.shields.io/github/stars/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=social)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#-贡献指南)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**一份全面、带深度注解、持续更新的脉冲神经网络（SNN）综述与论文清单** —— 从神经元模型、神经编码，到训练方法与网络架构，再到神经形态硬件与真实应用。
+
+[🇬🇧 English](README.md) | **🌐 中文**
+
+*如果本仓库对你的研究有帮助，欢迎点一个 ⭐ 并[引用](#-引用)。我们尽力收录每一篇有影响力的 SNN 论文——也欢迎你来补充。*
+
+</div>
+
+---
+
+## 🧭 什么是脉冲神经网络？（先读这一节）
+
+传统深度网络（ANN）在每一层之间、每一次前向传播中，同步地传递**连续的数值**。而**脉冲神经网络**则像生物神经元一样，用**离散的、二值的、带时间信息的事件——"脉冲（spike）"**来通信。脉冲神经元把输入电流不断累积到自身的*膜电位*上；一旦膜电位越过阈值，就发放一个脉冲并复位；没有脉冲时，什么都不发生。
+
+正是这一点带来了三个诱人的特性：
+
+- **事件驱动、稀疏** → 只有在脉冲发生时才产生计算（和能耗）。在神经形态芯片上，这可能意味着比 GPU 低**几个数量级**的功耗。
+- **天生带时间维度** → 信息不仅藏在"发放了多少脉冲"里，还藏在"何时发放"里，天然适合时间序列、音频和事件相机数据。
+- **类脑** → SNN 常被称作神经网络的**"第三代"**（在感知机、基于发放率的深度网络之后），连接着神经科学与机器学习。
+
+它最核心的难点在于：脉冲是一个**阶跃函数——不可微**，因此普通的反向传播无法直接使用。可以说，整个领域在很大程度上就是在回答*"这东西到底该怎么训练？"*——这也是为什么[训练方法](#-训练方法)是本清单的重中之重。
+
+> 本仓库**同时是两样东西**：(1) 一篇成文的**综述**（LaTeX，见 [`sections/`](sections/)）；(2) 下方 awesome 风格的**精选论文清单**。每个条目都配有一句中英双语的"为什么重要"注解，帮你在浩瀚文献里不迷路。
+
+---
+
+## 📑 目录
+
+- [配套综述论文（本仓库）](#-配套综述论文本仓库)
+- [1 · 基础与神经编码](#1--基础与神经编码)
+- [2 · 神经元模型](#2--神经元模型)
+- [3 · 训练方法](#-训练方法)
+  - [3.1 ANN 到 SNN 转换](#31-ann-到-snn-转换)
+  - [3.2 代理梯度与直接训练](#32-代理梯度与直接训练)
+  - [3.3 生物可塑性 / 局部学习](#33-生物可塑性--局部学习)
+  - [3.4 高效化：剪枝、量化、蒸馏](#34-高效化剪枝量化蒸馏)
+- [4 · 网络架构](#4--网络架构)
+  - [4.1 深度脉冲 CNN 与 ResNet](#41-深度脉冲-cnn-与-resnet)
+  - [4.2 脉冲 Transformer 与注意力](#42-脉冲-transformer-与注意力)
+  - [4.3 循环、储备池与其他](#43-循环储备池与其他)
+- [5 · 神经形态硬件](#5--神经形态硬件)
+- [6 · 应用](#6--应用)
+- [7 · 数据集与基准](#7--数据集与基准)
+- [8 · 软件与框架](#8--软件与框架)
+- [9 · 能耗、鲁棒性与安全](#9--能耗鲁棒性与安全)
+- [10 · 理论与神经科学](#10--理论与神经科学)
+- [编译 PDF](#-编译-pdf)
+- [贡献指南](#-贡献指南)
+- [引用](#-引用)
+- [许可与致谢](#-许可与致谢)
+
+**图例：** 🧠 奠基 / 必读 · 📄 论文 · 💻 官方代码 · 🏆 发表时的 SOTA
+
+---
+
+## 📄 配套综述论文（本仓库）
+
+**A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications**
+
+[[PDF](main.tex)] · [[arXiv](#)] · [[BibTeX](#-引用)]
+
+| # | 章节 | 范围 | 源文件 |
+|---|------|------|--------|
+| 1 | **引言** | 动机、范围、贡献 | [`01_introduction.tex`](sections/01_introduction.tex) |
+| 2 | **背景** | 从 ANN 到 SNN；神经编码 | [`02_background.tex`](sections/02_background.tex) |
+| 3 | **神经元模型** | LIF、Izhikevich、HH、AdEx、SRM | [`03_neuron_models.tex`](sections/03_neuron_models.tex) |
+| 4 | **训练方法** | 转换、代理梯度、STDP | [`04_training_methods.tex`](sections/04_training_methods.tex) |
+| 5 | **硬件** | TrueNorth、Loihi、SpiNNaker、交叉阵列 | [`05_hardware.tex`](sections/05_hardware.tex) |
+| 6 | **应用** | 事件视觉、机器人、边缘计算 | [`06_applications.tex`](sections/06_applications.tex) |
+| 7 | **挑战** | 开放问题与展望 | [`07_challenges.tex`](sections/07_challenges.tex) |
+| 8 | **结论** | 总结 | [`08_conclusion.tex`](sections/08_conclusion.tex) |
+
+---
+
+## 1 · 基础与神经编码
+
+> **一句话：** 领域的根基——从最早的阈值神经元、诺奖级的 Hodgkin–Huxley 模型，到 Maass 的"第三代"提法；再加上*神经编码*：**如何把一个实数信号变成脉冲**（以及反过来）。发放率编码在一个时间窗内数脉冲个数（简单、鲁棒、但慢）；时间/延迟编码把信息放在脉冲*发放的时刻*里（快、省、但难训练）；秩序编码和群体编码介于两者之间。编码方式的选择直接决定了精度与延迟的上限。
+
+### 历史基础
+
+- A Logical Calculus of the Ideas Immanent in Nervous Activity (**Bull. Math. Biophysics 1943**) 🧠. \[[paper](https://doi.org/10.1007/BF02478259)\]
+  > McCulloch–Pitts 阈值神经元，是人工神经元与脉冲神经元的思想源头。
+- A Quantitative Description of Membrane Current... in Nerve (**J. Physiology 1952**) 🧠. \[[paper](https://doi.org/10.1113/jphysiol.1952.sp004764)\]
+  > Hodgkin–Huxley 模型（诺奖成果），是一切生物物理脉冲动力学的基础。
+- Networks of Spiking Neurons: The Third Generation of Neural Network Models (**Neural Networks 1997**) 🧠. \[[paper](https://doi.org/10.1016/S0893-6080(97)00011-7)\]
+  > Maass 的里程碑论文，定义 SNN 为计算能力更强的"第三代神经网络"。
+- Spiking Neuron Models: Single Neurons, Populations, Plasticity (**Cambridge Univ. Press 2002**) 🧠. \[[paper](https://doi.org/10.1017/CBO9780511815706)\]
+  > Gerstner 与 Kistler 的奠基性教材，统一了 IF、SRM、群体与可塑性理论。
+
+### 神经编码与编码方案
+
+- Spike-Based Strategies for Rapid Processing (**Neural Networks 2001**). \[[paper](https://doi.org/10.1016/S0893-6080(01)00083-1)\]
+  > Thorpe 等提出的排序编码，仅凭放电先后顺序即可实现超快识别。
+- Rapid Neural Coding in the Retina with Relative Spike Latencies (**Science 2008**). \[[paper](https://www.science.org/doi/10.1126/science.1149639)\]
+  > 生物学证据：相对首脉冲潜伏期能稳健、抗对比度地编码信息。
+- Neural Coding in Spiking Neural Networks: A Comparative Study for Robust Neuromorphic Systems (**Front. Neurosci. 2021**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.638474/full)\]
+  > 系统对比率编码、时间、相位与突发编码在精度与鲁棒性上的表现。
+- Deep Neural Networks with Weighted Spikes (**Neurocomputing 2018**). \[[paper](https://doi.org/10.1016/j.neucom.2018.05.087)\]
+  > 相位/加权脉冲编码按时间相位赋予脉冲不同权重，降低延迟与发放数。
+- Conversion of Analog to Spiking Neural Networks Using Sparse Temporal Coding (**IEEE ISCAS 2018**). \[[paper](https://doi.org/10.1109/ISCAS.2018.8351295)\]
+  > 基于首脉冲时间的转换，相比率编码大幅减少运算而几乎不损精度。
+- T2FSNN: Deep Spiking Neural Networks with Time-to-First-Spike Coding (**DAC 2020**). \[[paper](https://arxiv.org/abs/2003.11741)\]
+  > 将首脉冲时间编码引入深度 SNN，配合核阈值与提前发放实现低延迟低能耗。
+- Temporal Coding in Spiking Neural Networks with Alpha Synaptic Function (**ICASSP 2020**). \[[paper](https://arxiv.org/abs/1907.13223)\]
+  > 借助 alpha 型突触响应，实现对精确脉冲时刻的解析反向传播。
+- Temporal-Coded Deep Spiking Neural Network with Easy Training and Robust Performance (**AAAI 2021**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/17329)\]
+  > 论证非泄漏单脉冲时间编码最利于直接训练且鲁棒的深度 SNN。
+- DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2021**). \[[paper](https://arxiv.org/abs/2008.03658)\]
+  > 直接输入模拟像素并端到端学习泄漏与阈值，推广了"直接输入编码"范式。
+- Supervised Learning Based on Temporal Coding in Spiking Neural Networks (**IEEE TNNLS 2018**). \[[paper](https://doi.org/10.1109/TNNLS.2017.2726060)\]
+  > Mostafa 对"首脉冲时刻"做精确梯度下降，是时间编码训练的奠基方法之一。
+- Optimized Spiking Neurons Can Classify Images with High Accuracy through Temporal Coding with Two Spikes (FS neurons) (**Nature Machine Intelligence 2021**). \[[paper](https://www.nature.com/articles/s42256-021-00311-4)\]
+  > 少脉冲（FS）神经元用约 2 个脉冲即可模拟 ANN 激活，实现高精度、超稀疏的时间编码。
+
+---
+
+## 2 · 神经元模型
+
+> **一句话：** 神经元就是 SNN 的"晶体管"。**LIF**（泄漏积分发放）是主力——便宜、且对深度学习足够好；**Izhikevich** 与 **AdEx** 用很小的代价换来更丰富的发放动态；**Hodgkin–Huxley** 生物学上最精确但也最昂贵。近年的一个趋势是把神经元参数（如膜时间常数）**变成可学习的**，让每个神经元自己调节时间尺度。
+
+- Lapicque's Introduction of the Integrate-and-Fire Model Neuron (1907) (**Brain Res. Bull. 1999**) 🧠. \[[paper](https://doi.org/10.1016/S0361-9230(99)00161-6)\]
+  > 考证并追溯了 Lapicque 在 1907 年提出的最初积分-发放神经元。
+- Simple Model of Spiking Neurons (**IEEE TNN 2003**) 🧠. \[[paper](https://doi.org/10.1109/TNN.2003.820440)\]
+  > Izhikevich 双变量模型，以积分-发放的代价再现丰富皮层放电模式。
+- Which Model to Use for Cortical Spiking Neurons? (**IEEE TNN 2004**). \[[paper](https://doi.org/10.1109/TNN.2004.832719)\]
+  > 著名的神经元模型对比图，权衡生物真实性与计算成本，指导选型。
+- A Framework for Spiking Neuron Models: The Spike Response Model (**Handbook of Biol. Physics 2001**). \[[paper](https://www.sciencedirect.com/science/article/pii/S1383812101800154)\]
+  > 正式提出脉冲响应模型（SRM），用核函数将积分-发放神经元一般化。
+- Adaptive Exponential Integrate-and-Fire Model as an Effective Description of Neuronal Activity (**J. Neurophysiology 2005**). \[[paper](https://doi.org/10.1152/jn.00686.2005)\]
+  > AdEx 模型，加入指数发放项与自适应，能精确拟合真实神经元行为。
+- Generalized Leaky Integrate-and-Fire Models Classify Multiple Neuron Types (**Nature Communications 2018**). \[[paper](https://www.nature.com/articles/s41467-017-02717-4)\]\[[code](https://github.com/AllenInstitute/GLIF_Teeter_et_al_2018)\]
+  > Allen 研究所的数据驱动 GLIF 层级模型，拟合 645 个真实神经元并区分细胞类型。
+- Incorporating Learnable Membrane Time Constant to Enhance Learning of SNNs (PLIF) (**ICCV 2021**) 🧠. \[[paper](https://openaccess.thecvf.com/content/ICCV2021/html/Fang_Incorporating_Learnable_Membrane_Time_Constant_To_Enhance_Learning_of_Spiking_ICCV_2021_paper.html)\]\[[code](https://github.com/fangwei123456/Parametric-Leaky-Integrate-and-Fire-Spiking-Neuron)\]
+  > PLIF 让膜时间常数可学习，提升精度并降低对初始化的敏感度。
+- GLIF: A Unified Gated Leaky Integrate-and-Fire Neuron for Spiking Neural Networks (**NeurIPS 2022**). \[[paper](https://openreview.net/forum?id=UmFSx2c4ubT)\]\[[code](https://github.com/Ikarosy/Gated-LIF)\]
+  > 用可学习门控融合多种生物特性，扩大单个神经元的表达空间。
+- KLIF: An Optimized Spiking Neuron Unit for Tuning Surrogate Gradient Slope and Membrane Potential (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2302.09238)\]
+  > 引入可学习缩放因子，训练中动态调整代理梯度曲线的斜率与宽度。
+- Parallel Spiking Neurons with High Efficiency and Ability to Learn Long-Term Dependencies (PSN) (**NeurIPS 2023**). \[[paper](https://arxiv.org/abs/2304.12760)\]\[[code](https://github.com/fangwei123456/Parallel-Spiking-Neuron)\]
+  > 去除复位以将神经元动力学改写为可并行形式，加速训练并学习长时依赖。
+- TC-LIF: A Two-Compartment Spiking Neuron Model for Long-Term Sequential Modelling (**AAAI 2024**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/29625)\]\[[code](https://github.com/ZhangShimin1/TC-LIF)\]
+  > 胞体-树突双腔室神经元，专为在长时间间隔上传播梯度而设计。
+- CLIF: Complementary Leaky Integrate-and-Fire Neuron for Spiking Neural Networks (**ICML 2024**). \[[paper](https://proceedings.mlr.press/v235/huang24n.html)\]\[[code](https://github.com/HuuYuLong/Complementary-LIF)\]
+  > 无超参的互补型神经元，开辟额外反传路径以缓解时间维梯度消失。
+- Temporal Dendritic Heterogeneity Incorporated with SNNs for Learning Multi-Timescale Dynamics (DH-LIF) (**Nature Communications 2024**). \[[paper](https://www.nature.com/articles/s41467-023-44614-z)\]
+  > 多树突分支神经元，各分支时间常数可学习，捕捉多时间尺度动态。
+- Neural Heterogeneity Promotes Robust Learning (**Nature Communications 2021**). \[[paper](https://www.nature.com/articles/s41467-021-26022-3)\]
+  > 让神经元的时间常数多样且可学习，能提升精度与鲁棒性——为"异质性"提供了有原则的证据。
+
+---
+
+## 🎓 训练方法
+
+> **一句话——全领域的核心难题。** 脉冲是不可微的阶跃函数，普通反向传播失效。三大流派给出了答案：**(1) 转换法**先训练一个普通 ANN，再映射成 SNN（精度高、延迟高）；**(2) 代理梯度直接训练**假装脉冲有一条平滑的导数，再做时间上的反向传播（当前精度-延迟折中最好）；**(3) 生物可塑性局部规则**（如 STDP）仅凭脉冲时序学习、无需全局梯度（最像大脑，但最难做大）。
+
+### 3.1 ANN 到 SNN 转换
+
+> 在简单的 ANN 世界里训练，在高效的 SNN 世界里部署。关键手艺在于让 SNN 的*发放率*去匹配 ANN 的*激活值*——通过权重/阈值归一化——从而几乎不损失精度，最好还能低延迟。
+
+- Spiking Deep Convolutional Neural Networks for Energy-Efficient Object Recognition (**IJCV 2015**) 🧠. \[[paper](https://doi.org/10.1007/s11263-014-0788-3)\]
+  > 最早把训练好的 CNN 搬到脉冲网络，用"发放率≈ReLU 激活"开创了 ANN 转 SNN 这条路线。
+- Fast-Classifying, High-Accuracy Spiking Deep Networks Through Weight and Threshold Balancing (**IJCNN 2015**) 🧠. \[[paper](https://doi.org/10.1109/IJCNN.2015.7280696)\]
+  > 提出权重归一化/阈值平衡，让各层发放率不饱和，使转换几乎无损且低延迟。
+- Conversion of Continuous-Valued Deep Networks to Efficient Event-Driven Networks (**Front. Neurosci. 2017**). \[[paper](https://doi.org/10.3389/fnins.2017.00682)\]\[[code](https://github.com/NeuromorphicProcessorProject/snn_toolbox)\]
+  > 给出 BN、最大池化、softmax、偏置的脉冲等价实现，并开源常用的 SNN 工具箱。
+- Going Deeper in Spiking Neural Networks: VGG and Residual Architectures (**Front. Neurosci. 2019**) 🧠. \[[paper](https://doi.org/10.3389/fnins.2019.00095)\]
+  > 把转换法扩展到深层 VGG-16/ResNet 并首次在 ImageNet 上验证，证明脉冲网络也能做深。
+- Enabling Deep SNNs with Hybrid Conversion and Spike-Timing-Dependent Backpropagation (**ICLR 2020**). \[[paper](https://openreview.net/forum?id=B1xSperKvH)\]\[[code](https://github.com/nitin-rathi/hybrid-snn-conversion)\]
+  > 先用转换得到好初始权重，再用脉冲反传微调，把推理时间步数量级式压缩。
+- RMP-SNN: Residual Membrane Potential Neuron for Deeper, High-Accuracy, Low-Latency SNNs (**CVPR 2020**). \[[paper](https://arxiv.org/abs/2003.01811)\]
+  > 用"软复位"保留超阈值的剩余膜电位，消除硬复位带来的转换误差，近乎无损。
+- Optimal Conversion of Conventional ANNs to SNNs (**ICLR 2021**). \[[paper](https://openreview.net/forum?id=FZ1oTwcXchK)\]\[[code](https://github.com/Jackn0/snn_optimal_conversion_pipeline)\]
+  > 将转换误差逐层分解，配合发放率归一化激活与最优阈值/偏移，显著缩短仿真步数。
+- A Free Lunch From ANN: Towards Efficient, Accurate SNN Calibration (**ICML 2021**). \[[paper](https://proceedings.mlr.press/v139/li21d.html)\]\[[code](https://github.com/yhhhli/SNN_Calibration)\]
+  > 只需少量样本做逐层"校准"即可修正转换误差，推广到 MobileNet/RegNet 等大模型。
+- Optimal ANN-SNN Conversion for High-Accuracy and Ultra-Low-Latency SNNs (QCFS) (**ICLR 2022**) 🧠. \[[paper](https://arxiv.org/abs/2303.04347)\]\[[code](https://github.com/putshua/ANN_SNN_QCFS)\]
+  > 训练 ANN 时用 QCFS 激活来贴合脉冲量化特性，仅需 4 步即可高精度。
+- Optimized Potential Initialization for Low-Latency Spiking Neural Networks (**AAAI 2022**). \[[paper](https://arxiv.org/abs/2202.01440)\]
+  > 把初始膜电位设为半阈值能最小化转换误差，使 SNN 在 32 步以内也高精度。
+- Bridging the Gap Between ANNs and SNNs by Calibrating Offset Spikes (**ICLR 2023**). \[[paper](https://arxiv.org/abs/2302.10685)\]
+  > 指出"多发/少发一个脉冲"的偏移是转换残余误差主因，通过平移初始膜电位加以校正。
+- A Unified Optimization Framework of ANN-SNN Conversion (**ICML 2023**). \[[paper](https://proceedings.mlr.press/v202/jiang23a.html)\]\[[code](https://github.com/HaiyanJiang/SNN_Conversion_unified)\]
+  > 用 SlipReLU 统一"性能损失"与"转换误差"两种视角，首次实现单步可用的高性能转换。
+
+### 3.2 代理梯度与直接训练
+
+> 用一条平滑的"代理"曲线替代脉冲那个无定义的导数，再做时间上的反向传播（BPTT）。当前在困难数据集上的多数 SOTA 都出自这里。
+
+- Error-Backpropagation in Temporally Encoded Networks of Spiking Neurons (SpikeProp) (**Neurocomputing 2002**) 🧠. \[[paper](https://doi.org/10.1016/S0925-2312(01)00658-0)\]
+  > 为时间编码脉冲神经元推导出首个类反传规则，是所有梯度训练 SNN 方法的鼻祖。
+- Training Deep Spiking Neural Networks Using Backpropagation (**Front. Neurosci. 2016**). \[[paper](https://doi.org/10.3389/fnins.2016.00508)\]
+  > 把膜电位当作可微信号、脉冲跳变视为噪声，让标准反传能直接训练深层 SNN。
+- Spatio-Temporal Backpropagation for Training High-Performance SNNs (STBP) (**Front. Neurosci. 2018**) 🧠. \[[paper](https://doi.org/10.3389/fnins.2018.00331)\]\[[code](https://github.com/yjwu17/STBP-for-training-SpikingNN)\]
+  > 在空间与时间两个维度展开做 BPTT 并用近似梯度，奠定当今直接训练 SNN 的标准框架。
+- Direct Training for Spiking Neural Networks: Faster, Larger, Better (NeuNorm) (**AAAI 2019**). \[[paper](https://arxiv.org/abs/1809.05793)\]
+  > 提出神经元归一化 NeuNorm 并改进编码，让 STBP 能训练更大网络。
+- SLAYER: Spike Layer Error Reassignment in Time (**NeurIPS 2018**) 🧠. \[[paper](https://papers.nips.cc/paper/7415-slayer-spike-layer-error-reassignment-in-time)\]\[[code](https://github.com/bamsumit/slayerPytorch)\]
+  > 用时间信用分配核在时间轴上反传误差，可同时学习权重与轴突延迟。
+- SuperSpike: Supervised Learning in Multilayer Spiking Neural Networks (**Neural Computation 2018**). \[[paper](https://doi.org/10.1162/neco_a_01086)\]\[[code](https://github.com/fzenke/pub2018superspike)\]
+  > 推导出可在线运行的三因子近似梯度规则，把多层 SNN 训练与生物可塑性联系起来。
+- The Remarkable Robustness of Surrogate Gradient Learning... in SNNs (**Neural Computation 2021**). \[[paper](https://doi.org/10.1162/neco_a_01367)\]\[[code](https://github.com/fzenke/randman)\]
+  > 系统验证替代函数形状影响不大、但尺度很关键，为如何选替代梯度提供实证指南。
+- Temporal Spike Sequence Learning via Backpropagation for Deep SNNs (TSSL-BP) (**NeurIPS 2020**). \[[paper](https://arxiv.org/abs/2002.10085)\]\[[code](https://github.com/stonezwr/TSSL-BP)\]
+  > 将误差分配拆成神经元间与神经元内两类依赖，实现少步数下的高精度时序学习。
+- Differentiable Spike: Rethinking Gradient-Descent for Training SNNs (Dspike) (**NeurIPS 2021**). \[[paper](https://proceedings.neurips.cc/paper/2021/hash/c4ca4238a0b923820dcc509a6f75849b-Abstract.html)\]
+  > 提出可自适应演化的可微替代函数族 Dspike，训练中更好地逼近真实梯度。
+- Training Feedback SNNs by Implicit Differentiation on the Equilibrium State (IDE) (**NeurIPS 2021**). \[[paper](https://arxiv.org/abs/2109.14247)\]\[[code](https://github.com/pkuxmq/IDE-FSNN)\]
+  > 将反馈 SNN 的平均发放率视为不动点方程，用隐式微分求梯度，显存不随时间步增长。
+- Sparse Spiking Gradient Descent (**NeurIPS 2021**). \[[paper](https://arxiv.org/abs/2105.08810)\]\[[code](https://github.com/npvoid/SparseSpikingBackprop)\]
+  > 利用脉冲的时空稀疏性做稀疏反传，训练最高加速 150 倍、显存降约 85%。
+- Temporal Efficient Training of SNNs via Gradient Re-weighting (TET) (**ICLR 2022**) 🧠. \[[paper](https://arxiv.org/abs/2202.11946)\]\[[code](https://github.com/Gus-Lab/temporal_efficient_training)\]
+  > 对每个时间步都加监督损失以弥补替代梯度的"动量损失"，收敛更平坦、泛化更好，已成常用技巧。
+- Training High-Performance Low-Latency SNNs by Differentiation on Spike Representation (DSR) (**CVPR 2022**). \[[paper](https://arxiv.org/abs/2205.00459)\]\[[code](https://github.com/qymeng94/DSR)\]
+  > 把脉冲的发放率表示看成次可微映射并对其求导训练，绕开不可微问题，低延迟高精度。
+- Online Training Through Time for Spiking Neural Networks (OTTT) (**NeurIPS 2022**). \[[paper](https://arxiv.org/abs/2210.04195)\]\[[code](https://github.com/pkuxmq/OTTT-SNN)\]
+  > 常数显存、无需展开时间的在线训练法，梯度呈三因子 Hebbian 形式，利于片上学习。
+- RecDis-SNN: Rectifying Membrane Potential Distribution for Directly Training SNNs (**CVPR 2022**). \[[paper](https://openaccess.thecvf.com/content/CVPR2022/html/Guo_RecDis-SNN_Rectifying_Membrane_Potential_Distribution_for_Directly_Training_Spiking_Neural_CVPR_2022_paper.html)\]
+  > 用膜电位分布损失矫正分布偏移，缓解退化、饱和与梯度失配。
+- IM-Loss: Information Maximization Loss for Spiking Neural Networks (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/010c5ba0cafc743fece8be02e7adb8dd-Abstract-Conference.html)\]\[[code](https://github.com/yfguo91/IM-Loss-Information-Maximization-Loss-for-Spiking-Neural-Networks)\]
+  > 以最大化脉冲所携带的信息熵为目标，减小 0/1 量化造成的信息损失。
+- RMP-Loss: Regularizing Membrane Potential Distribution for Spiking Neural Networks (**ICCV 2023**). \[[paper](https://arxiv.org/abs/2308.06787)\]
+  > 加入正则损失把膜电位向脉冲取值聚拢，直接减小量化误差，几乎不增加推理开销。
+- Real Spike: Learning Real-valued Spikes for Spiking Neural Networks (**ECCV 2022**). \[[paper](https://arxiv.org/abs/2210.06686)\]\[[code](https://github.com/yfguo91/Real-Spike)\]
+  > 训练时用实值脉冲增强表达、推理时重参数化折回二值脉冲，精度提升而不增加推理成本。
+- Surrogate Module Learning: Reduce Gradient Error Accumulation in Training SNNs (**ICML 2023**). \[[paper](https://proceedings.mlr.press/v202/deng23d.html)\]
+  > 引入替代模块搭建"捷径"回传更准的梯度，抑制逐层累积的梯度误差。
+- Towards Memory- and Time-Efficient Backpropagation for Training SNNs (SLTT) (**ICCV 2023**). \[[paper](https://arxiv.org/abs/2302.14311)\]\[[code](https://github.com/qymeng94/SLTT)\]
+  > 发现时间维反传贡献很小，剪掉这些路径使显存降 70% 以上、训练时间降 50% 以上。
+- A Tandem Learning Rule for Effective Training and Rapid Inference of Deep SNNs (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/1907.01167)\]\[[code](https://github.com/deepspike/tandem_learning)\]
+  > 让 ANN 与 SNN 共享权重"串联"训练，用 ANN 传梯度、SNN 数脉冲，大幅降低推理开销。
+- Accurate and Efficient Time-Domain Classification with Adaptive Spiking RNNs (**Nature Machine Intelligence 2021**). \[[paper](https://doi.org/10.1038/s42256-021-00397-w)\]
+  > 自适应脉冲神经元 + 替代梯度循环 SNN，在语音/手势上达 RNN 级精度且计算量低 1–3 个数量级。
+
+### 3.3 生物可塑性 / 局部学习
+
+> **STDP** 及其同类：突触的增强或减弱只取决于前后神经元脉冲的*相对时序*——局部、无监督、且硬件友好，但历史上很难推到 ImageNet 规模。
+
+- Synaptic Modifications in Cultured Hippocampal Neurons: Dependence on Spike Timing... (**J. Neuroscience 1998**) 🧠. \[[paper](https://doi.org/10.1523/JNEUROSCI.18-24-10464.1998)\]
+  > Bi 与 Poo 通过实验量化了脉冲时序依赖可塑性（STDP），是所有局部 SNN 学习规则的生物学根基。
+- Unsupervised Learning of Digit Recognition Using STDP (**Front. Comput. Neurosci. 2015**) 🧠. \[[paper](https://doi.org/10.3389/fncom.2015.00099)\]\[[code](https://github.com/peter-u-diehl/stdp-mnist)\]
+  > Diehl 与 Cook 用 STDP 加侧向抑制无监督学习 MNIST（约 95%），成为生物可塑性 SNN 的经典基准。
+- STDP-Based Spiking Deep Convolutional Neural Networks for Object Recognition (**Neural Networks 2018**). \[[paper](https://doi.org/10.1016/j.neunet.2017.12.005)\]
+  > 用 STDP 逐层无监督训练卷积特征并配合时间编码，证明局部可塑性也能学到深层层次化特征。
+- Bio-Inspired Digit Recognition Using Reward-Modulated STDP in Deep Conv Networks (**Pattern Recognition 2019**). \[[paper](https://arxiv.org/abs/1804.00227)\]\[[code](https://github.com/miladmozafari/SpykeTorch)\]
+  > 将无监督 STDP 与奖赏调制 STDP（三因子规则）结合，用类强化信号驱动特征学习。
+- A Solution to the Learning Dilemma for Recurrent Networks of Spiking Neurons (e-prop) (**Nature Communications 2020**) 🧠. \[[paper](https://doi.org/10.1038/s41467-020-17236-y)\]\[[code](https://github.com/IGITUGraz/eligibility_propagation)\]
+  > 用局部资格迹配合自上而下的学习信号近似 BPTT，无需时间反传，为神经形态芯片上的在线学习铺路。
+- Equilibrium Propagation: Bridging Energy-Based Models and Backpropagation (**Front. Comput. Neurosci. 2017**). \[[paper](https://doi.org/10.3389/fncom.2017.00024)\]
+  > 用两阶段、仅需局部同类计算的方式获得精确梯度，是反传的生物可行替代方案。
+- Training Spiking Neural Networks via Augmented Direct Feedback Alignment (**NeurIPS 2024**). \[[paper](https://arxiv.org/abs/2409.07776)\]
+  > 用随机投影的直接反馈对齐（aDFA）无梯度训练 SNN，避免权重传输问题，更贴近生物与硬件。
+- Backpropagation-Free Spiking Neural Networks with the Forward-Forward Algorithm (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2502.20411)\]
+  > 将 Hinton 的 Forward-Forward（两次对比性前向、逐层局部目标）搬到脉冲神经元。
+- The Tempotron: A Neuron That Learns Spike Timing-Based Decisions (**Nature Neuroscience 2006**) 🧠. \[[paper](https://doi.org/10.1038/nn1643)\]
+  > Gütig 与 Sompolinsky 的 tempotron——单个神经元即可依据输入脉冲的*时序*学会分类。
+- Unsupervised Learning of Visual Features through Spike-Timing-Dependent Plasticity (**PLoS Comput. Biol. 2007**) 🧠. \[[paper](https://doi.org/10.1371/journal.pcbi.0030031)\]
+  > Masquelier 与 Thorpe 证明 STDP + 延迟编码可自组织出有选择性的视觉特征，是无监督学习的里程碑。
+
+### 3.4 高效化：剪枝、量化、蒸馏
+
+> 让本已高效的模型*更*高效：更少的时间步、更少的权重、更低的精度，以及从 ANN 老师那里蒸馏知识。
+
+- Towards Ultra-Low-Latency SNNs for Vision and Sequential Tasks Using Temporal Pruning (**ECCV 2022**). \[[paper](https://doi.org/10.1007/978-3-031-20083-0_42)\]
+  > 在训练中逐步"剪时间步"，把 SNN 推向单步推理，极致压缩延迟与能耗。
+- Constructing Deep SNNs from ANNs with Knowledge Distillation (**CVPR 2023**). \[[paper](https://arxiv.org/abs/2304.05627)\]
+  > 用 ANN 作教师，把特征与响应知识蒸馏到 SNN 学生，避免从零训练脉冲网络的高成本。
+
+> 另可参考：若干低时间步 / 低显存训练法本身就是高效化技巧——见 [3.2](#32-代理梯度与直接训练) 的 **TET / SLTT / DSR**，以及 [神经编码](#1--基础与神经编码) 的 **DIET-SNN**。
+
+---
+
+## 4 · 网络架构
+
+> **一句话：** 网络的*形状*。2019–2021 年的突破在于把**残差 / BN 技巧**搬进脉冲域，让 SNN 得以做深；2023 年之后的浪潮则带来了**脉冲 Transformer**，重新设计自注意力使其能在脉冲上运行。
+
+### 4.1 深度脉冲 CNN 与 ResNet
+
+> 残差连接和脉冲感知的归一化（tdBN、BNTT、TEBN）是让 SNN 能突破寥寥几层、而脉冲不至于消失或爆炸的关键。
+
+- Spiking Deep Residual Networks (**IEEE TNNLS 2021**). \[[paper](https://arxiv.org/abs/1805.01352)\]
+  > 最早的"脉冲 ResNet"，通过缩放捷径与误差补偿构建首个 40 层以上且精度接近原网络的 SNN。
+- Deep Residual Learning in Spiking Neural Networks (SEW-ResNet) (**NeurIPS 2021**) 🧠. \[[paper](https://arxiv.org/abs/2102.04159)\]\[[code](https://github.com/fangwei123456/Spike-Element-Wise-ResNet)\]
+  > 脉冲逐元素残差块 SEW 实现恒等映射并克服梯度消失/爆炸，首次直接训练百层以上深度 SNN。
+- Advancing Spiking Neural Networks Toward Deep Residual Learning (MS-ResNet) (**IEEE TNNLS 2024**). \[[paper](https://arxiv.org/abs/2112.08954)\]\[[code](https://github.com/Ariande1/MS-ResNet)\]
+  > 提出膜电位（预激活）捷径，保持全脉冲计算与梯度范数守恒，把直接训练的 SNN 拓展到 482 层。
+- Going Deeper with Directly-Trained Larger SNNs (STBP-tdBN) (**AAAI 2021**) 🧠. \[[paper](https://arxiv.org/abs/2011.05280)\]
+  > 阈值相关的批归一化 tdBN 跨时间步平衡发放率，把直接训练的 SNN 从不足 10 层拓展到 50 层。
+- Revisiting Batch Normalization for Training Low-Latency Deep SNNs from Scratch (BNTT) (**Front. Neurosci. 2021**). \[[paper](https://arxiv.org/abs/2010.01729)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/BNTT-Batch-Normalization-Through-Time)\]
+  > 沿时间轴解耦 BN 参数（BNTT），捕捉脉冲的时序动态，实现低时延、从零训练。
+- Temporal Effective Batch Normalization in Spiking Neural Networks (TEBN) (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/de2ad3ed44ee4e675b3be42aa0b615d0-Abstract-Conference.html)\]\[[code](https://github.com/ChaotengDuan/TEBN)\]
+  > 为每个时间步用不同可学习权重重标定输入，平滑时序分布与优化曲面。
+- Membrane Potential Batch Normalization for Spiking Neural Networks (MPBN) (**ICCV 2023**). \[[paper](https://arxiv.org/abs/2308.08359)\]\[[code](https://github.com/yfguo91/MPBN)\]
+  > 在发放函数前对膜电位再加一层 BN，并通过重参数化折叠进阈值，推理零额外开销。
+
+### 4.2 脉冲 Transformer 与注意力
+
+> 重新推导自注意力，让 Query/Key/Value 都变成脉冲、并用脉冲友好的运算替换昂贵的 softmax——把 Transformer 级别的精度带进脉冲世界。
+
+- Spikformer: When Spiking Neural Network Meets Transformer (**ICLR 2023**) 🧠. \[[paper](https://arxiv.org/abs/2209.15425)\]\[[code](https://github.com/ZK-Zhou/spikformer)\]
+  > 提出无 softmax 的脉冲自注意力 SSA（Q/K/V 皆为脉冲），是首个直接构建的脉冲视觉 Transformer。
+- Spike-driven Transformer (**NeurIPS 2023**) 🧠. \[[paper](https://arxiv.org/abs/2307.01694)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer)\]
+  > 纯脉冲驱动 Transformer，自注意力仅用掩码与稀疏加法（线性复杂度），注意力能耗降低最多 87 倍。
+- Spike-driven Transformer V2 (Meta-SpikeFormer) (**ICLR 2024**). \[[paper](https://arxiv.org/abs/2404.03663)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer-V2)\]
+  > 统一分类、检测与分割的元脉冲骨干（ImageNet 80%），为下一代神经形态芯片设计提供范式。
+- Scaling Spike-driven Transformer with Efficient Spike Firing Approximation (V3) (**IEEE TPAMI 2025**). \[[paper](https://arxiv.org/abs/2411.16061)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer-V3)\]
+  > 用整数训练+脉冲推理（脉冲发放近似）与脉冲 MAE，把 SNN 扩展到 ImageNet 86.2%。
+- Spikformer V2: Join the High-Accuracy Club on ImageNet with an SNN Ticket (**arXiv 2024**). \[[paper](https://arxiv.org/abs/2401.02020)\]
+  > 引入脉冲卷积 Stem 与自监督预训练，是最早在 ImageNet 上突破 80% 的 SNN 之一。
+- QKFormer: Hierarchical Spiking Transformer using Q-K Attention (**NeurIPS 2024**). \[[paper](https://arxiv.org/abs/2403.16552)\]\[[code](https://github.com/zhouchenlin2096/QKFormer)\]
+  > 线性复杂度的二值 Q-K 注意力与层级金字塔，首次让直接训练 SNN 在 ImageNet 上超过 85%。
+- Spikingformer: Spike-driven Residual Learning for Transformer-based SNN (**AAAI 2026**). \[[paper](https://arxiv.org/abs/2304.11954)\]\[[code](https://github.com/TheBrainLab/Spikingformer)\]
+  > 用全脉冲（膜电位）残差取代 Spikformer 的非脉冲连接，消除整数-浮点乘法，更契合硬件。
+- SpikingResformer: Bridging ResNet and Vision Transformer in SNNs (**CVPR 2024**). \[[paper](https://arxiv.org/abs/2403.14302)\]\[[code](https://github.com/xyshi2000/SpikingResformer)\]
+  > 将 ResNet 多阶段骨干与双脉冲自注意力 DSSA 结合，以更少参数与更低能耗取得高精度。
+- Masked Spiking Transformer (**ICCV 2023**). \[[paper](https://openaccess.thecvf.com/content/ICCV2023/html/Wang_Masked_Spiking_Transformer_ICCV_2023_paper.html)\]\[[code](https://github.com/bic-L/Masked-Spiking-Transformer)\]
+  > 基于 ANN-SNN 转换的 Transformer，用随机脉冲掩码剪除冗余脉冲，降能耗且不掉精度。
+- Spiking Transformer with Spatial-Temporal Attention (STAtten) (**CVPR 2025**). \[[paper](https://arxiv.org/abs/2409.19764)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)\]
+  > 提出分块的时空联合注意力，在与纯空间注意力相同复杂度下融合时序信息。
+- TIM: An Efficient Temporal Interaction Module for Spiking Transformer (**IJCAI 2024**). \[[paper](https://arxiv.org/abs/2401.11687)\]
+  > 轻量卷积模块，把前一时间步信息注入注意力矩阵，增强脉冲 Transformer 的时序建模。
+- Temporal-wise Attention Spiking Neural Networks for Event Streams Classification (TA-SNN) (**ICCV 2021**). \[[paper](https://openaccess.thecvf.com/content/ICCV2021/html/Yao_Temporal-Wise_Attention_Spiking_Neural_Networks_for_Event_Streams_Classification_ICCV_2021_paper.html)\]\[[code](https://github.com/BICLab/TA-SNN)\]
+  > 引入时间维注意力，衡量并筛除噪声事件帧，是事件数据上里程碑式的注意力 SNN。
+- Attention Spiking Neural Networks (MA-SNN) (**IEEE TPAMI 2023**). \[[paper](https://arxiv.org/abs/2209.13929)\]\[[code](https://github.com/BICLab/Attention-SNN)\]
+  > 提出多维（时间/通道/空间）注意力调制膜电位，实现更稀疏发放与更高精度。
+
+### 4.3 循环、储备池与其他
+
+> 循环 SNN（LSNN）、液体状态机、脉冲 GNN / 自编码器 / GAN，以及用神经架构搜索得到的 SNN。
+
+**循环与储备池**
+- Long Short-Term Memory and Learning-to-Learn in Networks of Spiking Neurons (LSNN) (**NeurIPS 2018**) 🧠. \[[paper](https://arxiv.org/abs/1803.09574)\]\[[code](https://github.com/IGITUGraz/LSNN-official)\]
+  > 为循环 SNN 引入自适应阈值（ALIF）神经元与"学会学习"，首次让脉冲网络逼近 LSTM 级时序计算力。
+- Real-Time Computing Without Stable States (Liquid State Machine) (**Neural Computation 2002**) 🧠. \[[paper](https://direct.mit.edu/neco/article/14/11/2531/6650)\]
+  > 奠基性的液体状态机（储备池计算）——用循环脉冲回路把输入映射到高维可读状态。
+
+**脉冲图神经网络**
+- Spiking Graph Convolutional Networks (SpikingGCN) (**IJCAI 2022**). \[[paper](https://arxiv.org/abs/2205.02767)\]\[[code](https://github.com/ZulunZhu/SpikingGCN)\]
+  > 端到端地把图卷积编码为脉冲序列，为节点/图任务带来节能的 SNN 推理。
+- Scaling Up Dynamic Graph Representation Learning via Spiking Neural Networks (SpikeNet) (**AAAI 2023**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/26034)\]\[[code](https://github.com/EdisonLeeeee/SpikeNet)\]
+  > 用脉冲神经元替代 RNN，把动态图表示学习低成本扩展到百万级节点。
+- A Graph is Worth 1-bit Spikes: Graph Contrastive Learning Meets SNNs (SpikeGCL) (**ICLR 2024**). \[[paper](https://arxiv.org/abs/2305.19306)\]\[[code](https://github.com/EdisonLeeeee/SpikeGCL)\]
+  > 用脉冲图对比学习得到 1-bit 二值图表示，约 32 倍存储压缩且精度可比。
+- Dynamic Spiking Graph Neural Networks (Dy-SIGN) (**AAAI 2024**). \[[paper](https://arxiv.org/abs/2401.05373)\]
+  > 针对动态脉冲图网络的信息损失，提出隐式微分与信息补偿方案。
+
+**脉冲生成模型**
+- Spiking-GAN: A Spiking Generative Adversarial Network Using Time-To-First-Spike Coding (**IJCNN 2022**). \[[paper](https://arxiv.org/abs/2106.15420)\]
+  > 首个脉冲 GAN，用首脉冲时间编码与时域反传训练，实现超低能耗生成。
+- Spiking Denoising Diffusion Probabilistic Models (SDDPM) (**WACV 2024**). \[[paper](https://arxiv.org/abs/2306.17046)\]\[[code](https://github.com/SageCao1125/SDDPM)\]
+  > 用脉冲 U-Net 骨干把扩散模型引入 SNN，采样质量（FID）媲美甚至超过 ANN 版 DDPM。
+- Spiking Generative Adversarial Network with Attention Scoring Decoding (**Neural Networks 2024**). \[[paper](https://arxiv.org/abs/2305.10246)\]
+  > 为脉冲 GAN 加入注意力打分解码器，从脉冲特征生成更高保真度图像。
+- Fully Spiking Variational Autoencoder (FSVAE) (**AAAI 2022**). \[[paper](https://arxiv.org/abs/2110.00375)\]
+  > 首个全脉冲变分自编码器，把隐变量采样为自回归伯努利脉冲序列，端到端以脉冲生成图像。
+
+**面向 SNN 的神经架构搜索**
+- Neural Architecture Search for Spiking Neural Networks (SNASNet) (**ECCV 2022**). \[[paper](https://arxiv.org/abs/2201.10355)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/Neural-Architecture-Search-for-Spiking-Neural-Networks)\]
+  > 免训练 NAS，用初始化时的脉冲激活多样性选架构，并引入时序反馈连接。
+- AutoSNN: Towards Energy-Efficient Spiking Neural Networks (**ICML 2022**). \[[paper](https://arxiv.org/abs/2201.12738)\]\[[code](https://github.com/nabk89/AutoSNN)\]
+  > 脉冲感知的架构搜索，用同时兼顾精度与脉冲数的适应度，得到更准更省能的 SNN。
+- Differentiable Hierarchical and Surrogate Gradient Search for SNNs (SpikeDHS) (**NeurIPS 2022**). \[[paper](https://openreview.net/forum?id=Lr2Z85cdvB)\]\[[code](https://github.com/Huawei-BIC/SpikeDHS)\]
+  > 可微地联合搜索单元/层结构与替代梯度函数。
+
+---
+
+## 5 · 神经形态硬件
+
+> **一句话：** 只有当*芯片*本身也是事件驱动时，SNN 的优势才真正兑现。**数字**平台（TrueNorth、Loihi、SpiNNaker、天机）把脉冲当作数据包路由、空闲时休眠；**模拟 / 存内计算**方案（BrainScaleS、忆阻器 / RRAM 交叉阵列）在存储器内部做运算，消灭冯·诺依曼式的数据搬运开销。**事件相机**（DVS）则是与之匹配的传感器。
+
+### 神经形态工程的奠基之作
+
+- Neuromorphic Electronic Systems (**Proceedings of the IEEE 1990**) 🧠. \[[paper](https://doi.org/10.1109/5.58356)\]
+  > Carver Mead 的开山之作——用模拟 VLSI 模仿神经计算，为整个领域命名。
+- A Silicon Neuron (**Nature 1991**) 🧠. \[[paper](https://www.nature.com/articles/354515a0)\]
+  > Mahowald 与 Mead 用模拟 VLSI 复现真实脉冲动力学，是首个"硅神经元"。
+- Point-to-Point Connectivity Between Neuromorphic Chips Using Address Events (**IEEE TCAS-II 2000**). \[[paper](https://doi.org/10.1109/82.842110)\]
+  > Boahen 正式提出地址-事件表示（AER）——如今每颗神经形态芯片都在用的"脉冲即数据包"协议。
+
+### 数字神经形态芯片
+
+- A Million Spiking-Neuron Integrated Circuit... (TrueNorth) (**Science 2014**) 🧠. \[[paper](https://www.science.org/doi/10.1126/science.1254642)\]
+  > IBM TrueNorth 用 65 毫瓦集成百万神经元、2.56 亿突触，是大规模数字类脑芯片的里程碑。
+- Convolutional Networks for Fast, Energy-Efficient Neuromorphic Computing (TrueNorth) (**PNAS 2016**). \[[paper](https://www.pnas.org/doi/10.1073/pnas.1604850113)\]
+  > 把深度卷积网络映射到 TrueNorth，用几十毫瓦达到接近顶尖精度、1200–2600 fps。
+- Loihi: A Neuromorphic Manycore Processor with On-Chip Learning (**IEEE Micro 2018**) 🧠. \[[paper](https://ieeexplore.ieee.org/document/8259423)\]\[[code](https://github.com/lava-nc/lava)\]
+  > Intel 14nm、128 核、支持可编程突触学习规则，是片上脉冲学习最具影响力的研究平台。
+- Taking Neuromorphic Computing to the Next Level with Loihi 2 (**Intel Tech Brief 2021**). \[[paper](https://www.intel.com/content/www/us/en/research/neuromorphic-computing-loihi-2-technology-brief.html)\]\[[code](https://github.com/lava-nc/lava)\]
+  > Loihi 2 引入分级脉冲、可编程神经元微码，7nm 支持百万神经元，并配套开源 Lava。
+- The SpiNNaker Project (**Proc. IEEE 2014**). \[[paper](https://doi.org/10.1109/JPROC.2014.2304638)\]\[[code](https://github.com/SpiNNakerManchester)\]
+  > 曼彻斯特用海量 ARM 核与类脑分组路由，以生物实时速度模拟脉冲网络。
+- SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Simulation (**IEEE JSSC 2013**). \[[paper](https://doi.org/10.1109/JSSC.2013.2259038)\]
+  > 18 个 ARM 核、1 亿晶体管、1 瓦的 GALS 芯片，是百万核 SpiNNaker 系统的物理基石。
+- SpiNNaker 2: A 10-Million-Core Processor System... (**arXiv 2019**). \[[paper](https://arxiv.org/abs/1911.02385)\]
+  > 22nm FDSOI 第二代，加入数值加速器与自适应功耗管理，兼顾脑仿真与机器学习。
+- Towards Artificial General Intelligence with Hybrid Tianjic Chip Architecture (**Nature 2019**) 🧠. \[[paper](https://www.nature.com/articles/s41586-019-1424-8)\]
+  > 清华天机芯在同一可重构众核芯片上融合 ANN 与 SNN，并以自动驾驶自行车惊艳亮相。
+- Darwin: A Neuromorphic Hardware Co-Processor Based on SNNs (**J. Systems Architecture 2017**). \[[paper](https://www.sciencedirect.com/science/article/abs/pii/S1383762117300231)\]
+  > 中国达尔文芯片（180nm、2048 神经元、可配置突触延迟），早期低功耗嵌入式脉冲协处理器。
+- ODIN: A 0.086 mm² 12.7 pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital SNN Processor (**IEEE TBCAS 2019**). \[[paper](https://arxiv.org/abs/1804.07858)\]\[[code](https://github.com/ChFrenkel/ODIN)\]
+  > 小巧开源的 28nm 芯片，支持 SDSP 片上学习与 Izhikevich 神经元，突触密度与能耗创纪录。
+- MorphIC: A 65-nm Quad-Core Binary-Weight Digital Neuromorphic Processor... (**IEEE TBCAS 2019**). \[[paper](https://arxiv.org/abs/1904.08513)\]
+  > ODIN 的四核后续，用二值权重与随机脉冲驱动可塑性最大化突触密度，面向边缘学习。
+- μBrain: An Event-Driven and Fully Synthesizable Architecture for SNNs (**Front. Neurosci. 2021**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.664208/full)\]
+  > 首个无时钟、可完全综合的数字脉冲芯片（40nm、亚百微瓦），实现常开近传感器边缘智能。
+- SENECA: Building a Fully Digital Neuromorphic Processor (**Front. Neurosci. 2023**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2023.1187252/full)\]
+  > imec 的 RISC-V + 循环缓冲混合架构，在可编程性与效率间取得平衡，支持端侧学习。
+- A Digital Neurosynaptic Core Using Embedded Crossbar Memory with 45 pJ per Spike in 45 nm (**IEEE CICC 2011**). \[[paper](https://doi.org/10.1109/CICC.2011.6055294)\]
+  > Merolla 等的神经突触核，是 IBM TrueNorth 的直接架构前身。
+- ReckOn: A 28 nm Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales (**IEEE ISSCC 2022**). \[[paper](https://arxiv.org/abs/2208.09759)\]
+  > Frenkel 与 Indiveri 的芯片以 e-prop 式片上学习，在秒级时间尺度上学习时序任务，功耗亚毫瓦。
+
+### 模拟 / 混合信号 / 亚阈值
+
+- Neurogrid: A Mixed-Analog-Digital Multichip System for Large-Scale Neural Simulations (**Proc. IEEE 2014**) 🧠. \[[paper](https://doi.org/10.1109/JPROC.2014.2313565)\]
+  > Boahen 的 16 核 Neurogrid 用亚阈值模拟电路，以仅 3 瓦实时仿真百万神经元与数十亿突触。
+- A Wafer-Scale Neuromorphic Hardware System... (BrainScaleS-1) (**IEEE ISCAS 2010**). \[[paper](https://doi.org/10.1109/ISCAS.2010.5536970)\]
+  > 海德堡 HICANN 晶圆级系统，以生物 1 万倍速在每片晶圆上仿真约 20 万神经元。
+- The BrainScaleS-2 Accelerated Neuromorphic System with Hybrid Plasticity (**Front. Neurosci. 2022**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2022.795876/full)\]
+  > 将连续时间模拟神经元/突触电路与嵌入式 SIMD 处理器耦合，支持灵活的片上混合可塑性。
+- DYNAP-SE: A Scalable Multicore Architecture with Heterogeneous Memory... (**IEEE TBCAS 2018**). \[[paper](https://doi.org/10.1109/TBCAS.2017.2759700)\]
+  > Indiveri 的亚阈值模拟芯片，用异构分层/网格路由解决神经形态芯片的连接扩展难题。
+- ROLLS: A Reconfigurable On-Line Learning Spiking Neuromorphic Processor (**Front. Neurosci. 2015**). \[[paper](https://doi.org/10.3389/fnins.2015.00141)\]
+  > 混合信号芯片，以真实神经元/突触物理特性与脉冲可塑性实现完全片上的在线学习。
+- DYNAP-CNN & Speck: Event-Driven Convolutional Neuromorphic Vision Processors (SynSense) (**2020**). \[[paper](https://www.synsense.ai/products/speck-2/)\]\[[code](https://github.com/synsense/sinabs)\]
+  > 商用亚毫瓦脉冲卷积处理器（Speck 把 DVS 与 DynapCNN 集成于单芯片），微秒延迟常开事件视觉。
+
+### 存内 / 忆阻器 / RRAM 与 PCM 计算
+
+- Nanoscale Memristor Device as Synapse in Neuromorphic Systems (**Nano Letters 2010**) 🧠. \[[paper](https://pubs.acs.org/doi/10.1021/nl904092h)\]
+  > Jo 与 Lu 的硅忆阻器在单个纳米器件上实验实现 STDP，开启忆阻突触类脑计算。
+- Nanoelectronic Programmable Synapses Based on Phase-Change Materials (**Nano Letters 2011**). \[[paper](https://pubs.acs.org/doi/10.1021/nl201040y)\]
+  > 用相变材料的连续电阻变化，以皮焦能耗模拟模拟型突触可塑性（STDP）。
+- Training and Operation of an Integrated Neuromorphic Network Based on Metal-Oxide Memristors (**Nature 2015**) 🧠. \[[paper](https://www.nature.com/articles/nature14441)\]
+  > 首个无晶体管忆阻交叉阵列感知机并原位训练，证明集成忆阻神经网络可行。
+- Stochastic Phase-Change Neurons (**Nature Nanotechnology 2016**). \[[paper](https://www.nature.com/articles/nnano.2016.70)\]
+  > IBM 用相变器件实现积分-发放人工神经元，其内在随机性支持基于群体的信号表示。
+- Memristors with Diffusive Dynamics as Synaptic Emulators (**Nature Materials 2017**). \[[paper](https://www.nature.com/articles/nmat4756)\]
+  > 银纳米颗粒扩散型忆阻器再现类钙离子的短时突触动力学，提供生物学上逼真的模拟突触。
+- Fully Memristive Neural Networks for Pattern Classification with Unsupervised Learning (**Nature Electronics 2018**). \[[paper](https://www.nature.com/articles/s41928-018-0023-2)\]
+  > 把扩散忆阻器 LIF 神经元与非易失忆阻突触集成为全忆阻网络，实现无监督学习。
+- Equivalent-Accuracy Accelerated Neural-Network Training Using Analogue Memory (**Nature 2018**). \[[paper](https://www.nature.com/articles/s41586-018-0180-5)\]
+  > 用相变+电容模拟突触实现与软件同等的训练精度，能效比 GPU 高约两个数量级。
+- Fully Hardware-Implemented Memristor Convolutional Neural Network (**Nature 2020**). \[[paper](https://www.nature.com/articles/s41586-020-1942-4)\]
+  > 清华把八个忆阻交叉阵列集成为完整卷积网络并混合训练，能效超 GPU 百倍。
+- The Missing Memristor Found (**Nature 2008**) 🧠. \[[paper](https://www.nature.com/articles/nature06932)\]
+  > HP 实验室首次物理实现蔡少棠预言的忆阻器，开启了整个忆阻突触领域。
+- Experimental Demonstration and Tolerancing of a Large-Scale Neural Network (165,000 Synapses) Using Phase-Change Memory (**IEEE TED 2015**). \[[paper](https://doi.org/10.1109/TED.2015.2439635)\]
+  > IBM 的 Burr 等在真实相变存储硬件上训练 16.5 万突触网络，是大规模存内计算的里程碑。
+- Neuromorphic Computing with Nanoscale Spintronic Oscillators (**Nature 2017**). \[[paper](https://www.nature.com/articles/nature23011)\]
+  > 用单个自旋力矩纳米振荡器识别口语数字，开辟自旋电子学作为神经形态载体。
+- Deep Learning Incorporating Biologically Inspired Neural Dynamics and In-Memory Computing (**Nature Machine Intelligence 2020**). \[[paper](https://www.nature.com/articles/s42256-020-0187-0)\]
+  > Woźniak 等的脉冲神经单元（SNU）把 LIF 动力学引入深度学习层，可部署到存内计算硬件。
+
+### 事件相机与神经形态传感器
+
+- A 128×128 120 dB 15 μs Latency Asynchronous Temporal Contrast Vision Sensor (DVS) (**IEEE JSSC 2008**) 🧠. \[[paper](https://doi.org/10.1109/JSSC.2007.914337)\]
+  > 动态视觉传感器（DVS），像素在亮度变化时异步发放脉冲，开创事件式/神经形态视觉。
+- A QVGA 143 dB Dynamic Range Frame-Free PWM Image Sensor (ATIS) (**IEEE JSSC 2011**). \[[paper](https://doi.org/10.1109/JSSC.2010.2085952)\]
+  > 将事件式变化检测与逐像素 PWM 绝对光强编码结合，为事件视觉补上灰度信息。
+- A 240×180 130 dB 3 μs Latency Global-Shutter Spatiotemporal Vision Sensor (DAVIS) (**IEEE JSSC 2014**). \[[paper](https://doi.org/10.1109/JSSC.2014.2342715)\]
+  > 从同一光电二极管同时输出异步 DVS 事件与同步 APS 帧，是最常用的事件相机格式。
+- A 1280×720 Back-Illuminated Stacked Temporal-Contrast Event-Based Vision Sensor (**IEEE ISSCC 2020**). \[[paper](https://ieeexplore.ieee.org/document/9063149)\]
+  > 索尼/Prophesee 将事件相机做到高清、业界最小像素与超 124dB 高动态，推动商用落地。
+- AER EAR: A Matched Silicon Cochlea Pair with Address-Event Representation Interface (**IEEE TCAS-I 2007**). \[[paper](https://doi.org/10.1109/TCSI.2006.887979)\]
+  > 双耳硅耳蜗模拟基底膜滤波并输出 AER 脉冲，是听觉版的动态视觉传感器。
+
+---
+
+## 6 · 应用
+
+> **一句话：** 凡是**功耗与延迟**为王、且数据**天然带时间/稀疏性**的场景，SNN 都能发光——事件相机视觉、常开音频、机器人/控制，以及日渐兴起的语言模型。
+
+### 事件视觉 —— 识别与三维
+
+- A Low Power, Fully Event-Based Gesture Recognition System (**CVPR 2017**) 🧠. \[[paper](https://openaccess.thecvf.com/content_cvpr_2017/papers/Amir_A_Low_Power_CVPR_2017_paper.pdf)\]
+  > IBM 用 DVS 相机加 TrueNorth 芯片实现毫瓦级手势识别，并发布广泛使用的 DVS128 Gesture 数据集。
+- Spiking PointNet: Spiking Neural Networks for Point Clouds (**NeurIPS 2023**). \[[paper](https://arxiv.org/abs/2310.06232)\]\[[code](https://github.com/DayongRen/Spiking-PointNet)\]
+  > 首个用于三维点云的 SNN，用"少训练多推理"范式甚至超过对应的 ANN。
+- SpikePoint: An Efficient Point-based SNN for Event-Camera Action Recognition (**ICLR 2024**). \[[paper](https://arxiv.org/abs/2310.07189)\]
+  > 直接处理原始事件点云（不转帧），用约 ANN 0.3% 的参数取得动作识别最佳性能。
+
+### 事件目标检测
+
+- Spiking-YOLO: Spiking Neural Network for Energy-Efficient Object Detection (**AAAI 2020**) 🧠. \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/6787)\]
+  > 首个脉冲目标检测器，用逐通道归一化与带符号 IF 神经元，在能耗降低约 280 倍下逼近 Tiny-YOLO。
+- Deep Directly-Trained Spiking Neural Networks for Object Detection (EMS-YOLO) (**ICCV 2023**). \[[paper](https://arxiv.org/abs/2307.11411)\]\[[code](https://github.com/BICLab/EMS-YOLO)\]
+  > 首个"直接训练"（非转换）的深层 SNN 检测器，用全脉冲残差块仅 4 个时间步逼近 ANN 精度。
+- Integer-Valued Training and Spike-Driven Inference SNN for Object Detection (SpikeYOLO) (**ECCV 2024**). \[[paper](https://arxiv.org/abs/2407.20708)\]\[[code](https://github.com/BICLab/SpikeYOLO)\]
+  > ECCV 最佳论文候选，训练用整数、推理用脉冲，在 COCO/Gen1 上大幅提升 SNN 检测精度。
+
+### 光流、深度与视频重建
+
+- EV-FlowNet: Self-Supervised Optical Flow Estimation for Event-Based Cameras (**RSS 2018**). \[[paper](https://arxiv.org/abs/1802.06898)\]\[[code](https://github.com/daniilidis-group/EV-FlowNet)\]
+  > 开创性的自监督事件相机光流网络，确立了 MVSEC 评测范式。
+- Spike-FlowNet: Event-Based Optical Flow with Energy-Efficient Hybrid Neural Networks (**ECCV 2020**). \[[paper](https://arxiv.org/abs/2003.06696)\]\[[code](https://github.com/chan8972/Spike-FlowNet)\]
+  > SNN-ANN 混合网络，从稀疏事件估计光流，相比纯 ANN 大幅提升效率。
+- Fusion-FlowNet: Energy-Efficient Optical Flow via Sensor Fusion and Spiking-Analog Networks (**ICRA 2022**). \[[paper](https://arxiv.org/abs/2103.10592)\]
+  > 在脉冲-模拟混合网络中融合帧与事件，用更少参数与能耗估计稠密光流。
+- Adaptive-SpikeNet: Event-Based Optical Flow with Learnable Neuronal Dynamics (**ICRA 2023**). \[[paper](https://arxiv.org/abs/2209.11741)\]
+  > 全脉冲光流网络，用可学习的神经元动力学解决脉冲消失问题，超过同等规模 ANN。
+- StereoSpike: Depth Learning with a Spiking Neural Network (**IEEE Access 2022**). \[[paper](https://arxiv.org/abs/2109.13751)\]\[[code](https://github.com/urancon/StereoSpike)\]
+  > 首个用全脉冲网络求解大规模稠密深度回归（双目事件），泛化甚至优于 ANN 版本。
+- Event-Based Video Reconstruction via Potential-Assisted SNN (EVSNN) (**CVPR 2022**). \[[paper](https://arxiv.org/abs/2201.10943)\]\[[code](https://github.com/LinZhu111/EVSNN)\]
+  > 首个用全 SNN 从事件重建灰度视频的框架，比 ANN 版高效约 19 倍。
+- Unsupervised Learning of a Hierarchical Spiking Neural Network for Optical Flow Estimation (**IEEE TPAMI 2020**). \[[paper](https://arxiv.org/abs/1807.10936)\]
+  > Paredes-Vallés 等用 STDP 训练的层级 SNN 从原始事件学习运动感知，是生物可塑性光流的里程碑。
+- Self-Supervised Learning of Event-Based Optical Flow with Spiking Neural Networks (**NeurIPS 2021**). \[[paper](https://arxiv.org/abs/2106.01862)\]\[[code](https://github.com/tudelft/ssl_e2vid)\]
+  > Hagenaars 等自监督训练深度 SNN 做稠密事件光流，大幅缩小与 ANN 的差距。
+
+### 跟踪、分割与姿态
+
+- Spiking Transformers for Event-Based Single Object Tracking (STNet) (**CVPR 2022**). \[[paper](https://openaccess.thecvf.com/content/CVPR2022/html/Zhang_Spiking_Transformers_for_Event-Based_Single_Object_Tracking_CVPR_2022_paper.html)\]
+  > 将 Transformer（空间）与 SNN（时间）结合做事件跟踪，在多个事件跟踪数据集上取得最佳。
+- Accurate and Efficient Event-Based Semantic Segmentation Using Adaptive Spiking Encoder-Decoder (**IEEE TNNLS 2024**). \[[paper](https://arxiv.org/abs/2304.11857)\]
+  > 深层脉冲编解码网络，实现事件流上准确且低功耗的语义分割。
+- Event-Based Human Pose Tracking by Spiking Spatiotemporal Transformer (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2303.09681)\]
+  > 全脉冲时空 Transformer，从事件流做三维人体姿态跟踪，利用时间稀疏性提升效率。
+- Deep Multi-Threshold Spiking-UNet for Image Processing (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2307.10974)\]\[[code](https://github.com/SNNresearch/Spiking-UNet)\]
+  > 多阈值神经元的脉冲 U-Net，配合"转换+微调"流程，在分割/去噪上推理时间降约 90%。
+- SpikeMS: Deep Spiking Neural Network for Motion Segmentation (**IEEE/RSJ IROS 2021**). \[[paper](https://arxiv.org/abs/2105.06562)\]
+  > 首个用于事件运动分割的深度 SNN，提出时空损失，低功耗且支持增量预测。
+
+### 自动驾驶
+
+- Autonomous Driving with Spiking Neural Networks (SAD) (**NeurIPS 2024**). \[[paper](https://arxiv.org/abs/2405.19687)\]\[[code](https://github.com/ridgerchu/SAD)\]
+  > 首个端到端全脉冲自动驾驶系统（感知-预测-规划），在 nuScenes 上取得有竞争力的表现。
+
+### 自然语言 / 语言模型
+
+- SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**arXiv 2023**) 🧠. \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
+  > 首个大型生成式脉冲语言模型（最高 2.6 亿参数），将注意力线性化，运算量降低约 20 倍。
+- Spiking Convolutional Neural Networks for Text Classification (**ICLR 2023**). \[[paper](https://openreview.net/forum?id=pgU3k7QXuz0)\]\[[code](https://github.com/Lvchangze/snn)\]
+  > 用"转换+微调"把词向量编码为脉冲，文本分类逼近 ANN，且对抗鲁棒性更强。
+- SpikingBERT: Distilling BERT to Train Spiking Language Models Using Implicit Differentiation (**AAAI 2024**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/28975)\]
+  > 受生物启发的脉冲 BERT，用平衡态脉冲发放率的隐式微分训练，把 SNN 带入自然语言理解。
+- SpikeBERT: A Language Spikformer Learned from BERT with Knowledge Distillation (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2308.15122)\]\[[code](https://github.com/Lvchangze/SpikeBERT)\]
+  > 两阶段从 BERT 蒸馏到 Spikformer，在中英文文本分类上逼近 BERT 且能耗大幅降低。
+- SpikeLM: Towards General Spike-Driven Language Modeling via Elastic Bi-Spiking Mechanisms (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03287)\]\[[code](https://github.com/Xingrun-Xing/SpikeLM)\]
+  > 提出弹性双向脉冲机制，首次用全脉冲模型统一处理判别式与生成式语言任务。
+- SpikeLLM: Scaling up SNNs to Large Language Models via Saliency-Based Spiking (**arXiv 2024**). \[[paper](https://arxiv.org/abs/2407.04752)\]
+  > 首个 7B–70B 规模的脉冲大模型，用广义 IF 神经元与显著性脉冲超越量化基线。
+- SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/SpikeZIP_transformer)\]
+  > 将量化 Transformer 无损转换为 SNN，在视觉与语言上把与 ANN 的精度差距抹平。
+
+### 机器人与神经形态控制
+
+- Deep RL with Population-Coded Spiking Neural Network for Continuous Control (PopSAN) (**CoRL 2020**) 🧠. \[[paper](https://proceedings.mlr.press/v155/tang21a.html)\]\[[code](https://github.com/combra-lab/pop-spiking-deep-rl)\]
+  > 用群体编码的脉冲 actor 配合 DDPG 训练，部署到 Loihi 做连续机器人控制，能耗降低约 140 倍。
+- Neuromorphic Control of a Simulated 7-DOF Arm using Loihi (**Neuromorphic Comput. Eng. 2023**). \[[paper](https://iopscience.iop.org/article/10.1088/2634-4386/acb286)\]
+  > 基于神经工程框架的全脉冲控制器，在 Loihi 上对 7 自由度机械臂做操作空间的位姿控制。
+- Neuromorphic Control for Optic-Flow-Based Landing of MAVs using the Loihi Processor (**ICRA 2021**). \[[paper](https://arxiv.org/abs/2011.00534)\]
+  > 首个在飞行无人机上完全嵌入 Loihi 的 SNN，用光流散度控制推力实现自主降落。
+- Neuromorphic Adaptive Spiking CPG Towards Bio-Inspired Locomotion of Legged Robots (**Neurocomputing 2022**). \[[paper](https://arxiv.org/abs/2101.09709)\]
+  > 在 SpiNNaker 上实现脉冲中枢模式发生器（CPG），依据传感反馈为足式机器人生成自适应步态。
+- VPRTempo: A Fast Temporally-Encoded SNN for Visual Place Recognition (**ICRA 2024**). \[[paper](https://arxiv.org/abs/2309.10225)\]\[[code](https://github.com/QVPR/VPRTempo)\]
+  > 时间编码的 SNN 视觉地点识别，分钟级训练、CPU 上 >50Hz，可作 SLAM 闭环/定位模块。
+- Fully Neuromorphic Vision and Control for Autonomous Drone Flight (**Science Robotics 2024**) 🧠. \[[paper](https://www.science.org/doi/10.1126/scirobotics.adi0591)\]
+  > 端到端"事件相机→SNN→控制"闭环，完全在神经形态硬件上驱动真实四旋翼飞行，是里程碑式的真机演示。
+
+### 脉冲强化学习
+
+- Strategy and Benchmark for Converting Deep Q-Networks to Event-Driven SNNs (**AAAI 2021**). \[[paper](https://arxiv.org/abs/2009.14456)\]
+  > 确立了深度 Q 网络到脉冲 DQN 的转换方法与基准，是神经形态深度强化学习的早期里程碑。
+- Human-Level Control through Directly-Trained Deep Spiking Q-Networks (DSQN) (**IEEE T-Cybernetics 2022**). \[[paper](https://arxiv.org/abs/2201.07211)\]\[[code](https://github.com/AptX395/Deep-Spiking-Q-Networks)\]
+  > 直接训练的深层脉冲 Q 网络，以膜电位表示 Q 值，在多数 Atari 游戏上超过 ANN-DQN 且更鲁棒。
+- Multiscale Dynamic Coding Improved Spiking Actor Network for Reinforcement Learning (MDC-SAN) (**AAAI 2022**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/19879)\]
+  > 用多尺度动态神经编码改进脉冲 actor，提升连续控制性能。
+- Fully Spiking Actor Network with Intra-Layer Connections for Reinforcement Learning (**IEEE TNNLS 2024**). \[[paper](https://arxiv.org/abs/2401.05444)\]
+  > 完全脉冲的 actor（无浮点矩阵乘），用非脉冲中间神经元电压与层内连接，可直接部署到神经形态芯片。
+
+### 音频与语音
+
+- Benchmarking Keyword Spotting Efficiency on Neuromorphic Hardware (**NICE 2019**). \[[paper](https://arxiv.org/abs/1812.01739)\]
+  > 证明 Loihi 上的脉冲关键词唤醒在同等精度下的单次推理能耗优于 CPU/GPU/边缘设备。
+- A Surrogate-Gradient Spiking Baseline for Speech Command Recognition (sparch) (**Front. Neurosci. 2022**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2022.865897/full)\]\[[code](https://github.com/idiap/sparch)\]
+  > 面向 SHD/SSC/Google 语音命令的强力可复现代理梯度 SNN 基线与工具包。
+- Learning Delays in SNNs using Dilated Convolutions with Learnable Spacings (**ICLR 2024**). \[[paper](https://openreview.net/forum?id=4r2ybzJnmN)\]\[[code](https://github.com/Thvnvtos/SNN-delays)\]
+  > 用带可学习间距的膨胀卷积学习突触延迟，在 SHD/SSC 脉冲音频基准上取得最佳。
+
+### 其他领域 —— 时序、生物信号、安全、推荐
+
+- Efficient and Effective Time-Series Forecasting with Spiking Neural Networks (**ICML 2024**). \[[paper](https://arxiv.org/abs/2402.01533)\]\[[code](https://github.com/microsoft/SeqSNN)\]
+  > 提出带专门时间编码的脉冲框架，使 SNN 在时间序列预测上具备竞争力。
+- A Convolutional Spiking Neural Network with Adaptive Coding for Motor-Imagery Classification (**Neurocomputing 2023**). \[[paper](https://www.sciencedirect.com/science/article/abs/pii/S0925231223005933)\]
+  > 将带自适应脉冲编码的卷积 SNN 用于脑机接口的运动想象 EEG 解码。
+- Improved Spiking Neural Networks for EEG Classification and Epilepsy/Seizure Detection (**Integr. Comput.-Aided Eng. 2007**). \[[paper](https://journals.sagepub.com/doi/10.3233/ICA-2007-14301)\]
+  > 将多脉冲 SNN 用于 EEG 癫痫/发作检测的早期里程碑，取得高准确率。
+- An Efficient Intrusion Detection Model Based on Convolutional Spiking Neural Network (**Scientific Reports 2024**). \[[paper](https://www.nature.com/articles/s41598-024-57691-x)\]
+  > 用卷积 SNN 做网络入侵检测，借助脉冲稀疏性高效识别异常与攻击。
+
+---
+
+## 7 · 数据集与基准
+
+> 领域用来自我衡量的事件原生数据集（DVS 转换或相机录制）以及音频/时序基准。
+
+### 神经形态视觉
+
+- **N-MNIST / N-Caltech101** —— 用移动的 ATIS 事件相机（扫视）拍摄 MNIST 与 Caltech101，SNN 最常用的入门级分类基准。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2015.00437/full)\]\[[data](https://www.garrickorchard.com/datasets/n-mnist)\]
+- **CIFAR10-DVS** —— 用 DVS 拍摄移动的 CIFAR-10 得到的 1 万条事件流，中等规模事件物体分类基准。\[[paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full)\]
+- **N-CARS** —— 首个大规模真实世界事件二分类（车/非车）数据集，随 HATS 方法发布。\[[paper](https://arxiv.org/abs/1803.07913)\]\[[data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/)\]
+- **ASL-DVS** —— 24 类美国手语字母的 10 万余条真实事件相机记录，用于基于图的事件分类。\[[paper](https://arxiv.org/abs/1908.06648)\]\[[code](https://github.com/PIX2NVS/NVS2Graph)\]
+- **ES-ImageNet** —— 把约 130 万张 ImageNet 图像转成事件流（1000 类），最大规模神经形态分类集。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full)\]\[[code](https://github.com/lyh983012/ES-imagenet-master)\]
+- **DVS128 Gesture** —— 29 名受试者、3 种光照下的 11 类手势，出自 IBM TrueNorth 手势系统。\[[paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html)\]\[[data](https://research.ibm.com/interactive/dvsgesture/)\]
+- **HARDVS** —— 最大规模事件相机人体行为识别基准：300 类、107,646 条序列（DAVIS346）。\[[paper](https://arxiv.org/abs/2211.09648)\]\[[code](https://github.com/Event-AHU/HARDVS)\]
+- **Prophesee GEN1 Automotive** —— 39 小时驾驶事件、2550 万个人工标注框，大规模事件检测。\[[paper](https://arxiv.org/abs/2001.08499)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
+- **Prophesee 1 Megapixel (1Mpx)** —— 14 小时 1280×720 事件、约 2500 万自动标注框，首个高分辨率事件检测集。\[[paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html)\]\[[code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox)\]
+- **MVSEC** —— 多载具立体事件相机数据集（立体 DAVIS + LiDAR/IMU/GPS），提供位姿/深度真值。\[[paper](https://arxiv.org/abs/1801.10202)\]\[[data](https://daniilidis-group.github.io/mvsec/)\]
+- **DDD17 / DDD20** —— 开放的 DAVIS 端到端驾驶数据集（12+ / 51+ 小时），含车辆控制信号。\[[paper](https://arxiv.org/abs/2005.08605)\]\[[code](https://github.com/SensorsINI/ddd20-utils)\]
+- **DSEC** —— 大规模立体事件相机驾驶数据集，含 LiDAR/GPS 真值，用于深度、光流与 SLAM。\[[paper](https://arxiv.org/abs/2103.06011)\]\[[data](https://dsec.ifi.uzh.ch/)\]
+- **Event-Camera Dataset & Simulator** —— 位姿估计/视觉里程计/SLAM 的基准 DVS/DAVIS 数据集，并附广泛使用的 ESIM 仿真器。\[[paper](https://arxiv.org/abs/1610.08336)\]\[[data](https://rpg.ifi.uzh.ch/davis_data.html)\]
+
+### 神经形态音频与语音
+
+- **Spiking Heidelberg Digits (SHD)** —— 用耳蜗模型把约 1 万条语音数字转成 700 通道脉冲的分类基准。\[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
+- **Spiking Speech Commands (SSC)** —— 基于 Google 语音命令构建的脉冲语音识别集，是 SHD 更大更难的姊妹集。\[[paper](https://doi.org/10.1109/TNNLS.2020.3044364)\]\[[data](https://zenkelab.org/resources/spiking-heidelberg-datasets-shd/)\]
+- **N-TIDIGITS** —— 用硅耳蜗对 TIDIGITS 录制的 64 通道脉冲语音数字数据集。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2018.00023/full)\]
+
+### 基准套件
+
+- **NeuroBench** —— 面向神经形态算法与系统、提供标准化任务与指标的社区基准框架。\[[paper](https://arxiv.org/abs/2304.04640)\]\[[code](https://github.com/NeuroBench/neurobench)\]
+
+---
+
+## 8 · 软件与框架
+
+> 用于训练 SNN 的 PyTorch/JAX 库、事件数据处理工具，以及部署到神经形态芯片的厂商工具链。
+
+### 深度 SNN 训练（PyTorch / JAX）
+
+- **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** —— PyTorch 原生全栈 SNN 框架（数据→训练→部署），融合 CUDA 神经元，事实上的研究标准平台。\[[paper](https://www.science.org/doi/10.1126/sciadv.adi1480)\]
+- **[snnTorch](https://github.com/jeshraghian/snntorch)** —— 把脉冲神经元当作循环单元的 PyTorch 训练库，教程丰富。\[[paper](https://arxiv.org/abs/2109.12894)\]
+- **[Norse](https://github.com/norse/norse)** —— 以 PyTorch 为基础、面向深度学习的稀疏事件驱动神经元组件库。
+- **[BindsNET](https://github.com/BindsNET/bindsnet)** —— 面向机器学习的 SNN 仿真库，擅长 STDP/强化学习。\[[paper](https://www.frontiersin.org/journals/neuroinformatics/articles/10.3389/fninf.2018.00089/full)\]
+- **[SpykeTorch](https://github.com/miladmozafari/SpykeTorch)** —— 单脉冲卷积 SNN 仿真器，支持 STDP / R-STDP。\[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2019.00625/full)\]
+- **[Spyx](https://github.com/kmheckel/spyx)** —— 基于 JAX 的高性能 SNN 库，JIT 加速代理梯度训练与神经进化。\[[paper](https://arxiv.org/abs/2402.18994)\]
+
+### 计算神经科学仿真器
+
+- **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** —— 基于神经工程框架的大规模功能性脑模型，后端无关、可用 TF 训练。\[[paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full)\]
+- **[Brian2](https://github.com/brian-team/brian2)** —— 方程描述 + 代码生成的高效脉冲仿真器。\[[paper](https://elifesciences.org/articles/47314)\]
+- **[NEST](https://github.com/nest/nest-simulator)** —— 大规模异构脉冲点神经元仿真器，可从笔记本扩展到超算。
+- **[GeNN](https://github.com/genn-team/genn)** —— 基于代码生成的 GPU 脉冲网络仿真环境（CUDA / HIP）。\[[paper](https://www.nature.com/articles/srep18854)\]
+- **[BrainPy](https://github.com/brainpy/BrainPy)** —— 基于 JAX 的通用脑动力学编程框架（脉冲/发放率/ODE-SDE）。\[[paper](https://elifesciences.org/articles/86365)\]
+- **[BrainCog](https://github.com/BrainCog-X/Brain-Cog)** —— 基于脉冲网络的类脑认知智能引擎，覆盖感知、决策与认知。\[[paper](https://arxiv.org/abs/2207.08533)\]
+- **[CARLsim](https://github.com/UCI-CARL/CARLsim6)** —— C++/CUDA 大规模、生物细节脉冲网络仿真库，支持在线学习。\[[paper](https://ieeexplore.ieee.org/document/9892644/)\]
+- **[PyNN](https://github.com/NeuralEnsemble/PyNN)** —— 仿真器无关的 Python 建模接口（可跑在 NEST、NEURON、Brian、SpiNNaker…）。\[[paper](https://doi.org/10.3389/neuro.11.011.2008)\]
+
+### 神经形态硬件部署与数据工具
+
+- **[Lava](https://github.com/lava-nc/lava)** —— Intel 开源神经形态框架，面向 Loihi 的分布式事件驱动应用。
+- **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** —— SynSense 出品，训练/部署脉冲网络到 DynapCNN/Speck 芯片。
+- **[Tonic](https://github.com/neuromorphs/tonic)** —— "事件版 TorchVision"，统一下载/加载/变换神经形态视觉与音频数据集。
+- **[v2e](https://github.com/SensorsINI/v2e)** —— 把普通视频帧转换为带噪声模型的逼真 DVS 事件流，无需相机即可训练/测试。\[[paper](https://openaccess.thecvf.com/content/CVPR2021W/EventVision/html/Hu_v2e_From_Video_Frames_to_Realistic_DVS_Events_CVPRW_2021_paper.html)\]
+
+---
+
+## 9 · 能耗、鲁棒性与安全
+
+> 诚实地量化能耗故事，以及 SNN 在对抗攻击下的表现与防御。
+
+### 能耗与基准
+
+- Rethinking the Performance Comparison Between SNNs and ANNs (**Neural Networks 2020**). \[[paper](https://doi.org/10.1016/j.neunet.2019.09.005)\]
+  > 系统比较 SNN 与 ANN 的精度/运算量/能耗，厘清脉冲稀疏性带来的真实收益。
+- Benchmarking Neuromorphic Hardware and Its Energy Expenditure (**Front. Neurosci. 2022**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2022.873935/full)\]
+  > 提出公平衡量神经形态硬件能耗的方法与指标，揭示 SNN 能效对比中的陷阱。
+
+### 对抗鲁棒性（防御）
+
+- Inherent Adversarial Robustness of Deep SNNs: Discrete Input Encoding and Non-linear Activations (**ECCV 2020**). \[[paper](https://doi.org/10.1007/978-3-030-58526-6_24)\]
+  > 泊松离散输入与 LIF 泄漏使 SNN 在（尤其黑盒）梯度攻击下比 ANN 更鲁棒。
+- HIRE-SNN: Harnessing the Inherent Robustness of Energy-Efficient Deep SNNs... (**ICCV 2021**). \[[paper](https://arxiv.org/abs/2110.11417)\]
+  > 用时序单步输入噪声训练，在保持低延迟能耗下提升 SNN 对抗鲁棒性。
+- SNN-RAT: Robustness-Enhanced SNN through Regularized Adversarial Training (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/9cf904c86cc5f9ac95646c07d2cfa241-Abstract-Conference.html)\]
+  > 为脉冲表示推导 Lipschitz 常数并正则化，做鲁棒性增强的对抗训练。
+- Toward Robust Spiking Neural Network Against Adversarial Perturbation (**NeurIPS 2022**). \[[paper](https://arxiv.org/abs/2205.01625)\]
+  > 提出 S-IBP/S-CROWN，首次将线性松弛验证引入 SNN，给出可认证鲁棒边界。
+- HoSNN: Adversarially-Robust Homeostatic SNNs with Adaptive Firing Thresholds (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2308.10373)\]
+  > 用自适应阈值的稳态神经元自我镇定扰动，无需对抗训练即提升鲁棒性。
+
+### 对抗攻击
+
+- DVS-Attacks: Adversarial Attacks on Dynamic Vision Sensors for SNNs (**IJCNN 2021**). \[[paper](https://arxiv.org/abs/2107.00415)\]\[[code](https://github.com/albertomarchisio/DVS-Attacks)\]
+  > 提出针对事件流的隐蔽攻击（DVS-Gesture 精度掉超 20%），并用 DVS 噪声滤波做部分防御。
+- Adversarial Attacks on Spiking Convolutional Networks for Event-Based Vision (SpikeFool) (**Front. Neurosci. 2022**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2022.1068193/full)\]
+  > 提出稀疏梯度攻击 SpikeFool，可在真实事件数据上欺骗脉冲卷积网络。
+- Securing Deep SNNs against Adversarial Attacks through Inherent Structural Parameters (**DATE 2021**). \[[paper](https://arxiv.org/abs/2012.05321)\]
+  > 研究阈值、泄漏、时间步等结构超参对 SNN 抗攻击能力的调控，并可作为防御手段。
+
+### 隐私与安全
+
+- On the Privacy Risks of Spiking Neural Networks: A Membership Inference Analysis (**UAI 2025**). \[[paper](https://arxiv.org/abs/2502.13191)\]
+  > 证明 SNN 的成员推断隐私风险与 ANN 相当，且泄露随时间步 T 增大。
+
+---
+
+## 10 · 理论与神经科学
+
+> 表达能力、信息论视角、动力系统与预测编码视角——解释脉冲为何（以及何时）能有效计算。
+
+- Expressivity of Spiking Neural Networks (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2308.08218)\]
+  > 证明积分放电脉冲神经元的线性区域数随输入维度指数增长，表达力超过 ReLU 神经元。
+- On the Intrinsic Structures of Spiking Neural Networks (**JMLR 2024**). \[[paper](https://jmlr.org/papers/volume25/23-1526/23-1526.pdf)\]
+  > 从理论上分析脉冲特有结构（时序复位、阈值）如何塑造 SNN 的逼近与泛化能力。
+- Spiking Neural Networks: A Theoretical Framework for Universal Approximation and Training (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2509.21920)\]
+  > 证明基于 LIF 的 SNN 可用脉冲时刻编码目标值，对紧域上任意连续函数做通用逼近。
+- Predictive Coding of Dynamical Variables in Balanced Spiking Networks (**PLOS Comp. Biol. 2013**) 🧠. \[[paper](https://doi.org/10.1371/journal.pcbi.1003258)\]
+  > 经典理论：平衡脉冲网络仅在降低表征误差时发放，可实现任意线性动力系统。
+- PC-SNN: Predictive Coding-Based Local Hebbian Plasticity Learning in SNNs (**arXiv 2022**). \[[paper](https://arxiv.org/abs/2211.15386)\]
+  > 用局部 Hebbian 预测编码更新训练 SNN，以近似反传但无需全局误差传播。
+- Entropy, Mutual Information, and Systematic Measures of Structured Spiking Neural Networks (**J. Theoretical Biology 2020**). \[[paper](https://www.sciencedirect.com/science/article/abs/pii/S002251932030165X)\]
+  > 建立熵/互信息度量，刻画脉冲网络结构与信息流、动力学之间的关系。
+- Neural Dynamics as Sampling: A Model for Stochastic Computation in Recurrent Networks of Spiking Neurons (**PLoS Comput. Biol. 2011**) 🧠. \[[paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002211)\]
+  > Buesing 等证明脉冲网络可通过*采样*完成概率推断，为"脉冲"提供了奠基性的贝叶斯解读。
+
+---
+
+## 🛠️ 编译 PDF
+
+需要 LaTeX 发行版（TeX Live 或 MiKTeX）。
+
+```bash
+pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+# 或直接：
+latexmk -pdf main.tex
+```
+
+<details>
+<summary><b>仓库结构</b></summary>
+
+```
+Awesome-Spiking-Neural-Networks/
+├── main.tex            # LaTeX 主文档
+├── references.bib      # 参考文献（BibTeX）
+├── sections/           # 每节一个 .tex 文件
+├── figures/            # 图与示意图
+├── README.md           # 英文版——综述 + 论文清单
+└── README.zh-CN.md     # 本文件（中文镜像）
+```
+</details>
+
+---
+
+## 🤝 贡献指南
+
+非常欢迎贡献——这是一份**持续更新**的清单。
+
+- **新增论文：** 在对应小节按
+  `- Paper Title (**Venue Year**). \[[paper](url)\]\[[code](url)\]` 追加，并配一句
+  中英双语的 `> EN: … 中文：…` 注解。同时把 BibTeX 加进 [`references.bib`](references.bib)。
+- **新增数据集/工具/芯片**、订正错误的会议年份，或改进某段讲解。
+- 请大致按重要性/时间顺序排列，并在 PR 中简述你加了什么。较大的改动请先开 issue 讨论。
+
+## 📌 引用
+
+```bibtex
+@misc{snnsurvey2026,
+  title  = {A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications},
+  author = {ZHR-HEU},
+  year   = {2026},
+  note   = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
+}
+```
+
+## 📜 许可与致谢
+
+以 [MIT License](LICENSE) 发布。感谢广大神经形态社区以及诸多 `Awesome-*` 兄弟清单带来的启发。若我们遗漏或误注了某篇论文，欢迎提交 PR——**准确与完整正是本仓库的全部意义**。
