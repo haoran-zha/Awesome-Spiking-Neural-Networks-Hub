@@ -3,12 +3,11 @@
 # Awesome Spiking Neural Networks
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Survey](https://img.shields.io/badge/Survey-PDF-b31b1b.svg)](main.tex)
 ![Stars](https://img.shields.io/github/stars/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=social)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#-contributing)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**A comprehensive, deeply-annotated survey & living paper list of Spiking Neural Networks (SNNs)** — from neuron models and neural coding, through training methods and architectures, to neuromorphic hardware and real-world applications.
+**A comprehensive, deeply-annotated, living paper list of Spiking Neural Networks (SNNs)** — from neuron models and neural coding, through training methods and architectures, to neuromorphic hardware and real-world applications.
 
 **🌐 English** | [🇨🇳 中文版](README.zh-CN.md)
 
@@ -30,13 +29,12 @@ Three consequences make SNNs compelling:
 
 The central difficulty is that a spike is a **step function — non-differentiable** — so ordinary backpropagation does not directly apply. The whole field, in a sense, is a set of answers to *"how do we train these things?"* — which is why the [Training Methods](#-training-methods) section is the heart of this list.
 
-> This repo is **two things at once**: (1) a written **survey** (LaTeX, in [`sections/`](sections/)) and (2) an **awesome-style curated paper list** below. Each entry carries a one-line, bilingual "why it matters" note so you can navigate the literature without drowning.
+> This is an **awesome-style curated paper list** — each entry carries a one-line, bilingual "why it matters" note so you can navigate the literature without drowning.
 
 ---
 
 ## 📑 Table of Contents
 
-- [The Survey (This Repo)](#-the-survey-this-repo)
 - [1 · Foundations & Neural Coding](#1--foundations--neural-coding)
 - [2 · Neuron Models](#2--neuron-models)
 - [3 · Training Methods](#-training-methods)
@@ -54,32 +52,12 @@ The central difficulty is that a spike is a **step function — non-differentiab
 - [8 · Software & Frameworks](#8--software--frameworks)
 - [9 · Energy, Robustness & Security](#9--energy-robustness--security)
 - [10 · Theory & Neuroscience](#10--theory--neuroscience)
-- [Building the PDF](#-building-the-pdf)
 - [Contributing](#-contributing)
 - [Citation](#-citation)
 - [Star History](#-star-history)
 - [License & Acknowledgements](#-license--acknowledgements)
 
 **Legend:** 🧠 seminal / must-read · 📄 paper · 💻 official code · 🏆 SOTA at publication
-
----
-
-## 📄 The Survey (This Repo)
-
-**A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications**
-
-[[PDF](main.tex)] · [[arXiv](#)] · [[BibTeX](#-citation)]
-
-| # | Section | Scope | Source |
-|---|---------|-------|--------|
-| 1 | **Introduction** | Motivation, scope, contributions | [`01_introduction.tex`](sections/01_introduction.tex) |
-| 2 | **Background** | From ANNs to SNNs; neural coding | [`02_background.tex`](sections/02_background.tex) |
-| 3 | **Neuron Models** | LIF, Izhikevich, HH, AdEx, SRM | [`03_neuron_models.tex`](sections/03_neuron_models.tex) |
-| 4 | **Training Methods** | Conversion, surrogate gradients, STDP | [`04_training_methods.tex`](sections/04_training_methods.tex) |
-| 5 | **Hardware** | TrueNorth, Loihi, SpiNNaker, crossbars | [`05_hardware.tex`](sections/05_hardware.tex) |
-| 6 | **Applications** | Event vision, robotics, edge | [`06_applications.tex`](sections/06_applications.tex) |
-| 7 | **Challenges** | Open problems & outlook | [`07_challenges.tex`](sections/07_challenges.tex) |
-| 8 | **Conclusion** | Summary | [`08_conclusion.tex`](sections/08_conclusion.tex) |
 
 ---
 
@@ -726,50 +704,24 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ---
 
-## 🛠️ Building the PDF
-
-Requires a LaTeX distribution (TeX Live or MiKTeX).
-
-```bash
-pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
-# or simply:
-latexmk -pdf main.tex
-```
-
-<details>
-<summary><b>Repository structure</b></summary>
-
-```
-Awesome-Spiking-Neural-Networks/
-├── main.tex            # Main LaTeX document
-├── references.bib      # Bibliography (BibTeX)
-├── sections/           # One .tex file per section
-├── figures/            # Figures and diagrams
-├── README.md           # This file — survey + paper list (English)
-└── README.zh-CN.md     # Chinese mirror
-```
-</details>
-
----
-
 ## 🤝 Contributing
 
 Contributions are very welcome — this is a **living** list.
 
 - **Add a paper:** append to the right section using
   `- Paper Title (**Venue Year**). \[[paper](url)\]\[[code](url)\]` and a one-line
-  bilingual `> EN: … 中文：…` note. Add the BibTeX to [`references.bib`](references.bib).
+  bilingual `> EN: … 中文：…` note.
 - **Add a dataset/tool/chip**, fix a wrong venue, or improve an explanation.
 - Please keep entries in rough importance/chronological order and open a PR with a short description. For large additions, open an issue first.
 
 ## 📌 Citation
 
 ```bibtex
-@misc{snnsurvey2026,
-  title  = {A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications},
+@misc{awesomesnn2026,
+  title  = {Awesome Spiking Neural Networks: A Curated Paper List},
   author = {ZHR-HEU},
   year   = {2026},
-  note   = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
+  howpublished = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
 }
 ```
 

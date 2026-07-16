@@ -3,12 +3,11 @@
 # Awesome 脉冲神经网络（Spiking Neural Networks, SNN）
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Survey](https://img.shields.io/badge/Survey-PDF-b31b1b.svg)](main.tex)
 ![Stars](https://img.shields.io/github/stars/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=social)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#-贡献指南)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**一份全面、带深度注解、持续更新的脉冲神经网络（SNN）综述与论文清单** —— 从神经元模型、神经编码，到训练方法与网络架构，再到神经形态硬件与真实应用。
+**一份全面、带深度注解、持续更新的脉冲神经网络（SNN）论文清单** —— 从神经元模型、神经编码，到训练方法与网络架构，再到神经形态硬件与真实应用。
 
 [🇬🇧 English](README.md) | **🌐 中文**
 
@@ -30,13 +29,12 @@
 
 它最核心的难点在于：脉冲是一个**阶跃函数——不可微**，因此普通的反向传播无法直接使用。可以说，整个领域在很大程度上就是在回答*"这东西到底该怎么训练？"*——这也是为什么[训练方法](#-训练方法)是本清单的重中之重。
 
-> 本仓库**同时是两样东西**：(1) 一篇成文的**综述**（LaTeX，见 [`sections/`](sections/)）；(2) 下方 awesome 风格的**精选论文清单**。每个条目都配有一句中英双语的"为什么重要"注解，帮你在浩瀚文献里不迷路。
+> 这是一份 awesome 风格的**精选论文清单**——每个条目都配有一句中英双语的"为什么重要"注解，帮你在浩瀚文献里不迷路。
 
 ---
 
 ## 📑 目录
 
-- [配套综述论文（本仓库）](#-配套综述论文本仓库)
 - [1 · 基础与神经编码](#1--基础与神经编码)
 - [2 · 神经元模型](#2--神经元模型)
 - [3 · 训练方法](#-训练方法)
@@ -54,32 +52,12 @@
 - [8 · 软件与框架](#8--软件与框架)
 - [9 · 能耗、鲁棒性与安全](#9--能耗鲁棒性与安全)
 - [10 · 理论与神经科学](#10--理论与神经科学)
-- [编译 PDF](#-编译-pdf)
 - [贡献指南](#-贡献指南)
 - [引用](#-引用)
 - [Star 增长曲线](#-star-增长曲线)
 - [许可与致谢](#-许可与致谢)
 
 **图例：** 🧠 奠基 / 必读 · 📄 论文 · 💻 官方代码 · 🏆 发表时的 SOTA
-
----
-
-## 📄 配套综述论文（本仓库）
-
-**A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications**
-
-[[PDF](main.tex)] · [[arXiv](#)] · [[BibTeX](#-引用)]
-
-| # | 章节 | 范围 | 源文件 |
-|---|------|------|--------|
-| 1 | **引言** | 动机、范围、贡献 | [`01_introduction.tex`](sections/01_introduction.tex) |
-| 2 | **背景** | 从 ANN 到 SNN；神经编码 | [`02_background.tex`](sections/02_background.tex) |
-| 3 | **神经元模型** | LIF、Izhikevich、HH、AdEx、SRM | [`03_neuron_models.tex`](sections/03_neuron_models.tex) |
-| 4 | **训练方法** | 转换、代理梯度、STDP | [`04_training_methods.tex`](sections/04_training_methods.tex) |
-| 5 | **硬件** | TrueNorth、Loihi、SpiNNaker、交叉阵列 | [`05_hardware.tex`](sections/05_hardware.tex) |
-| 6 | **应用** | 事件视觉、机器人、边缘计算 | [`06_applications.tex`](sections/06_applications.tex) |
-| 7 | **挑战** | 开放问题与展望 | [`07_challenges.tex`](sections/07_challenges.tex) |
-| 8 | **结论** | 总结 | [`08_conclusion.tex`](sections/08_conclusion.tex) |
 
 ---
 
@@ -727,50 +705,24 @@
 
 ---
 
-## 🛠️ 编译 PDF
-
-需要 LaTeX 发行版（TeX Live 或 MiKTeX）。
-
-```bash
-pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
-# 或直接：
-latexmk -pdf main.tex
-```
-
-<details>
-<summary><b>仓库结构</b></summary>
-
-```
-Awesome-Spiking-Neural-Networks/
-├── main.tex            # LaTeX 主文档
-├── references.bib      # 参考文献（BibTeX）
-├── sections/           # 每节一个 .tex 文件
-├── figures/            # 图与示意图
-├── README.md           # 英文版——综述 + 论文清单
-└── README.zh-CN.md     # 本文件（中文镜像）
-```
-</details>
-
----
-
 ## 🤝 贡献指南
 
 非常欢迎贡献——这是一份**持续更新**的清单。
 
 - **新增论文：** 在对应小节按
   `- Paper Title (**Venue Year**). \[[paper](url)\]\[[code](url)\]` 追加，并配一句
-  中英双语的 `> EN: … 中文：…` 注解。同时把 BibTeX 加进 [`references.bib`](references.bib)。
+  中英双语的 `> EN: … 中文：…` 注解。
 - **新增数据集/工具/芯片**、订正错误的会议年份，或改进某段讲解。
 - 请大致按重要性/时间顺序排列，并在 PR 中简述你加了什么。较大的改动请先开 issue 讨论。
 
 ## 📌 引用
 
 ```bibtex
-@misc{snnsurvey2026,
-  title  = {A Survey on Spiking Neural Networks: Models, Training, Hardware, and Applications},
+@misc{awesomesnn2026,
+  title  = {Awesome Spiking Neural Networks: A Curated Paper List},
   author = {ZHR-HEU},
   year   = {2026},
-  note   = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
+  howpublished = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
 }
 ```
 
