@@ -123,8 +123,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🧩 Part I · Fundamentals
 
-<div align="center"><img src="assets/part1.svg" width="108" alt=""></div>
-
 ### 1 · Foundations & Neural Coding
 
 > **In one breath:** the roots of the field — from the first threshold neuron and the Nobel-winning Hodgkin–Huxley model to Maass's "third generation" framing — plus *neural coding*: **how a real-valued signal becomes spikes** (and back). Rate coding counts spikes over a window (simple, robust, slow); temporal/latency coding puts information in spike *timing* (fast, efficient, harder to train); rank-order and population codes sit in between. Your choice of code sets the ceiling on both accuracy and latency.
@@ -205,8 +203,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ## 🎓 Part II · Learning & Models
-
-<div align="center"><img src="assets/part2.svg" width="108" alt=""></div>
 
 ### 3 · Training Methods
 
@@ -454,8 +450,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## ⚙️ Part III · Hardware & Systems
 
-<div align="center"><img src="assets/part3.svg" width="108" alt=""></div>
-
 ### 6 · Neuromorphic Hardware
 
 > **In one breath:** SNNs only pay off when the *chip* is event-driven too. **Digital** platforms (TrueNorth, Loihi, SpiNNaker, Tianjic) route spikes as packets and idle between them; **analog/in-memory** designs (BrainScaleS, memristor/RRAM crossbars) compute inside the memory to kill the von-Neumann data-movement cost. **Event cameras** (DVS) are the matching sensor.
@@ -578,8 +572,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🚀 Part IV · Applications
 
-<div align="center"><img src="assets/part4.svg" width="108" alt=""></div>
-
 ### 7 · Applications
 
 > **In one breath:** SNNs shine wherever **power and latency** dominate and data is **naturally temporal/sparse** — event-camera vision, always-on audio, robotics/control, and increasingly language models.
@@ -693,8 +685,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🧪 Part V · Cross-Cutting Topics
 
-<div align="center"><img src="assets/part5.svg" width="108" alt=""></div>
-
 ### 8 · Energy, Robustness & Security
 
 > Quantifying the energy story honestly, plus how SNNs behave under adversarial attack and how to defend them.
@@ -759,8 +749,6 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <p align="right"><a href="#-table-of-contents">↑ Back to top</a></p>
 
 ## 🧰 Part VI · Resources & Ecosystem
-
-<div align="center"><img src="assets/part6.svg" width="108" alt=""></div>
 
 ### 10 · Datasets & Benchmarks
 
