@@ -1,15 +1,17 @@
 <div align="center">
 
-<h1>⚡ Awesome 脉冲神经网络（Spiking Neural Networks）</h1>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.svg" alt="Awesome Spiking Neural Networks Hub" width="100%"></a>
 
-<p><em>一份全面、带深度注解的脉冲神经网络（SNN）知识库</em><br>
+<h1>Awesome 脉冲神经网络知识库（Spiking Neural Networks Hub）</h1>
+
+<p><em>一份全面、带深度注解的脉冲神经网络（Spiking Neural Networks, SNN）知识库</em><br>
 <sub>论文 · 模型 · 神经形态硬件 · 数据集 · 工具 · 研究团队</sub></p>
 
 <p>
 <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/stargazers"><img src="https://img.shields.io/github/stars/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&logo=github&color=e3b341" alt="Stars"></a>
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/network/members"><img src="https://img.shields.io/github/forks/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&logo=github&color=8b949e" alt="Forks"></a>
-<img src="https://img.shields.io/github/last-commit/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&color=blue" alt="Last commit">
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers"><img src="https://img.shields.io/github/stars/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=e3b341" alt="Stars"></a>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/network/members"><img src="https://img.shields.io/github/forks/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=8b949e" alt="Forks"></a>
+<img src="https://img.shields.io/github/last-commit/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&color=blue" alt="Last commit">
 <a href="#-contributing"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT"></a>
 </p>
@@ -19,6 +21,7 @@
 <p>📄 <b>350+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>45</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>40+</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
 
 <p><b>快速跳转</b> &nbsp;
+<a href="#-必读入门">🏆 必读</a> ·
 <a href="#1--基础与神经编码">基础</a> ·
 <a href="#3--训练方法">学习与模型</a> ·
 <a href="#6--神经形态硬件">硬件</a> ·
@@ -46,6 +49,27 @@
 它最核心的难点在于：脉冲是一个**阶跃函数——不可微**，因此普通的反向传播无法直接使用。可以说，整个领域在很大程度上就是在回答*"这东西到底该怎么训练？"*——这也是为什么[训练方法](#3--训练方法)是本清单的重中之重。
 
 > 这是一份覆盖整个 SNN 领域的 awesome 知识库——论文、模型、硬件、数据集、工具与研究团队。每个条目都配有一句中英双语的"为什么重要"注解，帮你不迷路。
+
+---
+
+## 🏆 必读入门
+
+**12 篇必读里程碑，串起领域主线** —— 从"第三代神经网络"的提出，到今天的脉冲 Transformer 与大模型。*（正文中的 🧠 标记还有更多。）*
+
+| 年份 | 里程碑 | 会议/期刊 | 链接 |
+|:---:|---|:---:|:---:|
+| 1997 | **Networks of Spiking Neurons: The Third Generation** —— *奠基思想* | Neural Networks | [📄](https://doi.org/10.1016/S0893-6080(97)00011-7) |
+| 2014 | **TrueNorth** —— *百万神经元类脑芯片* | Science | [📄](https://www.science.org/doi/10.1126/science.1254642) |
+| 2015 | **Unsupervised Learning with STDP** —— *生物可塑性学习* | Front. Comput. Neurosci. | [📄](https://doi.org/10.3389/fncom.2015.00099) |
+| 2018 | **Loihi** —— *支持片上学习的神经形态处理器* | IEEE Micro | [📄](https://ieeexplore.ieee.org/document/8259423) |
+| 2018 | **STBP** —— *时空反向传播，直接训练主力* | Front. Neurosci. | [📄](https://doi.org/10.3389/fnins.2018.00331) |
+| 2020 | **e-prop** —— *生物可行的在线学习* | Nature Comm. | [📄](https://doi.org/10.1038/s41467-020-17236-y) |
+| 2021 | **SEW-ResNet** —— *直接训练百层以上 SNN* | NeurIPS | [📄](https://arxiv.org/abs/2102.04159) |
+| 2022 | **QCFS** —— *近乎无损的 ANN→SNN 转换* | ICLR | [📄](https://arxiv.org/abs/2303.04347) |
+| 2023 | **Spikformer** —— *首个脉冲 Transformer* | ICLR | [📄](https://arxiv.org/abs/2209.15425) |
+| 2023 | **Spike-driven Transformer** —— *纯脉冲驱动注意力* | NeurIPS | [📄](https://arxiv.org/abs/2307.01694) |
+| 2023 | **SpikeGPT** —— *首个生成式脉冲大模型* | arXiv | [📄](https://arxiv.org/abs/2302.13939) |
+| 2025 | **SpikingBrain** —— *7B/76B 类脑脉冲大模型* | arXiv | [📄](https://arxiv.org/abs/2509.05276) |
 
 ---
 
@@ -943,9 +967,9 @@
 ```bibtex
 @misc{awesomesnn2026,
   title  = {Awesome Spiking Neural Networks: A Curated Guide},
-  author = {ZHR-HEU},
+  author = {haoran-zha},
   year   = {2026},
-  howpublished = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
+  howpublished = {\url{https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub}}
 }
 ```
 
@@ -953,8 +977,8 @@
 
 ## ⭐ Star 增长曲线
 
-<a href="https://star-history.com/#ZHR-HEU/Awesome-Spiking-Neural-Networks&Date">
-  <img src="https://api.star-history.com/svg?repos=ZHR-HEU/Awesome-Spiking-Neural-Networks&type=Date" alt="Star History Chart" width="640">
+<a href="https://star-history.com/#haoran-zha/Awesome-Spiking-Neural-Networks-Hub&Date">
+  <img src="https://api.star-history.com/svg?repos=haoran-zha/Awesome-Spiking-Neural-Networks-Hub&type=Date" alt="Star History Chart" width="640">
 </a>
 
 ---
@@ -963,8 +987,8 @@
 
 感谢每一位帮助保持本指南全面与准确的朋友——欢迎通过 PR 补充论文、模型、芯片、数据集、工具与研究团队！
 
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ZHR-HEU/Awesome-Spiking-Neural-Networks" alt="Contributors" />
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoran-zha/Awesome-Spiking-Neural-Networks-Hub" alt="Contributors" />
 </a>
 
 ---

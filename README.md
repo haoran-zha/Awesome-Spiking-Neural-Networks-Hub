@@ -1,15 +1,17 @@
 <div align="center">
 
-<h1>⚡ Awesome Spiking Neural Networks</h1>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.svg" alt="Awesome Spiking Neural Networks Hub" width="100%"></a>
+
+<h1>Awesome Spiking Neural Networks Hub</h1>
 
 <p><em>A comprehensive, deeply-annotated guide to the world of Spiking Neural Networks (SNNs)</em><br>
 <sub>papers · models · neuromorphic hardware · datasets · tools · research groups</sub></p>
 
 <p>
 <a href="https://awesome.re"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/stargazers"><img src="https://img.shields.io/github/stars/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&logo=github&color=e3b341" alt="Stars"></a>
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/network/members"><img src="https://img.shields.io/github/forks/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&logo=github&color=8b949e" alt="Forks"></a>
-<img src="https://img.shields.io/github/last-commit/ZHR-HEU/Awesome-Spiking-Neural-Networks?style=flat-square&color=blue" alt="Last commit">
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers"><img src="https://img.shields.io/github/stars/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=e3b341" alt="Stars"></a>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/network/members"><img src="https://img.shields.io/github/forks/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=8b949e" alt="Forks"></a>
+<img src="https://img.shields.io/github/last-commit/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&color=blue" alt="Last commit">
 <a href="#-contributing"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT"></a>
 </p>
@@ -19,6 +21,7 @@
 <p>📄 <b>350+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>45</b> seminal works &nbsp;·&nbsp; 🏛️ <b>40+</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
 
 <p><b>Jump to</b> &nbsp;
+<a href="#-start-here">🏆 Start Here</a> ·
 <a href="#1--foundations--neural-coding">Fundamentals</a> ·
 <a href="#3--training-methods">Learning &amp; Models</a> ·
 <a href="#6--neuromorphic-hardware">Hardware</a> ·
@@ -46,6 +49,27 @@ Three consequences make SNNs compelling:
 The central difficulty is that a spike is a **step function — non-differentiable** — so ordinary backpropagation does not directly apply. The whole field, in a sense, is a set of answers to *"how do we train these things?"* — which is why the [Training Methods](#3--training-methods) section is the heart of this list.
 
 > This is an **awesome-style hub for the whole SNN field** — papers, models, hardware, datasets, tools, and research groups. Each entry carries a one-line, bilingual "why it matters" note so you can navigate without drowning.
+
+---
+
+## 🏆 Start Here
+
+**12 must-read landmarks that trace the field's arc** — from the "third generation" idea to today's spiking Transformers and large models. *(The 🧠 markers throughout the guide flag many more.)*
+
+| Year | Landmark | Venue | Link |
+|:---:|---|:---:|:---:|
+| 1997 | **Networks of Spiking Neurons: The Third Generation** — *the founding idea* | Neural Networks | [📄](https://doi.org/10.1016/S0893-6080(97)00011-7) |
+| 2014 | **TrueNorth** — *a million-neuron neuromorphic chip* | Science | [📄](https://www.science.org/doi/10.1126/science.1254642) |
+| 2015 | **Unsupervised Learning with STDP** — *bio-plausible learning* | Front. Comput. Neurosci. | [📄](https://doi.org/10.3389/fncom.2015.00099) |
+| 2018 | **Loihi** — *on-chip-learning neuromorphic processor* | IEEE Micro | [📄](https://ieeexplore.ieee.org/document/8259423) |
+| 2018 | **STBP** — *spatio-temporal backprop, the training workhorse* | Front. Neurosci. | [📄](https://doi.org/10.3389/fnins.2018.00331) |
+| 2020 | **e-prop** — *biologically plausible online learning* | Nature Comm. | [📄](https://doi.org/10.1038/s41467-020-17236-y) |
+| 2021 | **SEW-ResNet** — *directly training 100+ layer SNNs* | NeurIPS | [📄](https://arxiv.org/abs/2102.04159) |
+| 2022 | **QCFS** — *near-lossless ANN→SNN conversion* | ICLR | [📄](https://arxiv.org/abs/2303.04347) |
+| 2023 | **Spikformer** — *the first spiking Transformer* | ICLR | [📄](https://arxiv.org/abs/2209.15425) |
+| 2023 | **Spike-driven Transformer** — *pure spike-driven attention* | NeurIPS | [📄](https://arxiv.org/abs/2307.01694) |
+| 2023 | **SpikeGPT** — *the first generative spiking LLM* | arXiv | [📄](https://arxiv.org/abs/2302.13939) |
+| 2025 | **SpikingBrain** — *7B/76B spiking brain-inspired LLM* | arXiv | [📄](https://arxiv.org/abs/2509.05276) |
 
 ---
 
@@ -942,9 +966,9 @@ Contributions are very welcome — this is a **living** list.
 ```bibtex
 @misc{awesomesnn2026,
   title  = {Awesome Spiking Neural Networks: A Curated Guide},
-  author = {ZHR-HEU},
+  author = {haoran-zha},
   year   = {2026},
-  howpublished = {\url{https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks}}
+  howpublished = {\url{https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub}}
 }
 ```
 
@@ -952,8 +976,8 @@ Contributions are very welcome — this is a **living** list.
 
 ## ⭐ Star History
 
-<a href="https://star-history.com/#ZHR-HEU/Awesome-Spiking-Neural-Networks&Date">
-  <img src="https://api.star-history.com/svg?repos=ZHR-HEU/Awesome-Spiking-Neural-Networks&type=Date" alt="Star History Chart" width="640">
+<a href="https://star-history.com/#haoran-zha/Awesome-Spiking-Neural-Networks-Hub&Date">
+  <img src="https://api.star-history.com/svg?repos=haoran-zha/Awesome-Spiking-Neural-Networks-Hub&type=Date" alt="Star History Chart" width="640">
 </a>
 
 ---
@@ -962,8 +986,8 @@ Contributions are very welcome — this is a **living** list.
 
 Thanks to everyone helping keep this guide comprehensive and accurate — PRs of new papers, models, chips, datasets, tools, and research groups are always welcome!
 
-<a href="https://github.com/ZHR-HEU/Awesome-Spiking-Neural-Networks/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ZHR-HEU/Awesome-Spiking-Neural-Networks" alt="Contributors" />
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=haoran-zha/Awesome-Spiking-Neural-Networks-Hub" alt="Contributors" />
 </a>
 
 ---
