@@ -12,13 +12,13 @@
 <a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers"><img src="https://img.shields.io/github/stars/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=e3b341" alt="Stars"></a>
 <a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/network/members"><img src="https://img.shields.io/github/forks/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&logo=github&color=8b949e" alt="Forks"></a>
 <img src="https://img.shields.io/github/last-commit/haoran-zha/Awesome-Spiking-Neural-Networks-Hub?style=flat-square&color=blue" alt="Last commit">
-<a href="#-contributing"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome"></a>
+<a href="#-贡献指南"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT"></a>
 </p>
 
 <p><a href="README.md">🇬🇧 English</a> &nbsp;·&nbsp; <b>🌐 中文</b></p>
 
-<p>📄 <b>350+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>45</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>40+</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
+<p>📄 <b>330+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>47</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>38</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
 
 <p><b>快速跳转</b> &nbsp;
 <a href="#-必读入门">🏆 必读</a> ·
@@ -48,7 +48,7 @@
 
 它最核心的难点在于：脉冲是一个**阶跃函数——不可微**，因此普通的反向传播无法直接使用。可以说，整个领域在很大程度上就是在回答*"这东西到底该怎么训练？"*——这也是为什么[训练方法](#3--训练方法)是本清单的重中之重。
 
-> 这是一份覆盖整个 SNN 领域的 awesome 知识库——论文、模型、硬件、数据集、工具与研究团队。每个条目都配有一句中英双语的"为什么重要"注解，帮你不迷路。
+> 这是一份覆盖整个 SNN 领域的 awesome 知识库——论文、模型、硬件、数据集、工具与研究团队。每个条目都配有一句"为什么重要"注解（此处为中文，英文见 [English edition](README.md)），帮你不迷路。
 
 ---
 
@@ -78,8 +78,8 @@
 <details open>
 <summary><b>更新日志</b> —— 最新在前（点击折叠）</summary>
 
-- **2026-07** —— 🎉 **知识库上线。** 6 大 Part、350+ 中英双语条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
-- **2026-07** —— 🎨 **视觉改版。** SVG banner、各 Part 示意图、"必读入门"表，并把数据集/框架/模型库转为表格。
+- **2026-07** —— 🎉 **知识库上线。** 6 大 Part、330+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
+- **2026-07** —— 🎨 **视觉改版。** SVG banner、"必读入门"表，并把数据集/框架/模型库转为表格。
 - **2026-07** —— 📚 **内容扩充。** 新增 SpikingBrain、Sorbet、SpikeCLIP、Spike2Former、SDiT；Darwin3、Intel Hala Point、IBM NorthPole、灵汐/BrainChip/Innatera/Xylo/GrAI；以及奠基工作（Mead 1990、Missing Memristor 2008、Tempotron 2006）与框架（SPAIC、SNNAX、BrainPy、CARLsim…）。
 
 > 有新的论文/模型/芯片/数据集/工具？[提交 PR](#-贡献指南) 并在此加一行。
@@ -156,7 +156,7 @@
   > 借助 alpha 型突触响应，实现对精确脉冲时刻的解析反向传播。
 - Temporal-Coded Deep Spiking Neural Network with Easy Training and Robust Performance (**AAAI 2021**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/17329)\]
   > 论证非泄漏单脉冲时间编码最利于直接训练且鲁棒的深度 SNN。
-- DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2021**). \[[paper](https://arxiv.org/abs/2008.03658)\]
+- DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/2008.03658)\]
   > 直接输入模拟像素并端到端学习泄漏与阈值，推广了"直接输入编码"范式。
 - Supervised Learning Based on Temporal Coding in Spiking Neural Networks (**IEEE TNNLS 2018**). \[[paper](https://doi.org/10.1109/TNNLS.2017.2726060)\]
   > Mostafa 对"首脉冲时刻"做精确梯度下降，是时间编码训练的奠基方法之一。
@@ -460,7 +460,7 @@
 - Neuromorphic Electronic Systems (**Proceedings of the IEEE 1990**) 🧠. \[[paper](https://doi.org/10.1109/5.58356)\]
   > Carver Mead 的开山之作——用模拟 VLSI 模仿神经计算，为整个领域命名。
 - A Silicon Neuron (**Nature 1991**) 🧠. \[[paper](https://www.nature.com/articles/354515a0)\]
-  > Mahowald 与 Mead 用模拟 VLSI 复现真实脉冲动力学，是首个"硅神经元"。
+  > Mahowald 与 Douglas 用模拟 VLSI 复现真实脉冲动力学，是首个"硅神经元"。
 - Point-to-Point Connectivity Between Neuromorphic Chips Using Address Events (**IEEE TCAS-II 2000**). \[[paper](https://doi.org/10.1109/82.842110)\]
   > Boahen 正式提出地址-事件表示（AER）——如今每颗神经形态芯片都在用的"脉冲即数据包"协议。
 
@@ -795,7 +795,7 @@
 
 **深度 SNN 训练（PyTorch / JAX）**
 
-| 库 | 用途 | 参考 |
+| 库 | 用途 | 链接 |
 |---|---|---|
 | **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** | PyTorch 全栈 SNN 框架（数据→训练→部署），融合 CUDA 神经元；事实标准平台 | [paper](https://www.science.org/doi/10.1126/sciadv.adi1480) |
 | **[snnTorch](https://github.com/jeshraghian/snntorch)** | 把脉冲神经元当循环单元的 PyTorch 库；教程丰富 | [paper](https://arxiv.org/abs/2109.12894) |
@@ -810,7 +810,7 @@
 
 **计算神经科学仿真器**
 
-| 库 | 用途 | 参考 |
+| 库 | 用途 | 链接 |
 |---|---|---|
 | **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** | 大规模功能性脑模型（NEF）；后端无关、可 TF 训练 | [paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full) |
 | **[Brian2](https://github.com/brian-team/brian2)** | 方程描述 + 运行时代码生成的脉冲仿真器 | [paper](https://elifesciences.org/articles/47314) |
@@ -823,7 +823,7 @@
 
 **神经形态硬件部署与数据工具**
 
-| 工具 | 用途 | 参考 |
+| 工具 | 用途 | 链接 |
 |---|---|---|
 | **[Lava](https://github.com/lava-nc/lava)** | Intel 框架，跨 CPU 与 Loihi 开发/部署 | — |
 | **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** | SynSense 库，训练/部署到 DynapCNN / Speck | — |
@@ -915,7 +915,7 @@
 - **华为诺亚方舟实验室** — 华为 AI 研究 — 高效深度学习、类脑/脉冲模型。\[[homepage](https://www.noahlab.com.hk/)\]\[[github](https://github.com/huawei-noah)\]
   > 华为旗舰 AI 实验室，发表脉冲相关工作（如 CVPR 2022 的 SNN-MLP）。
 
-#### 国际 —— 美洲
+#### 国际 — 美洲
 
 - **Kaushik Roy** — 普渡大学（Nanoelectronics Research Lab）— 高效神经形态、ANN-SNN 转换、存内计算、鲁棒性。\[[homepage](https://engineering.purdue.edu/NRL/Group)\]\[[scholar](https://scholar.google.com/citations?user=to4P8KgAAAAJ)\]
   > 神经形态与机器学习硬件高被引领军者——ANN 转 SNN、脉冲反传、自旋/存内器件。
@@ -934,7 +934,7 @@
 - **Catherine Schuman** — 田纳西大学（TENNLab）— 神经形态计算、脉冲网络进化优化。\[[homepage](https://catherineschuman.com/)\]\[[github](https://github.com/TENNLab-UTK)\]
   > 以脉冲网络进化优化（EONS）及 2022 年 Nature 神经形态计算展望著称。
 
-#### 国际 —— 欧洲
+#### 国际 — 欧洲
 
 - **Giacomo Indiveri** — 苏黎世大学 & ETH（神经信息学研究所 INI）— 混合信号神经形态电路、DYNAP 处理器。\[[homepage](https://www.ini.uzh.ch/en)\]\[[scholar](https://scholar.google.com/citations?user=kdHjCAMAAAAJ)\]
   > INI 所长，开创亚阈值模拟神经形态电路与 DYNAP 系列脉冲处理器。
@@ -965,7 +965,7 @@
 - **Bipin Rajendran** — 伦敦国王学院 — 神经形态硬件、存内计算、相变存储突触。\[[homepage](https://www.kcl.ac.uk/people/bipin-rajendran)\]\[[scholar](https://scholar.google.com/citations?user=QDEeC8EAAAAJ)\]
   > 研究相变存储突触与存内计算，早期实现基于相变突触的脉冲网络监督学习。
 
-#### 国际 —— 亚太
+#### 国际 — 亚太
 
 - **Arindam Basu** — 香港城市大学 — 低功耗神经形态硬件、边缘脉冲系统、存内计算。\[[homepage](https://scholars.cityu.edu.hk/en/persons/arinbasu/)\]\[[scholar](https://scholar.google.com/citations?user=Ton5pYMAAAAJ)\]
   > 从事超低功耗神经形态电路与边缘脉冲系统研究，IEEE Fellow。
@@ -985,11 +985,11 @@
 
 ## 🤝 贡献指南
 
-非常欢迎贡献——这是一份**持续更新**的清单。
+非常欢迎贡献——这是一份**持续更新**的清单。完整指南见 **[CONTRIBUTING.md](CONTRIBUTING.md)**。
 
 - **新增论文：** 在对应小节按
   `- Paper Title (**Venue Year**). \[[paper](url)\]\[[code](url)\]` 追加，并配一句
-  中英双语的 `> EN: … 中文：…` 注解。
+  中文 `> …` 注解——再到 [README.md](README.md) 补上对应的英文条目与注解。
 - **新增数据集/工具/芯片**、订正错误的会议年份，或改进某段讲解。
 - 请大致按重要性/时间顺序排列，并在 PR 中简述你加了什么。较大的改动请先开 issue 讨论。
 

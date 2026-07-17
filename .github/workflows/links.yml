@@ -1,0 +1,30 @@
+name: links
+
+# Catch dead links in the curated list: on every PR/push, and weekly to
+# surface links that rot after merge.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Accept rate-limit / bot-block codes so academic hosts (doi, ieee)
+          # don't cause false failures; genuine 404s still fail the job.
+          args: >-
+            --no-progress
+            --max-concurrency 4
+            --accept 200,206,403,429
+            README.md README.zh-CN.md
+          fail: true

@@ -1,0 +1,61 @@
+name: Add a resource
+description: Suggest a paper, model, chip, dataset, or tool to add to the list
+title: "[Add] <title>"
+labels: ["new-resource"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Paper / project / resource title
+    validations:
+      required: true
+  - type: input
+    id: venue
+    attributes:
+      label: Venue & year
+      placeholder: "e.g. NeurIPS 2023"
+    validations:
+      required: true
+  - type: input
+    id: paper
+    attributes:
+      label: Paper / main URL
+      placeholder: "https://arxiv.org/abs/..."
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Code URL (optional)
+      placeholder: "https://github.com/..."
+    validations:
+      required: false
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which section does it belong in?
+      options:
+        - "1 · Foundations & Neural Coding"
+        - "2 · Neuron Models"
+        - "3 · Training Methods"
+        - "4 · Architectures"
+        - "5 · Spiking Large Models & LLMs"
+        - "6 · Neuromorphic Hardware"
+        - "7 · Applications"
+        - "8 · Energy, Robustness & Security"
+        - "9 · Theory & Neuroscience"
+        - "10 · Datasets & Benchmarks"
+        - "11 · Software & Frameworks"
+        - "12 · Model Zoo & Community"
+        - "13 · Research Groups & Labs"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters (one line)
+      description: The one-line note that would appear under the entry
+    validations:
+      required: false

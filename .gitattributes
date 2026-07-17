@@ -1,0 +1,12 @@
+# Normalize line endings — store & check out LF everywhere, deterministically.
+# Overrides each contributor's local core.autocrlf so the READMEs never
+# churn into whole-file CRLF diffs.
+* text=auto eol=lf
+*.md  text eol=lf
+*.svg text eol=lf
+
+# Raster/binary assets (add more as the repo grows)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary

@@ -18,7 +18,7 @@
 
 <p><b>🌐 English</b> &nbsp;·&nbsp; <a href="README.zh-CN.md">🇨🇳 中文</a></p>
 
-<p>📄 <b>350+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>45</b> seminal works &nbsp;·&nbsp; 🏛️ <b>40+</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
+<p>📄 <b>330+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>47</b> seminal works &nbsp;·&nbsp; 🏛️ <b>38</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
 
 <p><b>Jump to</b> &nbsp;
 <a href="#-start-here">🏆 Start Here</a> ·
@@ -48,7 +48,7 @@ Three consequences make SNNs compelling:
 
 The central difficulty is that a spike is a **step function — non-differentiable** — so ordinary backpropagation does not directly apply. The whole field, in a sense, is a set of answers to *"how do we train these things?"* — which is why the [Training Methods](#3--training-methods) section is the heart of this list.
 
-> This is an **awesome-style hub for the whole SNN field** — papers, models, hardware, datasets, tools, and research groups. Each entry carries a one-line, bilingual "why it matters" note so you can navigate without drowning.
+> This is an **awesome-style hub for the whole SNN field** — papers, models, hardware, datasets, tools, and research groups. Each entry carries a one-line "why it matters" note (English here; 中文 in the [Chinese edition](README.zh-CN.md)) so you can navigate without drowning.
 
 ---
 
@@ -78,8 +78,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <details open>
 <summary><b>Changelog</b> — newest first (click to collapse)</summary>
 
-- **2026-07** — 🎉 **Launched the Hub.** 350+ bilingual entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
-- **2026-07** — 🎨 **Visual overhaul.** SVG banner, per-Part illustrations, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
+- **2026-07** — 🎉 **Launched the Hub.** 330+ entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
+- **2026-07** — 🎨 **Visual overhaul.** SVG banner, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
 - **2026-07** — 📚 **Coverage push.** Added SpikingBrain, Sorbet, SpikeCLIP, Spike2Former, SDiT; Darwin3, Intel Hala Point, IBM NorthPole, Lynxi / BrainChip / Innatera / Xylo / GrAI; plus foundational works (Mead 1990, Missing Memristor 2008, Tempotron 2006) and frameworks (SPAIC, SNNAX, BrainPy, CARLsim…).
 
 > New paper / model / chip / dataset / tool? [Open a PR](#-contributing) and add a line here.
@@ -156,7 +156,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Enables exact backprop through precise spike times using an alpha-shaped synaptic response.
 - Temporal-Coded Deep Spiking Neural Network with Easy Training and Robust Performance (**AAAI 2021**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/17329)\]
   > Argues non-leaky single-spike temporal coding is best for directly-trainable, robust deep SNNs.
-- DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2021**). \[[paper](https://arxiv.org/abs/2008.03658)\]
+- DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/2008.03658)\]
   > Feeds analog pixels directly and learns leak/threshold end-to-end, popularizing direct input encoding.
 - Supervised Learning Based on Temporal Coding in Spiking Neural Networks (**IEEE TNNLS 2018**). \[[paper](https://doi.org/10.1109/TNNLS.2017.2726060)\]
   > Mostafa's exact gradient descent on the *time* of the first spike — a foundational temporal-coding training method.
@@ -319,6 +319,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Iteratively prunes timesteps during training, driving SNNs toward single-timestep inference.
 - Constructing Deep SNNs from ANNs with Knowledge Distillation (**CVPR 2023**). \[[paper](https://arxiv.org/abs/2304.05627)\]
   > Uses an ANN teacher to distill feature/response knowledge into an SNN student, avoiding costly from-scratch training.
+
 > Also relevant: several low-timestep / low-memory training methods double as efficiency techniques — see **TET**, **SLTT**, **DSR** in [3.2](#32-surrogate-gradient--direct-training) and **DIET-SNN** in [Neural Coding](#1--foundations--neural-coding).
 
 ---
@@ -459,7 +460,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 - Neuromorphic Electronic Systems (**Proceedings of the IEEE 1990**) 🧠. \[[paper](https://doi.org/10.1109/5.58356)\]
   > Carver Mead's founding manifesto — analog VLSI that mimics neural computation. The paper that named the field.
 - A Silicon Neuron (**Nature 1991**) 🧠. \[[paper](https://www.nature.com/articles/354515a0)\]
-  > Mahowald & Mead's analog VLSI neuron reproducing real spiking dynamics — the first silicon neuron.
+  > Mahowald & Douglas's analog VLSI neuron reproducing real spiking dynamics — the first silicon neuron.
 - Point-to-Point Connectivity Between Neuromorphic Chips Using Address Events (**IEEE TCAS-II 2000**). \[[paper](https://doi.org/10.1109/82.842110)\]
   > Boahen formalizes Address-Event Representation (AER) — the spike-as-packet protocol every neuromorphic chip now uses.
 
@@ -794,7 +795,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 **Deep-SNN Training (PyTorch / JAX)**
 
-| Library | What it's for | Ref |
+| Library | What it's for | Links |
 |---|---|---|
 | **[SpikingJelly](https://github.com/fangwei123456/spikingjelly)** | PyTorch full-stack SNN framework (data → train → deploy), fused CUDA neurons; de-facto platform | [paper](https://www.science.org/doi/10.1126/sciadv.adi1480) |
 | **[snnTorch](https://github.com/jeshraghian/snntorch)** | Spiking neurons as recurrent units in PyTorch; superb tutorials | [paper](https://arxiv.org/abs/2109.12894) |
@@ -809,7 +810,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 **Computational-Neuroscience Simulators**
 
-| Library | What it's for | Ref |
+| Library | What it's for | Links |
 |---|---|---|
 | **[Nengo](https://github.com/nengo/nengo)** / **[NengoDL](https://github.com/nengo/nengo-dl)** | Large-scale functional brain models (NEF); backend-agnostic, TF-trainable | [paper](https://www.frontiersin.org/articles/10.3389/fninf.2013.00048/full) |
 | **[Brian2](https://github.com/brian-team/brian2)** | Equation-based simulator with runtime code generation | [paper](https://elifesciences.org/articles/47314) |
@@ -822,7 +823,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 **Neuromorphic-Hardware Deployment & Data Tooling**
 
-| Tool | What it's for | Ref |
+| Tool | What it's for | Links |
 |---|---|---|
 | **[Lava](https://github.com/lava-nc/lava)** | Intel's framework to develop/deploy across CPUs & Loihi | — |
 | **[Rockpool](https://github.com/synsense/rockpool)** / **[Sinabs](https://github.com/synsense/sinabs)** | SynSense libs to train & deploy onto DynapCNN / Speck | — |
@@ -984,11 +985,11 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ## 🤝 Contributing
 
-Contributions are very welcome — this is a **living** list.
+Contributions are very welcome — this is a **living** list. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.
 
 - **Add a paper:** append to the right section using
   `- Paper Title (**Venue Year**). \[[paper](url)\]\[[code](url)\]` and a one-line
-  bilingual `> EN: … 中文：…` note.
+  English `> …` note, then mirror the entry with a Chinese note in [README.zh-CN.md](README.zh-CN.md).
 - **Add a dataset/tool/chip**, fix a wrong venue, or improve an explanation.
 - Please keep entries in rough importance/chronological order and open a PR with a short description. For large additions, open an issue first.
 
