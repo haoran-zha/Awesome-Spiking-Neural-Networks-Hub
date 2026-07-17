@@ -25,7 +25,8 @@ jobs:
           # checked rather than skipped. Genuine 404s still fail the job.
           # Excluded (uncheckable from CI, NOT dead): dynamic badges
           # (star-history, stargazers); lynxi.com (refuses CI connections);
-          # ojs.aaai.org (HTTP/2 protocol error on GitHub runners).
+          # ojs.aaai.org (HTTP/2 protocol error on GitHub runners);
+          # openaccess.thecvf.com (intermittently times out from datacenter IPs).
           args: >-
             --no-progress
             --max-concurrency 4
@@ -36,6 +37,7 @@ jobs:
             --exclude '^https://api\.star-history\.com/'
             --exclude '^https://www\.lynxi\.com/'
             --exclude '^https://ojs\.aaai\.org/'
+            --exclude '^https://openaccess\.thecvf\.com/'
             --exclude '^https://github\.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers$'
             README.md README.zh-CN.md CONTRIBUTING.md .github/PULL_REQUEST_TEMPLATE.md
           fail: true
