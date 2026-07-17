@@ -20,20 +20,22 @@ jobs:
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          # Use a browser UA + retries so bot-protected academic hosts (AAAI,
-          # ScienceDirect, IEEE, doi) are still checked rather than skipped;
-          # accept their rate-limit / bot codes. Genuine 404s still fail the job.
-          # Excluded: dynamic badges (star-history, stargazers) and lynxi.com,
-          # which refuses connections from CI runners.
+          # Browser UA + retries + broad accepted codes so bot-protected academic
+          # hosts (ScienceDirect 403, IEEE/doi 202, IOPscience 302) are still
+          # checked rather than skipped. Genuine 404s still fail the job.
+          # Excluded (uncheckable from CI, NOT dead): dynamic badges
+          # (star-history, stargazers); lynxi.com (refuses CI connections);
+          # ojs.aaai.org (HTTP/2 protocol error on GitHub runners).
           args: >-
             --no-progress
             --max-concurrency 4
             --timeout 30
             --max-retries 3
             --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-            --accept 200,202,206,403,429
+            --accept 200,202,206,302,403,429
             --exclude '^https://api\.star-history\.com/'
             --exclude '^https://www\.lynxi\.com/'
+            --exclude '^https://ojs\.aaai\.org/'
             --exclude '^https://github\.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers$'
             README.md README.zh-CN.md CONTRIBUTING.md .github/PULL_REQUEST_TEMPLATE.md
           fail: true
