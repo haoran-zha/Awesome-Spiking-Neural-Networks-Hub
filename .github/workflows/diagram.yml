@@ -1,0 +1,39 @@
+name: diagram
+
+# Re-render the research-ecosystem knowledge graph whenever its D2 source
+# changes, and commit the resulting SVG back. Edit assets/ecosystem.d2 — the
+# SVG is generated, never hand-edited.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/ecosystem.d2'
+      - '.github/workflows/diagram.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install D2
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      - name: Render ecosystem graph
+        run: d2 --theme 0 --pad 20 assets/ecosystem.d2 assets/ecosystem.svg
+
+      - name: Commit updated SVG
+        run: |
+          if [ -n "$(git status --porcelain assets/ecosystem.svg)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add assets/ecosystem.svg
+            git commit -m "Auto-render ecosystem graph [skip ci]"
+            git push
+          else
+            echo "ecosystem.svg already up to date"
+          fi

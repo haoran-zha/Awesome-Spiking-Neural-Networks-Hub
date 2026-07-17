@@ -1002,37 +1002,11 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 #### Research Ecosystem Knowledge Graph
 
-Solid arrows mean **team → flagship output**; dotted arrows are documented **spin-off or academic lineage**. A shared output with multiple incoming arrows denotes a concrete collaboration. The graph is representative rather than exhaustive—topic overlap alone is not presented as a formal relationship.
+A map of ~40 active SNN / neuromorphic groups by region, each tagged with its **latest work (2024–2026)**. **Blue** = academic lab, **amber** = company; a **solid** arrow marks a collaboration or shared output, a **dashed** arrow a spin-off or academic lineage. Representative, not exhaustive. _Auto-rendered from [`assets/ecosystem.d2`](assets/ecosystem.d2) — edit that source, not the image._
 
-```mermaid
-flowchart LR
-  CASIA["CASIA · BICLab"] --> SPB["SpikingBrain<br/>SpikingBrain2.0"]
-  CASIA --> SDT["Spike-driven Transformer"]
-  PKUT["Peking University<br/>Yonghong Tian group"] --> SDT
-  PKUT --> SJ["SpikingJelly"]
-  PKUY["Peking University<br/>Zhaofei Yu group"] --> SJ
-  UESTC["UESTC<br/>Malu Zhang group"] --> NDSA["Neural Dynamics Attention<br/>TP-Spikformer"]
-  WU["Jibin Wu<br/>NUS → PolyU MIND Lab"] --> PIT["PIT · tandem learning"]
-
-  EPFL["EPFL · LCN<br/>Gerstner"] --> SRM["SRM · STDP theory"]
-  GRAZ["TU Graz<br/>Maass"] --> EPROP["LSM · LSNN · e-prop"]
-  FMI["FMI Basel<br/>Zenke"] --> SG["surrogate gradients"]
-  PURDUE["Purdue · NRL<br/>Kaushik Roy"] -. PhD lineage .-> USC["USC · Intelligent Computing Lab<br/>Panda"]
-  USC --> PST["BNTT · STAtten"]
-
-  INI["UZH/ETH · INI"] --> DVS["DVS · DYNAP"]
-  INI -. spin-off .-> SYN["SynSense"]
-  THU["Tsinghua · CBICR"] --> TIAN["Tianjic"]
-  THU -. spin-off lineage .-> LYNXI["Lynxi"]
-  DELFT["TU Delft"] --> ODIN["ODIN · ReckOn"]
-  DELFT -. spin-off .-> INN["Innatera"]
-  MANC["Manchester"] --> SPIN["SpiNNaker"]
-  INTEL["Intel Labs"] --> LOIHI["Loihi · Lava"]
-  IBM["IBM Research"] --> TN["TrueNorth · NorthPole"]
-
-  UCSD["UC San Diego<br/>Cauwenberghs"] --> BIO["neuromorphic biomedical systems"]
-  WSU["Western Sydney · ICNS<br/>Cohen"] --> EVENT["event sensing · space systems"]
-```
+<div align="center">
+  <a href="assets/ecosystem.svg"><img src="assets/ecosystem.svg" alt="SNN research ecosystem: ~40 teams grouped by region with their latest 2024–2026 work, plus collaborations and spin-offs" width="100%"></a>
+</div>
 
 ---
 

@@ -1002,37 +1002,11 @@
 
 #### 研究生态知识图谱
 
-实线表示**团队 → 代表成果**，虚线表示已有资料支撑的**孵化或学术传承**；同一成果有多个入边，表示明确的合作关系。图谱只选取有代表性的显式关系，并不穷举；仅有研究主题重合时不画成正式关系。
+按地区汇总约 40 个活跃的 SNN / 神经形态团队，每个都标注其**最新工作（2024–2026）**。**蓝色** = 学术团队，**琥珀色** = 公司；**实线**表示合作或共同成果，**虚线**表示孵化或学术传承。图谱有代表性但不穷举。_由 [`assets/ecosystem.d2`](assets/ecosystem.d2) 自动渲染（英文标注）——请修改该源文件，而非图片本身。_
 
-```mermaid
-flowchart LR
-  CASIA["中科院自动化所 · BICLab"] --> SPB["SpikingBrain<br/>SpikingBrain2.0"]
-  CASIA --> SDT["Spike-driven Transformer"]
-  PKUT["北京大学<br/>田永鸿团队"] --> SDT
-  PKUT --> SJ["SpikingJelly"]
-  PKUY["北京大学<br/>余肇飞团队"] --> SJ
-  UESTC["电子科技大学<br/>张马路团队"] --> NDSA["神经动力学注意力<br/>TP-Spikformer"]
-  WU["Jibin Wu<br/>新加坡国立 → 香港理工 MIND Lab"] --> PIT["PIT · 串联学习"]
-
-  EPFL["洛桑联邦理工 · LCN<br/>Gerstner"] --> SRM["SRM · STDP 理论"]
-  GRAZ["格拉茨工大<br/>Maass"] --> EPROP["LSM · LSNN · e-prop"]
-  FMI["巴塞尔 FMI<br/>Zenke"] --> SG["代理梯度"]
-  PURDUE["普渡大学 · NRL<br/>Kaushik Roy"] -. 博士学术传承 .-> USC["南加州大学 · Intelligent Computing Lab<br/>Panda"]
-  USC --> PST["BNTT · STAtten"]
-
-  INI["苏黎世大学/ETH · INI"] --> DVS["DVS · DYNAP"]
-  INI -. 孵化 .-> SYN["SynSense 时识科技"]
-  THU["清华大学 · CBICR"] --> TIAN["天机 Tianjic"]
-  THU -. 孵化传承 .-> LYNXI["灵汐科技"]
-  DELFT["代尔夫特理工"] --> ODIN["ODIN · ReckOn"]
-  DELFT -. 孵化 .-> INN["Innatera"]
-  MANC["曼彻斯特大学"] --> SPIN["SpiNNaker"]
-  INTEL["Intel Labs"] --> LOIHI["Loihi · Lava"]
-  IBM["IBM Research"] --> TN["TrueNorth · NorthPole"]
-
-  UCSD["加州大学圣迭戈<br/>Cauwenberghs"] --> BIO["神经形态生物医学系统"]
-  WSU["西悉尼大学 · ICNS<br/>Cohen"] --> EVENT["事件传感 · 空间系统"]
-```
+<div align="center">
+  <a href="assets/ecosystem.svg"><img src="assets/ecosystem.svg" alt="SNN 研究生态：约 40 个团队按地区分组，标注其 2024–2026 最新工作及合作、孵化关系" width="100%"></a>
+</div>
 
 ---
 
