@@ -78,7 +78,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <details open>
 <summary><b>Changelog</b> — newest first (click to collapse)</summary>
 
-- **2026-07** — 🧭 **Audit & ecosystem update.** Fixed dead/outdated links and a moved lab affiliation; added six 2026 works, four major labs, and a relationship-aware research ecosystem graph.
+- **2026-07** — 🧭 **Audit & ecosystem update.** Fixed dead/outdated links and a moved lab affiliation; added six 2026 works, four major labs, and per-lab **latest-work (2024–2026)** tags across §13.
 - **2026-07** — 🎉 **Launched the Hub.** 340+ entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
 - **2026-07** — 🎨 **Visual overhaul.** SVG banner, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
 - **2026-07** — 📚 **Coverage push.** Added SpikingBrain, Sorbet, SpikeCLIP, Spike2Former, SDiT; Darwin3, Intel Hala Point, IBM NorthPole, Lynxi / BrainChip / Innatera / Xylo / GrAI; plus foundational works (Mead 1990, Missing Memristor 2008, Tempotron 2006) and frameworks (SPAIC, SNNAX, BrainPy, CARLsim…).
@@ -899,28 +899,28 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ### 13 · Research Groups & Labs
 
-> **In one breath:** who drives the field. A curated, non-ranking map of active SNN / neuromorphic labs — their focus, signature contributions, and homepages — so you know whose papers and code to follow. Coverage favors groups with identifiable SNN or neuromorphic outputs and remains open to additions.
+> **In one breath:** who drives the field. A curated, non-ranking map of active SNN / neuromorphic labs — their focus, signature contributions, **latest work (2024–2026)**, and homepages — so you know whose papers and code to follow. Coverage favors groups with identifiable SNN or neuromorphic outputs and remains open to additions.
 
 #### China
 
 - **Li Guoqi (李国齐)** — Institute of Automation, CAS (CASIA) — brain-inspired computing, spiking large models, spike-driven Transformers. \[[homepage](https://casialiguoqi.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=qCfE--MAAAAJ)\]\[[github](https://github.com/BICLab)\]
-  > CASIA's core SNN PI (institute directed by Bo Xu 徐波), heading the BICLab group behind the Spike-driven Transformer (NeurIPS 2023) and the SpikingBrain-7B/76B large-model series.
+  > CASIA's core SNN PI (institute directed by Bo Xu 徐波), heading the BICLab group behind the Spike-driven Transformer (NeurIPS 2023) and the SpikingBrain-7B/76B large-model series. **Latest:** SpikingBrain 7B/76B spiking LLMs (arXiv 2025); Spike2Former segmentation (AAAI 2025).
 - **Shi Luping (施路平)** — Tsinghua University (CBICR) — brain-inspired computing, hybrid neuromorphic chips, AGI. \[[homepage](https://faculty.dpi.tsinghua.edu.cn/shiluping/en/index.htm)\]
-  > Founder-director of Tsinghua's Center for Brain-Inspired Computing Research; led the hybrid **Tianjic 天机** chip (Nature 2019 cover) unifying SNN and ANN on one substrate.
+  > Founder-director of Tsinghua's Center for Brain-Inspired Computing Research; led the hybrid **Tianjic 天机** chip (Nature 2019 cover) unifying SNN and ANN on one substrate. **Latest:** CBICR perspective on general-purpose brain-inspired computing (Nature Electronics 2024).
 - **Huang Tiejun (黄铁军)** — Peking University / BAAI — spike camera, brain-inspired vision, retina-like sensors. \[[homepage](https://cfcs.pku.edu.cn/english/people/faculty/tiejunhuang/index.htm)\]\[[scholar](https://scholar.google.com/citations?user=knvEK4AAAAAJ)\]\[[github](https://github.com/spikecv/spikecv)\]
-  > PKU professor and BAAI Director; proposed the spike (Vidar) vision model and ultra-high-speed spike cameras, and leads the open-source SpikeCV platform.
+  > PKU professor and BAAI Director; proposed the spike (Vidar) vision model and ultra-high-speed spike cameras, and leads the open-source SpikeCV platform. **Latest:** low-light scene reconstruction from spike-camera streams (2025).
 - **Tian Yonghong (田永鸿)** — Peking University — neuromorphic vision, spike camera, SpikingJelly. \[[homepage](https://www.pkuml.org/staff/yhtian.html)\]\[[scholar](https://scholar.google.com/citations?user=fn6hJx0AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
-  > Boya Distinguished Professor and IEEE Fellow whose group develops the widely used **SpikingJelly** framework and spike-camera high-speed reconstruction.
+  > Boya Distinguished Professor and IEEE Fellow whose group develops the widely used **SpikingJelly** framework and spike-camera high-speed reconstruction. **Latest:** efficient train-from-scratch time-to-first-spike SNNs (2024).
 - **Yu Zhaofei (余肇飞)** — Peking University — SNN learning, neural coding, SpikingJelly. \[[homepage](https://www.ai.pku.edu.cn/en/info/1459/2031.htm)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
-  > Corresponding author of SpikingJelly, known for PLIF neurons and SEW-ResNet for training very deep spiking networks.
+  > Corresponding author of SpikingJelly, known for PLIF neurons and SEW-ResNet for training very deep spiking networks. **Latest:** efficient high-speed spike-camera reconstruction (AAAI 2025).
 - **Zeng Yi (曾毅)** — Institute of Automation, CAS (CASIA) — brain-inspired cognitive intelligence, brain simulation, AI ethics. \[[homepage](https://www.brain-cog.network/)\]\[[github](https://github.com/BrainCog-X/Brain-Cog)\]
-  > Leads CASIA's Brain-inspired Cognitive Intelligence Lab and the **BrainCog** engine for brain-inspired AI and multi-scale brain simulation.
+  > Leads CASIA's Brain-inspired Cognitive Intelligence Lab and the **BrainCog** engine for brain-inspired AI and multi-scale brain simulation. **Latest:** STEP unified spiking-transformer evaluation platform (2025).
 - **Pan Gang (潘纲)** — Zhejiang University — neuromorphic chips, brain-machine interfaces. \[[homepage](https://person.zju.edu.cn/en/gpan)\]\[[scholar](https://scholar.google.com/citations?user=NWqnXNEAAAAJ)\]
-  > Director of ZJU's State Key Lab of Brain-Machine Intelligence; co-developed the **Darwin 达尔文** chip series (Darwin3) and Darwin neuromorphic computers.
+  > Director of ZJU's State Key Lab of Brain-Machine Intelligence; co-developed the **Darwin 达尔文** chip series (Darwin3) and Darwin neuromorphic computers. **Latest:** DarwinWafer wafer-scale chip, ~0.15 B neurons/wafer (2025).
 - **Zhang Youhui (张悠慧)** — Tsinghua University — neuromorphic completeness, brain-inspired computing systems & compilers. \[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > Proposed "neuromorphic completeness" and a system/software hierarchy for brain-inspired computing (Nature 2020).
 - **Zhang Malu (张马路) / Qu Hong (瞿宏)** — UESTC — SNN learning algorithms, temporal coding, ANN-to-SNN conversion. \[[team](https://new1.uestc.edu.cn/?Id=85255&n=UestcNews.Front.DocumentV2.ArticlePage)\]
-  > An active SNN-algorithm group publishing at AAAI/ICLR/TNNLS on efficient, quantized and temporally-coded spiking networks.
+  > An active SNN-algorithm group publishing at AAAI/ICLR/TNNLS on efficient, quantized and temporally-coded spiking networks. **Latest:** Sub-bit SNNs & Saccadic-attention spiking ViT (ICLR 2025).
 - **Liu Ming (刘明)** — Institute of Microelectronics, CAS (IMECAS) — memristor/RRAM devices, artificial synapses, compute-in-memory. \[[homepage](http://english.ime.cas.cn/)\]
   > CAS academician leading RRAM/memristor research for artificial synapses and in-memory hardware underpinning neuromorphic systems.
 - **Lynxi Technologies (灵汐科技)** — Beijing (Tsinghua CBICR lineage) — brain-inspired neuromorphic chips, hybrid SNN+DNN. \[[homepage](https://www.lynxi.com/)\]\[[lineage](https://www.tsinghua.edu.cn/info/1177/105980.htm)\]
@@ -931,82 +931,74 @@ The central difficulty is that a spike is a **step function — non-differentiab
 #### International — Americas
 
 - **Kaushik Roy** — Purdue University (Nanoelectronics Research Lab) — energy-efficient neuromorphic, ANN-to-SNN conversion, in-memory computing, robustness. \[[homepage](https://engineering.purdue.edu/NRL/Group)\]\[[scholar](https://scholar.google.com/citations?user=to4P8KgAAAAJ)\]
-  > A highly cited researcher in neuromorphic/ML hardware — ANN-to-SNN conversion, spike-based backprop, and spintronic/in-memory devices.
+  > A highly cited researcher in neuromorphic/ML hardware — ANN-to-SNN conversion, spike-based backprop, and spintronic/in-memory devices. **Latest:** SpiDR compute-in-memory SNN accelerator (2025); TSkips temporal-delay SNNs (TMLR 2025).
 - **Mike Davies** — Intel Labs (Neuromorphic Computing Lab) — Loihi chips, Lava software. \[[homepage](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)\]\[[github](https://github.com/lava-nc)\]
-  > Director of Intel's Neuromorphic Computing Lab and INRC, leading Loihi / Loihi 2 and the open-source Lava framework.
+  > Director of Intel's Neuromorphic Computing Lab and INRC, leading Loihi / Loihi 2 and the open-source Lava framework. **Latest:** Loihi 2 online continual learning, ~6,600× lower energy vs GPU (2025).
 - **Dharmendra Modha** — IBM Research — brain-inspired chips, digital neuromorphic architectures. \[[homepage](https://modha.org/)\]
-  > IBM Fellow and Chief Scientist for Brain-inspired Computing, architect of **TrueNorth** (2014) and **NorthPole** (2023).
+  > IBM Fellow and Chief Scientist for Brain-inspired Computing, architect of **TrueNorth** (2014) and **NorthPole** (2023). **Latest:** NorthPole 3B-param LLM inference at sub-1 ms/token (HPEC 2024).
 - **Kwabena Boahen** — Stanford University (Brains in Silicon) — analog neuromorphic hardware, dendritic computing. \[[homepage](https://bioengineering.stanford.edu/people/kwabena-boahen)\]
-  > Built **Neurogrid**, a mixed-analog platform emulating a million neurons in real time; now pursues dendrite-inspired computing.
+  > Built **Neurogrid**, a mixed-analog platform emulating a million neurons in real time; now pursues dendrite-inspired computing. **Latest:** dendrocentric FeFET "nanodendrite" device for spatiotemporal sequences (IEDM 2023).
 - **Gert Cauwenberghs** — UC San Diego (Integrated Systems Neuroengineering Lab) — micropower VLSI, neuron–silicon interfaces, event-driven biomedical systems. \[[homepage](https://jacobsschool.ucsd.edu/node/3271)\]
-  > A neuromorphic-engineering pioneer spanning adaptive silicon neurons, brain–machine interfaces, and large-scale trainable neuromorphic platforms.
+  > A neuromorphic-engineering pioneer spanning adaptive silicon neurons, brain–machine interfaces, and large-scale trainable neuromorphic platforms. **Latest:** HiAER-Spike, a 160 M-neuron reconfigurable event-driven system (2025).
 - **Priyadarshini Panda** — University of Southern California (Intelligent Computing Lab; formerly Yale) — SNN training, hardware–algorithm co-design, robustness. \[[homepage](https://sites.usc.edu/intelligentcomputinglab/)\]\[[lineage](https://sites.usc.edu/intelligentcomputinglab/members/principal-investigator/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Panda)\]
-  > Known for BNTT, neural architecture search for SNNs, and adversarial robustness of spiking networks.
+  > Known for BNTT, neural architecture search for SNNs, and adversarial robustness of spiking networks. **Latest:** STAtten spatial-temporal spiking attention (CVPR 2025).
 - **Jason Eshraghian** — UC Santa Cruz (Neuromorphic Computing Group) — snnTorch, spiking LLMs, memristive hardware. \[[homepage](https://ncg.ucsc.edu/)\]\[[github](https://github.com/jeshraghian/snntorch)\]
-  > Developer of the widely used **snnTorch** library and co-author of SpikeGPT.
+  > Developer of the widely used **snnTorch** library and co-author of SpikeGPT. **Latest:** neuromorphic spike-based LLM framework (Nat. Sci. Review 2025).
 - **Chris Eliasmith** — University of Waterloo (Centre for Theoretical Neuroscience) — Neural Engineering Framework, Nengo. \[[homepage](https://uwaterloo.ca/centre-for-theoretical-neuroscience/)\]\[[github](https://github.com/nengo)\]
-  > Creator of the NEF and **Nengo**; built Spaun, presented in 2012 as the then-largest functional spiking brain model; co-founded Applied Brain Research.
+  > Creator of the NEF and **Nengo**; built Spaun, presented in 2012 as the then-largest functional spiking brain model; co-founded Applied Brain Research. **Latest:** NEF spiking controller coordinating arm reaching + locomotion (2026).
 - **Catherine Schuman** — University of Tennessee, Knoxville (TENNLab) — neuromorphic computing, evolutionary SNN optimization. \[[homepage](https://catherineschuman.com/)\]\[[github](https://github.com/TENNLab-UTK)\]
-  > Known for evolutionary optimization (EONS) of spiking networks and the 2022 Nature roadmap on neuromorphic computing.
+  > Known for evolutionary optimization (EONS) of spiking networks and the 2022 Nature roadmap on neuromorphic computing. **Latest:** lead author on "Neuromorphic computing at scale" (Nature 2025).
 
 #### International — Europe
 
 - **Giacomo Indiveri** — Institute of Neuroinformatics, UZH & ETH Zurich — mixed-signal neuromorphic circuits, DYNAP processors. \[[homepage](https://www.ini.uzh.ch/en)\]\[[scholar](https://scholar.google.com/citations?user=kdHjCAMAAAAJ)\]
-  > Director of INI; pioneering subthreshold analog neuromorphic circuits and the DYNAP family of spiking processors.
+  > Director of INI; pioneering subthreshold analog neuromorphic circuits and the DYNAP family of spiking processors. **Latest:** mixed-signal on-chip feedback-control optimizer for SNNs (2026).
 - **Tobi Delbruck** — Institute of Neuroinformatics, UZH & ETH Zurich — event cameras (DVS), event-driven vision. \[[homepage](https://sensors.ini.ch/people/tobi-delbruck)\]\[[github](https://github.com/SensorsINI/jaer)\]
-  > Co-inventor of the Dynamic Vision Sensor (DVS) event camera and creator of the open-source jAER software.
+  > Co-inventor of the Dynamic Vision Sensor (DVS) event camera and creator of the open-source jAER software. **Latest:** physically realistic, efficient DVS pixel model (2025).
 - **Shih-Chii Liu** — Institute of Neuroinformatics, UZH & ETH Zurich — neuromorphic audio sensors, event-driven deep learning. \[[homepage](https://sensors.ini.ch/people/shih-chii-liu)\]\[[scholar](https://scholar.google.com/citations?user=XYkPvZUAAAAJ)\]
-  > Leads neuromorphic auditory sensing (silicon cochlea) and low-power event-driven deep networks.
+  > Leads neuromorphic auditory sensing (silicon cochlea) and low-power event-driven deep networks. **Latest:** lightweight on-device adaptation of speech-enhancement models (2026).
 - **Steve Furber** — University of Manchester — massively-parallel neuromorphic computing (SpiNNaker). \[[homepage](https://research.manchester.ac.uk/en/persons/steve.furber)\]\[[github](https://github.com/SpiNNakerManchester)\]
-  > ARM co-designer leading **SpiNNaker**, a million-core platform simulating spiking networks at biological real time.
+  > ARM co-designer leading **SpiNNaker**, a million-core platform simulating spiking networks at biological real time. **Latest:** SpiNNaker2 heterogeneous platform for real-time robotics (2026).
 - **Wulfram Gerstner** — EPFL (Laboratory of Computational Neuroscience) — spiking-neuron models, network dynamics, STDP and multi-factor plasticity. \[[homepage](https://lcnwww.epfl.ch/gerstner/)\]
-  > Co-author of the foundational *Spiking Neuron Models* textbook and a central theorist of the spike-response model and learning rules.
+  > Co-author of the foundational *Spiking Neuron Models* textbook and a central theorist of the spike-response model and learning rules. **Latest:** self-supervised local learning rules recovering data's hidden hierarchy (2026).
 - **Wolfgang Maass** — TU Graz — computational neuroscience theory, LSNN, e-prop. \[[homepage](http://www.igi.tugraz.at/maass/)\]\[[scholar](https://scholar.google.com/citations?user=2WpvdH0AAAAJ)\]\[[github](https://github.com/IGITUGraz)\]
-  > Foundational SNN theorist (with Robert Legenstein) — liquid state machines, LSNN, and the e-prop online learning rule.
+  > Foundational SNN theorist (with Robert Legenstein) — liquid state machines, LSNN, and the e-prop online learning rule. **Latest:** fast learning without synaptic plasticity in SNNs (Sci. Reports 2024).
 - **Friedemann Zenke** — Friedrich Miescher Institute, Basel — surrogate-gradient learning, spiking network theory. \[[homepage](https://zenkelab.org/)\]\[[scholar](https://scholar.google.com/citations?user=_IxvO8QAAAAJ)\]\[[github](https://github.com/fzenke/spytorch)\]
-  > Pioneer of surrogate-gradient training — author of SuperSpike and the widely taught SpyTorch tutorials.
+  > Pioneer of surrogate-gradient training — author of SuperSpike and the widely taught SpyTorch tutorials. **Latest:** prospective neurons for teaching-signal synchronization in deep nets (2025).
 - **Johannes Schemmel** — Heidelberg University (Electronic Vision(s)) — accelerated analog neuromorphic hardware (BrainScaleS). \[[homepage](https://www.kip.uni-heidelberg.de/vision/)\]\[[github](https://github.com/electronicvisions)\]
-  > Chief architect of the **BrainScaleS** analog/mixed-signal wafer-scale neuromorphic systems.
+  > Chief architect of the **BrainScaleS** analog/mixed-signal wafer-scale neuromorphic systems. **Latest:** BrainScaleS-2 multi-chip interconnect scaling analog substrates (2025).
 - **Timothée Masquelier** — CNRS / CerCo, Toulouse — STDP, rank-order coding, biologically plausible spiking vision. \[[homepage](https://cerco.cnrs.fr/pagesp/tim/home.htm)\]\[[scholar](https://scholar.google.com/citations?user=fkzUZ-oAAAAJ)\]
-  > CNRS Research Director (with Simon Thorpe) — STDP-based unsupervised feature learning and rank-order / temporal coding.
+  > CNRS Research Director (with Simon Thorpe) — STDP-based unsupervised feature learning and rank-order / temporal coding. **Latest:** DelRec — learning delays in recurrent SNNs (2025).
 - **Emre Neftci** — Forschungszentrum Jülich & RWTH Aachen — surrogate gradients, local learning, neuromorphic training. \[[homepage](https://www.fz-juelich.de/profile/neftci_e)\]\[[scholar](https://scholar.google.com/citations?user=yYT6jtkAAAAJ)\]\[[github](https://github.com/nmi-lab)\]
-  > Leader in surrogate-gradient and biologically plausible local learning; co-developed event-driven random backprop.
+  > Leader in surrogate-gradient and biologically plausible local learning; co-developed event-driven random backprop. **Latest:** sparse axonal/dendritic delays for competitive keyword-spotting SNNs (2026).
 - **Charlotte Frenkel** — TU Delft — efficient on-chip learning, digital neuromorphic chip design. \[[homepage](https://chfrenkel.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=Lf6_Zl0AAAAJ)\]\[[github](https://github.com/ChFrenkel)\]
-  > Designer of the open-source **ODIN** and **ReckOn** processors — sub-µW on-chip online learning via a hardware-friendly e-prop.
+  > Designer of the open-source **ODIN** and **ReckOn** processors — sub-µW on-chip online learning via a hardware-friendly e-prop. **Latest:** TESS spatially/temporally-local on-chip learning rule (2025).
 - **Chiara Bartolozzi** — Italian Institute of Technology (IIT), Genoa — event-driven perception, neuromorphic robotics (iCub). \[[homepage](https://edpr.iit.it/)\]\[[github](https://github.com/event-driven-robotics)\]
-  > Leads IIT's Event-Driven Perception for Robotics group; event-camera perception on the iCub humanoid.
+  > Leads IIT's Event-Driven Perception for Robotics group; event-camera perception on the iCub humanoid. **Latest:** spiking ring-attractor for proprioceptive joint-state estimation (2026).
 - **Sander Bohte** — CWI & University of Amsterdam — SNN learning, adaptive spiking neurons, efficient temporal coding. \[[homepage](https://homepages.cwi.nl/~sbohte/)\]\[[scholar](https://scholar.google.com/citations?user=zHlebkUAAAAJ)\]
-  > Author of the seminal **SpikeProp** algorithm and adaptive spiking neuron models for accurate few-spike deep SNNs.
+  > Author of the seminal **SpikeProp** algorithm and adaptive spiking neuron models for accurate few-spike deep SNNs. **Latest:** SpikingGamma — surrogate-gradient-free, temporally precise online training (2026).
 - **Thomas Nowotny** — University of Sussex — GPU-accelerated SNN simulation. \[[homepage](https://profiles.sussex.ac.uk/p206151-thomas-nowotny)\]\[[github](https://github.com/genn-team/genn)\]
-  > Leads development of **GeNN**, a widely used GPU-based spiking-network simulator (with James Knight).
+  > Leads development of **GeNN**, a widely used GPU-based spiking-network simulator (with James Knight). **Latest:** structural-plasticity framework for GPU-accelerated sparse SNNs (2025).
 - **Bipin Rajendran** — King's College London — neuromorphic hardware, in-memory computing, PCM synapses. \[[homepage](https://www.kcl.ac.uk/people/bipin-rajendran)\]\[[scholar](https://scholar.google.com/citations?user=QDEeC8EAAAAJ)\]
-  > Works on phase-change-memory synapses and in-memory computing for SNNs, with early PCM-based spiking supervised learning.
+  > Works on phase-change-memory synapses and in-memory computing for SNNs, with early PCM-based spiking supervised learning. **Latest:** neuromorphic wireless split computing with resonate-and-fire neurons (2025).
 
 #### International — Asia-Pacific
 
 - **Arindam Basu** — City University of Hong Kong — low-power neuromorphic hardware, edge spiking systems, in-memory computing. \[[homepage](https://scholars.cityu.edu.hk/en/persons/arinbasu/)\]\[[scholar](https://scholar.google.com/citations?user=Ton5pYMAAAAJ)\]
-  > Ultra-low-power neuromorphic circuits and edge spiking systems (e.g., in-memory spike detection); IEEE Fellow.
+  > Ultra-low-power neuromorphic circuits and edge spiking systems (e.g., in-memory spike detection); IEEE Fellow. **Latest:** NeuDW-CIM 0.8-pJ/SOP neuromorphic compute-in-memory macro (2026).
 - **Jibin Wu** — Hong Kong Polytechnic University (MIND Lab) — SNN learning, foundation models, speech and continual learning. \[[homepage](https://www.jibinwu.com/)\]
-  > Develops tandem/surrogate learning and spiking sequence models, bridging brain-inspired algorithms with speech and efficient foundation models.
+  > Develops tandem/surrogate learning and spiking sequence models, bridging brain-inspired algorithms with speech and efficient foundation models. **Latest:** Neuromorphic Sequential Arena benchmark & IML-Spikeformer speech (2025); SpikingBrain co-author.
 - **Gregory Cohen** — Western Sydney University (International Centre for Neuromorphic Systems) — event sensing, neuromorphic systems and space applications. \[[homepage](https://www.westernsydney.edu.au/icns/about/people/researchers/gregory-cohen)\]
-  > Directs ICNS, integrating event-based sensors, algorithms and hardware into end-to-end neuromorphic systems.
+  > Directs ICNS, integrating event-based sensors, algorithms and hardware into end-to-end neuromorphic systems. **Latest:** LAND — longitudinal analysis of neuromorphic datasets (2026).
 
 #### Companies & Neuromorphic Startups
 
 - **SynSense (时识科技)** — Zurich, Switzerland & Chengdu, China (INI/ETH spin-off) — ultra-low-power event-driven neuromorphic processors. \[[homepage](https://www.synsense.ai/)\]\[[lineage](https://services.ini.uzh.ch/admin/modules/uzh/spinoffs)\]\[[github](https://github.com/synsense)\]
-  > Co-founded by Giacomo Indiveri and Ning Qiao 乔宁; makes Speck, DYNAP-CNN, Xylo chips plus the open-source Rockpool/Sinabs toolchains.
+  > Co-founded by Giacomo Indiveri and Ning Qiao 乔宁; makes Speck, DYNAP-CNN, Xylo chips plus the open-source Rockpool/Sinabs toolchains. **Latest:** end-to-end SNN RFI-detection pipeline on Xylo hardware (2025).
 - **BrainChip** — Laguna Hills (USA) / Perth (Australia) — event-driven edge-AI neuromorphic processor with on-chip learning. \[[homepage](https://brainchip.com/)\]
   > Maker of the commercial **Akida** processor IP — event-based inference and on-chip incremental learning at the edge.
 - **Innatera** — Delft, Netherlands (TU Delft spin-off) — analog-mixed-signal spiking neural processor for the sensor edge. \[[homepage](https://www.innatera.com/)\]\[[lineage](https://www.innatera.com/about-us/)\]
   > Builds the Spiking Neural Processor (T1) and the Pulsar neuromorphic MCU for sub-mW always-on sensing.
-
-#### Research Ecosystem Knowledge Graph
-
-A map of ~40 active SNN / neuromorphic groups by region, each tagged with its **latest work (2024–2026)**. **Blue** = academic lab, **amber** = company; a **solid** arrow marks a collaboration or shared output, a **dashed** arrow a spin-off or academic lineage. Representative, not exhaustive. _Auto-rendered from [`assets/ecosystem.dot`](assets/ecosystem.dot) — edit that source, not the image._
-
-<div align="center">
-  <a href="assets/ecosystem.svg"><img src="assets/ecosystem.svg" alt="SNN research ecosystem: ~40 teams grouped by region with their latest 2024–2026 work, plus collaborations and spin-offs" width="100%"></a>
-</div>
 
 ---
 

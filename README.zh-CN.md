@@ -78,7 +78,7 @@
 <details open>
 <summary><b>更新日志</b> —— 最新在前（点击折叠）</summary>
 
-- **2026-07** —— 🧭 **审校与生态更新。** 修复失效/过期链接和一处已迁移的团队归属；新增 6 篇 2026 年工作、4 个重要实验室，以及标明关系类型的研究生态知识图谱。
+- **2026-07** —— 🧭 **审校与生态更新。** 修复失效/过期链接和一处已迁移的团队归属；新增 6 篇 2026 年工作、4 个重要实验室，并为 §13 各团队补充**近期成果（2024–2026）**标注。
 - **2026-07** —— 🎉 **知识库上线。** 6 大 Part、340+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
 - **2026-07** —— 🎨 **视觉改版。** SVG banner、"必读入门"表，并把数据集/框架/模型库转为表格。
 - **2026-07** —— 📚 **内容扩充。** 新增 SpikingBrain、Sorbet、SpikeCLIP、Spike2Former、SDiT；Darwin3、Intel Hala Point、IBM NorthPole、灵汐/BrainChip/Innatera/Xylo/GrAI；以及奠基工作（Mead 1990、Missing Memristor 2008、Tempotron 2006）与框架（SPAIC、SNNAX、BrainPy、CARLsim…）。
@@ -899,28 +899,28 @@
 
 ### 13 · 研究团队与实验室
 
-> **一句话：** 谁在推动这个领域。这是一张不作排名的活跃 SNN / 神经形态实验室地图——研究方向、代表贡献与主页，方便你追踪论文和代码。当前优先收录有明确 SNN 或神经形态成果的团队，并持续开放补充。
+> **一句话：** 谁在推动这个领域。这是一张不作排名的活跃 SNN / 神经形态实验室地图——研究方向、代表贡献、**近期成果（2024–2026）**与主页，方便你追踪论文和代码。当前优先收录有明确 SNN 或神经形态成果的团队，并持续开放补充。
 
 #### 中国
 
 - **李国齐** — 中科院自动化所（CASIA）— 类脑计算、脉冲大模型、脉冲驱动 Transformer。\[[homepage](https://casialiguoqi.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=qCfE--MAAAAJ)\]\[[github](https://github.com/BICLab)\]
-  > 自动化所核心脉冲神经网络负责人（所长徐波共同主导 SpikingBrain），带领 BICLab 提出脉冲驱动 Transformer（NeurIPS 2023）与 SpikingBrain-7B/76B 类脑大模型。
+  > 自动化所核心脉冲神经网络负责人（所长徐波共同主导 SpikingBrain），带领 BICLab 提出脉冲驱动 Transformer（NeurIPS 2023）与 SpikingBrain-7B/76B 类脑大模型。**近期：** SpikingBrain 7B/76B 脉冲大模型（arXiv 2025）；Spike2Former 分割（AAAI 2025）。
 - **施路平** — 清华大学（类脑计算研究中心 CBICR）— 类脑计算、异构神经形态芯片、AGI。\[[homepage](https://faculty.dpi.tsinghua.edu.cn/shiluping/en/index.htm)\]
-  > 清华类脑计算研究中心创始主任，主导 **天机 Tianjic** 芯（2019 年 Nature 封面），在同一芯片融合脉冲与人工神经网络。
+  > 清华类脑计算研究中心创始主任，主导 **天机 Tianjic** 芯（2019 年 Nature 封面），在同一芯片融合脉冲与人工神经网络。**近期：** CBICR 关于通用类脑计算的综述（Nature Electronics 2024）。
 - **黄铁军** — 北京大学 / 智源研究院（BAAI）— 脉冲相机、类脑视觉、视网膜式传感器。\[[homepage](https://cfcs.pku.edu.cn/english/people/faculty/tiejunhuang/index.htm)\]\[[scholar](https://scholar.google.com/citations?user=knvEK4AAAAAJ)\]\[[github](https://github.com/spikecv/spikecv)\]
-  > 北大教授、智源研究院院长，提出脉冲视觉模型（Vidar）与超高速脉冲相机，主导 SpikeCV 开源平台。
+  > 北大教授、智源研究院院长，提出脉冲视觉模型（Vidar）与超高速脉冲相机，主导 SpikeCV 开源平台。**近期：** 从脉冲相机流重建低光场景（2025）。
 - **田永鸿** — 北京大学 — 神经形态视觉、脉冲相机、SpikingJelly。\[[homepage](https://www.pkuml.org/staff/yhtian.html)\]\[[scholar](https://scholar.google.com/citations?user=fn6hJx0AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
-  > 北大博雅特聘教授、IEEE Fellow，主导广泛使用的 **SpikingJelly** 框架与脉冲相机高速重建。
+  > 北大博雅特聘教授、IEEE Fellow，主导广泛使用的 **SpikingJelly** 框架与脉冲相机高速重建。**近期：** 从零高效训练 time-to-first-spike 脉冲网络（2024）。
 - **余肇飞** — 北京大学 — SNN 学习、神经编码、SpikingJelly。\[[homepage](https://www.ai.pku.edu.cn/en/info/1459/2031.htm)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
-  > SpikingJelly 框架通讯作者，以 PLIF 神经元与 SEW-ResNet 深度脉冲网络训练著称。
+  > SpikingJelly 框架通讯作者，以 PLIF 神经元与 SEW-ResNet 深度脉冲网络训练著称。**近期：** 高效高速脉冲相机重建（AAAI 2025）。
 - **曾毅** — 中科院自动化所（CASIA）— 类脑认知智能、脑模拟、AI 伦理。\[[homepage](https://www.brain-cog.network/)\]\[[github](https://github.com/BrainCog-X/Brain-Cog)\]
-  > 领导自动化所类脑认知智能实验室，主导 **BrainCog** 类脑认知引擎，用脉冲网络支撑类脑 AI 与多尺度脑模拟。
+  > 领导自动化所类脑认知智能实验室，主导 **BrainCog** 类脑认知引擎，用脉冲网络支撑类脑 AI 与多尺度脑模拟。**近期：** STEP 统一脉冲 Transformer 评测平台（2025）。
 - **潘纲** — 浙江大学 — 神经形态芯片、脑机接口。\[[homepage](https://person.zju.edu.cn/en/gpan)\]\[[scholar](https://scholar.google.com/citations?user=NWqnXNEAAAAJ)\]
-  > 浙大脑机智能全国重点实验室主任，与之江实验室共研 **达尔文 Darwin** 系列类脑芯片（Darwin3）及"达尔文鼠/猴"类脑计算机。
+  > 浙大脑机智能全国重点实验室主任，与之江实验室共研 **达尔文 Darwin** 系列类脑芯片（Darwin3）及"达尔文鼠/猴"类脑计算机。**近期：** DarwinWafer 晶圆级芯片，约 1.5 亿神经元/晶圆（2025）。
 - **张悠慧** — 清华大学 — 神经形态完备性、类脑计算系统与编译。\[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > 提出"神经形态完备性"与类脑计算系统层次结构（2020 年 Nature）。
 - **张马路 / 瞿宏** — 电子科技大学 — SNN 学习算法、时间编码、ANN-SNN 转换。\[[team](https://new1.uestc.edu.cn/?Id=85255&n=UestcNews.Front.DocumentV2.ArticlePage)\]
-  > 活跃的 SNN 算法团队，聚焦高效、量化与时间编码脉冲网络（AAAI/ICLR/TNNLS）。
+  > 活跃的 SNN 算法团队，聚焦高效、量化与时间编码脉冲网络（AAAI/ICLR/TNNLS）。**近期：** Sub-bit 脉冲网络与扫视注意力脉冲 ViT（ICLR 2025）。
 - **刘明** — 中科院微电子所（IMECAS）— 忆阻器/RRAM 器件、人工突触、存算一体。\[[homepage](http://english.ime.cas.cn/)\]
   > 中科院院士，长期从事忆阻器/RRAM 研究，打造人工突触与存算一体硬件，支撑类脑与脉冲系统。
 - **灵汐科技** — 北京（源自清华 CBICR）— 类脑神经形态芯片、脉冲+深度异构。\[[homepage](https://www.lynxi.com/)\]\[[lineage](https://www.tsinghua.edu.cn/info/1177/105980.htm)\]
@@ -931,82 +931,74 @@
 #### 国际 — 美洲
 
 - **Kaushik Roy** — 普渡大学（Nanoelectronics Research Lab）— 高效神经形态、ANN-SNN 转换、存内计算、鲁棒性。\[[homepage](https://engineering.purdue.edu/NRL/Group)\]\[[scholar](https://scholar.google.com/citations?user=to4P8KgAAAAJ)\]
-  > 神经形态与机器学习硬件高被引学者，研究覆盖 ANN 转 SNN、脉冲反传和自旋/存内器件。
+  > 神经形态与机器学习硬件高被引学者，研究覆盖 ANN 转 SNN、脉冲反传和自旋/存内器件。**近期：** SpiDR 存内计算脉冲加速器（2025）；TSkips 时间延迟脉冲网络（TMLR 2025）。
 - **Mike Davies** — Intel Labs（神经形态计算实验室）— Loihi 芯片、Lava 软件。\[[homepage](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)\]\[[github](https://github.com/lava-nc)\]
-  > 英特尔神经形态计算实验室与 INRC 负责人，主导 Loihi/Loihi 2 与开源 Lava 框架。
+  > 英特尔神经形态计算实验室与 INRC 负责人，主导 Loihi/Loihi 2 与开源 Lava 框架。**近期：** Loihi 2 在线持续学习，能耗约为 GPU 的 1/6600（2025）。
 - **Dharmendra Modha** — IBM Research — 类脑芯片、数字神经形态架构。\[[homepage](https://modha.org/)\]
-  > IBM Fellow、类脑计算首席科学家，主导 **TrueNorth**（2014）与 **NorthPole**（2023）。
+  > IBM Fellow、类脑计算首席科学家，主导 **TrueNorth**（2014）与 **NorthPole**（2023）。**近期：** NorthPole 上 30 亿参数 LLM 推理，<1 ms/token（HPEC 2024）。
 - **Kwabena Boahen** — 斯坦福大学（Brains in Silicon）— 模拟神经形态硬件、树突计算。\[[homepage](https://bioengineering.stanford.edu/people/kwabena-boahen)\]
-  > 研制可实时模拟百万神经元的 **Neurogrid** 模拟平台，现研究树突启发计算。
+  > 研制可实时模拟百万神经元的 **Neurogrid** 模拟平台，现研究树突启发计算。**近期：** 面向时空脉冲序列的树突式 FeFET "纳米树突"器件（IEDM 2023）。
 - **Gert Cauwenberghs** — 加州大学圣迭戈分校（Integrated Systems Neuroengineering Lab）— 微功耗 VLSI、神经元—硅接口、事件驱动生物医学系统。\[[homepage](https://jacobsschool.ucsd.edu/node/3271)\]
-  > 神经形态工程先驱，研究跨越自适应硅神经元、脑机接口与大规模可训练神经形态平台。
+  > 神经形态工程先驱，研究跨越自适应硅神经元、脑机接口与大规模可训练神经形态平台。**近期：** HiAER-Spike，可重构事件驱动系统，达 1.6 亿神经元（2025）。
 - **Priyadarshini Panda** — 南加州大学（Intelligent Computing Lab；原耶鲁大学）— SNN 训练、软硬件协同设计、鲁棒性。\[[homepage](https://sites.usc.edu/intelligentcomputinglab/)\]\[[lineage](https://sites.usc.edu/intelligentcomputinglab/members/principal-investigator/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Panda)\]
-  > 以 BNTT 时序批归一化、脉冲网络架构搜索及对抗鲁棒性研究著称。
+  > 以 BNTT 时序批归一化、脉冲网络架构搜索及对抗鲁棒性研究著称。**近期：** STAtten 时空脉冲注意力（CVPR 2025）。
 - **Jason Eshraghian** — 加州大学圣克鲁兹（Neuromorphic Computing Group）— snnTorch、脉冲 LLM、忆阻硬件。\[[homepage](https://ncg.ucsc.edu/)\]\[[github](https://github.com/jeshraghian/snntorch)\]
-  > 广泛使用的 **snnTorch** 库作者，SpikeGPT 共同作者。
+  > 广泛使用的 **snnTorch** 库作者，SpikeGPT 共同作者。**近期：** 神经形态脉冲式 LLM 框架（Nat. Sci. Review 2025）。
 - **Chris Eliasmith** — 滑铁卢大学（理论神经科学中心）— 神经工程框架 NEF、Nengo。\[[homepage](https://uwaterloo.ca/centre-for-theoretical-neuroscience/)\]\[[github](https://github.com/nengo)\]
-  > 提出 NEF 与 **Nengo** 仿真器，构建 Spaun（2012 年发表时规模最大的功能性脉冲大脑模型），联合创立 Applied Brain Research。
+  > 提出 NEF 与 **Nengo** 仿真器，构建 Spaun（2012 年发表时规模最大的功能性脉冲大脑模型），联合创立 Applied Brain Research。**近期：** 协调手臂与运动控制的脉冲控制器（2026）。
 - **Catherine Schuman** — 田纳西大学（TENNLab）— 神经形态计算、脉冲网络进化优化。\[[homepage](https://catherineschuman.com/)\]\[[github](https://github.com/TENNLab-UTK)\]
-  > 以脉冲网络进化优化（EONS）及 2022 年 Nature 神经形态计算展望著称。
+  > 以脉冲网络进化优化（EONS）及 2022 年 Nature 神经形态计算展望著称。**近期：**"Neuromorphic computing at scale"综述第一作者（Nature 2025）。
 
 #### 国际 — 欧洲
 
 - **Giacomo Indiveri** — 苏黎世大学 & ETH（神经信息学研究所 INI）— 混合信号神经形态电路、DYNAP 处理器。\[[homepage](https://www.ini.uzh.ch/en)\]\[[scholar](https://scholar.google.com/citations?user=kdHjCAMAAAAJ)\]
-  > INI 所长，开创亚阈值模拟神经形态电路与 DYNAP 系列脉冲处理器。
+  > INI 所长，开创亚阈值模拟神经形态电路与 DYNAP 系列脉冲处理器。**近期：** 面向 SNN 的混合信号片上反馈控制优化器（2026）。
 - **Tobi Delbruck** — 苏黎世大学 & ETH（INI）— 事件相机（DVS）、事件驱动视觉。\[[homepage](https://sensors.ini.ch/people/tobi-delbruck)\]\[[github](https://github.com/SensorsINI/jaer)\]
-  > 动态视觉传感器（DVS）事件相机共同发明人，开源事件处理软件 jAER 作者。
+  > 动态视觉传感器（DVS）事件相机共同发明人，开源事件处理软件 jAER 作者。**近期：** 物理真实且高效的 DVS 像素模型（2025）。
 - **Shih-Chii Liu** — 苏黎世大学 & ETH（INI）— 神经形态听觉传感、事件驱动深度学习。\[[homepage](https://sensors.ini.ch/people/shih-chii-liu)\]\[[scholar](https://scholar.google.com/citations?user=XYkPvZUAAAAJ)\]
-  > 主导神经形态听觉传感（硅耳蜗）与低功耗事件驱动深度网络。
+  > 主导神经形态听觉传感（硅耳蜗）与低功耗事件驱动深度网络。**近期：** 语音增强模型在设备端的轻量化自适应（2026）。
 - **Steve Furber** — 曼彻斯特大学 — 大规模并行神经形态计算（SpiNNaker）。\[[homepage](https://research.manchester.ac.uk/en/persons/steve.furber)\]\[[github](https://github.com/SpiNNakerManchester)\]
-  > ARM 处理器共同设计者，主导百万核 **SpiNNaker** 类脑平台，可生物实时模拟脉冲网络。
+  > ARM 处理器共同设计者，主导百万核 **SpiNNaker** 类脑平台，可生物实时模拟脉冲网络。**近期：** 面向实时机器人的 SpiNNaker2 异构平台（2026）。
 - **Wulfram Gerstner** — 洛桑联邦理工（计算神经科学实验室 LCN）— 脉冲神经元模型、网络动力学、STDP 与多因子可塑性。\[[homepage](https://lcnwww.epfl.ch/gerstner/)\]
-  > 奠基教材 *Spiking Neuron Models* 合著者，也是脉冲响应模型与学习规则的核心理论学者。
+  > 奠基教材 *Spiking Neuron Models* 合著者，也是脉冲响应模型与学习规则的核心理论学者。**近期：** 恢复数据隐含层级结构的自监督局部学习规则（2026）。
 - **Wolfgang Maass** — 格拉茨技术大学（TU Graz）— 计算神经科学理论、LSNN、e-prop。\[[homepage](http://www.igi.tugraz.at/maass/)\]\[[scholar](https://scholar.google.com/citations?user=2WpvdH0AAAAJ)\]\[[github](https://github.com/IGITUGraz)\]
-  > 脉冲网络理论奠基人（与 Robert Legenstein）——液体状态机、LSNN 与 e-prop 在线学习规则。
+  > 脉冲网络理论奠基人（与 Robert Legenstein）——液体状态机、LSNN 与 e-prop 在线学习规则。**近期：** 无需突触可塑性的脉冲网络快速学习（Sci. Reports 2024）。
 - **Friedemann Zenke** — 巴塞尔 Friedrich Miescher 研究所 — 代理梯度学习、脉冲网络理论。\[[homepage](https://zenkelab.org/)\]\[[scholar](https://scholar.google.com/citations?user=_IxvO8QAAAAJ)\]\[[github](https://github.com/fzenke/spytorch)\]
-  > 脉冲网络代理梯度训练开创者——SuperSpike 与广为使用的 SpyTorch 教程。
+  > 脉冲网络代理梯度训练开创者——SuperSpike 与广为使用的 SpyTorch 教程。**近期：** 用前瞻神经元同步教学信号（2025）。
 - **Johannes Schemmel** — 海德堡大学（Electronic Vision(s)）— 加速模拟神经形态硬件（BrainScaleS）。\[[homepage](https://www.kip.uni-heidelberg.de/vision/)\]\[[github](https://github.com/electronicvisions)\]
-  > **BrainScaleS** 模拟/混合信号晶圆级神经形态系统总设计师。
+  > **BrainScaleS** 模拟/混合信号晶圆级神经形态系统总设计师。**近期：** BrainScaleS-2 多芯片互连扩展模拟衬底（2025）。
 - **Timothée Masquelier** — CNRS / CerCo, 图卢兹 — STDP、排序编码、生物可塑性脉冲视觉。\[[homepage](https://cerco.cnrs.fr/pagesp/tim/home.htm)\]\[[scholar](https://scholar.google.com/citations?user=fkzUZ-oAAAAJ)\]
-  > CNRS 研究主任（与 Simon Thorpe）——STDP 无监督特征学习及排序/时间脉冲编码。
+  > CNRS 研究主任（与 Simon Thorpe）——STDP 无监督特征学习及排序/时间脉冲编码。**近期：** DelRec——学习循环脉冲网络中的延迟（2025）。
 - **Emre Neftci** — 于利希研究中心 & 亚琛工大 — 代理梯度、局部学习、神经形态训练。\[[homepage](https://www.fz-juelich.de/profile/neftci_e)\]\[[scholar](https://scholar.google.com/citations?user=yYT6jtkAAAAJ)\]\[[github](https://github.com/nmi-lab)\]
-  > 神经形态硬件代理梯度与局部学习代表学者，参与提出事件驱动随机反传。
+  > 神经形态硬件代理梯度与局部学习代表学者，参与提出事件驱动随机反传。**近期：** 稀疏轴突/树突延迟实现有竞争力的关键词识别脉冲网络（2026）。
 - **Charlotte Frenkel** — 代尔夫特理工（TU Delft）— 高效片上学习、数字神经形态芯片设计。\[[homepage](https://chfrenkel.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=Lf6_Zl0AAAAJ)\]\[[github](https://github.com/ChFrenkel)\]
-  > 开源芯片 **ODIN** 与 **ReckOn** 设计者，用硬件友好 e-prop 实现超低功耗片上在线学习。
+  > 开源芯片 **ODIN** 与 **ReckOn** 设计者，用硬件友好 e-prop 实现超低功耗片上在线学习。**近期：** TESS 时空局部片上学习规则（2025）。
 - **Chiara Bartolozzi** — 意大利技术研究院（IIT）— 事件驱动感知、神经形态机器人（iCub）。\[[homepage](https://edpr.iit.it/)\]\[[github](https://github.com/event-driven-robotics)\]
-  > 领导 IIT 事件驱动机器人感知团队，推动事件相机感知与 iCub 人形机器人处理。
+  > 领导 IIT 事件驱动机器人感知团队，推动事件相机感知与 iCub 人形机器人处理。**近期：** 用于本体感觉关节状态估计的脉冲环吸引子（2026）。
 - **Sander Bohte** — CWI & 阿姆斯特丹大学 — SNN 学习、自适应脉冲神经元、高效时间编码。\[[homepage](https://homepages.cwi.nl/~sbohte/)\]\[[scholar](https://scholar.google.com/citations?user=zHlebkUAAAAJ)\]
-  > 提出经典 **SpikeProp** 算法及自适应脉冲神经元，以极少脉冲实现高精度深度脉冲网络。
+  > 提出经典 **SpikeProp** 算法及自适应脉冲神经元，以极少脉冲实现高精度深度脉冲网络。**近期：** SpikingGamma——无代理梯度、时间精确的在线训练（2026）。
 - **Thomas Nowotny** — 萨塞克斯大学 — GPU 加速脉冲网络仿真。\[[homepage](https://profiles.sussex.ac.uk/p206151-thomas-nowotny)\]\[[github](https://github.com/genn-team/genn)\]
-  > 主导 **GeNN**——广泛使用的基于 GPU 的脉冲网络仿真器（与 James Knight）。
+  > 主导 **GeNN**——广泛使用的基于 GPU 的脉冲网络仿真器（与 James Knight）。**近期：** GPU 稀疏脉冲网络的结构可塑性框架（2025）。
 - **Bipin Rajendran** — 伦敦国王学院 — 神经形态硬件、存内计算、相变存储突触。\[[homepage](https://www.kcl.ac.uk/people/bipin-rajendran)\]\[[scholar](https://scholar.google.com/citations?user=QDEeC8EAAAAJ)\]
-  > 研究相变存储突触与存内计算，早期实现基于相变突触的脉冲网络监督学习。
+  > 研究相变存储突触与存内计算，早期实现基于相变突触的脉冲网络监督学习。**近期：** 基于共振-发放神经元的神经形态无线分割计算（2025）。
 
 #### 国际 — 亚太
 
 - **Arindam Basu** — 香港城市大学 — 低功耗神经形态硬件、边缘脉冲系统、存内计算。\[[homepage](https://scholars.cityu.edu.hk/en/persons/arinbasu/)\]\[[scholar](https://scholar.google.com/citations?user=Ton5pYMAAAAJ)\]
-  > 从事超低功耗神经形态电路与边缘脉冲系统研究，IEEE Fellow。
+  > 从事超低功耗神经形态电路与边缘脉冲系统研究，IEEE Fellow。**近期：** NeuDW-CIM 0.8-pJ/SOP 神经形态存内计算宏（2026）。
 - **Jibin Wu** — 香港理工大学（MIND Lab）— SNN 学习、基础模型、语音与持续学习。\[[homepage](https://www.jibinwu.com/)\]
-  > 研究串联/代理学习与脉冲序列模型，连接类脑算法、语音处理和高效基础模型。
+  > 研究串联/代理学习与脉冲序列模型，连接类脑算法、语音处理和高效基础模型。**近期：** Neuromorphic Sequential Arena 基准与 IML-Spikeformer 语音（2025）；SpikingBrain 共同作者。
 - **Gregory Cohen** — 西悉尼大学（国际神经形态系统中心 ICNS）— 事件传感、神经形态系统与空间应用。\[[homepage](https://www.westernsydney.edu.au/icns/about/people/researchers/gregory-cohen)\]
-  > 领导 ICNS，将事件传感器、算法与硬件集成为端到端神经形态系统。
+  > 领导 ICNS，将事件传感器、算法与硬件集成为端到端神经形态系统。**近期：** LAND——神经形态数据集的纵向分析（2026）。
 
 #### 公司与神经形态初创
 
 - **SynSense（时识科技）** — 瑞士苏黎世 & 中国成都（INI/ETH 孵化）— 超低功耗事件驱动神经形态处理器。\[[homepage](https://www.synsense.ai/)\]\[[lineage](https://services.ini.uzh.ch/admin/modules/uzh/spinoffs)\]\[[github](https://github.com/synsense)\]
-  > 由 Giacomo Indiveri 与乔宁共同创立，主打 Speck、DYNAP-CNN、Xylo 脉冲芯片并开源 Rockpool/Sinabs 工具链。
+  > 由 Giacomo Indiveri 与乔宁共同创立，主打 Speck、DYNAP-CNN、Xylo 脉冲芯片并开源 Rockpool/Sinabs 工具链。**近期：** 在 Xylo 硬件上的端到端 SNN 射电干扰检测流水线（2025）。
 - **BrainChip** — 美国 Laguna Hills / 澳大利亚珀斯 — 事件驱动边缘 AI 神经形态处理器，支持片上学习。\[[homepage](https://brainchip.com/)\]
   > 商用 **Akida** 处理器 IP 厂商——边缘事件驱动推理与片上增量学习。
 - **Innatera** — 荷兰代尔夫特（TU Delft 孵化）— 面向传感边缘的模拟混合信号脉冲神经处理器。\[[homepage](https://www.innatera.com/)\]\[[lineage](https://www.innatera.com/about-us/)\]
   > 研制脉冲神经处理器 T1 与 Pulsar 神经形态 MCU，用于亚毫瓦级常开感知。
-
-#### 研究生态知识图谱
-
-按地区汇总约 40 个活跃的 SNN / 神经形态团队，每个都标注其**最新工作（2024–2026）**。**蓝色** = 学术团队，**琥珀色** = 公司；**实线**表示合作或共同成果，**虚线**表示孵化或学术传承。图谱有代表性但不穷举。_由 [`assets/ecosystem.dot`](assets/ecosystem.dot) 自动渲染（英文标注）——请修改该源文件，而非图片本身。_
-
-<div align="center">
-  <a href="assets/ecosystem.svg"><img src="assets/ecosystem.svg" alt="SNN 研究生态：约 40 个团队按地区分组，标注其 2024–2026 最新工作及合作、孵化关系" width="100%"></a>
-</div>
 
 ---
 
