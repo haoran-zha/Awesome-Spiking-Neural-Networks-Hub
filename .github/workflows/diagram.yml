@@ -1,13 +1,14 @@
 name: diagram
 
-# Re-render the research-ecosystem knowledge graph whenever its D2 source
-# changes, and commit the resulting SVG back. Edit assets/ecosystem.d2 — the
-# SVG is generated, never hand-edited.
+# Re-render the research-ecosystem knowledge graph whenever its Graphviz source
+# changes, and commit the resulting SVG back. Edit assets/ecosystem.dot — the
+# SVG is generated, never hand-edited. Rendering goes through Kroki so the output
+# matches locally-previewed renders (Graphviz + CJK fonts, no runner setup).
 on:
   push:
     branches: [main]
     paths:
-      - 'assets/ecosystem.d2'
+      - 'assets/ecosystem.dot'
       - '.github/workflows/diagram.yml'
   workflow_dispatch:
 
@@ -20,11 +21,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install D2
-        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
-
-      - name: Render ecosystem graph
-        run: d2 --theme 0 --pad 20 assets/ecosystem.d2 assets/ecosystem.svg
+      - name: Render ecosystem graph (Graphviz via Kroki)
+        run: |
+          curl -sS --fail-with-body -X POST https://kroki.io/graphviz/svg \
+            -H "Content-Type: text/plain" \
+            --data-binary @assets/ecosystem.dot \
+            -o assets/ecosystem.svg
+          # Sanity check: output must be an SVG, not an error page.
+          head -c 5 assets/ecosystem.svg | grep -q '<' || { echo "render failed"; cat assets/ecosystem.svg; exit 1; }
 
       - name: Commit updated SVG
         run: |

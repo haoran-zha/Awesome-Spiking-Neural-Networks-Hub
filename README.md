@@ -1002,7 +1002,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 #### Research Ecosystem Knowledge Graph
 
-A map of ~40 active SNN / neuromorphic groups by region, each tagged with its **latest work (2024–2026)**. **Blue** = academic lab, **amber** = company; a **solid** arrow marks a collaboration or shared output, a **dashed** arrow a spin-off or academic lineage. Representative, not exhaustive. _Auto-rendered from [`assets/ecosystem.d2`](assets/ecosystem.d2) — edit that source, not the image._
+A map of ~40 active SNN / neuromorphic groups by region, each tagged with its **latest work (2024–2026)**. **Blue** = academic lab, **amber** = company; a **solid** arrow marks a collaboration or shared output, a **dashed** arrow a spin-off or academic lineage. Representative, not exhaustive. _Auto-rendered from [`assets/ecosystem.dot`](assets/ecosystem.dot) — edit that source, not the image._
 
 <div align="center">
   <a href="assets/ecosystem.svg"><img src="assets/ecosystem.svg" alt="SNN research ecosystem: ~40 teams grouped by region with their latest 2024–2026 work, plus collaborations and spin-offs" width="100%"></a>

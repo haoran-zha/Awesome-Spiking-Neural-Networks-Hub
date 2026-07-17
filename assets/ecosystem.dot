@@ -1,0 +1,94 @@
+// SNN Research Ecosystem — force-directed knowledge graph.
+// Teams (circles, colored by region) orbit a regional hub; each is tagged with
+// its latest SNN work (2024-2026). Solid = collaboration, dashed = spin-off /
+// lineage. Rendered to assets/ecosystem.svg by .github/workflows/diagram.yml.
+graph ecosystem {
+  layout=twopi;
+  root=core;
+  ranksep="4.6 equally";
+  overlap=true;
+  sep="+14";
+  splines=curved;
+  bgcolor="white";
+  fontname="Helvetica,Arial,sans-serif";
+  labelloc="t";
+  fontsize=24;
+  fontcolor="#0f172a";
+  label="Spiking Neural Network Research Ecosystem\nteams & their latest work (2024–2026)";
+
+  node [shape=circle, style="filled", fontname="Helvetica,Arial,sans-serif",
+        fontsize=9, penwidth=2, margin=0.04, fixedsize=false];
+  edge [color="#cbd5e1", penwidth=1.0];
+
+  // ---------- core + regional hubs ----------
+  core       [label="SNN\nEcosystem", shape=circle, fontsize=20, fillcolor="#0f172a", color="#0f172a", fontcolor="#ffffff", penwidth=0];
+  core -- {China Americas Europe APAC Industry} [color="#e2e8f0", penwidth=2.4];
+  China      [label="China",         shape=doublecircle, fontsize=18, fillcolor="#fecaca", color="#dc2626", fontcolor="#7f1d1d"];
+  Americas   [label="Americas",      shape=doublecircle, fontsize=18, fillcolor="#c7d2fe", color="#4f46e5", fontcolor="#3730a3"];
+  Europe     [label="Europe",        shape=doublecircle, fontsize=18, fillcolor="#a5f3fc", color="#0891b2", fontcolor="#155e75"];
+  APAC       [label="Asia-Pacific",  shape=doublecircle, fontsize=18, fillcolor="#bbf7d0", color="#16a34a", fontcolor="#166534"];
+  Industry   [label="Companies",     shape=doublecircle, fontsize=18, fillcolor="#fde68a", color="#d97706", fontcolor="#78350f"];
+
+  // ---------- China ----------
+  node [fillcolor="#eff6ff", color="#3b82f6", fontcolor="#0f172a"];
+  casia_lgq [label="CASIA·BICLab\nLi Guoqi\n▸SpikingBrain '25"];
+  pku_tian  [label="PKU\nTian Yonghong\n▸SpikingJelly"];
+  pku_yu    [label="PKU\nYu Zhaofei\n▸Spike-cam '25"];
+  pku_huang [label="PKU·BAAI\nHuang Tiejun\n▸Spike streams '25"];
+  uestc     [label="UESTC\nZhang Malu\n▸Sub-bit SNN '25"];
+  thu       [label="Tsinghua·CBICR\nShi Luping\n▸Tianjic"];
+  zju       [label="ZJU\nPan Gang\n▸DarwinWafer '25"];
+  casia_zy  [label="CASIA\nZeng Yi\n▸STEP '25"];
+  China -- {casia_lgq pku_tian pku_yu pku_huang uestc thu zju casia_zy};
+
+  // ---------- Americas ----------
+  purdue    [label="Purdue\nK. Roy\n▸SpiDR CIM '25"];
+  usc       [label="USC\nP. Panda\n▸STAtten '25"];
+  ucsc      [label="UC Santa Cruz\nEshraghian\n▸Spike-LLM '25"];
+  intel     [label="Intel Labs\nM. Davies\n▸Loihi 2 CL '25"];
+  ibm       [label="IBM\nModha\n▸NorthPole"];
+  stanford  [label="Stanford\nBoahen\n▸Dendrocentric"];
+  waterloo  [label="Waterloo\nEliasmith\n▸Nengo '26"];
+  utk       [label="UT Knoxville\nSchuman\n▸Nature '25"];
+  ucsd      [label="UC San Diego\nCauwenberghs\n▸HiAER-Spike '25"];
+  Americas -- {purdue usc ucsc intel ibm stanford waterloo utk ucsd};
+
+  // ---------- Europe ----------
+  ini_ind   [label="INI Zürich\nIndiveri\n▸DYNAP opt. '26"];
+  ini_del   [label="INI Zürich\nDelbruck\n▸DVS model '25"];
+  ini_liu   [label="INI Zürich\nShih-Chii Liu\n▸Audio '26"];
+  manch     [label="Manchester\nFurber\n▸SpiNNaker2 '26"];
+  epfl      [label="EPFL·LCN\nGerstner\n▸Local learn '26"];
+  graz      [label="TU Graz\nMaass\n▸LSNN·e-prop"];
+  fmi       [label="FMI Basel\nZenke\n▸Prospective '25"];
+  heid      [label="Heidelberg\nSchemmel\n▸BrainScaleS-2 '25"];
+  cnrs      [label="CNRS CerCo\nMasquelier\n▸DelRec '25"];
+  julich    [label="Jülich·RWTH\nNeftci\n▸Delay SNN '26"];
+  delft     [label="TU Delft\nFrenkel\n▸TESS '25"];
+  cwi       [label="CWI\nBohte\n▸SpikingGamma '26"];
+  sussex    [label="Sussex\nNowotny\n▸GeNN '25"];
+  kcl       [label="KCL\nRajendran\n▸Wireless SNN '25"];
+  iit       [label="IIT Genoa\nBartolozzi\n▸Ring-attractor '26"];
+  Europe -- {ini_ind ini_del ini_liu manch epfl graz fmi heid cnrs julich delft cwi sussex kcl iit};
+
+  // ---------- Asia-Pacific ----------
+  cityu     [label="CityU HK\nBasu\n▸NeuDW-CIM '26"];
+  polyu     [label="PolyU·MIND\nJibin Wu\n▸NSA bench '25"];
+  wsu       [label="W. Sydney·ICNS\nCohen\n▸LAND '26"];
+  APAC -- {cityu polyu wsu};
+
+  // ---------- Companies ----------
+  node [fillcolor="#fffbeb", color="#f59e0b"];
+  synsense  [label="SynSense\n时识科技\n▸Speck·Xylo"];
+  lynxi     [label="Lynxi 灵汐\n▸KA200·HP300"];
+  innatera  [label="Innatera\n▸SNP T1·Pulsar"];
+  brainchip [label="BrainChip\n▸Akida"];
+  Industry -- {synsense lynxi innatera brainchip};
+
+  // ---------- cross-ecosystem relationships ----------
+  casia_lgq -- polyu    [label="SpikingBrain", color="#2563eb", penwidth=2.4, fontcolor="#1e3a8a", fontsize=9];
+  purdue -- usc         [label="lineage", style=dashed, color="#64748b", fontcolor="#475569", fontsize=9];
+  ini_ind -- synsense   [label="spin-off", style=dashed, color="#d97706", fontcolor="#92400e", fontsize=9];
+  delft -- innatera     [label="spin-off", style=dashed, color="#d97706", fontcolor="#92400e", fontsize=9];
+  thu -- lynxi          [label="spin-off", style=dashed, color="#d97706", fontcolor="#92400e", fontsize=9];
+}
