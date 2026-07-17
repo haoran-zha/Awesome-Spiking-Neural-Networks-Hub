@@ -18,7 +18,7 @@
 
 <p><a href="README.md">🇬🇧 English</a> &nbsp;·&nbsp; <b>🌐 中文</b></p>
 
-<p>📄 <b>330+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>47</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>38</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
+<p>📄 <b>340+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>40+</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>42</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
 
 <p><b>快速跳转</b> &nbsp;
 <a href="#-必读入门">🏆 必读</a> ·
@@ -78,7 +78,8 @@
 <details open>
 <summary><b>更新日志</b> —— 最新在前（点击折叠）</summary>
 
-- **2026-07** —— 🎉 **知识库上线。** 6 大 Part、330+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
+- **2026-07** —— 🧭 **审校与生态更新。** 修复失效/过期链接和一处已迁移的团队归属；新增 6 篇 2026 年工作、4 个重要实验室，以及标明关系类型的研究生态知识图谱。
+- **2026-07** —— 🎉 **知识库上线。** 6 大 Part、340+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
 - **2026-07** —— 🎨 **视觉改版。** SVG banner、"必读入门"表，并把数据集/框架/模型库转为表格。
 - **2026-07** —— 📚 **内容扩充。** 新增 SpikingBrain、Sorbet、SpikeCLIP、Spike2Former、SDiT；Darwin3、Intel Hala Point、IBM NorthPole、灵汐/BrainChip/Innatera/Xylo/GrAI；以及奠基工作（Mead 1990、Missing Memristor 2008、Tempotron 2006）与框架（SPAIC、SNNAX、BrainPy、CARLsim…）。
 
@@ -283,6 +284,8 @@
   > 发现时间维反传贡献很小，剪掉这些路径使显存降 70% 以上、训练时间降 50% 以上。
 - A Tandem Learning Rule for Effective Training and Rapid Inference of Deep SNNs (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/1907.01167)\]\[[code](https://github.com/deepspike/tandem_learning)\]
   > 让 ANN 与 SNN 共享权重"串联"训练，用 ANN 传梯度、SNN 数脉冲，大幅降低推理开销。
+- Advancing Spatiotemporal Representations in SNNs via Parametric Invertible Transformation (PIT) (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=3JwNXQzxll)\]\[[code](https://github.com/YinsongYan/ICLR26)\]
+  > 将可逆变换与神经元动力学共轭结合，并校正代理梯度失配，扩展二值脉冲可用的时空表征空间。
 - Accurate and Efficient Time-Domain Classification with Adaptive Spiking RNNs (**Nature Machine Intelligence 2021**). \[[paper](https://doi.org/10.1038/s42256-021-00397-w)\]
   > 自适应脉冲神经元 + 替代梯度循环 SNN，在语音/手势上达 RNN 级精度且计算量低 1–3 个数量级。
 
@@ -319,6 +322,10 @@
   > 在训练中逐步"剪时间步"，把 SNN 推向单步推理，极致压缩延迟与能耗。
 - Constructing Deep SNNs from ANNs with Knowledge Distillation (**CVPR 2023**). \[[paper](https://arxiv.org/abs/2304.05627)\]
   > 用 ANN 作教师，把特征与响应知识蒸馏到 SNN 学生，避免从零训练脉冲网络的高成本。
+- TP-Spikformer: Token Pruned Spiking Transformer (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=L5llQD0nMf)\]
+  > 在多个脉冲 Transformer 家族中免训练剪除低信息 token，在保持竞争性精度的同时降低存储与计算开销。
+- Towards Lossless Memory-efficient Training of SNNs via Gradient Checkpointing and Spike Compression (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=nrBJ0Uvj7c)\]\[[code](https://github.com/AllenYolk/snn-gradient-checkpointing)\]
+  > 将自适应时空梯度检查点与无损二值脉冲压缩结合，训练内存最多降低 8 倍且不损失精度。
 
 > 另可参考：若干低时间步 / 低显存训练法本身就是高效化技巧——见 [3.2](#32-代理梯度与直接训练) 的 **TET / SLTT / DSR**，以及 [神经编码](#1--基础与神经编码) 的 **DIET-SNN**。
 
@@ -340,7 +347,7 @@
   > 提出膜电位（预激活）捷径，保持全脉冲计算与梯度范数守恒，把直接训练的 SNN 拓展到 482 层。
 - Going Deeper with Directly-Trained Larger SNNs (STBP-tdBN) (**AAAI 2021**) 🧠. \[[paper](https://arxiv.org/abs/2011.05280)\]
   > 阈值相关的批归一化 tdBN 跨时间步平衡发放率，把直接训练的 SNN 从不足 10 层拓展到 50 层。
-- Revisiting Batch Normalization for Training Low-Latency Deep SNNs from Scratch (BNTT) (**Front. Neurosci. 2021**). \[[paper](https://arxiv.org/abs/2010.01729)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/BNTT-Batch-Normalization-Through-Time)\]
+- Revisiting Batch Normalization for Training Low-Latency Deep SNNs from Scratch (BNTT) (**Front. Neurosci. 2021**). \[[paper](https://arxiv.org/abs/2010.01729)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/BNTT-Batch-Normalization-Through-Time)\]
   > 沿时间轴解耦 BN 参数（BNTT），捕捉脉冲的时序动态，实现低时延、从零训练。
 - Temporal Effective Batch Normalization in Spiking Neural Networks (TEBN) (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/de2ad3ed44ee4e675b3be42aa0b615d0-Abstract-Conference.html)\]\[[code](https://github.com/ChaotengDuan/TEBN)\]
   > 为每个时间步用不同可学习权重重标定输入，平滑时序分布与优化曲面。
@@ -363,7 +370,7 @@
   > 引入脉冲卷积 Stem 与自监督预训练，是最早在 ImageNet 上突破 80% 的 SNN 之一。
 - QKFormer: Hierarchical Spiking Transformer using Q-K Attention (**NeurIPS 2024**). \[[paper](https://arxiv.org/abs/2403.16552)\]\[[code](https://github.com/zhouchenlin2096/QKFormer)\]
   > 线性复杂度的二值 Q-K 注意力与层级金字塔，首次让直接训练 SNN 在 ImageNet 上超过 85%。
-- Spikingformer: Spike-driven Residual Learning for Transformer-based SNN (**AAAI 2026**). \[[paper](https://arxiv.org/abs/2304.11954)\]\[[code](https://github.com/TheBrainLab/Spikingformer)\]
+- Spikingformer: A Key Foundation Model for Spiking Neural Networks (**AAAI 2026**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37207)\]\[[code](https://github.com/TheBrainLab/Spikingformer)\]
   > 用全脉冲（膜电位）残差取代 Spikformer 的非脉冲连接，消除整数-浮点乘法，更契合硬件。
 - SpikingResformer: Bridging ResNet and Vision Transformer in SNNs (**CVPR 2024**). \[[paper](https://arxiv.org/abs/2403.14302)\]\[[code](https://github.com/xyshi2000/SpikingResformer)\]
   > 将 ResNet 多阶段骨干与双脉冲自注意力 DSSA 结合，以更少参数与更低能耗取得高精度。
@@ -371,6 +378,8 @@
   > 基于 ANN-SNN 转换的 Transformer，用随机脉冲掩码剪除冗余脉冲，降能耗且不掉精度。
 - Spiking Transformer with Spatial-Temporal Attention (STAtten) (**CVPR 2025**). \[[paper](https://arxiv.org/abs/2409.19764)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)\]
   > 提出分块的时空联合注意力，在与纯空间注意力相同复杂度下融合时序信息。
+- Neural Dynamics Self-Attention for Spiking Transformers (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=jJedqisfOt)\]
+  > 引入局部感受野偏置，并以充电—发放—复位动力学实现注意力，推理时无需显式存储注意力矩阵。
 - TIM: An Efficient Temporal Interaction Module for Spiking Transformer (**IJCAI 2024**). \[[paper](https://arxiv.org/abs/2401.11687)\]
   > 轻量卷积模块，把前一时间步信息注入注意力矩阵，增强脉冲 Transformer 的时序建模。
 - Temporal-wise Attention Spiking Neural Networks for Event Streams Classification (TA-SNN) (**ICCV 2021**). \[[paper](https://openaccess.thecvf.com/content/ICCV2021/html/Yao_Temporal-Wise_Attention_Spiking_Neural_Networks_for_Event_Streams_Classification_ICCV_2021_paper.html)\]\[[code](https://github.com/BICLab/TA-SNN)\]
@@ -436,10 +445,12 @@
   > 提出弹性双向脉冲机制，首次用全脉冲模型统一处理判别式与生成式语言任务。
 - SpikeLLM: Scaling up SNNs to Large Language Models via Saliency-Based Spiking (**arXiv 2024**). \[[paper](https://arxiv.org/abs/2407.04752)\]
   > 首个 7B–70B 规模的脉冲大模型，用广义 IF 神经元与显著性脉冲超越量化基线。
-- SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/SpikeZIP_transformer)\]
+- SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Research-Group/SpikeZIP-TF)\]
   > 将量化 Transformer 无损转换为 SNN，在视觉与语言上把与 ANN 的精度差距抹平。
 - SpikingBrain: Spiking Brain-inspired Large Models (**arXiv 2025**) 🧠. \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
   > 中科院自动化所（李国齐、徐波）的类脑脉冲大模型（7B 线性 / 76B 混合 MoE），自适应脉冲编码，4M 长上下文首字延迟提速百倍，并在国产（沐曦 MetaX）GPU 上训练。
+- SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.22575)\]
+  > 扩展至 5B 语言/视觉语言模型，引入双空间稀疏注意力与 INT8 脉冲/FP8 双路径，支持千万级 token 及 GPU 或神经形态推理。
 - Sorbet: A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model (**ICML 2025**). \[[paper](https://arxiv.org/abs/2409.15298)\]
   > 用移位型 PTsoftmax 与 BSPN 替代 softmax 和层归一化，得到硬件友好的脉冲语言模型，在 GLUE 上相比 BERT 节能约 27 倍。
 - SpikeCLIP: A Contrastive Language-Image Pretrained Spiking Neural Network (**Neural Networks 2025**). \[[paper](https://arxiv.org/abs/2310.06488)\]\[[code](https://github.com/Lvchangze/SpikeCLIP)\]
@@ -556,12 +567,12 @@
 
 #### 商用与大规模平台
 
-- Intel Hala Point —— 全球最大神经形态系统 (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
-  > 集成 1152 颗 Loihi 2 → 11.5 亿神经元、1280 亿突触、14 万核，约 2.6 kW，当前最大神经形态研究系统。
+- Intel Hala Point —— 11.5 亿神经元 Loihi 2 系统 (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
+  > 集成 1152 颗 Loihi 2 → 11.5 亿神经元、1280 亿突触、14 万核，约 2.6 kW；Intel 在 2024 年发布时称其为全球最大神经形态系统。
 - IBM NorthPole: Neural Inference at the Frontier of Energy, Space, and Time (**Science 2023**). \[[paper](https://www.science.org/doi/10.1126/science.adh1174)\]
   > IBM 存算一体类脑推理芯片，消除片外内存（严格说非脉冲，但为神经形态领域标志性架构）。
-- **灵汐 Lynxi KA200 / HP-300** —— 商用异构 SNN/ANN 类脑芯片及计算卡/服务器，支持大规模脑仿真。\[[info](http://subsites.chinadaily.com.cn/thhc/2021-09/30/c_675701.htm)\]\[[sdk](https://github.com/LynxiTech/BIDL)\]
-  > 国内领先的商用神经形态平台之一。
+- **灵汐 Lynxi KA200 / HP-300** —— 商用异构 SNN/ANN 类脑芯片及计算卡/服务器，支持大规模脑仿真。\[[info](https://www.lynxi.com/)\]\[[sdk](https://github.com/LynxiTech/BIDL)\]
+  > 来自中国的商用神经形态平台。
 - **BrainChip Akida (AKD1000/1500)** —— 商用事件驱动神经形态 SoC，亚瓦级功耗片上运行脉冲网络。\[[info](https://brainchip.com/ai-for-iot-akida-spiking-neural-network-accelerators/)\]
 - **Innatera 脉冲神经处理器 T1 / Pulsar** —— 超低功耗模拟-数模混合脉冲神经 MCU，面向常开传感器边缘推理。\[[info](https://open-neuromorphic.org/neuromorphic-computing/hardware/snp-by-innatera/)\]
 - **SynSense Xylo** —— 超低功耗（数百微瓦）数字 LIF 脉冲推理芯片，面向音频与生理信号感知。\[[info](https://www.synsense.ai/products/xylo/)\]
@@ -709,6 +720,8 @@
   > 提出 S-IBP/S-CROWN，首次将线性松弛验证引入 SNN，给出可认证鲁棒边界。
 - HoSNN: Adversarially-Robust Homeostatic SNNs with Adaptive Firing Thresholds (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2308.10373)\]
   > 用自适应阈值的稳态神经元自我镇定扰动，无需对抗训练即提升鲁棒性。
+- Robust Spiking Neural Networks Against Adversarial Attacks (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=qTqAL2t8Aa)\]
+  > 将阈值邻近神经元识别为主要攻击面，并以阈值感知优化保护膜电位安全裕量。
 
 #### 对抗攻击
 
@@ -763,9 +776,9 @@
 | **CIFAR10-DVS** | DVS 拍摄移动 CIFAR-10 得到的 1 万条事件流 | 分类 | [paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full) |
 | **N-CARS** | 2.4 万条真实城区 100ms 样本（车/非车） | 分类 | [paper](https://arxiv.org/abs/1803.07913) · [data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/) |
 | **ASL-DVS** | 24 类美国手语字母、10 万余条真实事件 | 分类（图） | [paper](https://arxiv.org/abs/1908.06648) · [code](https://github.com/PIX2NVS/NVS2Graph) |
-| **ES-ImageNet** | 约 130 万张 ImageNet → 事件，1000 类 | 分类（最大） | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
+| **ES-ImageNet** | 约 130 万张 ImageNet → 事件，1000 类 | 分类（大规模） | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
 | **DVS128 Gesture** | 11 类手势、29 名受试者、3 种光照 | 手势识别 | [paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html) · [data](https://research.ibm.com/interactive/dvsgesture/) |
-| **HARDVS** | 300 类、107,646 条序列（DAVIS346） | 行为识别（最大） | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
+| **HARDVS** | 300 类、107,646 条序列（DAVIS346） | 行为识别（大规模） | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
 | **Prophesee GEN1** | 39 小时驾驶、2550 万标注框 | 检测 | [paper](https://arxiv.org/abs/2001.08499) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
 | **Prophesee 1Mpx** | 14 小时 1280×720、约 2500 万框 | 检测（高清） | [paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
 | **MVSEC** | 立体 DAVIS + LiDAR/IMU/GPS | 深度/光流/SLAM | [paper](https://arxiv.org/abs/1801.10202) · [data](https://daniilidis-group.github.io/mvsec/) |
@@ -886,7 +899,7 @@
 
 ### 13 · 研究团队与实验室
 
-> **一句话：** 谁在推动这个领域。一张主要 SNN / 神经形态实验室的地图——研究方向、代表贡献与主页，方便你追谁的论文和代码。近年国内团队（中科院、北大、清华、浙大）势头尤其强劲，欧美经典神经形态中心亦是中坚。
+> **一句话：** 谁在推动这个领域。这是一张不作排名的活跃 SNN / 神经形态实验室地图——研究方向、代表贡献与主页，方便你追踪论文和代码。当前优先收录有明确 SNN 或神经形态成果的团队，并持续开放补充。
 
 #### 中国
 
@@ -898,7 +911,7 @@
   > 北大教授、智源研究院院长，提出脉冲视觉模型（Vidar）与超高速脉冲相机，主导 SpikeCV 开源平台。
 - **田永鸿** — 北京大学 — 神经形态视觉、脉冲相机、SpikingJelly。\[[homepage](https://www.pkuml.org/staff/yhtian.html)\]\[[scholar](https://scholar.google.com/citations?user=fn6hJx0AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
   > 北大博雅特聘教授、IEEE Fellow，主导广泛使用的 **SpikingJelly** 框架与脉冲相机高速重建。
-- **余肇飞** — 北京大学 — SNN 学习、神经编码、SpikingJelly。\[[homepage](https://yuzhaofei.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
+- **余肇飞** — 北京大学 — SNN 学习、神经编码、SpikingJelly。\[[homepage](https://www.ai.pku.edu.cn/en/info/1459/2031.htm)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
   > SpikingJelly 框架通讯作者，以 PLIF 神经元与 SEW-ResNet 深度脉冲网络训练著称。
 - **曾毅** — 中科院自动化所（CASIA）— 类脑认知智能、脑模拟、AI 伦理。\[[homepage](https://www.brain-cog.network/)\]\[[github](https://github.com/BrainCog-X/Brain-Cog)\]
   > 领导自动化所类脑认知智能实验室，主导 **BrainCog** 类脑认知引擎，用脉冲网络支撑类脑 AI 与多尺度脑模拟。
@@ -906,11 +919,11 @@
   > 浙大脑机智能全国重点实验室主任，与之江实验室共研 **达尔文 Darwin** 系列类脑芯片（Darwin3）及"达尔文鼠/猴"类脑计算机。
 - **张悠慧** — 清华大学 — 神经形态完备性、类脑计算系统与编译。\[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > 提出"神经形态完备性"与类脑计算系统层次结构（2020 年 Nature）。
-- **张马路 / 瞿宏** — 电子科技大学 — SNN 学习算法、时间编码、ANN-SNN 转换。\[[homepage](http://www.ccse.uestc.edu.cn/)\]
-  > 计算智能团队青年带头人，聚焦高效、量化与时间编码脉冲网络算法（AAAI/ICLR/TNNLS）。
+- **张马路 / 瞿宏** — 电子科技大学 — SNN 学习算法、时间编码、ANN-SNN 转换。\[[team](https://new1.uestc.edu.cn/?Id=85255&n=UestcNews.Front.DocumentV2.ArticlePage)\]
+  > 活跃的 SNN 算法团队，聚焦高效、量化与时间编码脉冲网络（AAAI/ICLR/TNNLS）。
 - **刘明** — 中科院微电子所（IMECAS）— 忆阻器/RRAM 器件、人工突触、存算一体。\[[homepage](http://english.ime.cas.cn/)\]
   > 中科院院士，长期从事忆阻器/RRAM 研究，打造人工突触与存算一体硬件，支撑类脑与脉冲系统。
-- **灵汐科技** — 北京（源自清华 CBICR）— 类脑神经形态芯片、脉冲+深度异构。\[[homepage](https://www.lynxi.com/)\]
+- **灵汐科技** — 北京（源自清华 CBICR）— 类脑神经形态芯片、脉冲+深度异构。\[[homepage](https://www.lynxi.com/)\]\[[lineage](https://www.tsinghua.edu.cn/info/1177/105980.htm)\]
   > 国内领先的类脑芯片公司，代表作异构融合类脑芯片 KA200。
 - **华为诺亚方舟实验室** — 华为 AI 研究 — 高效深度学习、类脑/脉冲模型。\[[homepage](https://www.noahlab.com.hk/)\]\[[github](https://github.com/huawei-noah)\]
   > 华为旗舰 AI 实验室，发表脉冲相关工作（如 CVPR 2022 的 SNN-MLP）。
@@ -918,19 +931,21 @@
 #### 国际 — 美洲
 
 - **Kaushik Roy** — 普渡大学（Nanoelectronics Research Lab）— 高效神经形态、ANN-SNN 转换、存内计算、鲁棒性。\[[homepage](https://engineering.purdue.edu/NRL/Group)\]\[[scholar](https://scholar.google.com/citations?user=to4P8KgAAAAJ)\]
-  > 神经形态与机器学习硬件高被引领军者——ANN 转 SNN、脉冲反传、自旋/存内器件。
+  > 神经形态与机器学习硬件高被引学者，研究覆盖 ANN 转 SNN、脉冲反传和自旋/存内器件。
 - **Mike Davies** — Intel Labs（神经形态计算实验室）— Loihi 芯片、Lava 软件。\[[homepage](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)\]\[[github](https://github.com/lava-nc)\]
   > 英特尔神经形态计算实验室与 INRC 负责人，主导 Loihi/Loihi 2 与开源 Lava 框架。
 - **Dharmendra Modha** — IBM Research — 类脑芯片、数字神经形态架构。\[[homepage](https://modha.org/)\]
   > IBM Fellow、类脑计算首席科学家，主导 **TrueNorth**（2014）与 **NorthPole**（2023）。
 - **Kwabena Boahen** — 斯坦福大学（Brains in Silicon）— 模拟神经形态硬件、树突计算。\[[homepage](https://bioengineering.stanford.edu/people/kwabena-boahen)\]
   > 研制可实时模拟百万神经元的 **Neurogrid** 模拟平台，现研究树突启发计算。
-- **Priyadarshini Panda** — 耶鲁大学（Intelligent Computing Lab）— SNN 训练、NAS、鲁棒性。\[[homepage](https://intelligentcomputinglab.yale.edu/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Yale)\]
+- **Gert Cauwenberghs** — 加州大学圣迭戈分校（Integrated Systems Neuroengineering Lab）— 微功耗 VLSI、神经元—硅接口、事件驱动生物医学系统。\[[homepage](https://jacobsschool.ucsd.edu/node/3271)\]
+  > 神经形态工程先驱，研究跨越自适应硅神经元、脑机接口与大规模可训练神经形态平台。
+- **Priyadarshini Panda** — 南加州大学（Intelligent Computing Lab；原耶鲁大学）— SNN 训练、软硬件协同设计、鲁棒性。\[[homepage](https://sites.usc.edu/intelligentcomputinglab/)\]\[[lineage](https://sites.usc.edu/intelligentcomputinglab/members/principal-investigator/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Panda)\]
   > 以 BNTT 时序批归一化、脉冲网络架构搜索及对抗鲁棒性研究著称。
 - **Jason Eshraghian** — 加州大学圣克鲁兹（Neuromorphic Computing Group）— snnTorch、脉冲 LLM、忆阻硬件。\[[homepage](https://ncg.ucsc.edu/)\]\[[github](https://github.com/jeshraghian/snntorch)\]
   > 广泛使用的 **snnTorch** 库作者，SpikeGPT 共同作者。
 - **Chris Eliasmith** — 滑铁卢大学（理论神经科学中心）— 神经工程框架 NEF、Nengo。\[[homepage](https://uwaterloo.ca/centre-for-theoretical-neuroscience/)\]\[[github](https://github.com/nengo)\]
-  > 提出 NEF 与 **Nengo** 仿真器，构建最大功能性脉冲大脑模型 Spaun，联合创立 Applied Brain Research。
+  > 提出 NEF 与 **Nengo** 仿真器，构建 Spaun（2012 年发表时规模最大的功能性脉冲大脑模型），联合创立 Applied Brain Research。
 - **Catherine Schuman** — 田纳西大学（TENNLab）— 神经形态计算、脉冲网络进化优化。\[[homepage](https://catherineschuman.com/)\]\[[github](https://github.com/TENNLab-UTK)\]
   > 以脉冲网络进化优化（EONS）及 2022 年 Nature 神经形态计算展望著称。
 
@@ -944,6 +959,8 @@
   > 主导神经形态听觉传感（硅耳蜗）与低功耗事件驱动深度网络。
 - **Steve Furber** — 曼彻斯特大学 — 大规模并行神经形态计算（SpiNNaker）。\[[homepage](https://research.manchester.ac.uk/en/persons/steve.furber)\]\[[github](https://github.com/SpiNNakerManchester)\]
   > ARM 处理器共同设计者，主导百万核 **SpiNNaker** 类脑平台，可生物实时模拟脉冲网络。
+- **Wulfram Gerstner** — 洛桑联邦理工（计算神经科学实验室 LCN）— 脉冲神经元模型、网络动力学、STDP 与多因子可塑性。\[[homepage](https://lcnwww.epfl.ch/gerstner/)\]
+  > 奠基教材 *Spiking Neuron Models* 合著者，也是脉冲响应模型与学习规则的核心理论学者。
 - **Wolfgang Maass** — 格拉茨技术大学（TU Graz）— 计算神经科学理论、LSNN、e-prop。\[[homepage](http://www.igi.tugraz.at/maass/)\]\[[scholar](https://scholar.google.com/citations?user=2WpvdH0AAAAJ)\]\[[github](https://github.com/IGITUGraz)\]
   > 脉冲网络理论奠基人（与 Robert Legenstein）——液体状态机、LSNN 与 e-prop 在线学习规则。
 - **Friedemann Zenke** — 巴塞尔 Friedrich Miescher 研究所 — 代理梯度学习、脉冲网络理论。\[[homepage](https://zenkelab.org/)\]\[[scholar](https://scholar.google.com/citations?user=_IxvO8QAAAAJ)\]\[[github](https://github.com/fzenke/spytorch)\]
@@ -969,15 +986,53 @@
 
 - **Arindam Basu** — 香港城市大学 — 低功耗神经形态硬件、边缘脉冲系统、存内计算。\[[homepage](https://scholars.cityu.edu.hk/en/persons/arinbasu/)\]\[[scholar](https://scholar.google.com/citations?user=Ton5pYMAAAAJ)\]
   > 从事超低功耗神经形态电路与边缘脉冲系统研究，IEEE Fellow。
+- **Jibin Wu** — 香港理工大学（MIND Lab）— SNN 学习、基础模型、语音与持续学习。\[[homepage](https://www.jibinwu.com/)\]
+  > 研究串联/代理学习与脉冲序列模型，连接类脑算法、语音处理和高效基础模型。
+- **Gregory Cohen** — 西悉尼大学（国际神经形态系统中心 ICNS）— 事件传感、神经形态系统与空间应用。\[[homepage](https://www.westernsydney.edu.au/icns/about/people/researchers/gregory-cohen)\]
+  > 领导 ICNS，将事件传感器、算法与硬件集成为端到端神经形态系统。
 
 #### 公司与神经形态初创
 
-- **SynSense（时识科技）** — 瑞士苏黎世 & 中国成都（INI/ETH 孵化）— 超低功耗事件驱动神经形态处理器。\[[homepage](https://www.synsense.ai/)\]\[[github](https://github.com/synsense)\]
+- **SynSense（时识科技）** — 瑞士苏黎世 & 中国成都（INI/ETH 孵化）— 超低功耗事件驱动神经形态处理器。\[[homepage](https://www.synsense.ai/)\]\[[lineage](https://services.ini.uzh.ch/admin/modules/uzh/spinoffs)\]\[[github](https://github.com/synsense)\]
   > 由 Giacomo Indiveri 与乔宁共同创立，主打 Speck、DYNAP-CNN、Xylo 脉冲芯片并开源 Rockpool/Sinabs 工具链。
 - **BrainChip** — 美国 Laguna Hills / 澳大利亚珀斯 — 事件驱动边缘 AI 神经形态处理器，支持片上学习。\[[homepage](https://brainchip.com/)\]
   > 商用 **Akida** 处理器 IP 厂商——边缘事件驱动推理与片上增量学习。
-- **Innatera** — 荷兰代尔夫特（TU Delft 孵化）— 面向传感边缘的模拟混合信号脉冲神经处理器。\[[homepage](https://www.innatera.com/)\]
+- **Innatera** — 荷兰代尔夫特（TU Delft 孵化）— 面向传感边缘的模拟混合信号脉冲神经处理器。\[[homepage](https://www.innatera.com/)\]\[[lineage](https://www.innatera.com/about-us/)\]
   > 研制脉冲神经处理器 T1 与 Pulsar 神经形态 MCU，用于亚毫瓦级常开感知。
+
+#### 研究生态知识图谱
+
+实线表示**团队 → 代表成果**，虚线表示已有资料支撑的**孵化或学术传承**；同一成果有多个入边，表示明确的合作关系。图谱只选取有代表性的显式关系，并不穷举；仅有研究主题重合时不画成正式关系。
+
+```mermaid
+flowchart LR
+  CASIA["中科院自动化所 · BICLab"] --> SPB["SpikingBrain<br/>SpikingBrain2.0"]
+  CASIA --> SDT["Spike-driven Transformer"]
+  PKUT["北京大学<br/>田永鸿团队"] --> SDT
+  PKUT --> SJ["SpikingJelly"]
+  PKUY["北京大学<br/>余肇飞团队"] --> SJ
+  UESTC["电子科技大学<br/>张马路团队"] --> NDSA["神经动力学注意力<br/>TP-Spikformer"]
+  WU["Jibin Wu<br/>新加坡国立 → 香港理工 MIND Lab"] --> PIT["PIT · 串联学习"]
+
+  EPFL["洛桑联邦理工 · LCN<br/>Gerstner"] --> SRM["SRM · STDP 理论"]
+  GRAZ["格拉茨工大<br/>Maass"] --> EPROP["LSM · LSNN · e-prop"]
+  FMI["巴塞尔 FMI<br/>Zenke"] --> SG["代理梯度"]
+  PURDUE["普渡大学 · NRL<br/>Kaushik Roy"] -. 博士学术传承 .-> USC["南加州大学 · Intelligent Computing Lab<br/>Panda"]
+  USC --> PST["BNTT · STAtten"]
+
+  INI["苏黎世大学/ETH · INI"] --> DVS["DVS · DYNAP"]
+  INI -. 孵化 .-> SYN["SynSense 时识科技"]
+  THU["清华大学 · CBICR"] --> TIAN["天机 Tianjic"]
+  THU -. 孵化传承 .-> LYNXI["灵汐科技"]
+  DELFT["代尔夫特理工"] --> ODIN["ODIN · ReckOn"]
+  DELFT -. 孵化 .-> INN["Innatera"]
+  MANC["曼彻斯特大学"] --> SPIN["SpiNNaker"]
+  INTEL["Intel Labs"] --> LOIHI["Loihi · Lava"]
+  IBM["IBM Research"] --> TN["TrueNorth · NorthPole"]
+
+  UCSD["加州大学圣迭戈<br/>Cauwenberghs"] --> BIO["神经形态生物医学系统"]
+  WSU["西悉尼大学 · ICNS<br/>Cohen"] --> EVENT["事件传感 · 空间系统"]
+```
 
 ---
 

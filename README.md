@@ -18,7 +18,7 @@
 
 <p><b>🌐 English</b> &nbsp;·&nbsp; <a href="README.zh-CN.md">🇨🇳 中文</a></p>
 
-<p>📄 <b>330+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>47</b> seminal works &nbsp;·&nbsp; 🏛️ <b>38</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
+<p>📄 <b>340+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>40+</b> seminal works &nbsp;·&nbsp; 🏛️ <b>42</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
 
 <p><b>Jump to</b> &nbsp;
 <a href="#-start-here">🏆 Start Here</a> ·
@@ -78,7 +78,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
 <details open>
 <summary><b>Changelog</b> — newest first (click to collapse)</summary>
 
-- **2026-07** — 🎉 **Launched the Hub.** 330+ entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
+- **2026-07** — 🧭 **Audit & ecosystem update.** Fixed dead/outdated links and a moved lab affiliation; added six 2026 works, four major labs, and a relationship-aware research ecosystem graph.
+- **2026-07** — 🎉 **Launched the Hub.** 340+ entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
 - **2026-07** — 🎨 **Visual overhaul.** SVG banner, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
 - **2026-07** — 📚 **Coverage push.** Added SpikingBrain, Sorbet, SpikeCLIP, Spike2Former, SDiT; Darwin3, Intel Hala Point, IBM NorthPole, Lynxi / BrainChip / Innatera / Xylo / GrAI; plus foundational works (Mead 1990, Missing Memristor 2008, Tempotron 2006) and frameworks (SPAIC, SNNAX, BrainPy, CARLsim…).
 
@@ -283,6 +284,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Shows temporal backprop contributes little; dropping those routes cuts memory >70% and training time >50%.
 - A Tandem Learning Rule for Effective Training and Rapid Inference of Deep SNNs (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/1907.01167)\]\[[code](https://github.com/deepspike/tandem_learning)\]
   > Couples an ANN and SNN via weight sharing — the ANN carries gradients while the SNN counts spikes.
+- Advancing Spatiotemporal Representations in SNNs via Parametric Invertible Transformation (PIT) (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=3JwNXQzxll)\]\[[code](https://github.com/YinsongYan/ICLR26)\]
+  > Conjugates an invertible transform with neuron dynamics and corrects surrogate-gradient mismatch, expanding the usable binary-spike representation space.
 - Accurate and Efficient Time-Domain Classification with Adaptive Spiking Recurrent Neural Networks (**Nature Machine Intelligence 2021**). \[[paper](https://doi.org/10.1038/s42256-021-00397-w)\]
   > Adaptive spiking neurons + surrogate-gradient RSNNs reach RNN-level accuracy on speech/gesture at far less compute.
 
@@ -319,6 +322,10 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Iteratively prunes timesteps during training, driving SNNs toward single-timestep inference.
 - Constructing Deep SNNs from ANNs with Knowledge Distillation (**CVPR 2023**). \[[paper](https://arxiv.org/abs/2304.05627)\]
   > Uses an ANN teacher to distill feature/response knowledge into an SNN student, avoiding costly from-scratch training.
+- TP-Spikformer: Token Pruned Spiking Transformer (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=L5llQD0nMf)\]
+  > Prunes low-information tokens without retraining across several spiking-Transformer families, reducing storage and compute while retaining competitive accuracy.
+- Towards Lossless Memory-efficient Training of SNNs via Gradient Checkpointing and Spike Compression (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=nrBJ0Uvj7c)\]\[[code](https://github.com/AllenYolk/snn-gradient-checkpointing)\]
+  > Combines adaptive spatiotemporal checkpointing with lossless binary-spike compression for up to 8× lower training memory without accuracy loss.
 
 > Also relevant: several low-timestep / low-memory training methods double as efficiency techniques — see **TET**, **SLTT**, **DSR** in [3.2](#32-surrogate-gradient--direct-training) and **DIET-SNN** in [Neural Coding](#1--foundations--neural-coding).
 
@@ -340,7 +347,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Membrane-potential (pre-activation) shortcuts preserve spike-driven computation and gradient-norm equality, scaling to 482 layers.
 - Going Deeper with Directly-Trained Larger SNNs (STBP-tdBN) (**AAAI 2021**) 🧠. \[[paper](https://arxiv.org/abs/2011.05280)\]
   > Threshold-dependent BatchNorm (tdBN) balances firing rates across time, extending directly-trained SNNs from <10 to 50 layers.
-- Revisiting Batch Normalization for Training Low-Latency Deep SNNs from Scratch (BNTT) (**Front. Neurosci. 2021**). \[[paper](https://arxiv.org/abs/2010.01729)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/BNTT-Batch-Normalization-Through-Time)\]
+- Revisiting Batch Normalization for Training Low-Latency Deep SNNs from Scratch (BNTT) (**Front. Neurosci. 2021**). \[[paper](https://arxiv.org/abs/2010.01729)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/BNTT-Batch-Normalization-Through-Time)\]
   > Decouples BN parameters along the time axis to capture spike temporal dynamics and enable low-latency training from scratch.
 - Temporal Effective Batch Normalization in Spiking Neural Networks (TEBN) (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/de2ad3ed44ee4e675b3be42aa0b615d0-Abstract-Conference.html)\]\[[code](https://github.com/ChaotengDuan/TEBN)\]
   > Rescales inputs with distinct learnable weights per time-step, smoothing temporal distributions and the optimization landscape.
@@ -363,7 +370,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > A Spiking Convolutional Stem + self-supervised pretraining — among the first SNNs past 80% top-1 on ImageNet.
 - QKFormer: Hierarchical Spiking Transformer using Q-K Attention (**NeurIPS 2024**). \[[paper](https://arxiv.org/abs/2403.16552)\]\[[code](https://github.com/zhouchenlin2096/QKFormer)\]
   > Linear-complexity binary Q-K attention + hierarchical pyramid — first directly-trained SNN past 85% top-1 on ImageNet.
-- Spikingformer: Spike-driven Residual Learning for Transformer-based SNN (**AAAI 2026**). \[[paper](https://arxiv.org/abs/2304.11954)\]\[[code](https://github.com/TheBrainLab/Spikingformer)\]
+- Spikingformer: A Key Foundation Model for Spiking Neural Networks (**AAAI 2026**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37207)\]\[[code](https://github.com/TheBrainLab/Spikingformer)\]
   > Replaces Spikformer's non-spike residuals with a fully spike-driven design, removing integer-float multiplications for hardware friendliness.
 - SpikingResformer: Bridging ResNet and Vision Transformer in SNNs (**CVPR 2024**). \[[paper](https://arxiv.org/abs/2403.14302)\]\[[code](https://github.com/xyshi2000/SpikingResformer)\]
   > Combines a ResNet-style multi-stage backbone with Dual Spike Self-Attention (DSSA) for high accuracy at fewer params/energy.
@@ -371,6 +378,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > An ANN-to-SNN converted Transformer with Random Spike Masking that prunes redundant spikes to cut energy without accuracy loss.
 - Spiking Transformer with Spatial-Temporal Attention (STAtten) (**CVPR 2025**). \[[paper](https://arxiv.org/abs/2409.19764)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)\]
   > Block-wise attention jointly integrating spatial and temporal information at the cost of spatial-only spiking attention.
+- Neural Dynamics Self-Attention for Spiking Transformers (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=jJedqisfOt)\]
+  > Adds a local receptive-field bias and realizes attention through charge–fire–reset dynamics, avoiding explicit attention-matrix storage at inference.
 - TIM: An Efficient Temporal Interaction Module for Spiking Transformer (**IJCAI 2024**). \[[paper](https://arxiv.org/abs/2401.11687)\]
   > A lightweight convolutional module injecting previous-timestep information into the attention matrix, strengthening temporal modeling.
 - Temporal-wise Attention Spiking Neural Networks for Event Streams Classification (TA-SNN) (**ICCV 2021**). \[[paper](https://openaccess.thecvf.com/content/ICCV2021/html/Yao_Temporal-Wise_Attention_Spiking_Neural_Networks_for_Event_Streams_Classification_ICCV_2021_paper.html)\]\[[code](https://github.com/BICLab/TA-SNN)\]
@@ -436,10 +445,12 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > A fully spike-driven mechanism handling both discriminative and generative language tasks with elastic bidirectional spikes.
 - SpikeLLM: Scaling up Spiking Neural Networks to Large Language Models via Saliency-Based Spiking (**arXiv 2024**). \[[paper](https://arxiv.org/abs/2407.04752)\]
   > The first spiking LLM scaled to 7–70B params, using generalized IF neurons and saliency-based spiking to beat quantization baselines.
-- SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Lab-Yale/SpikeZIP_transformer)\]
+- SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Research-Group/SpikeZIP-TF)\]
   > Losslessly converts quantized Transformers into SNNs, closing the accuracy gap with ANN Transformers on vision and language.
 - SpikingBrain: Spiking Brain-inspired Large Models (**arXiv 2025**) 🧠. \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
   > CAS (Li Guoqi & Bo Xu) 7B-linear / 76B-MoE spiking LLMs with adaptive spike coding — >100× TTFT speedup on 4M-token contexts, trained on domestic (MetaX) GPUs.
+- SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.22575)\]
+  > Extends the family to 5B language and vision-language models with dual sparse attention and INT8-spiking / FP8 paths, supporting 10M+ tokens and GPU or neuromorphic inference.
 - Sorbet: A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model (**ICML 2025**). \[[paper](https://arxiv.org/abs/2409.15298)\]
   > Replaces softmax and LayerNorm with shift-based PTsoftmax/BSPN for a hardware-friendly spiking LM — ~27× energy savings vs BERT on GLUE.
 - SpikeCLIP: A Contrastive Language-Image Pretrained Spiking Neural Network (**Neural Networks 2025**). \[[paper](https://arxiv.org/abs/2310.06488)\]\[[code](https://github.com/Lvchangze/SpikeCLIP)\]
@@ -556,12 +567,12 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 #### Commercial & Large-Scale Platforms
 
-- Intel Hala Point — The World's Largest Neuromorphic System (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
-  > 1,152 Loihi 2 chips → 1.15B neurons / 128B synapses across 140k cores at ~2.6 kW — the current largest neuromorphic research system.
+- Intel Hala Point — 1.15B-neuron Loihi 2 system (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
+  > 1,152 Loihi 2 chips → 1.15B neurons / 128B synapses across 140k cores at ~2.6 kW; Intel announced it in 2024 as the world's largest neuromorphic system.
 - IBM NorthPole: Neural Inference at the Frontier of Energy, Space, and Time (**Science 2023**). \[[paper](https://www.science.org/doi/10.1126/science.adh1174)\]
   > A compute-in-memory brain-inspired inference chip that eliminates off-chip memory (not strictly spiking, but a landmark neuromorphic-adjacent design).
-- **Lynxi KA200 / HP-300** — Commercial heterogeneous SNN/ANN brain-inspired chip and compute cards/servers supporting large-scale brain simulation. \[[info](http://subsites.chinadaily.com.cn/thhc/2021-09/30/c_675701.htm)\]\[[sdk](https://github.com/LynxiTech/BIDL)\]
-  > 灵汐科技 — one of China's leading commercial neuromorphic platforms.
+- **Lynxi KA200 / HP-300** — Commercial heterogeneous SNN/ANN brain-inspired chip and compute cards/servers supporting large-scale brain simulation. \[[info](https://www.lynxi.com/)\]\[[sdk](https://github.com/LynxiTech/BIDL)\]
+  > 灵汐科技 — a commercial neuromorphic platform from China.
 - **BrainChip Akida (AKD1000/1500)** — Commercial event-based neuromorphic SoC running fully on-chip spiking networks at sub-watt power. \[[info](https://brainchip.com/ai-for-iot-akida-spiking-neural-network-accelerators/)\]
 - **Innatera Spiking Neural Processor T1 / Pulsar** — Ultra-low-power analog/mixed-signal spiking neural MCU for always-on sensor-edge inference. \[[info](https://open-neuromorphic.org/neuromorphic-computing/hardware/snp-by-innatera/)\]
 - **SynSense Xylo** — Ultra-low-power (hundreds of μW) digital LIF-based spiking inference chip for audio and bio-signal sensing. \[[info](https://www.synsense.ai/products/xylo/)\]
@@ -709,6 +720,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Introduces S-IBP/S-CROWN linear-relaxation verification — the first certified robustness bounds for SNNs.
 - HoSNN: Adversarially-Robust Homeostatic SNNs with Adaptive Firing Thresholds (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2308.10373)\]
   > Threshold-adapting homeostatic (TA-LIF) neurons self-stabilize under perturbation without adversarial training.
+- Robust Spiking Neural Networks Against Adversarial Attacks (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=qTqAL2t8Aa)\]
+  > Identifies threshold-neighboring neurons as a principal attack surface and guards their membrane-potential margin with threshold-aware optimization.
 
 #### Adversarial Attacks
 
@@ -763,9 +776,9 @@ The central difficulty is that a spike is a **step function — non-differentiab
 | **CIFAR10-DVS** | 10,000 event streams from moving CIFAR-10 | Classification | [paper](https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2017.00309/full) |
 | **N-CARS** | 24k real urban 100 ms samples (car / background) | Classification | [paper](https://arxiv.org/abs/1803.07913) · [data](https://www.prophesee.ai/2018/03/13/dataset-n-cars/) |
 | **ASL-DVS** | 100,800 real DVS clips, 24 ASL handshapes | Classification (graph) | [paper](https://arxiv.org/abs/1908.06648) · [code](https://github.com/PIX2NVS/NVS2Graph) |
-| **ES-ImageNet** | ~1.3M ImageNet images → events, 1,000 classes | Classification (largest) | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
+| **ES-ImageNet** | ~1.3M ImageNet images → events, 1,000 classes | Classification (large-scale) | [paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.726582/full) · [code](https://github.com/lyh983012/ES-imagenet-master) |
 | **DVS128 Gesture** | 11 gestures, 29 subjects, 3 lightings | Gesture recognition | [paper](https://openaccess.thecvf.com/content_cvpr_2017/html/Amir_A_Low_Power_CVPR_2017_paper.html) · [data](https://research.ibm.com/interactive/dvsgesture/) |
-| **HARDVS** | 300 classes, 107,646 sequences (DAVIS346) | Action recognition (largest) | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
+| **HARDVS** | 300 classes, 107,646 sequences (DAVIS346) | Action recognition (large-scale) | [paper](https://arxiv.org/abs/2211.09648) · [code](https://github.com/Event-AHU/HARDVS) |
 | **Prophesee GEN1** | 39 h driving, 25.5M boxes | Detection | [paper](https://arxiv.org/abs/2001.08499) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
 | **Prophesee 1Mpx** | 14 h @1280×720, ~25M boxes | Detection (HD) | [paper](https://proceedings.neurips.cc/paper/2020/hash/c213877427b46fa96cff6c39e837ccee-Abstract.html) · [code](https://github.com/prophesee-ai/prophesee-automotive-dataset-toolbox) |
 | **MVSEC** | Stereo DAVIS + LiDAR/IMU/GPS | Depth / flow / SLAM | [paper](https://arxiv.org/abs/1801.10202) · [data](https://daniilidis-group.github.io/mvsec/) |
@@ -886,7 +899,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 ### 13 · Research Groups & Labs
 
-> **In one breath:** who drives the field. A map of the leading SNN / neuromorphic labs — their focus, signature contributions, and homepages — so you know whose papers and code to follow. Especially strong momentum from Chinese groups (CAS, Peking, Tsinghua, Zhejiang) and the classic European/US neuromorphic centers.
+> **In one breath:** who drives the field. A curated, non-ranking map of active SNN / neuromorphic labs — their focus, signature contributions, and homepages — so you know whose papers and code to follow. Coverage favors groups with identifiable SNN or neuromorphic outputs and remains open to additions.
 
 #### China
 
@@ -898,7 +911,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > PKU professor and BAAI Director; proposed the spike (Vidar) vision model and ultra-high-speed spike cameras, and leads the open-source SpikeCV platform.
 - **Tian Yonghong (田永鸿)** — Peking University — neuromorphic vision, spike camera, SpikingJelly. \[[homepage](https://www.pkuml.org/staff/yhtian.html)\]\[[scholar](https://scholar.google.com/citations?user=fn6hJx0AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
   > Boya Distinguished Professor and IEEE Fellow whose group develops the widely used **SpikingJelly** framework and spike-camera high-speed reconstruction.
-- **Yu Zhaofei (余肇飞)** — Peking University — SNN learning, neural coding, SpikingJelly. \[[homepage](https://yuzhaofei.github.io/)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
+- **Yu Zhaofei (余肇飞)** — Peking University — SNN learning, neural coding, SpikingJelly. \[[homepage](https://www.ai.pku.edu.cn/en/info/1459/2031.htm)\]\[[scholar](https://scholar.google.com/citations?user=qaUgD50AAAAJ)\]\[[github](https://github.com/fangwei123456/spikingjelly)\]
   > Corresponding author of SpikingJelly, known for PLIF neurons and SEW-ResNet for training very deep spiking networks.
 - **Zeng Yi (曾毅)** — Institute of Automation, CAS (CASIA) — brain-inspired cognitive intelligence, brain simulation, AI ethics. \[[homepage](https://www.brain-cog.network/)\]\[[github](https://github.com/BrainCog-X/Brain-Cog)\]
   > Leads CASIA's Brain-inspired Cognitive Intelligence Lab and the **BrainCog** engine for brain-inspired AI and multi-scale brain simulation.
@@ -906,11 +919,11 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Director of ZJU's State Key Lab of Brain-Machine Intelligence; co-developed the **Darwin 达尔文** chip series (Darwin3) and Darwin neuromorphic computers.
 - **Zhang Youhui (张悠慧)** — Tsinghua University — neuromorphic completeness, brain-inspired computing systems & compilers. \[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > Proposed "neuromorphic completeness" and a system/software hierarchy for brain-inspired computing (Nature 2020).
-- **Zhang Malu (张马路) / Qu Hong (瞿宏)** — UESTC — SNN learning algorithms, temporal coding, ANN-to-SNN conversion. \[[homepage](http://www.ccse.uestc.edu.cn/)\]
-  > A leading young SNN-algorithm group publishing at AAAI/ICLR/TNNLS on efficient, quantized and temporally-coded spiking networks.
+- **Zhang Malu (张马路) / Qu Hong (瞿宏)** — UESTC — SNN learning algorithms, temporal coding, ANN-to-SNN conversion. \[[team](https://new1.uestc.edu.cn/?Id=85255&n=UestcNews.Front.DocumentV2.ArticlePage)\]
+  > An active SNN-algorithm group publishing at AAAI/ICLR/TNNLS on efficient, quantized and temporally-coded spiking networks.
 - **Liu Ming (刘明)** — Institute of Microelectronics, CAS (IMECAS) — memristor/RRAM devices, artificial synapses, compute-in-memory. \[[homepage](http://english.ime.cas.cn/)\]
   > CAS academician leading RRAM/memristor research for artificial synapses and in-memory hardware underpinning neuromorphic systems.
-- **Lynxi Technologies (灵汐科技)** — Beijing (Tsinghua CBICR lineage) — brain-inspired neuromorphic chips, hybrid SNN+DNN. \[[homepage](https://www.lynxi.com/)\]
+- **Lynxi Technologies (灵汐科技)** — Beijing (Tsinghua CBICR lineage) — brain-inspired neuromorphic chips, hybrid SNN+DNN. \[[homepage](https://www.lynxi.com/)\]\[[lineage](https://www.tsinghua.edu.cn/info/1177/105980.htm)\]
   > China's leading neuromorphic-chip company, known for the heterogeneous SNN+DNN chip KA200.
 - **Huawei Noah's Ark Lab (华为诺亚方舟)** — Huawei AI research — efficient deep learning, brain-inspired/spiking models. \[[homepage](https://www.noahlab.com.hk/)\]\[[github](https://github.com/huawei-noah)\]
   > Huawei's flagship AI lab; has published spiking work such as SNN-MLP (CVPR 2022).
@@ -918,19 +931,21 @@ The central difficulty is that a spike is a **step function — non-differentiab
 #### International — Americas
 
 - **Kaushik Roy** — Purdue University (Nanoelectronics Research Lab) — energy-efficient neuromorphic, ANN-to-SNN conversion, in-memory computing, robustness. \[[homepage](https://engineering.purdue.edu/NRL/Group)\]\[[scholar](https://scholar.google.com/citations?user=to4P8KgAAAAJ)\]
-  > One of the most-cited leaders in neuromorphic/ML hardware — ANN-to-SNN conversion, spike-based backprop, spintronic/in-memory devices.
+  > A highly cited researcher in neuromorphic/ML hardware — ANN-to-SNN conversion, spike-based backprop, and spintronic/in-memory devices.
 - **Mike Davies** — Intel Labs (Neuromorphic Computing Lab) — Loihi chips, Lava software. \[[homepage](https://www.intel.com/content/www/us/en/research/neuromorphic-computing.html)\]\[[github](https://github.com/lava-nc)\]
   > Director of Intel's Neuromorphic Computing Lab and INRC, leading Loihi / Loihi 2 and the open-source Lava framework.
 - **Dharmendra Modha** — IBM Research — brain-inspired chips, digital neuromorphic architectures. \[[homepage](https://modha.org/)\]
   > IBM Fellow and Chief Scientist for Brain-inspired Computing, architect of **TrueNorth** (2014) and **NorthPole** (2023).
 - **Kwabena Boahen** — Stanford University (Brains in Silicon) — analog neuromorphic hardware, dendritic computing. \[[homepage](https://bioengineering.stanford.edu/people/kwabena-boahen)\]
   > Built **Neurogrid**, a mixed-analog platform emulating a million neurons in real time; now pursues dendrite-inspired computing.
-- **Priyadarshini Panda** — Yale University (Intelligent Computing Lab) — SNN training, NAS, robustness. \[[homepage](https://intelligentcomputinglab.yale.edu/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Yale)\]
+- **Gert Cauwenberghs** — UC San Diego (Integrated Systems Neuroengineering Lab) — micropower VLSI, neuron–silicon interfaces, event-driven biomedical systems. \[[homepage](https://jacobsschool.ucsd.edu/node/3271)\]
+  > A neuromorphic-engineering pioneer spanning adaptive silicon neurons, brain–machine interfaces, and large-scale trainable neuromorphic platforms.
+- **Priyadarshini Panda** — University of Southern California (Intelligent Computing Lab; formerly Yale) — SNN training, hardware–algorithm co-design, robustness. \[[homepage](https://sites.usc.edu/intelligentcomputinglab/)\]\[[lineage](https://sites.usc.edu/intelligentcomputinglab/members/principal-investigator/)\]\[[scholar](https://scholar.google.com/citations?user=qA5WsYUAAAAJ)\]\[[github](https://github.com/Intelligent-Computing-Lab-Panda)\]
   > Known for BNTT, neural architecture search for SNNs, and adversarial robustness of spiking networks.
 - **Jason Eshraghian** — UC Santa Cruz (Neuromorphic Computing Group) — snnTorch, spiking LLMs, memristive hardware. \[[homepage](https://ncg.ucsc.edu/)\]\[[github](https://github.com/jeshraghian/snntorch)\]
   > Developer of the widely used **snnTorch** library and co-author of SpikeGPT.
 - **Chris Eliasmith** — University of Waterloo (Centre for Theoretical Neuroscience) — Neural Engineering Framework, Nengo. \[[homepage](https://uwaterloo.ca/centre-for-theoretical-neuroscience/)\]\[[github](https://github.com/nengo)\]
-  > Creator of the NEF and **Nengo**; built Spaun, the largest functional spiking brain model; co-founded Applied Brain Research.
+  > Creator of the NEF and **Nengo**; built Spaun, presented in 2012 as the then-largest functional spiking brain model; co-founded Applied Brain Research.
 - **Catherine Schuman** — University of Tennessee, Knoxville (TENNLab) — neuromorphic computing, evolutionary SNN optimization. \[[homepage](https://catherineschuman.com/)\]\[[github](https://github.com/TENNLab-UTK)\]
   > Known for evolutionary optimization (EONS) of spiking networks and the 2022 Nature roadmap on neuromorphic computing.
 
@@ -944,6 +959,8 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Leads neuromorphic auditory sensing (silicon cochlea) and low-power event-driven deep networks.
 - **Steve Furber** — University of Manchester — massively-parallel neuromorphic computing (SpiNNaker). \[[homepage](https://research.manchester.ac.uk/en/persons/steve.furber)\]\[[github](https://github.com/SpiNNakerManchester)\]
   > ARM co-designer leading **SpiNNaker**, a million-core platform simulating spiking networks at biological real time.
+- **Wulfram Gerstner** — EPFL (Laboratory of Computational Neuroscience) — spiking-neuron models, network dynamics, STDP and multi-factor plasticity. \[[homepage](https://lcnwww.epfl.ch/gerstner/)\]
+  > Co-author of the foundational *Spiking Neuron Models* textbook and a central theorist of the spike-response model and learning rules.
 - **Wolfgang Maass** — TU Graz — computational neuroscience theory, LSNN, e-prop. \[[homepage](http://www.igi.tugraz.at/maass/)\]\[[scholar](https://scholar.google.com/citations?user=2WpvdH0AAAAJ)\]\[[github](https://github.com/IGITUGraz)\]
   > Foundational SNN theorist (with Robert Legenstein) — liquid state machines, LSNN, and the e-prop online learning rule.
 - **Friedemann Zenke** — Friedrich Miescher Institute, Basel — surrogate-gradient learning, spiking network theory. \[[homepage](https://zenkelab.org/)\]\[[scholar](https://scholar.google.com/citations?user=_IxvO8QAAAAJ)\]\[[github](https://github.com/fzenke/spytorch)\]
@@ -969,15 +986,53 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 - **Arindam Basu** — City University of Hong Kong — low-power neuromorphic hardware, edge spiking systems, in-memory computing. \[[homepage](https://scholars.cityu.edu.hk/en/persons/arinbasu/)\]\[[scholar](https://scholar.google.com/citations?user=Ton5pYMAAAAJ)\]
   > Ultra-low-power neuromorphic circuits and edge spiking systems (e.g., in-memory spike detection); IEEE Fellow.
+- **Jibin Wu** — Hong Kong Polytechnic University (MIND Lab) — SNN learning, foundation models, speech and continual learning. \[[homepage](https://www.jibinwu.com/)\]
+  > Develops tandem/surrogate learning and spiking sequence models, bridging brain-inspired algorithms with speech and efficient foundation models.
+- **Gregory Cohen** — Western Sydney University (International Centre for Neuromorphic Systems) — event sensing, neuromorphic systems and space applications. \[[homepage](https://www.westernsydney.edu.au/icns/about/people/researchers/gregory-cohen)\]
+  > Directs ICNS, integrating event-based sensors, algorithms and hardware into end-to-end neuromorphic systems.
 
 #### Companies & Neuromorphic Startups
 
-- **SynSense (时识科技)** — Zurich, Switzerland & Chengdu, China (INI/ETH spin-off) — ultra-low-power event-driven neuromorphic processors. \[[homepage](https://www.synsense.ai/)\]\[[github](https://github.com/synsense)\]
+- **SynSense (时识科技)** — Zurich, Switzerland & Chengdu, China (INI/ETH spin-off) — ultra-low-power event-driven neuromorphic processors. \[[homepage](https://www.synsense.ai/)\]\[[lineage](https://services.ini.uzh.ch/admin/modules/uzh/spinoffs)\]\[[github](https://github.com/synsense)\]
   > Co-founded by Giacomo Indiveri and Ning Qiao 乔宁; makes Speck, DYNAP-CNN, Xylo chips plus the open-source Rockpool/Sinabs toolchains.
 - **BrainChip** — Laguna Hills (USA) / Perth (Australia) — event-driven edge-AI neuromorphic processor with on-chip learning. \[[homepage](https://brainchip.com/)\]
   > Maker of the commercial **Akida** processor IP — event-based inference and on-chip incremental learning at the edge.
-- **Innatera** — Delft, Netherlands (TU Delft spin-off) — analog-mixed-signal spiking neural processor for the sensor edge. \[[homepage](https://www.innatera.com/)\]
+- **Innatera** — Delft, Netherlands (TU Delft spin-off) — analog-mixed-signal spiking neural processor for the sensor edge. \[[homepage](https://www.innatera.com/)\]\[[lineage](https://www.innatera.com/about-us/)\]
   > Builds the Spiking Neural Processor (T1) and the Pulsar neuromorphic MCU for sub-mW always-on sensing.
+
+#### Research Ecosystem Knowledge Graph
+
+Solid arrows mean **team → flagship output**; dotted arrows are documented **spin-off or academic lineage**. A shared output with multiple incoming arrows denotes a concrete collaboration. The graph is representative rather than exhaustive—topic overlap alone is not presented as a formal relationship.
+
+```mermaid
+flowchart LR
+  CASIA["CASIA · BICLab"] --> SPB["SpikingBrain<br/>SpikingBrain2.0"]
+  CASIA --> SDT["Spike-driven Transformer"]
+  PKUT["Peking University<br/>Yonghong Tian group"] --> SDT
+  PKUT --> SJ["SpikingJelly"]
+  PKUY["Peking University<br/>Zhaofei Yu group"] --> SJ
+  UESTC["UESTC<br/>Malu Zhang group"] --> NDSA["Neural Dynamics Attention<br/>TP-Spikformer"]
+  WU["Jibin Wu<br/>NUS → PolyU MIND Lab"] --> PIT["PIT · tandem learning"]
+
+  EPFL["EPFL · LCN<br/>Gerstner"] --> SRM["SRM · STDP theory"]
+  GRAZ["TU Graz<br/>Maass"] --> EPROP["LSM · LSNN · e-prop"]
+  FMI["FMI Basel<br/>Zenke"] --> SG["surrogate gradients"]
+  PURDUE["Purdue · NRL<br/>Kaushik Roy"] -. PhD lineage .-> USC["USC · Intelligent Computing Lab<br/>Panda"]
+  USC --> PST["BNTT · STAtten"]
+
+  INI["UZH/ETH · INI"] --> DVS["DVS · DYNAP"]
+  INI -. spin-off .-> SYN["SynSense"]
+  THU["Tsinghua · CBICR"] --> TIAN["Tianjic"]
+  THU -. spin-off lineage .-> LYNXI["Lynxi"]
+  DELFT["TU Delft"] --> ODIN["ODIN · ReckOn"]
+  DELFT -. spin-off .-> INN["Innatera"]
+  MANC["Manchester"] --> SPIN["SpiNNaker"]
+  INTEL["Intel Labs"] --> LOIHI["Loihi · Lava"]
+  IBM["IBM Research"] --> TN["TrueNorth · NorthPole"]
+
+  UCSD["UC San Diego<br/>Cauwenberghs"] --> BIO["neuromorphic biomedical systems"]
+  WSU["Western Sydney · ICNS<br/>Cohen"] --> EVENT["event sensing · space systems"]
+```
 
 ---
 
