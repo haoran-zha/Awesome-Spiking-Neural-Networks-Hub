@@ -28,6 +28,8 @@ jobs:
           #   ojs.aaai.org               – HTTP/2 protocol error on runners
           #   openaccess.thecvf.com      – intermittently times out from datacenter IPs
           #   sciencedirect.com          – bot-blocks CI with flaky 400/403
+          #   papers.nips.cc /           – NeurIPS proceedings refuse CI/datacenter
+          #   proceedings.neurips.cc       connections (canonical URLs, verified alive)
           args: >-
             --no-progress
             --max-concurrency 4
@@ -40,6 +42,8 @@ jobs:
             --exclude '^https://ojs\.aaai\.org/'
             --exclude '^https://openaccess\.thecvf\.com/'
             --exclude '^https://www\.sciencedirect\.com/'
+            --exclude '^https://papers\.nips\.cc/'
+            --exclude '^https://proceedings\.neurips\.cc/'
             --exclude '^https://github\.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub/stargazers$'
             README.md README.zh-CN.md CONTRIBUTING.md .github/PULL_REQUEST_TEMPLATE.md
           fail: true
