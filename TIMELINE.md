@@ -31,8 +31,8 @@ Each year has **two tiers**:
 ```
 2026  ███████████████                69
 2025  ██████████████████████████████ 135
-2024  ███████████████████████        104
-2023  ███████████████                68
+2024  ███████████████████████        105
+2023  ███████████████                67
 2022  █████████                      41
 2021  ███████                        30
 2020  ████                           17
@@ -306,6 +306,8 @@ Each year has **two tiers**:
 
 **Curated picks**
 
+- [`Spiking LLMs`](README.md#5--spiking-large-models--llms) ★ · SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**TMLR 2024**). \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
+  > The first large generative spiking language model (up to 260M params), linearizing attention for ~20× fewer operations.
 - [`Applications`](README.md#7--applications) ★ · Fully Neuromorphic Vision and Control for Autonomous Drone Flight (**Science Robotics 2024**). \[[paper](https://www.science.org/doi/10.1126/scirobotics.adi0591)\]
   > An end-to-end event-camera → SNN → control loop flies a real quadrotor entirely on neuromorphic hardware — a headline real-world demonstration.
 - [`Neuron Models`](README.md#2--neuron-models) · TC-LIF: A Two-Compartment Spiking Neuron Model for Long-Term Sequential Modelling (**AAAI 2024**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/29625)\]\[[code](https://github.com/ZhangShimin1/TC-LIF)\]
@@ -457,8 +459,6 @@ Each year has **two tiers**:
   > Introduces softmax-free Spiking Self-Attention (SSA) with spike-form Q/K/V — the first vision Transformer built directly in the spiking domain.
 - [`Architectures`](README.md#4--architectures) ★ · Spike-driven Transformer (**NeurIPS 2023**). \[[paper](https://arxiv.org/abs/2307.01694)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer)\]
   > A purely spike-driven Transformer whose attention uses only mask + sparse addition (linear complexity), cutting attention energy up to 87×.
-- [`Spiking LLMs`](README.md#5--spiking-large-models--llms) ★ · SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
-  > The first large generative spiking language model (up to 260M params), linearizing attention for ~20× fewer operations.
 - [`Foundations`](README.md#1--foundations--neural-coding) · DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/2008.03658)\]
   > Feeds analog pixels directly and learns leak/threshold end-to-end, popularizing direct input encoding.
 - [`Neuron Models`](README.md#2--neuron-models) · KLIF: An Optimized Spiking Neuron Unit for Tuning Surrogate Gradient Slope and Membrane Potential (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2302.09238)\]

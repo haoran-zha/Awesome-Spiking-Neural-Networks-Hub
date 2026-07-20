@@ -31,8 +31,8 @@
 ```
 2026  ███████████████                69
 2025  ██████████████████████████████ 135
-2024  ███████████████████████        104
-2023  ███████████████                68
+2024  ███████████████████████        105
+2023  ███████████████                67
 2022  █████████                      41
 2021  ███████                        30
 2020  ████                           17
@@ -306,6 +306,8 @@
 
 **精选**
 
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**TMLR 2024**). \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
+  > 首个大型生成式脉冲语言模型（最高 2.6 亿参数），将注意力线性化，运算量降低约 20 倍。
 - [`应用`](README.zh-CN.md#7--应用) ★ · Fully Neuromorphic Vision and Control for Autonomous Drone Flight (**Science Robotics 2024**). \[[paper](https://www.science.org/doi/10.1126/scirobotics.adi0591)\]
   > 端到端"事件相机→SNN→控制"闭环，完全在神经形态硬件上驱动真实四旋翼飞行，是里程碑式的真机演示。
 - [`神经元模型`](README.zh-CN.md#2--神经元模型) · TC-LIF: A Two-Compartment Spiking Neuron Model for Long-Term Sequential Modelling (**AAAI 2024**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/29625)\]\[[code](https://github.com/ZhangShimin1/TC-LIF)\]
@@ -457,8 +459,6 @@
   > 提出无 softmax 的脉冲自注意力 SSA（Q/K/V 皆为脉冲），是首个直接构建的脉冲视觉 Transformer。
 - [`网络结构`](README.zh-CN.md#4--网络架构) ★ · Spike-driven Transformer (**NeurIPS 2023**). \[[paper](https://arxiv.org/abs/2307.01694)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer)\]
   > 纯脉冲驱动 Transformer，自注意力仅用掩码与稀疏加法（线性复杂度），注意力能耗降低最多 87 倍。
-- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
-  > 首个大型生成式脉冲语言模型（最高 2.6 亿参数），将注意力线性化，运算量降低约 20 倍。
 - [`基础与编码`](README.zh-CN.md#1--基础与神经编码) · DIET-SNN: Direct Input Encoding with Leakage and Threshold Optimization (**IEEE TNNLS 2023**). \[[paper](https://arxiv.org/abs/2008.03658)\]
   > 直接输入模拟像素并端到端学习泄漏与阈值，推广了"直接输入编码"范式。
 - [`神经元模型`](README.zh-CN.md#2--神经元模型) · KLIF: An Optimized Spiking Neuron Unit for Tuning Surrogate Gradient Slope and Membrane Potential (**arXiv 2023**). \[[paper](https://arxiv.org/abs/2302.09238)\]

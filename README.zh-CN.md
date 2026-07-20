@@ -68,7 +68,7 @@
 | 2022 | **QCFS** —— *近乎无损的 ANN→SNN 转换* | ICLR | [paper](https://arxiv.org/abs/2303.04347) |
 | 2023 | **Spikformer** —— *首个脉冲 Transformer* | ICLR | [paper](https://arxiv.org/abs/2209.15425) |
 | 2023 | **Spike-driven Transformer** —— *纯脉冲驱动注意力* | NeurIPS | [paper](https://arxiv.org/abs/2307.01694) |
-| 2023 | **SpikeGPT** —— *首个生成式脉冲大模型* | arXiv | [paper](https://arxiv.org/abs/2302.13939) |
+| 2024 | **SpikeGPT** —— *首个生成式脉冲大模型* | TMLR | [paper](https://arxiv.org/abs/2302.13939) |
 | 2025 | **SpikingBrain** —— *7B/76B 类脑脉冲大模型* | arXiv | [paper](https://arxiv.org/abs/2509.05276) |
 
 ---
@@ -433,7 +433,7 @@
 
 > **一句话：** 最快速演进的前沿——脉冲**语言模型**与**多模态**模型，把 Transformer/LLM 级别的能力带入事件驱动、低功耗的脉冲世界。（视觉脉冲 Transformer 见 [§4.2](#42-脉冲-transformer-与注意力)。）
 
-- SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**arXiv 2023**) ★. \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
+- SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**TMLR 2024**) ★. \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
   > 首个大型生成式脉冲语言模型（最高 2.6 亿参数），将注意力线性化，运算量降低约 20 倍。
 - Spiking Convolutional Neural Networks for Text Classification (**ICLR 2023**). \[[paper](https://openreview.net/forum?id=pgU3k7QXuz0)\]\[[code](https://github.com/Lvchangze/snn)\]
   > 用"转换+微调"把词向量编码为脉冲，文本分类逼近 ANN，且对抗鲁棒性更强。

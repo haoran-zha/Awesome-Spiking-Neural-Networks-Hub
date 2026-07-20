@@ -68,7 +68,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 | 2022 | **QCFS** — *near-lossless ANN→SNN conversion* | ICLR | [paper](https://arxiv.org/abs/2303.04347) |
 | 2023 | **Spikformer** — *the first spiking Transformer* | ICLR | [paper](https://arxiv.org/abs/2209.15425) |
 | 2023 | **Spike-driven Transformer** — *pure spike-driven attention* | NeurIPS | [paper](https://arxiv.org/abs/2307.01694) |
-| 2023 | **SpikeGPT** — *the first generative spiking LLM* | arXiv | [paper](https://arxiv.org/abs/2302.13939) |
+| 2024 | **SpikeGPT** — *the first generative spiking LLM* | TMLR | [paper](https://arxiv.org/abs/2302.13939) |
 | 2025 | **SpikingBrain** — *7B/76B spiking brain-inspired LLM* | arXiv | [paper](https://arxiv.org/abs/2509.05276) |
 
 ---
@@ -433,7 +433,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 > **In one breath:** the fastest-moving frontier — spiking **language models** and **multimodal** models that bring Transformer/LLM-scale capability into the event-driven, energy-efficient spiking world. (Vision spiking Transformers live in [§4.2](#42-spiking-transformers--attention).)
 
-- SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**arXiv 2023**) ★. \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
+- SpikeGPT: Generative Pre-trained Language Model with Spiking Neural Networks (**TMLR 2024**) ★. \[[paper](https://arxiv.org/abs/2302.13939)\]\[[code](https://github.com/ridgerchu/SpikeGPT)\]
   > The first large generative spiking language model (up to 260M params), linearizing attention for ~20× fewer operations.
 - Spiking Convolutional Neural Networks for Text Classification (**ICLR 2023**). \[[paper](https://openreview.net/forum?id=pgU3k7QXuz0)\]\[[code](https://github.com/Lvchangze/snn)\]
   > A conversion-plus-fine-tuning recipe encoding word embeddings as spikes, matching ANN text classifiers with more robustness.
