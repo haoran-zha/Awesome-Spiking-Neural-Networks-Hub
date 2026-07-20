@@ -1,0 +1,348 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SNN Hub Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  #wrap {
+    position: relative;
+    width: 1280px; height: 320px;
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+      radial-gradient(620px 300px at 82% 6%, rgba(255,122,64,0.055) 0%, rgba(255,122,64,0) 70%),
+      radial-gradient(480px 260px at 10% 108%, rgba(148,158,178,0.045) 0%, rgba(148,158,178,0) 70%),
+      linear-gradient(180deg, #0b0b0e 0%, #0a0a0d 55%, #0c0c0f 100%);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.075);
+    font-family: "Space Grotesk", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  /* top specular hairline */
+  #wrap::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0) 92%);
+  }
+  /* corner vignette */
+  .vig {
+    position: absolute; inset: 0; pointer-events: none; border-radius: 18px;
+    background: radial-gradient(150% 190% at 50% 40%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.30) 100%);
+  }
+  canvas { position: absolute; inset: 0; }
+
+  .text { position: absolute; left: 76px; top: 74px; }
+  .kicker {
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 11.5px; font-weight: 500; letter-spacing: 3px;
+    color: #82868f;
+  }
+  .kicker .sl { color: #ff8a5e; }
+  .kicker .cnt { color: #b6bac2; }
+  h1 {
+    margin: 16px 0 0; font-size: 47px; font-weight: 600; letter-spacing: -1.2px; line-height: 1;
+    background: linear-gradient(180deg, #ffffff 24%, #c3c7cf 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub {
+    margin-top: 15px; font-size: 16.5px; font-weight: 400; letter-spacing: 0.1px;
+    color: #8f949e;
+  }
+  .chips {
+    margin-top: 21px;
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 11px; font-weight: 400; letter-spacing: 2.2px;
+    color: #6d717b;
+  }
+  .chips .sl { color: #3c3f46; padding: 0 7px; }
+
+  /* instrument annotations (positioned by JS) */
+  .ann {
+    position: absolute;
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 9.5px; letter-spacing: 0.6px;
+    color: #5d616b; white-space: nowrap;
+  }
+  .ann.acc { color: #d98a67; }
+
+  /* ---- Chinese variant (?lang=zh) ---- */
+  .zh h1 {
+    font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    font-size: 45px; font-weight: 700; letter-spacing: 3px;
+  }
+  .zh .sub {
+    font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px; letter-spacing: 0.6px;
+  }
+  .zh .kicker .cn, .zh .chips {
+    font-family: "JetBrains Mono", "Noto Sans SC", "Microsoft YaHei", monospace;
+  }
+  .zh .chips { font-size: 12px; letter-spacing: 5px; }
+  .zh .ann { font-family: "JetBrains Mono", "Noto Sans SC", "Microsoft YaHei", monospace; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="c"></canvas>
+  <div class="vig"></div>
+  <div class="text">
+    <div class="kicker"><span class="sl">//</span>&nbsp; AWESOME LIST &nbsp;·&nbsp; <span class="cnt">340+</span> CURATED ENTRIES</div>
+    <h1>Spiking Neural Networks Hub</h1>
+    <div class="sub">A comprehensive guide to spiking neural networks — from theory to silicon.</div>
+    <div class="chips">PAPERS<span class="sl">/</span>MODELS<span class="sl">/</span>HARDWARE<span class="sl">/</span>DATASETS<span class="sl">/</span>TOOLS<span class="sl">/</span>TEAMS</div>
+  </div>
+  <div class="ann acc" id="annPeak">+30 mV</div>
+  <div class="ann" id="annThr">−55 mV · threshold</div>
+  <div class="ann" id="annRest">−70 mV</div>
+  <div class="ann" id="annCh" style="left: 76px; top: 286px;">CH1 · membrane potential · 20 mV/div</div>
+</div>
+<script>
+'use strict';
+const W = 1280, H = 320;
+const cv = document.getElementById('c');
+const DPR = window.devicePixelRatio || 1;
+cv.width = W * DPR; cv.height = H * DPR;
+cv.style.width = W + 'px'; cv.style.height = H + 'px';
+const ctx = cv.getContext('2d');
+ctx.scale(DPR, DPR);
+const TAU = Math.PI * 2;
+
+function mulberry32(a) {
+  return function() {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+/* ---------- static blueprint layer (grid + plus marks), radially masked ---------- */
+const gridLayer = (() => {
+  const g = document.createElement('canvas');
+  g.width = W * DPR; g.height = H * DPR;
+  const gc = g.getContext('2d');
+  gc.scale(DPR, DPR);
+  gc.strokeStyle = 'rgba(255,255,255,0.045)';
+  gc.lineWidth = 1;
+  const STEP = 32;
+  gc.beginPath();
+  for (let x = STEP; x < W; x += STEP) { gc.moveTo(x + 0.5, 0); gc.lineTo(x + 0.5, H); }
+  for (let y = STEP; y < H; y += STEP) { gc.moveTo(0, y + 0.5); gc.lineTo(W, y + 0.5); }
+  gc.stroke();
+  // plus markers at chosen intersections
+  gc.strokeStyle = 'rgba(255,255,255,0.16)';
+  for (const [px, py] of [[704, 64], [1120, 288], [640, 256], [1216, 96]]) {
+    gc.beginPath();
+    gc.moveTo(px - 5, py + 0.5); gc.lineTo(px + 5, py + 0.5);
+    gc.moveTo(px + 0.5, py - 5); gc.lineTo(px + 0.5, py + 5);
+    gc.stroke();
+  }
+  // mask: keep grid mostly on the right, fade under the text block
+  gc.globalCompositeOperation = 'destination-in';
+  const m = gc.createRadialGradient(330, 170, 60, 330, 170, 980);
+  m.addColorStop(0, 'rgba(0,0,0,0.10)');
+  m.addColorStop(0.45, 'rgba(0,0,0,0.45)');
+  m.addColorStop(1, 'rgba(0,0,0,1)');
+  gc.fillStyle = m;
+  gc.fillRect(0, 0, W, H);
+  return g;
+})();
+
+/* ---------- film grain ---------- */
+const grain = (() => {
+  const g = document.createElement('canvas');
+  g.width = 128; g.height = 128;
+  const gc = g.getContext('2d');
+  const rnd = mulberry32(1234);
+  const im = gc.createImageData(128, 128);
+  for (let i = 0; i < im.data.length; i += 4) {
+    const v = 120 + rnd() * 16;
+    im.data[i] = im.data[i + 1] = im.data[i + 2] = v;
+    im.data[i + 3] = 8;
+  }
+  gc.putImageData(im, 0, 0);
+  return g;
+})();
+
+/* ---------- spike raster (rows of ticks, slowly scrolling like live data) ---------- */
+const RASTER = (() => {
+  const rnd = mulberry32(77);
+  const rows = [];
+  for (let r = 0; r < 8; r++) {
+    const ticks = [];
+    let x = 0;
+    while (x < 700) {                       // one period of scroll loop
+      x += 8 + rnd() * 46;                  // Poisson-ish gaps
+      ticks.push({ x, acc: rnd() < 0.09 }); // a few accent spikes
+    }
+    rows.push(ticks);
+  }
+  return rows;
+})();
+const RX0 = 665, RX1 = 1235, RY0 = 42, RROW = 13.5;
+
+function drawRaster(t) {
+  const scroll = (t * 9) % 700;
+  for (let r = 0; r < RASTER.length; r++) {
+    const y = RY0 + r * RROW;
+    for (const tk of RASTER[r]) {
+      let x = RX0 + ((tk.x - scroll + 700) % 700) * ((RX1 - RX0) / 700);
+      // fade in from the right edge, fade out toward the left of the block
+      const u = (x - RX0) / (RX1 - RX0);
+      const edge = Math.min(1, u * 5) * Math.min(1, (1 - u) * 5);
+      const a = tk.acc ? 0.34 * edge : 0.085 * edge;
+      ctx.strokeStyle = tk.acc ? `rgba(255,138,94,${a})` : `rgba(255,255,255,${a})`;
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.moveTo(x, y - 3.2); ctx.lineTo(x, y + 3.2);
+      ctx.stroke();
+    }
+  }
+  // row baseline dots on the left of the raster block
+  for (let r = 0; r < RASTER.length; r++) {
+    ctx.fillStyle = 'rgba(255,255,255,0.10)';
+    ctx.fillRect(RX0 - 8, RY0 + r * RROW - 0.5, 2.5, 1);
+  }
+}
+
+/* ---------- membrane-potential trace ---------- */
+const BASE = 252, PEAK = 164, THR = 224, X0 = 40, X1 = 1240, APX = 985;
+function traceY(x) {
+  // resting potential with tiny subthreshold noise bumps
+  let y = BASE
+    + Math.sin(x * 0.045) * 1.1
+    + Math.sin(x * 0.013 + 2) * 1.6;
+  // two failed (subthreshold) EPSPs for storytelling
+  for (const [bx, amp, w] of [[420, 12, 34], [700, 17, 30]]) {
+    const dx = x - bx;
+    if (dx > 0 && dx < w * 7) y -= amp * (dx / w) * Math.exp(1 - dx / w) * 0.9;
+  }
+  // the action potential (deltas blend into the noisy baseline at both ends)
+  const dx = x - APX;
+  if (dx > -26 && dx < 60) {
+    if (dx < 0) {                                    // depolarization ramp
+      const k = 1 + dx / 26;
+      y -= (BASE - (THR - 6)) * Math.pow(k, 2.5);
+    } else if (dx < 7) {                             // spike upstroke
+      y = (THR - 6) - ((THR - 6) - PEAK) * (dx / 7);
+    } else if (dx < 17) {                            // repolarization
+      y = PEAK + ((y + 16) - PEAK) * Math.pow((dx - 7) / 10, 0.9);
+    } else {                                         // after-hyperpolarization
+      const k = (dx - 17) / 43;
+      y = y + 16 * (1 - Math.pow(k, 0.7));
+    }
+  }
+  return y;
+}
+
+function drawTrace(t) {
+  // dashed threshold hairline
+  ctx.save();
+  ctx.setLineDash([3, 6]);
+  ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(660, THR + 0.5); ctx.lineTo(X1, THR + 0.5);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // trace: quiet white left → accent action potential right
+  const seg = 3;
+  for (let x = X0; x < X1; x += seg) {
+    const y1 = traceY(x), y2 = traceY(x + seg);
+    const u = (x - X0) / (X1 - X0);
+    const nearAP = Math.max(0, 1 - Math.abs(x - APX) / 110);
+    const white = 0.09 + u * 0.13;
+    ctx.lineWidth = 1.5;
+    if (nearAP > 0.01) {
+      ctx.strokeStyle = `rgba(255,${Math.round(150 - 40 * nearAP)},${Math.round(110 - 50 * nearAP)},${white + nearAP * 0.75})`;
+    } else {
+      ctx.strokeStyle = `rgba(235,238,244,${white})`;
+    }
+    ctx.beginPath();
+    ctx.moveTo(x, y1); ctx.lineTo(x + seg, y2);
+    ctx.stroke();
+  }
+
+  // soft glow around the spike peak
+  const g = ctx.createRadialGradient(APX + 3, PEAK + 24, 0, APX + 3, PEAK + 24, 120);
+  g.addColorStop(0, 'rgba(255,122,64,0.13)');
+  g.addColorStop(1, 'rgba(255,122,64,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(APX - 120, PEAK - 60, 246, 200);
+
+  // travelling pulse along the trace
+  const u = (t * 0.25) % 1;
+  const px = X0 + u * (X1 - X0);
+  const py = traceY(px);
+  for (let k = 5; k >= 0; k--) {
+    const gx = px - k * 5;
+    if (gx < X0) continue;
+    const gy = traceY(gx);
+    const head = k === 0;
+    const rr = head ? 2.6 : 1.6 * (1 - k / 6);
+    const al = head ? 0.9 : 0.22 * (1 - k / 6);
+    const gg = ctx.createRadialGradient(gx, gy, 0, gx, gy, rr * 3);
+    gg.addColorStop(0, `rgba(255,196,160,${al})`);
+    gg.addColorStop(0.5, `rgba(255,138,94,${al * 0.55})`);
+    gg.addColorStop(1, 'rgba(255,138,94,0)');
+    ctx.fillStyle = gg;
+    ctx.beginPath(); ctx.arc(gx, gy, rr * 3, 0, TAU); ctx.fill();
+  }
+  // crisp head dot
+  ctx.fillStyle = 'rgba(255,224,205,0.95)';
+  ctx.beginPath(); ctx.arc(px, py, 1.7, 0, TAU); ctx.fill();
+}
+
+/* annotations placed against trace geometry */
+(function placeAnnotations() {
+  const set = (id, x, y) => {
+    const el = document.getElementById(id);
+    el.style.left = x + 'px'; el.style.top = y + 'px';
+  };
+  set('annPeak', APX + 16, PEAK - 4);
+  set('annThr', 660, THR - 16);
+  set('annRest', X1 - 52, BASE + 10);
+})();
+
+function draw(t) {
+  ctx.clearRect(0, 0, W, H);
+  ctx.drawImage(gridLayer, 0, 0, W, H);
+  drawRaster(t);
+  drawTrace(t);
+  ctx.save();
+  ctx.globalAlpha = 0.4;
+  ctx.fillStyle = ctx.createPattern(grain, 'repeat');
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+
+const qs = new URLSearchParams(location.search);
+const FREEZE = qs.has('t') ? parseFloat(qs.get('t')) : null;
+if (qs.get('lang') === 'zh') {
+  document.documentElement.lang = 'zh-CN';
+  document.getElementById('wrap').classList.add('zh');
+  document.querySelector('.kicker').innerHTML =
+    '<span class="sl">//</span>&nbsp; AWESOME LIST &nbsp;·&nbsp; <span class="cnt">340+</span> <span class="cn">精选条目</span>';
+  document.querySelector('h1').textContent = '脉冲神经网络知识库';
+  document.querySelector('.sub').textContent = '一份全面的脉冲神经网络指南 —— 从理论到芯片。';
+  document.querySelector('.chips').innerHTML =
+    '论文<span class="sl">/</span>模型<span class="sl">/</span>硬件<span class="sl">/</span>数据集<span class="sl">/</span>工具<span class="sl">/</span>团队';
+  document.getElementById('annThr').textContent = '−55 mV · 阈值';
+  document.getElementById('annCh').textContent = 'CH1 · 膜电位 · 20 mV/div';
+}
+function start() {
+  if (FREEZE != null) {
+    draw(FREEZE);
+  } else {
+    const frame = (now) => { draw(now / 1000); requestAnimationFrame(frame); };
+    requestAnimationFrame(frame);
+  }
+}
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+else start();
+</script>
+</body>
+</html>

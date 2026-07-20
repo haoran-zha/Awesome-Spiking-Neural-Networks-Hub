@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.svg" alt="Awesome Spiking Neural Networks Hub" width="100%"></a>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.webp" alt="Awesome Spiking Neural Networks Hub" width="100%"></a>
 
 <h1>Awesome Spiking Neural Networks Hub</h1>
 
@@ -80,7 +80,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
 
 - **2026-07** — 🧭 **Audit & ecosystem update.** Fixed dead/outdated links and a moved lab affiliation; added six 2026 works, four major labs, and per-lab **latest-work (2024–2026)** tags across §13.
 - **2026-07** — 🎉 **Launched the Hub.** 340+ entries across **6 Parts**; new **Research Groups & Labs** (§13), **Model Zoo & Community** (§12), and a dedicated **Spiking Large Models & LLMs** section (§5).
-- **2026-07** — 🎨 **Visual overhaul.** SVG banner, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
+- **2026-07** — 🎨 **Visual overhaul.** New banner, "Start Here" table, and datasets/frameworks/model-zoo turned into tables.
 - **2026-07** — 📚 **Coverage push.** Added SpikingBrain, Sorbet, SpikeCLIP, Spike2Former, SDiT; Darwin3, Intel Hala Point, IBM NorthPole, Lynxi / BrainChip / Innatera / Xylo / GrAI; plus foundational works (Mead 1990, Missing Memristor 2008, Tempotron 2006) and frameworks (SPAIC, SNNAX, BrainPy, CARLsim…).
 
 > New paper / model / chip / dataset / tool? [Open a PR](#-contributing) and add a line here.

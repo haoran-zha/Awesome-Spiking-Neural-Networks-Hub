@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.svg" alt="Awesome Spiking Neural Networks Hub" width="100%"></a>
+<a href="https://github.com/haoran-zha/Awesome-Spiking-Neural-Networks-Hub"><img src="assets/banner.zh-CN.webp" alt="Awesome 脉冲神经网络知识库" width="100%"></a>
 
 <h1>Awesome 脉冲神经网络知识库（Spiking Neural Networks Hub）</h1>
 
@@ -80,7 +80,7 @@
 
 - **2026-07** —— 🧭 **审校与生态更新。** 修复失效/过期链接和一处已迁移的团队归属；新增 6 篇 2026 年工作、4 个重要实验室，并为 §13 各团队补充**近期成果（2024–2026）**标注。
 - **2026-07** —— 🎉 **知识库上线。** 6 大 Part、340+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
-- **2026-07** —— 🎨 **视觉改版。** SVG banner、"必读入门"表，并把数据集/框架/模型库转为表格。
+- **2026-07** —— 🎨 **视觉改版。** 全新 banner、"必读入门"表，并把数据集/框架/模型库转为表格。
 - **2026-07** —— 📚 **内容扩充。** 新增 SpikingBrain、Sorbet、SpikeCLIP、Spike2Former、SDiT；Darwin3、Intel Hala Point、IBM NorthPole、灵汐/BrainChip/Innatera/Xylo/GrAI；以及奠基工作（Mead 1990、Missing Memristor 2008、Tempotron 2006）与框架（SPAIC、SNNAX、BrainPy、CARLsim…）。
 
 > 有新的论文/模型/芯片/数据集/工具？[提交 PR](#-贡献指南) 并在此加一行。
