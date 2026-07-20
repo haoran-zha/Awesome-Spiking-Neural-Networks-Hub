@@ -13,7 +13,7 @@ The script combines two sources per language:
 
 | Source | Role |
 |---|---|
-| [`README.md`](../README.md) / [`README.zh-CN.md`](../README.zh-CN.md) | **Curated picks** — every dated entry, with its "why it matters" note, topic tag, and 🧠 landmark marker, re-sorted by year. |
+| [`README.md`](../README.md) / [`README.zh-CN.md`](../README.zh-CN.md) | **Curated picks** — every dated entry, with its "why it matters" note, topic tag, and ★ landmark marker, re-sorted by year. |
 | [`data/thebrainlab-snapshot.md`](data/thebrainlab-snapshot.md) | **Full-year conference index** (2021–2026), from [TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks), de-duplicated against the picks. |
 
 ### Regenerate
@@ -28,7 +28,7 @@ Requires only the Python 3 standard library.
 
 - **A curated, annotated entry** → add it to the right thematic section of
   `README.md` (and its 中文 twin in `README.zh-CN.md`), then re-run the script.
-  It will appear under that year's **⭐ Curated picks** with its topic tag.
+  It will appear under that year's **Curated picks** with its topic tag.
 - **Refreshing the conference index** → re-fetch TheBrainLab's `README.md` into
   `data/thebrainlab-snapshot.md` (keep the provenance header), then re-run.
 

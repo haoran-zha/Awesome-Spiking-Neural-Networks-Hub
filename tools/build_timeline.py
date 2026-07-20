@@ -21,18 +21,18 @@ from collections import defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SNAPSHOT = os.path.join(ROOT, 'tools', 'data', 'thebrainlab-snapshot.md')
 
-# section number -> (emoji, EN label, ZH label, EN anchor, ZH anchor)
+# section number -> (EN label, ZH label, EN anchor, ZH anchor)
 # ZH anchors are GitHub slugs of the Chinese headings in README.zh-CN.md.
 SECTION_TAGS = {
-    1: ("🧩", "Foundations", "基础与编码", "#1--foundations--neural-coding", "#1--基础与神经编码"),
-    2: ("🔬", "Neuron Models", "神经元模型", "#2--neuron-models", "#2--神经元模型"),
-    3: ("🎓", "Training", "训练方法", "#3--training-methods", "#3--训练方法"),
-    4: ("🏗️", "Architectures", "网络结构", "#4--architectures", "#4--网络架构"),
-    5: ("🤖", "Spiking LLMs", "脉冲大模型", "#5--spiking-large-models--llms", "#5--脉冲大模型与-llm"),
-    6: ("⚙️", "Hardware", "神经形态硬件", "#6--neuromorphic-hardware", "#6--神经形态硬件"),
-    7: ("🚀", "Applications", "应用", "#7--applications", "#7--应用"),
-    8: ("🔋", "Efficiency & Robustness", "能效与鲁棒", "#8--energy-robustness--security", "#8--能耗鲁棒性与安全"),
-    9: ("🧬", "Theory & Neuroscience", "理论与神经科学", "#9--theory--neuroscience", "#9--理论与神经科学"),
+    1: ("Foundations", "基础与编码", "#1--foundations--neural-coding", "#1--基础与神经编码"),
+    2: ("Neuron Models", "神经元模型", "#2--neuron-models", "#2--神经元模型"),
+    3: ("Training", "训练方法", "#3--training-methods", "#3--训练方法"),
+    4: ("Architectures", "网络结构", "#4--architectures", "#4--网络架构"),
+    5: ("Spiking LLMs", "脉冲大模型", "#5--spiking-large-models--llms", "#5--脉冲大模型与-llm"),
+    6: ("Hardware", "神经形态硬件", "#6--neuromorphic-hardware", "#6--神经形态硬件"),
+    7: ("Applications", "应用", "#7--applications", "#7--应用"),
+    8: ("Efficiency & Robustness", "能效与鲁棒", "#8--energy-robustness--security", "#8--能耗鲁棒性与安全"),
+    9: ("Theory & Neuroscience", "理论与神经科学", "#9--theory--neuroscience", "#9--理论与神经科学"),
 }
 SKIP_SECTIONS = {10, 11, 12, 13}
 
@@ -50,6 +50,9 @@ SEC_RE   = re.compile(r'^### (?P<num>\d+) · (?P<name>.+?)\s*$')
 YEARHDR  = re.compile(r'^### (?P<y>\d{4})\s*$')
 BOLD_RE  = re.compile(r'\*\*(?P<v>[^*]+)\*\*')
 YEAR_RE  = re.compile(r'\b(?:19|20)\d{2}\b')
+
+# the single reused must-read marker (matches README's ★)
+LANDMARK = '★'
 
 
 # ---------------------------------------------------------------- Hub parsing
@@ -79,7 +82,7 @@ def parse_hub(path):
                 if am: annot.append(am.group('txt')); j += 1
                 else: break
             entries.append(dict(section=cur_sec, year=year,
-                                 landmark='🧠' in body, body=body.strip(),
+                                 landmark=LANDMARK in body, body=body.strip(),
                                  annot=' '.join(annot), norm=norm_title(body)))
             i = j; continue
         i += 1
@@ -154,7 +157,7 @@ def parse_brainlab(path):
 
 # ------------------------------------------------------------------ helpers
 def clean_body(body):
-    b = body.replace(' 🧠.', '.').replace(' 🧠 ', ' ').replace('🧠', '')
+    b = body.replace(' ★.', '.').replace(' ★ ', ' ').replace('★', '')
     return re.sub(r'\s+\.', '.', b).strip()
 
 def bar(count, maxc, width=30):
@@ -185,24 +188,24 @@ def render(hub, extra, lang):
     # ---- header ----
     if en:
         A('<div align="center">'); BLANK()
-        A('<h1>🗓️ Awesome Spiking Neural Networks — Timeline Edition</h1>'); BLANK()
+        A('<h1>Awesome Spiking Neural Networks — Timeline Edition</h1>'); BLANK()
         A('<p><em>The whole SNN field in chronological order — newest first.</em><br>')
         A('<sub>the chronological companion to the thematic <a href="README.md">Hub</a></sub></p>'); BLANK()
-        A('<p><a href="TIMELINE.md"><b>🌐 English</b></a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md">🇨🇳 中文</a> '
-          '&nbsp;|&nbsp; <a href="README.md">📚 Thematic Hub (EN)</a> &nbsp;·&nbsp; <a href="README.zh-CN.md">📚 主题版 (中文)</a></p>'); BLANK()
-        A(f'<p>📄 <b>{total}</b> works ({total_hub} annotated picks + {total_extra} indexed) &nbsp;·&nbsp; '
-          f'🧠 <b>{n_landmark}</b> landmarks &nbsp;·&nbsp; 🗓️ <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
+        A('<p><a href="TIMELINE.md"><b>English</b></a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md">中文</a> '
+          '&nbsp;|&nbsp; <a href="README.md">Thematic Hub (EN)</a> &nbsp;·&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a></p>'); BLANK()
+        A(f'<p><b>{total}</b> works ({total_hub} annotated picks + {total_extra} indexed) &nbsp;·&nbsp; '
+          f'<b>{n_landmark}</b> landmarks &nbsp;·&nbsp; <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
         A('</div>'); BLANK(); A('---'); BLANK()
-        A('## 📖 How to read this page'); BLANK()
+        A('## How to read this page'); BLANK()
         A('This is the **chronological view** of the [Awesome Spiking Neural Networks Hub](README.md). '
           'The Hub organises everything by *topic*; this page lays the field out **by year, newest first** — '
           'so you can trace how it actually unfolded, the way the '
           '[TheBrainLab timeline](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) does.'); BLANK()
         A('Each year has **two tiers**:'); BLANK()
-        A(f'- **⭐ Curated picks** — the Hub\'s **{total_hub}** deeply-annotated entries. Every line carries a '
-          '*why it matters* note, a topic tag (e.g. `🎓 Training`, `⚙️ Hardware`) linking back to the full '
-          'thematic section, and **🧠 = field landmark**.')
-        A(f'- **➕ Full-year index** — a collapsible list of **{total_extra}** further papers, merged from '
+        A(f'- **Curated picks** — the Hub\'s **{total_hub}** deeply-annotated entries. Every line carries a '
+          '*why it matters* note, a topic tag (e.g. `Training`, `Hardware`) linking back to the full '
+          'thematic section, and **★ = field landmark**.')
+        A(f'- **Full-year index** — a collapsible list of **{total_extra}** further papers, merged from '
           '[TheBrainLab](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) and de-duplicated '
           'against the picks, so the year\'s conference output is complete (title · venue · links).'); BLANK()
         A('> **Auto-generated** — do not edit this file by hand. Add curated entries to [README.md](README.md), '
@@ -211,22 +214,22 @@ def render(hub, extra, lang):
           '[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks).')
     else:
         A('<div align="center">'); BLANK()
-        A('<h1>🗓️ 脉冲神经网络精选 — 时间线版</h1>'); BLANK()
+        A('<h1>脉冲神经网络精选 — 时间线版</h1>'); BLANK()
         A('<p><em>用时间顺序讲完整个脉冲神经网络领域 — 最新在前。</em><br>')
         A('<sub>主题版 <a href="README.zh-CN.md">Hub</a> 的时间线姊妹篇</sub></p>'); BLANK()
-        A('<p><a href="TIMELINE.md">🌐 English</a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md"><b>🇨🇳 中文</b></a> '
-          '&nbsp;|&nbsp; <a href="README.zh-CN.md">📚 主题版 (中文)</a> &nbsp;·&nbsp; <a href="README.md">📚 Thematic Hub (EN)</a></p>'); BLANK()
-        A(f'<p>📄 <b>{total}</b> 篇成果（{total_hub} 篇精选注释 + {total_extra} 篇索引） &nbsp;·&nbsp; '
-          f'🧠 <b>{n_landmark}</b> 项里程碑 &nbsp;·&nbsp; 🗓️ <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
+        A('<p><a href="TIMELINE.md">English</a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md"><b>中文</b></a> '
+          '&nbsp;|&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a> &nbsp;·&nbsp; <a href="README.md">Thematic Hub (EN)</a></p>'); BLANK()
+        A(f'<p><b>{total}</b> 篇成果（{total_hub} 篇精选注释 + {total_extra} 篇索引） &nbsp;·&nbsp; '
+          f'<b>{n_landmark}</b> 项里程碑 &nbsp;·&nbsp; <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
         A('</div>'); BLANK(); A('---'); BLANK()
-        A('## 📖 如何阅读本页'); BLANK()
+        A('## 如何阅读本页'); BLANK()
         A('这是 [脉冲神经网络精选 Hub](README.zh-CN.md) 的**时间线视图**。Hub 按*主题*组织；'
           '本页把整个领域按**年份倒序**铺开——让你顺着时间看清它是怎么一步步走过来的，'
           '就像 [TheBrainLab 的时间线](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) 那样。'); BLANK()
         A('每个年份分**两层**：'); BLANK()
-        A(f'- **⭐ 精选** — Hub 中 **{total_hub}** 篇带深度注释的条目。每条都有一句*为什么重要*、'
-          '一个可跳回主题章节的标签（如 `🎓 训练方法`、`⚙️ 神经形态硬件`），**🧠 = 领域里程碑**。')
-        A(f'- **➕ 当年全量索引** — 可折叠列表，收录另外 **{total_extra}** 篇论文，来自 '
+        A(f'- **精选** — Hub 中 **{total_hub}** 篇带深度注释的条目。每条都有一句*为什么重要*、'
+          '一个可跳回主题章节的标签（如 `训练方法`、`神经形态硬件`），**★ = 领域里程碑**。')
+        A(f'- **当年全量索引** — 可折叠列表，收录另外 **{total_extra}** 篇论文，来自 '
           '[TheBrainLab](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) 并已与精选去重，'
           '让当年的会议产出更完整（标题 · 会议 · 链接）。'); BLANK()
         A('> **自动生成** — 请勿手工编辑本文件。精选条目请加到 [README.zh-CN.md](README.zh-CN.md)，'
@@ -235,7 +238,7 @@ def render(hub, extra, lang):
 
     # ---- activity chart ----
     BLANK(); A('---'); BLANK()
-    A('## 📊 ' + ('Papers by year' if en else '逐年论文量')); BLANK()
+    A('## ' + ('Papers by year' if en else '逐年论文量')); BLANK()
     A('```')
     for y in [y for y in years if y >= 2010]:
         c = combined[y]
@@ -250,8 +253,8 @@ def render(hub, extra, lang):
 
     # ---- year index ----
     BLANK(); A('---'); BLANK()
-    A('## 🧭 ' + ('Jump to a year' if en else '跳转到年份')); BLANK()
-    A(' · '.join(f'[{y}](#-{y})' for y in years))
+    A('## ' + ('Jump to a year' if en else '跳转到年份')); BLANK()
+    A(' · '.join(f'[{y}](#{y})' for y in years))
 
     # ---- eras / years ----
     for (s, e2, ten, tzh) in ERAS:
@@ -263,22 +266,22 @@ def render(hub, extra, lang):
         for y in yrs:
             picks = sorted(hub_by[y], key=lambda x: (not x['landmark'], x['section']))
             more = extra_by[y]
-            BLANK(); A(f'### 📅 {y}'); BLANK()
+            BLANK(); A(f'### {y}'); BLANK()
             if picks:
-                A('**⭐ Curated picks**' if en else '**⭐ 精选**'); BLANK()
+                A('**Curated picks**' if en else '**精选**'); BLANK()
                 for it in picks:
-                    emoji, ltag, ztag, en_anchor, zh_anchor = SECTION_TAGS[it['section']]
+                    ltag, ztag, en_anchor, zh_anchor = SECTION_TAGS[it['section']]
                     label = ltag if en else ztag
                     anchor = en_anchor if en else zh_anchor
-                    tag = f'[`{emoji} {label}`]({hub_md}{anchor})'
-                    mark = ' 🧠' if it['landmark'] else ''
+                    tag = f'[`{label}`]({hub_md}{anchor})'
+                    mark = ' ★' if it['landmark'] else ''
                     A(f'- {tag}{mark} · {clean_body(it["body"])}')
                     if it['annot']:
                         A(f'  > {it["annot"]}')
                 BLANK()
             if more:
-                lbl = (f'➕ {len(more)} more {y} papers' if en
-                       else f'➕ 当年另有 {len(more)} 篇')
+                lbl = (f'{len(more)} more {y} papers' if en
+                       else f'当年另有 {len(more)} 篇')
                 sub = (' — conference index, via TheBrainLab' if en
                        else ' — 会议索引，来自 TheBrainLab')
                 A(f'<details>')
@@ -296,12 +299,12 @@ def render(hub, extra, lang):
         A('<sub>Curated picks auto-extracted from <a href="README.md">README.md</a> · '
           'conference index from <a href="https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks">TheBrainLab</a> · '
           'built by <a href="tools/build_timeline.py">tools/build_timeline.py</a>.</sub><br>')
-        A('<sub>If this helps your work, please ⭐ the repo and <a href="README.md#-citation">cite it</a>.</sub>')
+        A('<sub>If this helps your work, please star the repo and <a href="README.md#citation">cite it</a>.</sub>')
     else:
         A('<sub>精选条目自动提取自 <a href="README.zh-CN.md">README.zh-CN.md</a> · '
           '会议索引来自 <a href="https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks">TheBrainLab</a> · '
           '由 <a href="tools/build_timeline.py">tools/build_timeline.py</a> 生成。</sub><br>')
-        A('<sub>如果本项目对你有帮助，欢迎 ⭐ 并 <a href="README.zh-CN.md#-citation">引用</a>。</sub>')
+        A('<sub>如果本项目对你有帮助，欢迎 Star 并 <a href="README.zh-CN.md#引用">引用</a>。</sub>')
     A('</div>'); BLANK()
     return '\n'.join(out)
 

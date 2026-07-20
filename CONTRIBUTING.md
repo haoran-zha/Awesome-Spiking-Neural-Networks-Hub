@@ -26,7 +26,7 @@ to one file must be mirrored in the other.
    ```
 
    - `[code]` is optional — omit the bracket if there is no official code.
-   - Add a 🧠 marker (after the year) only for genuinely seminal / must-read works.
+   - Add a ★ marker right before the period — `(**Venue Year**) ★.` — only for genuinely seminal / must-read works.
 3. Add the **same entry** to the other README with a note in that file's language.
 4. Keep entries in rough importance / chronological order within their section.
 
