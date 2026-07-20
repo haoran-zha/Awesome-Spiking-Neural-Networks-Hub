@@ -16,7 +16,7 @@
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT"></a>
 </p>
 
-<p><b>🌐 English</b> &nbsp;·&nbsp; <a href="README.zh-CN.md">🇨🇳 中文</a></p>
+<p><b>🌐 English</b> &nbsp;·&nbsp; <a href="README.zh-CN.md">🇨🇳 中文</a> &nbsp;|&nbsp; <a href="TIMELINE.md">🗓️ Timeline edition</a></p>
 
 <p>📄 <b>340+</b> papers &amp; resources &nbsp;·&nbsp; 🧠 <b>40+</b> seminal works &nbsp;·&nbsp; 🏛️ <b>42</b> research groups &nbsp;·&nbsp; 💻 <b>45+</b> open-source projects</p>
 

@@ -16,7 +16,7 @@
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT"></a>
 </p>
 
-<p><a href="README.md">🇬🇧 English</a> &nbsp;·&nbsp; <b>🌐 中文</b></p>
+<p><a href="README.md">🇬🇧 English</a> &nbsp;·&nbsp; <b>🌐 中文</b> &nbsp;|&nbsp; <a href="TIMELINE.zh-CN.md">🗓️ 时间线版</a></p>
 
 <p>📄 <b>340+</b> 论文与资源 &nbsp;·&nbsp; 🧠 <b>40+</b> 篇奠基工作 &nbsp;·&nbsp; 🏛️ <b>42</b> 研究团队 &nbsp;·&nbsp; 💻 <b>45+</b> 开源项目</p>
 
@@ -132,7 +132,7 @@
 
 - A Logical Calculus of the Ideas Immanent in Nervous Activity (**Bull. Math. Biophysics 1943**) 🧠. \[[paper](https://doi.org/10.1007/BF02478259)\]
   > McCulloch–Pitts 阈值神经元，是人工神经元与脉冲神经元的思想源头。
-- A Quantitative Description of Membrane Current... in Nerve (**J. Physiology 1952**) 🧠. \[[paper](https://doi.org/10.1113/jphysiol.1952.sp004764)\]
+- A Quantitative Description of Membrane Current and Its Application to Conduction and Excitation in Nerve (**J. Physiology 1952**) 🧠. \[[paper](https://doi.org/10.1113/jphysiol.1952.sp004764)\]
   > Hodgkin–Huxley 模型（诺奖成果），是一切生物物理脉冲动力学的基础。
 - Networks of Spiking Neurons: The Third Generation of Neural Network Models (**Neural Networks 1997**) 🧠. \[[paper](https://doi.org/10.1016/S0893-6080(97)00011-7)\]
   > Maass 的里程碑论文，定义 SNN 为计算能力更强的"第三代神经网络"。
@@ -254,7 +254,7 @@
   > 用时间信用分配核在时间轴上反传误差，可同时学习权重与轴突延迟。
 - SuperSpike: Supervised Learning in Multilayer Spiking Neural Networks (**Neural Computation 2018**). \[[paper](https://doi.org/10.1162/neco_a_01086)\]\[[code](https://github.com/fzenke/pub2018superspike)\]
   > 推导出可在线运行的三因子近似梯度规则，把多层 SNN 训练与生物可塑性联系起来。
-- The Remarkable Robustness of Surrogate Gradient Learning... in SNNs (**Neural Computation 2021**). \[[paper](https://doi.org/10.1162/neco_a_01367)\]\[[code](https://github.com/fzenke/randman)\]
+- The Remarkable Robustness of Surrogate Gradient Learning for Instilling Complex Function in SNNs (**Neural Computation 2021**). \[[paper](https://doi.org/10.1162/neco_a_01367)\]\[[code](https://github.com/fzenke/randman)\]
   > 系统验证替代函数形状影响不大、但尺度很关键，为如何选替代梯度提供实证指南。
 - Temporal Spike Sequence Learning via Backpropagation for Deep SNNs (TSSL-BP) (**NeurIPS 2020**). \[[paper](https://arxiv.org/abs/2002.10085)\]\[[code](https://github.com/stonezwr/TSSL-BP)\]
   > 将误差分配拆成神经元间与神经元内两类依赖，实现少步数下的高精度时序学习。
@@ -286,7 +286,7 @@
   > 让 ANN 与 SNN 共享权重"串联"训练，用 ANN 传梯度、SNN 数脉冲，大幅降低推理开销。
 - Advancing Spatiotemporal Representations in SNNs via Parametric Invertible Transformation (PIT) (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=3JwNXQzxll)\]\[[code](https://github.com/YinsongYan/ICLR26)\]
   > 将可逆变换与神经元动力学共轭结合，并校正代理梯度失配，扩展二值脉冲可用的时空表征空间。
-- Accurate and Efficient Time-Domain Classification with Adaptive Spiking RNNs (**Nature Machine Intelligence 2021**). \[[paper](https://doi.org/10.1038/s42256-021-00397-w)\]
+- Accurate and Efficient Time-Domain Classification with Adaptive Spiking Recurrent Neural Networks (**Nature Machine Intelligence 2021**). \[[paper](https://doi.org/10.1038/s42256-021-00397-w)\]
   > 自适应脉冲神经元 + 替代梯度循环 SNN，在语音/手势上达 RNN 级精度且计算量低 1–3 个数量级。
 
 #### 3.3 生物可塑性 / 局部学习
@@ -477,7 +477,7 @@
 
 #### 数字神经形态芯片
 
-- A Million Spiking-Neuron Integrated Circuit... (TrueNorth) (**Science 2014**) 🧠. \[[paper](https://www.science.org/doi/10.1126/science.1254642)\]
+- A Million Spiking-Neuron Integrated Circuit with a Scalable Communication Network (TrueNorth) (**Science 2014**) 🧠. \[[paper](https://www.science.org/doi/10.1126/science.1254642)\]
   > IBM TrueNorth 用 65 毫瓦集成百万神经元、2.56 亿突触，是大规模数字类脑芯片的里程碑。
 - Convolutional Networks for Fast, Energy-Efficient Neuromorphic Computing (TrueNorth) (**PNAS 2016**). \[[paper](https://www.pnas.org/doi/10.1073/pnas.1604850113)\]
   > 把深度卷积网络映射到 TrueNorth，用几十毫瓦达到接近顶尖精度、1200–2600 fps。
@@ -489,7 +489,7 @@
   > 曼彻斯特用海量 ARM 核与类脑分组路由，以生物实时速度模拟脉冲网络。
 - SpiNNaker: A 1-W 18-Core System-on-Chip for Massively-Parallel Neural Simulation (**IEEE JSSC 2013**). \[[paper](https://doi.org/10.1109/JSSC.2013.2259038)\]
   > 18 个 ARM 核、1 亿晶体管、1 瓦的 GALS 芯片，是百万核 SpiNNaker 系统的物理基石。
-- SpiNNaker 2: A 10-Million-Core Processor System... (**arXiv 2019**). \[[paper](https://arxiv.org/abs/1911.02385)\]
+- SpiNNaker 2: A 10-Million-Core Processor System for Brain Simulation and Machine Learning (**arXiv 2019**). \[[paper](https://arxiv.org/abs/1911.02385)\]
   > 22nm FDSOI 第二代，加入数值加速器与自适应功耗管理，兼顾脑仿真与机器学习。
 - Towards Artificial General Intelligence with Hybrid Tianjic Chip Architecture (**Nature 2019**) 🧠. \[[paper](https://www.nature.com/articles/s41586-019-1424-8)\]
   > 清华天机芯在同一可重构众核芯片上融合 ANN 与 SNN，并以自动驾驶自行车惊艳亮相。
@@ -499,7 +499,7 @@
   > 浙大潘纲团队的大规模数字类脑芯片，具专用 10 指令集与片上学习，单芯片可支持约 235 万神经元。
 - ODIN: A 0.086 mm² 12.7 pJ/SOP 64k-Synapse 256-Neuron Online-Learning Digital SNN Processor (**IEEE TBCAS 2019**). \[[paper](https://arxiv.org/abs/1804.07858)\]\[[code](https://github.com/ChFrenkel/ODIN)\]
   > 小巧开源的 28nm 芯片，支持 SDSP 片上学习与 Izhikevich 神经元，突触密度与能耗创纪录。
-- MorphIC: A 65-nm Quad-Core Binary-Weight Digital Neuromorphic Processor... (**IEEE TBCAS 2019**). \[[paper](https://arxiv.org/abs/1904.08513)\]
+- MorphIC: A 65-nm Quad-Core Binary-Weight Digital Neuromorphic Processor with Stochastic Online Learning (**IEEE TBCAS 2019**). \[[paper](https://arxiv.org/abs/1904.08513)\]
   > ODIN 的四核后续，用二值权重与随机脉冲驱动可塑性最大化突触密度，面向边缘学习。
 - μBrain: An Event-Driven and Fully Synthesizable Architecture for SNNs (**Front. Neurosci. 2021**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2021.664208/full)\]
   > 首个无时钟、可完全综合的数字脉冲芯片（40nm、亚百微瓦），实现常开近传感器边缘智能。
@@ -507,20 +507,20 @@
   > imec 的 RISC-V + 循环缓冲混合架构，在可编程性与效率间取得平衡，支持端侧学习。
 - A Digital Neurosynaptic Core Using Embedded Crossbar Memory with 45 pJ per Spike in 45 nm (**IEEE CICC 2011**). \[[paper](https://doi.org/10.1109/CICC.2011.6055294)\]
   > Merolla 等的神经突触核，是 IBM TrueNorth 的直接架构前身。
-- ReckOn: A 28 nm Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales (**IEEE ISSCC 2022**). \[[paper](https://arxiv.org/abs/2208.09759)\]
+- ReckOn: A 28 nm Sub-mm² Task-Agnostic Spiking Recurrent Neural Network Processor Enabling On-Chip Learning over Second-Long Timescales (**IEEE ISSCC 2022**). \[[paper](https://arxiv.org/abs/2208.09759)\]
   > Frenkel 与 Indiveri 的芯片以 e-prop 式片上学习，在秒级时间尺度上学习时序任务，功耗亚毫瓦。
 
 #### 模拟 / 混合信号 / 亚阈值
 
 - Neurogrid: A Mixed-Analog-Digital Multichip System for Large-Scale Neural Simulations (**Proc. IEEE 2014**) 🧠. \[[paper](https://doi.org/10.1109/JPROC.2014.2313565)\]
   > Boahen 的 16 核 Neurogrid 用亚阈值模拟电路，以仅 3 瓦实时仿真百万神经元与数十亿突触。
-- A Wafer-Scale Neuromorphic Hardware System... (BrainScaleS-1) (**IEEE ISCAS 2010**). \[[paper](https://doi.org/10.1109/ISCAS.2010.5536970)\]
+- A Wafer-Scale Neuromorphic Hardware System for Large-Scale Neural Modeling (BrainScaleS-1) (**IEEE ISCAS 2010**). \[[paper](https://doi.org/10.1109/ISCAS.2010.5536970)\]
   > 海德堡 HICANN 晶圆级系统，以生物 1 万倍速在每片晶圆上仿真约 20 万神经元。
 - The BrainScaleS-2 Accelerated Neuromorphic System with Hybrid Plasticity (**Front. Neurosci. 2022**). \[[paper](https://www.frontiersin.org/articles/10.3389/fnins.2022.795876/full)\]
   > 将连续时间模拟神经元/突触电路与嵌入式 SIMD 处理器耦合，支持灵活的片上混合可塑性。
-- DYNAP-SE: A Scalable Multicore Architecture with Heterogeneous Memory... (**IEEE TBCAS 2018**). \[[paper](https://doi.org/10.1109/TBCAS.2017.2759700)\]
+- DYNAP-SE: A Scalable Multicore Architecture with Heterogeneous Memory for Dynamic Neuromorphic Async Processors (**IEEE TBCAS 2018**). \[[paper](https://doi.org/10.1109/TBCAS.2017.2759700)\]
   > Indiveri 的亚阈值模拟芯片，用异构分层/网格路由解决神经形态芯片的连接扩展难题。
-- ROLLS: A Reconfigurable On-Line Learning Spiking Neuromorphic Processor (**Front. Neurosci. 2015**). \[[paper](https://doi.org/10.3389/fnins.2015.00141)\]
+- ROLLS: A Reconfigurable On-Line Learning Spiking Neuromorphic Processor (256 Neurons, 128k Synapses) (**Front. Neurosci. 2015**). \[[paper](https://doi.org/10.3389/fnins.2015.00141)\]
   > 混合信号芯片，以真实神经元/突触物理特性与脉冲可塑性实现完全片上的在线学习。
 - DYNAP-CNN & Speck: Event-Driven Convolutional Neuromorphic Vision Processors (SynSense) (**2020**). \[[paper](https://www.synsense.ai/products/speck-2/)\]\[[code](https://github.com/synsense/sinabs)\]
   > 商用亚毫瓦脉冲卷积处理器（Speck 把 DVS 与 DynapCNN 集成于单芯片），微秒延迟常开事件视觉。
@@ -567,7 +567,7 @@
 
 #### 商用与大规模平台
 
-- Intel Hala Point —— 11.5 亿神经元 Loihi 2 系统 (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
+- Intel Hala Point — 1.15B-neuron Loihi 2 system (**Intel 2024**). \[[link](https://newsroom.intel.com/artificial-intelligence/intel-builds-worlds-largest-neuromorphic-system)\]
   > 集成 1152 颗 Loihi 2 → 11.5 亿神经元、1280 亿突触、14 万核，约 2.6 kW；Intel 在 2024 年发布时称其为全球最大神经形态系统。
 - IBM NorthPole: Neural Inference at the Frontier of Energy, Space, and Time (**Science 2023**). \[[paper](https://www.science.org/doi/10.1126/science.adh1174)\]
   > IBM 存算一体类脑推理芯片，消除片外内存（严格说非脉冲，但为神经形态领域标志性架构）。
@@ -712,7 +712,7 @@
 
 - Inherent Adversarial Robustness of Deep SNNs: Discrete Input Encoding and Non-linear Activations (**ECCV 2020**). \[[paper](https://doi.org/10.1007/978-3-030-58526-6_24)\]
   > 泊松离散输入与 LIF 泄漏使 SNN 在（尤其黑盒）梯度攻击下比 ANN 更鲁棒。
-- HIRE-SNN: Harnessing the Inherent Robustness of Energy-Efficient Deep SNNs... (**ICCV 2021**). \[[paper](https://arxiv.org/abs/2110.11417)\]
+- HIRE-SNN: Harnessing the Inherent Robustness of Energy-Efficient Deep SNNs by Training with Crafted Input Noise (**ICCV 2021**). \[[paper](https://arxiv.org/abs/2110.11417)\]
   > 用时序单步输入噪声训练，在保持低延迟能耗下提升 SNN 对抗鲁棒性。
 - SNN-RAT: Robustness-Enhanced SNN through Regularized Adversarial Training (**NeurIPS 2022**). \[[paper](https://proceedings.neurips.cc/paper_files/paper/2022/hash/9cf904c86cc5f9ac95646c07d2cfa241-Abstract-Conference.html)\]
   > 为脉冲表示推导 Lipschitz 常数并正则化，做鲁棒性增强的对抗训练。
