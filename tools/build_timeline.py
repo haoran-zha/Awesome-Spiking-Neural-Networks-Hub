@@ -5,21 +5,22 @@ build_timeline.py — generate the chronological TIMELINE edition.
 
 Single command, single source of truth. Reads:
   * README.md / README.zh-CN.md      -> curated, annotated, topic-tagged picks
-  * tools/data/thebrainlab-snapshot.md -> comprehensive conference index (2021-2026),
-                                          courtesy of TheBrainLab/Awesome-Spiking-Neural-Networks
+  * tools/data/conference-index.md   -> the full-year conference index (2021-2026),
+                                        each entry with an EN + ZH one-line summary
 De-duplicates the index against the curated picks, then writes:
   * TIMELINE.md         (English)
   * TIMELINE.zh-CN.md   (中文)
 
 Every year shows curated picks first (with a one-line "why it matters" and a topic
 tag linking back to the thematic Hub), then a collapsible index of the remaining
-papers for that year. Run from the repo root:  python tools/build_timeline.py
+papers for that year, each with its own one-liner in the page's language.
+Run from the repo root:  python tools/build_timeline.py
 """
 import re, io, os
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SNAPSHOT = os.path.join(ROOT, 'tools', 'data', 'thebrainlab-snapshot.md')
+INDEX = os.path.join(ROOT, 'tools', 'data', 'conference-index.md')
 
 # section number -> (EN label, ZH label, EN anchor, ZH anchor)
 # ZH anchors are GitHub slugs of the Chinese headings in README.zh-CN.md.
@@ -89,7 +90,7 @@ def parse_hub(path):
     return entries
 
 
-# ------------------------------------------------------- TheBrainLab parsing
+# ------------------------------------------------------ full-index parsing
 def split_links(body):
     idxs = [body.find(t) for t in ('[[', '[paper]', '[code]', '[arxiv]')]
     idxs = [k for k in idxs if k >= 0]
@@ -128,30 +129,48 @@ def same_work(a, b, minlen=34):
     lo, hi = (a, b) if len(a) <= len(b) else (b, a)
     return len(lo) >= minlen and hi.startswith(lo)
 
-def parse_brainlab(path):
+def parse_index(path):
+    """Read the full-year index: one bullet per paper, then its EN / ZH one-liner.
+
+        - Title (**ICLR 2026**). [[paper](url)]
+          > English one-line summary.
+          > zh: 中文一句话摘要。
+    """
     with io.open(path, encoding='utf-8') as f:
         lines = f.read().split('\n')
-    out, cur_year = [], None
-    for line in lines:
+    out, cur_year, i, n = [], None, 0, len(lines)
+    while i < n:
+        line = lines[i]
         m = YEARHDR.match(line)
         if m:
-            cur_year = int(m.group('y')); continue
-        if cur_year is None or not line.startswith('- '):
-            continue
+            cur_year = int(m.group('y')); i += 1; continue
+        if cur_year is None or not line.startswith('- ') or not line[2:].strip():
+            i += 1; continue
         body = line[2:].strip()
-        if not body:
-            continue
         text, links = split_links(body)
         yr = None
         for bm in BOLD_RE.finditer(text):
             ym = YEAR_RE.search(bm.group('v'))
             if ym: yr = int(ym.group(0))
         yr = yr or cur_year
+        # collect the entry's one-liners
+        en_note, zh_note, j = '', '', i + 1
+        while j < n:
+            am = ANNOT_RE.match(lines[j])
+            if not am: break
+            txt = am.group('txt').strip()
+            if txt.lower().startswith('zh:'):
+                zh_note = txt[3:].strip()
+            else:
+                en_note = (en_note + ' ' + txt).strip()
+            j += 1
+        i = j
         nt = norm_title(text)
         if len(nt) < 6:
             continue
         out.append(dict(year=yr, title=re.sub(r'\.\s*$', '', text).strip(),
-                        links=clean_links(links), norm=nt))
+                        links=clean_links(links), norm=nt,
+                        en=en_note, zh=zh_note))
     return out
 
 
@@ -193,25 +212,23 @@ def render(hub, extra, lang):
         A('<sub>the chronological companion to the thematic <a href="README.md">Hub</a></sub></p>'); BLANK()
         A('<p><a href="TIMELINE.md"><b>English</b></a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md">中文</a> '
           '&nbsp;|&nbsp; <a href="README.md">Thematic Hub (EN)</a> &nbsp;·&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a></p>'); BLANK()
-        A(f'<p><b>{total}</b> works ({total_hub} annotated picks + {total_extra} indexed) &nbsp;·&nbsp; '
+        A(f'<p><b>{total}</b> works, every one summarised ({total_hub} curated picks + {total_extra} indexed) &nbsp;·&nbsp; '
           f'<b>{n_landmark}</b> landmarks &nbsp;·&nbsp; <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
         A('</div>'); BLANK(); A('---'); BLANK()
         A('## How to read this page'); BLANK()
         A('This is the **chronological view** of the [Awesome Spiking Neural Networks Hub](README.md). '
           'The Hub organises everything by *topic*; this page lays the field out **by year, newest first** — '
-          'so you can trace how it actually unfolded, the way the '
-          '[TheBrainLab timeline](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) does.'); BLANK()
+          'so you can trace how it actually unfolded.'); BLANK()
         A('Each year has **two tiers**:'); BLANK()
         A(f'- **Curated picks** — the Hub\'s **{total_hub}** deeply-annotated entries. Every line carries a '
           '*why it matters* note, a topic tag (e.g. `Training`, `Hardware`) linking back to the full '
           'thematic section, and **★ = field landmark**.')
-        A(f'- **Full-year index** — a collapsible list of **{total_extra}** further papers, merged from '
-          '[TheBrainLab](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) and de-duplicated '
-          'against the picks, so the year\'s conference output is complete (title · venue · links).'); BLANK()
+        A(f'- **Full-year index** — a collapsible list of **{total_extra}** further papers from that year\'s '
+          'major venues, de-duplicated against the picks so the year\'s output is complete. Each one also '
+          'gets a one-line summary of what it actually does, so the list stays skimmable.'); BLANK()
         A('> **Auto-generated** — do not edit this file by hand. Add curated entries to [README.md](README.md), '
-          'refresh [the index snapshot](tools/data/thebrainlab-snapshot.md), then run '
-          '`python tools/build_timeline.py`. Credit for the conference index goes to '
-          '[TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks).')
+          'add index entries to [the full-year index](tools/data/conference-index.md), then run '
+          '`python tools/build_timeline.py`.')
     else:
         A('<div align="center">'); BLANK()
         A('<h1>脉冲神经网络精选 — 时间线版</h1>'); BLANK()
@@ -219,22 +236,19 @@ def render(hub, extra, lang):
         A('<sub>主题版 <a href="README.zh-CN.md">Hub</a> 的时间线姊妹篇</sub></p>'); BLANK()
         A('<p><a href="TIMELINE.md">English</a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md"><b>中文</b></a> '
           '&nbsp;|&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a> &nbsp;·&nbsp; <a href="README.md">Thematic Hub (EN)</a></p>'); BLANK()
-        A(f'<p><b>{total}</b> 篇成果（{total_hub} 篇精选注释 + {total_extra} 篇索引） &nbsp;·&nbsp; '
+        A(f'<p><b>{total}</b> 篇成果，篇篇有一句话说明（{total_hub} 篇精选 + {total_extra} 篇索引） &nbsp;·&nbsp; '
           f'<b>{n_landmark}</b> 项里程碑 &nbsp;·&nbsp; <b>{years[-1]}–{years[0]}</b></p>'); BLANK()
         A('</div>'); BLANK(); A('---'); BLANK()
         A('## 如何阅读本页'); BLANK()
         A('这是 [脉冲神经网络精选 Hub](README.zh-CN.md) 的**时间线视图**。Hub 按*主题*组织；'
-          '本页把整个领域按**年份倒序**铺开——让你顺着时间看清它是怎么一步步走过来的，'
-          '就像 [TheBrainLab 的时间线](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) 那样。'); BLANK()
+          '本页把整个领域按**年份倒序**铺开——让你顺着时间看清它是怎么一步步走过来的。'); BLANK()
         A('每个年份分**两层**：'); BLANK()
         A(f'- **精选** — Hub 中 **{total_hub}** 篇带深度注释的条目。每条都有一句*为什么重要*、'
           '一个可跳回主题章节的标签（如 `训练方法`、`神经形态硬件`），**★ = 领域里程碑**。')
-        A(f'- **当年全量索引** — 可折叠列表，收录另外 **{total_extra}** 篇论文，来自 '
-          '[TheBrainLab](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks) 并已与精选去重，'
-          '让当年的会议产出更完整（标题 · 会议 · 链接）。'); BLANK()
+        A(f'- **当年全量索引** — 可折叠列表，收录当年主要会议与期刊的另外 **{total_extra}** 篇论文，'
+          '并已与精选去重，让当年的产出更完整；每篇同样配一句话说明它做了什么，方便快速扫读。'); BLANK()
         A('> **自动生成** — 请勿手工编辑本文件。精选条目请加到 [README.zh-CN.md](README.zh-CN.md)，'
-          '刷新[索引快照](tools/data/thebrainlab-snapshot.md)后运行 `python tools/build_timeline.py`。'
-          '会议索引部分来自 [TheBrainLab/Awesome-Spiking-Neural-Networks](https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks)，特此致谢。')
+          '索引条目请加到[全量索引](tools/data/conference-index.md)，然后运行 `python tools/build_timeline.py`。')
 
     # ---- activity chart ----
     BLANK(); A('---'); BLANK()
@@ -282,8 +296,8 @@ def render(hub, extra, lang):
             if more:
                 lbl = (f'{len(more)} more {y} papers' if en
                        else f'当年另有 {len(more)} 篇')
-                sub = (' — conference index, via TheBrainLab' if en
-                       else ' — 会议索引，来自 TheBrainLab')
+                sub = (' — full-year index, one line each' if en
+                       else ' — 当年全量索引，每篇一句话')
                 A(f'<details>')
                 A(f'<summary><b>{lbl}</b>{sub}</summary>'); BLANK()
                 for m in more:
@@ -291,18 +305,21 @@ def render(hub, extra, lang):
                     if m['links']:
                         line += f' {m["links"]}'
                     A(line)
+                    note = (m['en'] or m['zh']) if en else (m['zh'] or m['en'])
+                    if note:
+                        A(f'  > {note}')
                 BLANK(); A('</details>')
 
     # ---- footer ----
     BLANK(); A('---'); BLANK(); A('<div align="center">'); BLANK()
     if en:
         A('<sub>Curated picks auto-extracted from <a href="README.md">README.md</a> · '
-          'conference index from <a href="https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks">TheBrainLab</a> · '
+          'full-year index from <a href="tools/data/conference-index.md">tools/data/conference-index.md</a> · '
           'built by <a href="tools/build_timeline.py">tools/build_timeline.py</a>.</sub><br>')
         A('<sub>If this helps your work, please star the repo and <a href="README.md#citation">cite it</a>.</sub>')
     else:
         A('<sub>精选条目自动提取自 <a href="README.zh-CN.md">README.zh-CN.md</a> · '
-          '会议索引来自 <a href="https://github.com/TheBrainLab/Awesome-Spiking-Neural-Networks">TheBrainLab</a> · '
+          '全量索引来自 <a href="tools/data/conference-index.md">tools/data/conference-index.md</a> · '
           '由 <a href="tools/build_timeline.py">tools/build_timeline.py</a> 生成。</sub><br>')
         A('<sub>如果本项目对你有帮助，欢迎 Star 并 <a href="README.zh-CN.md#引用">引用</a>。</sub>')
     A('</div>'); BLANK()
@@ -310,15 +327,19 @@ def render(hub, extra, lang):
 
 
 def main():
-    brain = parse_brainlab(SNAPSHOT)
+    indexed = parse_index(INDEX)
+    missing = [e for e in indexed if not (e['en'] and e['zh'])]
+    if missing:
+        print(f'warning: {len(missing)} index entries lack an EN or ZH one-liner, e.g. '
+              + '; '.join(e['title'][:60] for e in missing[:3]))
     for src, dst, lang in (('README.md', 'TIMELINE.md', 'en'),
                            ('README.zh-CN.md', 'TIMELINE.zh-CN.md', 'zh')):
         hub = parse_hub(os.path.join(ROOT, src))
         hub_norms = {e['norm'] for e in hub}
         hub_long = [n for n in hub_norms if len(n) >= 34]
-        # de-dup brainlab against hub (equal or long-prefix) AND internally
+        # de-dup the index against the hub picks (equal or long-prefix) AND internally
         extra, seen = [], []
-        for e in brain:
+        for e in indexed:
             k = e['norm']
             if k in hub_norms or any(same_work(k, h) for h in hub_long):
                 continue
