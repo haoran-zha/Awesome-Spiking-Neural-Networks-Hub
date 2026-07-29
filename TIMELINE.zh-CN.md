@@ -7,7 +7,7 @@
 
 <p><a href="TIMELINE.md">English</a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md"><b>中文</b></a> &nbsp;|&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a> &nbsp;·&nbsp; <a href="README.md">Thematic Hub (EN)</a></p>
 
-<p><b>536</b> 篇成果，篇篇有一句话说明（225 篇精选 + 311 篇索引） &nbsp;·&nbsp; <b>44</b> 项里程碑 &nbsp;·&nbsp; <b>1943–2026</b></p>
+<p><b>568</b> 篇成果，篇篇有一句话说明（225 篇精选 + 343 篇索引） &nbsp;·&nbsp; <b>44</b> 项里程碑 &nbsp;·&nbsp; <b>1943–2026</b></p>
 
 </div>
 
@@ -20,7 +20,7 @@
 每个年份分**两层**：
 
 - **精选** — Hub 中 **225** 篇带深度注释的条目。每条都有一句*为什么重要*、一个可跳回主题章节的标签（如 `训练方法`、`神经形态硬件`），**★ = 领域里程碑**。
-- **当年全量索引** — 可折叠列表，收录当年主要会议与期刊的另外 **311** 篇论文，并已与精选去重，让当年的产出更完整；每篇同样配一句话说明它做了什么，方便快速扫读。
+- **当年全量索引** — 可折叠列表，收录当年主要会议与期刊的另外 **343** 篇论文，并已与精选去重，让当年的产出更完整；每篇同样配一句话说明它做了什么，方便快速扫读。
 
 > **自动生成** — 请勿手工编辑本文件。精选条目请加到 [README.zh-CN.md](README.zh-CN.md)，索引条目请加到[全量索引](tools/data/conference-index.md)，然后运行 `python tools/build_timeline.py`。
 
@@ -29,9 +29,9 @@
 ## 逐年论文量
 
 ```
-2026  ███████████████                69
-2025  ██████████████████████████████ 135
-2024  ███████████████████████        105
+2026  ███████████████████████        102
+2025  ██████████████████████████████ 134
+2024  ████████████████████████       105
 2023  ███████████████                67
 2022  █████████                      41
 2021  ███████                        30
@@ -64,6 +64,8 @@
 
 **精选**
 
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · SpikingBrain: Spiking Brain-inspired Large Models (**TMLR 2026**). \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
+  > 中科院自动化所（李国齐、徐波）的类脑脉冲大模型（7B 线性 / 76B 混合 MoE），自适应脉冲编码，4M 长上下文首字延迟提速百倍，并在国产（沐曦 MetaX）GPU 上训练。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · Advancing Spatiotemporal Representations in SNNs via Parametric Invertible Transformation (PIT) (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=3JwNXQzxll)\]\[[code](https://github.com/YinsongYan/ICLR26)\]
   > 将可逆变换与神经元动力学共轭结合，并校正代理梯度失配，扩展二值脉冲可用的时空表征空间。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · TP-Spikformer: Token Pruned Spiking Transformer (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=L5llQD0nMf)\]
@@ -80,8 +82,10 @@
   > 将阈值邻近神经元识别为主要攻击面，并以阈值感知优化保护膜电位安全裕量。
 
 <details>
-<summary><b>当年另有 62 篇</b> — 当年全量索引，每篇一句话</summary>
+<summary><b>当年另有 94 篇</b> — 当年全量索引，每篇一句话</summary>
 
+- A highly energy-efficient multi-core neuromorphic architecture for training deep spiking neural networks (**Nature Communications 2026**) [[paper](https://www.nature.com/articles/s41467-026-70586-x)]
+  > 在每个核内设置三种专用计算引擎，让神经形态芯片能在端侧直接反向传播训练深度脉冲网络，并在 FPGA 上以 20 核验证，涵盖联邦学习场景。
 - Robustify Spiking Neural Networks via Dominant Singular Deflation under Heterogeneous Training Vulnerability (**ICLR 2026**) [[paper](https://iclr.cc/virtual/2026/poster/10010693)]
   > 正交投影剔除 BPTT 梯度的主奇异分量，压低 Hessian 谱半径，避免单次异分布反向传播导致网络崩溃。
 - A Brain-Inspired Gating Mechanism Unlocks Robust Computation in Spiking Neural Networks (**ICLR 2026**) [[paper](https://iclr.cc/virtual/2026/poster/10011430)]
@@ -204,6 +208,68 @@
   > 针对脉冲网络的低通特性导致的频谱失配，用可学习滤波器在特征层补回高频细节，并在 logits 层蒸馏教师输出的高频分量。
 - Towards Training-Free and Accurate ANN-to-SNN Conversion via Activation-Aware Redistribution (**AAAI 2026**) [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37148)]
   > 将免训练转换误差归因于分布失配，为自适应 IF 神经元引入逐通道参数以校准发放率，几乎零开销地适配 Transformer 主干。
+- S3Net: Spatiotemporally Separated Sparse Network for Neuromorphic Vision Processing (**AAAI 2026**) [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/42467)]
+  > 用空间与时间分离的稀疏算子处理事件数据，在保持异步、稀疏计算的同时不牺牲任务精度。
+- Ultralight Polarity-Split Neuromorphic SNN for Event-Stream Super-Resolution (**AAAI 2026**) [[paper](https://arxiv.org/abs/2508.03244)]
+  > 让正负极性事件分别走同一脉冲网络的两条前向路径，并用可学习权重平衡时间、空间与极性一致性，把事件超分辨压缩成可嵌入相机的轻量模块。
+- SDTrack: A Baseline for Event-based Tracking via Spiking Neural Networks (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/html/Shan_SDTrack_A_Baseline_for_Event-based_Tracking_via_Spiking_Neural_Networks_CVPR_2026_paper.html)][[arxiv](https://arxiv.org/abs/2503.08703)]
+  > 用全局轨迹提示把事件流聚合成事件帧，再交由全脉冲驱动的 Transformer 主干跟踪，端到端运行，无需数据增强与后处理。
+- Spk2VidNet: A Hierarchical Recurrent Architecture for High-Fidelity Video Reconstruction from Long Spike-Camera Streams (**CVPR 2026**) [[paper](https://cvpr.thecvf.com/virtual/2026/poster/38367)]
+  > 从低分辨率脉冲流重建高保真视频：联合估计并互相修正帧间运动，按多尺度相似度融合特征，并用分段训练在显存受限下建模长时依赖。
+- Towards Reliable Evaluation of Adversarial Robustness for Spiking Neural Networks (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Towards_Reliable_Evaluation_of_Adversarial_Robustness_for_Spiking_Neural_Networks_CVPR_2026_paper.pdf)][[code](https://github.com/craree/ASSG-SNNs-Robustness-Evaluation)]
+  > 在攻击迭代中按输入分布自适应调整代理梯度形状，并配合自适应步长的 PGD 变体，揭示现有脉冲网络的对抗鲁棒性被明显高估。
+- Rethinking SNN Online Training and Deployment: Gradient-Coherent Learning via Hybrid-Driven LIF Model (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Hao_Rethinking_SNN_Online_Training_and_Deployment_Gradient-Coherent_Learning_via_Hybrid-Driven_CVPR_2026_paper.pdf)][[code](https://github.com/hzc1208/HD_LIF)]
+  > 在发放阈值上下区间采用不同的脉冲计算规则，分离时间维梯度并缓解代理梯度错配，让在线训练既省显存又不牺牲推理精度。
+- Stable Spike: Dual Consistency Optimization via Bitwise AND Operations for Spiking Neural Networks (**CVPR 2026**) [[paper](https://arxiv.org/abs/2603.11676)]
+  > 用硬件友好的按位与运算提取稳定脉冲骨架，牵引各时间步的噪声脉冲图向其收敛，再注入幅度感知噪声以保持扰动下的预测一致性。
+- Reconstructing Spiking Neural Networks Using a Single Neuron with Autapses (**CVPR 2026**) [[paper](https://cvpr.thecvf.com/virtual/2026/poster/37109)]
+  > 用带时延自突触的单个神经元重建整张网络：靠内部时间状态动态重构，模拟储备池、多层感知机与卷积层，大幅降低计算开销。
+- Brain-Inspired Multimodal Spiking Neural Network for Image-Text Retrieval (**CVPR 2026**) [[paper](https://arxiv.org/abs/2603.26787)][[code](https://github.com/zxt6174/CMSF)]
+  > 在脉冲层面融合图像与文本特征，再把融合表示作为软监督反哺单模态脉冲嵌入，仅用两个时间步即可实现有竞争力的检索。
+- SpikeTrack: A Spike-driven Framework for Efficient Visual Tracking (**CVPR 2026**) [[paper](https://arxiv.org/abs/2602.23963)][[code](https://github.com/faicaiwawa/SpikeTrack)]
+  > 以非对称时间步扩展与分支间单向信息流做 RGB 跟踪，并循环查询由模板初始化的紧凑记忆模块，逐步强化对目标的辨识。
+- Temporal Representation Enhancement (TRE): Learning to Forget Dominant Patterns for Enhanced Temporal Spiking Features (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Liu_Temporal_Representation_Enhancement_TRE_Learning_to_Forget_Dominant_Patterns_for_CVPR_2026_paper.pdf)]
+  > 抑制在各时间步反复出现的主导模式，迫使网络转而编码互补的时间线索，在不增加推理开销的前提下丰富脉冲动态。
+- Temporal Interaction in Spiking Transformers with Multi-Delay Mixer (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Shi_Temporal_Interaction_in_Spiking_Transformers_with_Multi-Delay_Mixer_CVPR_2026_paper.pdf)]
+  > 在脉冲自注意力中混合多种突触延迟上的激活，让信息在时间步之间交互，而非各时间步彼此独立地处理。
+- Spike-driven Discrete Aggregation for Event-based Object Detection (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Li_Spike-driven_Discrete_Aggregation_for_Event-based_Object_Detection_CVPR_2026_paper.pdf)]
+  > 端到端学习如何采样并聚合原始事件为离散脉冲表示，替代手工设定的事件窗口，供循环脉冲检测器直接使用。
+- Dynamic-Static Decomposition for Novel View Synthesis of Dynamic Scenes with Spiking Neurons (**CVPR 2026**) [[paper](https://openaccess.thecvf.com/content/CVPR2026/html/Dai_Dynamic-Static_Decomposition_for_Novel_View_Synthesis_of_Dynamic_CVPR_2026_paper.html)]
+  > 将动态内容与静态背景分离，分别用脉冲神经元建模，避免动态场景的新视角合成把两者混为一体。
+- On the Role of Temporal Granularity in the Robustness of Spiking Neural Networks (**CVPR 2026**)
+  > 系统研究时间离散粒度如何影响脉冲网络的鲁棒性，把时间步分辨率视作可调的设计变量而非固定开销。
+- SpikeVLA: Vision-Language-Action Models with Spiking Neural Networks (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/63548)][[arxiv](https://arxiv.org/abs/2606.27807)]
+  > 把视觉-语言-动作模型整条链路脉冲化：事件驱动视觉编码器、脉冲多模态大模型与群体编码策略头，面向低功耗具身导航与控制。
+- SVL: Spike-based Vision-language Pretraining for Efficient 3D Open-world Understanding (**ICML 2026**) [[paper](https://arxiv.org/abs/2505.17674)][[code](https://github.com/bollossom/SVL)]
+  > 通过点云、图像与文本的三元对比对齐预训练脉冲 3D 主干，再把语言分支重参数化移除，使推理保持脉冲驱动且轻量。
+- UltraLIF: Fully Differentiable Spiking Neural Networks via Ultradiscretization and Max-Plus Algebra (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/64130)]
+  > 用超离散化取代代理梯度：log-sum-exp 软阈值随可学习温度退火逼近真实发放，使脉冲网络前后向一致、真正可微。
+- SpikeNet: Sparse Spike-Driven Mask Vector Transformer for Energy-Efficient and Stable Spiking Point Cloud Processing (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/66082)]
+  > 用二值脉冲掩码把注意力对齐到点云的稀疏性，免除 softmax 与乘法运算，并配合动态稀疏残差结构完成点云分类与分割。
+- Bio-Vision-Inspired Spiking Neural Networks for Object Detection with Event Cameras (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/64518)]
+  > 引入具备噪声过滤能力的神经元、类视网膜的事件-脉冲表示，以及模拟皮层双向通路的多尺度网络，面向事件相机目标检测。
+- TEFormer: Structured Bidirectional Temporal Enhancement Modeling in Spiking Transformers (**ICML 2026**) [[paper](https://arxiv.org/abs/2601.18274)][[code](https://github.com/Fancyssc/TEFormer)]
+  > 在注意力模块做前向时间融合、在 MLP 中以门控循环做反向聚合，为脉冲 Transformer 提供双向时序建模，且对编码方式不敏感。
+- Plug-and-Play Spiking Operators: Breaking the Nonlinearity Bottleneck in Spiking Transformers (**ICML 2026**) [[paper](https://arxiv.org/abs/2605.20289)]
+  > 把 Transformer 的非线性拆解为除法、指数与范数三种基元，用 LIF 神经元群配合移位缩放实现，使 ANN-to-SNN 转换免微调地覆盖 softmax 与归一化。
+- Bullet Trains: Parallelizing Training of Temporally Precise Spiking Neural Networks (**ICML 2026**) [[paper](https://arxiv.org/abs/2603.13283)]
+  > 用并行关联扫描一次处理多个输入脉冲，同时保留精确的硬复位动力学，并以可微求解器直接算出脉冲时刻，无需时间分箱。
+- A2SG: Adaptive and Asymmetric Surrogate Gradients for Training Deep Spiking Neural Networks (**ICML 2026**) [[paper](https://arxiv.org/abs/2606.11236)][[code](https://github.com/KIST-NCL/A2SG)]
+  > 在时空维度自适应调整代理梯度窗口，并让膜电位更高的神经元获得更大梯度，把梯度波动的降低与更平坦的极小值联系起来。
+- Frequency Matching in Spiking Neural Networks for mmWave Sensing (**ICML 2026**) [[paper](https://arxiv.org/abs/2605.09983)]
+  > 把 LIF 动力学视作低通滤波器，按毫米波信号中判别信息所处的频段来匹配设定膜电位衰减系数。
+- Event2Vec: Processing Neuromorphic Events Directly by Representations in Vector Space (**ICML 2026**) [[paper](https://arxiv.org/abs/2504.15371)][[code](https://github.com/Intelligent-Computing-Lab-Panda/event2vec)]
+  > 仿照 word2vec 把原始神经形态事件嵌入向量空间，让 Transformer 直接处理稀疏异步事件流，而不必先稠密化为帧。
+- SAFformer: Improving Spiking Transformer via Active Predictive Filtering (**IJCAI 2026**) [[paper](https://arxiv.org/abs/2605.08270)]
+  > 把预测编码引入脉冲 Transformer：主动抑制可预测的输入信号，把算力集中到显著特征上，而非被动响应全部输入。
+- Intrinsically Stable Spiking Neural Networks: Overcoming the Performance Barrier in the Absence of Batch Normalization (**ECCV 2026**) [[paper](https://arxiv.org/abs/2606.31695)]
+  > 把无归一化脉冲网络的性能崩塌归因于发放率灾难性衰减，改用可离线折叠进静态权重的权重标准化与残差改造，消除推理期乘法。
+- A First Exploration of Neuromorphic OT-CFM for Multi-Speaker VSR (**ECCV 2026**) [[paper](https://arxiv.org/abs/2606.31225)]
+  > 先把视频转成事件流做唇读，再切分出单说话人片段，并用最优传输条件流匹配在潜空间走直线轨迹，推理仅需两步 ODE。
+- SNNTracker: Online High-Speed Multi-Object Tracking With Spike Camera (**TPAMI 2026**) [[paper](https://ieeexplore.ieee.org/document/11165142/)]
+  > 直接在脉冲相机流上做多目标跟踪：用动态神经场注意力检测目标，再以胜者为王模块结合在线 STDP 学习轨迹，全程无需先重建图像。
+- DSNeRF: Dynamic View Synthesis for Ultra-Fast Scenes From Continuous Spike Streams (**TPAMI 2026**) [[paper](https://pubmed.ncbi.nlm.nih.gov/41570103/)]
+  > 把像素射线到脉冲的生成过程写入 NeRF 训练，用积分发放层刻画传感器噪声，并以运动引导的脉冲层处理动态场景，实现超高速场景的新视角合成。
 - Spiking neural networks with fatigue spike-timing-dependent plasticity learning using hybrid memristor arrays (**Nature Electronics 2026**) [[paper](https://www.nature.com/articles/s41928-025-01554-4)]
   > 将动态忆阻器的固有疲劳特性与非易失 1T1R 单元配对，使单个突触同时承载短时与长时记忆，在硬件上实现 fatigue-STDP 的无监督在线学习。
 
@@ -213,8 +279,6 @@
 
 **精选**
 
-- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · SpikingBrain: Spiking Brain-inspired Large Models (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
-  > 中科院自动化所（李国齐、徐波）的类脑脉冲大模型（7B 线性 / 76B 混合 MoE），自适应脉冲编码，4M 长上下文首字延迟提速百倍，并在国产（沐曦 MetaX）GPU 上训练。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · Backpropagation-Free Spiking Neural Networks with the Forward-Forward Algorithm (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2502.20411)\]
   > 将 Hinton 的 Forward-Forward（两次对比性前向、逐层局部目标）搬到脉冲神经元。
 - [`网络结构`](README.zh-CN.md#4--网络架构) · Scaling Spike-driven Transformer with Efficient Spike Firing Approximation (V3) (**IEEE TPAMI 2025**). \[[paper](https://arxiv.org/abs/2411.16061)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer-V3)\]

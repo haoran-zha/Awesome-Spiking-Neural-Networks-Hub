@@ -23,6 +23,9 @@ one-line summary in English and 中文. Consumed by `tools/build_timeline.py`.
 ### 2026
 
 **Nature, Science, Cell**
+- A highly energy-efficient multi-core neuromorphic architecture for training deep spiking neural networks (**Nature Communications 2026**). [[paper](https://www.nature.com/articles/s41467-026-70586-x)]
+  > Puts three specialised engines in every core so a neuromorphic chip can run backpropagation training of deep spiking networks on-device, demonstrated across twenty cores on FPGA including federated learning.
+  > zh: 在每个核内设置三种专用计算引擎，让神经形态芯片能在端侧直接反向传播训练深度脉冲网络，并在 FPGA 上以 20 核验证，涵盖联邦学习场景。
 
 **AAAI, ICLR**
 - Robustify Spiking Neural Networks via Dominant Singular Deflation under Heterogeneous Training Vulnerability (**ICLR 2026**). [[paper](https://iclr.cc/virtual/2026/poster/10010693)]
@@ -226,6 +229,103 @@ one-line summary in English and 中文. Consumed by `tools/build_timeline.py`.
 - Towards Training-Free and Accurate ANN-to-SNN Conversion via Activation-Aware Redistribution (**AAAI 2026**). [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37148)] 
   > Traces training-free conversion error to distribution mismatch and fits channel-wise parameters in adaptive integrate-and-fire neurons to realign spike rates, extending cleanly to Transformer backbones.
   > zh: 将免训练转换误差归因于分布失配，为自适应 IF 神经元引入逐通道参数以校准发放率，几乎零开销地适配 Transformer 主干。
+- S3Net: Spatiotemporally Separated Sparse Network for Neuromorphic Vision Processing (**AAAI 2026**). [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/42467)]
+  > Handles event data with spatially and temporally separated sparse operators, keeping asynchronous, sparse processing without trading away task accuracy.
+  > zh: 用空间与时间分离的稀疏算子处理事件数据，在保持异步、稀疏计算的同时不牺牲任务精度。
+- Ultralight Polarity-Split Neuromorphic SNN for Event-Stream Super-Resolution (**AAAI 2026**). [[paper](https://arxiv.org/abs/2508.03244)]
+  > Routes positive and negative events through separate forward passes of one shared spiking network and balances temporal, spatial and polarity consistency with a learnable loss, shrinking event super-resolution to an embeddable module.
+  > zh: 让正负极性事件分别走同一脉冲网络的两条前向路径，并用可学习权重平衡时间、空间与极性一致性，把事件超分辨压缩成可嵌入相机的轻量模块。
+
+**CVPR, ICML, IJCAI, ECCV**
+- SDTrack: A Baseline for Event-based Tracking via Spiking Neural Networks (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/html/Shan_SDTrack_A_Baseline_for_Event-based_Tracking_via_Spiking_Neural_Networks_CVPR_2026_paper.html)][[arxiv](https://arxiv.org/abs/2503.08703)]
+  > Aggregates event streams into frames with a global trajectory prompt and tracks through a fully spike-driven Transformer backbone, running end-to-end without augmentation or post-processing.
+  > zh: 用全局轨迹提示把事件流聚合成事件帧，再交由全脉冲驱动的 Transformer 主干跟踪，端到端运行，无需数据增强与后处理。
+- Spk2VidNet: A Hierarchical Recurrent Architecture for High-Fidelity Video Reconstruction from Long Spike-Camera Streams (**CVPR 2026**). [[paper](https://cvpr.thecvf.com/virtual/2026/poster/38367)]
+  > Reconstructs high-resolution video from low-resolution spike streams by jointly refining inter-frame motion, fusing features by multi-scale similarity, and training segment-wise to keep long streams within memory.
+  > zh: 从低分辨率脉冲流重建高保真视频：联合估计并互相修正帧间运动，按多尺度相似度融合特征，并用分段训练在显存受限下建模长时依赖。
+- Towards Reliable Evaluation of Adversarial Robustness for Spiking Neural Networks (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Wang_Towards_Reliable_Evaluation_of_Adversarial_Robustness_for_Spiking_Neural_Networks_CVPR_2026_paper.pdf)][[code](https://github.com/craree/ASSG-SNNs-Robustness-Evaluation)]
+  > Reshapes the surrogate gradient during attack iterations and adds an adaptive-step PGD variant, showing that the adversarial robustness reported for current spiking networks is substantially overestimated.
+  > zh: 在攻击迭代中按输入分布自适应调整代理梯度形状，并配合自适应步长的 PGD 变体，揭示现有脉冲网络的对抗鲁棒性被明显高估。
+- Rethinking SNN Online Training and Deployment: Gradient-Coherent Learning via Hybrid-Driven LIF Model (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Hao_Rethinking_SNN_Online_Training_and_Deployment_Gradient-Coherent_Learning_via_Hybrid-Driven_CVPR_2026_paper.pdf)][[code](https://github.com/hzc1208/HD_LIF)]
+  > Splits leaky integrate-and-fire dynamics into distinct regimes above and below the firing threshold, separating temporal gradients so online training keeps memory low without conceding inference accuracy.
+  > zh: 在发放阈值上下区间采用不同的脉冲计算规则，分离时间维梯度并缓解代理梯度错配，让在线训练既省显存又不牺牲推理精度。
+- Stable Spike: Dual Consistency Optimization via Bitwise AND Operations for Spiking Neural Networks (**CVPR 2026**). [[paper](https://arxiv.org/abs/2603.11676)]
+  > Extracts a stable spike skeleton with hardware-friendly AND operations, pulls noisy per-timestep spike maps toward it, then injects amplitude-aware noise so predictions stay consistent under perturbation.
+  > zh: 用硬件友好的按位与运算提取稳定脉冲骨架，牵引各时间步的噪声脉冲图向其收敛，再注入幅度感知噪声以保持扰动下的预测一致性。
+- Reconstructing Spiking Neural Networks Using a Single Neuron with Autapses (**CVPR 2026**). [[paper](https://cvpr.thecvf.com/virtual/2026/poster/37109)]
+  > Rebuilds whole architectures inside one neuron with time-delayed autapses, letting its internal temporal states emulate reservoirs, MLPs and convolutional layers at far lower cost.
+  > zh: 用带时延自突触的单个神经元重建整张网络：靠内部时间状态动态重构，模拟储备池、多层感知机与卷积层，大幅降低计算开销。
+- Brain-Inspired Multimodal Spiking Neural Network for Image-Text Retrieval (**CVPR 2026**). [[paper](https://arxiv.org/abs/2603.26787)][[code](https://github.com/zxt6174/CMSF)]
+  > Fuses image and text features at the spike level, then feeds the fused representation back as soft supervision for the unimodal embeddings, reaching competitive retrieval with only two timesteps.
+  > zh: 在脉冲层面融合图像与文本特征，再把融合表示作为软监督反哺单模态脉冲嵌入，仅用两个时间步即可实现有竞争力的检索。
+- SpikeTrack: A Spike-driven Framework for Efficient Visual Tracking (**CVPR 2026**). [[paper](https://arxiv.org/abs/2602.23963)][[code](https://github.com/faicaiwawa/SpikeTrack)]
+  > Tracks RGB targets with asymmetric timestep expansion and one-way information flow between branches, recurrently querying a template-initialised memory to sharpen target cues over time.
+  > zh: 以非对称时间步扩展与分支间单向信息流做 RGB 跟踪，并循环查询由模板初始化的紧凑记忆模块，逐步强化对目标的辨识。
+- Temporal Representation Enhancement (TRE): Learning to Forget Dominant Patterns for Enhanced Temporal Spiking Features (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Liu_Temporal_Representation_Enhancement_TRE_Learning_to_Forget_Dominant_Patterns_for_CVPR_2026_paper.pdf)]
+  > Suppresses dominant patterns that repeat across timesteps so the network encodes complementary temporal cues instead, enriching spiking dynamics without extra inference cost.
+  > zh: 抑制在各时间步反复出现的主导模式，迫使网络转而编码互补的时间线索，在不增加推理开销的前提下丰富脉冲动态。
+- Temporal Interaction in Spiking Transformers with Multi-Delay Mixer (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Shi_Temporal_Interaction_in_Spiking_Transformers_with_Multi-Delay_Mixer_CVPR_2026_paper.pdf)]
+  > Mixes activations carried over several synaptic delays inside spiking self-attention, so information interacts across timesteps rather than being processed within each one alone.
+  > zh: 在脉冲自注意力中混合多种突触延迟上的激活，让信息在时间步之间交互，而非各时间步彼此独立地处理。
+- Spike-driven Discrete Aggregation for Event-based Object Detection (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Li_Spike-driven_Discrete_Aggregation_for_Event-based_Object_Detection_CVPR_2026_paper.pdf)]
+  > Learns end-to-end how to sample and aggregate raw events into discrete spike representations for a recurrent spiking detector, replacing hand-set event windows.
+  > zh: 端到端学习如何采样并聚合原始事件为离散脉冲表示，替代手工设定的事件窗口，供循环脉冲检测器直接使用。
+- Dynamic-Static Decomposition for Novel View Synthesis of Dynamic Scenes with Spiking Neurons (**CVPR 2026**). [[paper](https://openaccess.thecvf.com/content/CVPR2026/html/Dai_Dynamic-Static_Decomposition_for_Novel_View_Synthesis_of_Dynamic_CVPR_2026_paper.html)]
+  > Separates moving content from the static background and models each with spiking neurons, so novel-view synthesis of dynamic scenes does not blur the two together.
+  > zh: 将动态内容与静态背景分离，分别用脉冲神经元建模，避免动态场景的新视角合成把两者混为一体。
+- On the Role of Temporal Granularity in the Robustness of Spiking Neural Networks (**CVPR 2026**).
+  > Studies how the granularity of temporal discretisation shapes robustness in spiking networks, treating timestep resolution as a design knob rather than a fixed cost.
+  > zh: 系统研究时间离散粒度如何影响脉冲网络的鲁棒性，把时间步分辨率视作可调的设计变量而非固定开销。
+- SpikeVLA: Vision-Language-Action Models with Spiking Neural Networks (**ICML 2026**). [[paper](https://icml.cc/virtual/2026/poster/63548)][[arxiv](https://arxiv.org/abs/2606.27807)]
+  > Builds the whole vision-language-action stack from spiking parts — event-driven visual encoder, spiking multimodal LLM and a population-coded policy head — for low-power embodied navigation and control.
+  > zh: 把视觉-语言-动作模型整条链路脉冲化：事件驱动视觉编码器、脉冲多模态大模型与群体编码策略头，面向低功耗具身导航与控制。
+- SVL: Spike-based Vision-language Pretraining for Efficient 3D Open-world Understanding (**ICML 2026**). [[paper](https://arxiv.org/abs/2505.17674)][[code](https://github.com/bollossom/SVL)]
+  > Pretrains a spiking 3D backbone by contrastively aligning point clouds, images and text, then re-parameterises the language branch away so inference stays spike-driven and light.
+  > zh: 通过点云、图像与文本的三元对比对齐预训练脉冲 3D 主干，再把语言分支重参数化移除，使推理保持脉冲驱动且轻量。
+- UltraLIF: Fully Differentiable Spiking Neural Networks via Ultradiscretization and Max-Plus Algebra (**ICML 2026**). [[paper](https://icml.cc/virtual/2026/poster/64130)]
+  > Replaces surrogate gradients with an ultradiscretisation of neuron dynamics, whose log-sum-exp soft threshold sharpens into a real spike as a learnable temperature anneals, removing forward-backward mismatch.
+  > zh: 用超离散化取代代理梯度：log-sum-exp 软阈值随可学习温度退火逼近真实发放，使脉冲网络前后向一致、真正可微。
+- SpikeNet: Sparse Spike-Driven Mask Vector Transformer for Energy-Efficient and Stable Spiking Point Cloud Processing (**ICML 2026**). [[paper](https://icml.cc/virtual/2026/poster/66082)]
+  > Aligns attention to point-cloud sparsity with binary spiking masks that remove softmax and multiplication, pairing it with a dynamic sparse residual block for classification and segmentation.
+  > zh: 用二值脉冲掩码把注意力对齐到点云的稀疏性，免除 softmax 与乘法运算，并配合动态稀疏残差结构完成点云分类与分割。
+- Bio-Vision-Inspired Spiking Neural Networks for Object Detection with Event Cameras (**ICML 2026**). [[paper](https://icml.cc/virtual/2026/poster/64518)]
+  > Adds a noise-filtering neuron, a retina-like event-to-spike representation and a bidirectional multi-scale network modelled on cortical pathways, targeting event-camera detection.
+  > zh: 引入具备噪声过滤能力的神经元、类视网膜的事件-脉冲表示，以及模拟皮层双向通路的多尺度网络，面向事件相机目标检测。
+- TEFormer: Structured Bidirectional Temporal Enhancement Modeling in Spiking Transformers (**ICML 2026**). [[paper](https://arxiv.org/abs/2601.18274)][[code](https://github.com/Fancyssc/TEFormer)]
+  > Fuses time forwards in the attention module and backwards through a gated recurrence in the MLP, giving spiking Transformers bidirectional temporal modelling that holds across encoding schemes.
+  > zh: 在注意力模块做前向时间融合、在 MLP 中以门控循环做反向聚合，为脉冲 Transformer 提供双向时序建模，且对编码方式不敏感。
+- Plug-and-Play Spiking Operators: Breaking the Nonlinearity Bottleneck in Spiking Transformers (**ICML 2026**). [[paper](https://arxiv.org/abs/2605.20289)]
+  > Decomposes Transformer nonlinearities into division, exponentiation and norm primitives realised by LIF populations with bit-shift scaling, letting ANN-to-SNN conversion cover softmax and normalisation without fine-tuning.
+  > zh: 把 Transformer 的非线性拆解为除法、指数与范数三种基元，用 LIF 神经元群配合移位缩放实现，使 ANN-to-SNN 转换免微调地覆盖 softmax 与归一化。
+- Bullet Trains: Parallelizing Training of Temporally Precise Spiking Neural Networks (**ICML 2026**). [[paper](https://arxiv.org/abs/2603.13283)]
+  > Consumes many input spikes at once through parallel associative scans while keeping exact hard-reset dynamics, and solves spike times differentiably without discretising time into bins.
+  > zh: 用并行关联扫描一次处理多个输入脉冲，同时保留精确的硬复位动力学，并以可微求解器直接算出脉冲时刻，无需时间分箱。
+- A2SG: Adaptive and Asymmetric Surrogate Gradients for Training Deep Spiking Neural Networks (**ICML 2026**). [[paper](https://arxiv.org/abs/2606.11236)][[code](https://github.com/KIST-NCL/A2SG)]
+  > Adapts the surrogate window across space and time and gives neurons with higher membrane potential larger gradients, linking reduced gradient variation to flatter minima.
+  > zh: 在时空维度自适应调整代理梯度窗口，并让膜电位更高的神经元获得更大梯度，把梯度波动的降低与更平坦的极小值联系起来。
+- Frequency Matching in Spiking Neural Networks for mmWave Sensing (**ICML 2026**). [[paper](https://arxiv.org/abs/2605.09983)]
+  > Treats leaky integrate-and-fire dynamics as a low-pass filter and sets the membrane decay by matching its effective bandwidth to the band where mmWave signals carry discriminative information.
+  > zh: 把 LIF 动力学视作低通滤波器，按毫米波信号中判别信息所处的频段来匹配设定膜电位衰减系数。
+- Event2Vec: Processing Neuromorphic Events Directly by Representations in Vector Space (**ICML 2026**). [[paper](https://arxiv.org/abs/2504.15371)][[code](https://github.com/Intelligent-Computing-Lab-Panda/event2vec)]
+  > Embeds raw events in vector space the way word2vec embeds tokens, letting Transformers consume sparse asynchronous streams directly instead of densified frames.
+  > zh: 仿照 word2vec 把原始神经形态事件嵌入向量空间，让 Transformer 直接处理稀疏异步事件流，而不必先稠密化为帧。
+- SAFformer: Improving Spiking Transformer via Active Predictive Filtering (**IJCAI 2026**). [[paper](https://arxiv.org/abs/2605.08270)]
+  > Brings predictive coding to spiking Transformers by actively suppressing predictable input and spending computation on salient features instead of reacting to everything.
+  > zh: 把预测编码引入脉冲 Transformer：主动抑制可预测的输入信号，把算力集中到显著特征上，而非被动响应全部输入。
+- Intrinsically Stable Spiking Neural Networks: Overcoming the Performance Barrier in the Absence of Batch Normalization (**ECCV 2026**). [[paper](https://arxiv.org/abs/2606.31695)]
+  > Traces the collapse of normalisation-free spiking networks to catastrophic firing-rate decay, then restores stability with weight standardisation folded offline into static weights, removing runtime multiplications.
+  > zh: 把无归一化脉冲网络的性能崩塌归因于发放率灾难性衰减，改用可离线折叠进静态权重的权重标准化与残差改造，消除推理期乘法。
+- A First Exploration of Neuromorphic OT-CFM for Multi-Speaker VSR (**ECCV 2026**). [[paper](https://arxiv.org/abs/2606.31225)]
+  > Converts video to event streams for lip reading, isolates one speaker at a time, and generates semantics along optimal-transport straight-line flows that need only two ODE steps at inference.
+  > zh: 先把视频转成事件流做唇读，再切分出单说话人片段，并用最优传输条件流匹配在潜空间走直线轨迹，推理仅需两步 ODE。
+
+**TPAMI, TMLR**
+- SNNTracker: Online High-Speed Multi-Object Tracking With Spike Camera (**TPAMI 2026**). [[paper](https://ieeexplore.ieee.org/document/11165142/)]
+  > Tracks multiple objects straight from spike streams with dynamic-neural-field attention for detection and a winner-take-all module that learns trajectories online via STDP, skipping image reconstruction.
+  > zh: 直接在脉冲相机流上做多目标跟踪：用动态神经场注意力检测目标，再以胜者为王模块结合在线 STDP 学习轨迹，全程无需先重建图像。
+- DSNeRF: Dynamic View Synthesis for Ultra-Fast Scenes From Continuous Spike Streams (**TPAMI 2026**). [[paper](https://pubmed.ncbi.nlm.nih.gov/41570103/)]
+  > Writes the spike generation process into NeRF training through a pixel-ray-to-spike mapping, models sensor noise with an integrate-and-fire layer and guides a spiking layer by motion for dynamic scenes.
+  > zh: 把像素射线到脉冲的生成过程写入 NeRF 训练，用积分发放层刻画传感器噪声，并以运动引导的脉冲层处理动态场景，实现超高速场景的新视角合成。
 
 
 ### 2025

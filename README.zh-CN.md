@@ -69,7 +69,7 @@
 | 2023 | **Spikformer** —— *首个脉冲 Transformer* | ICLR | [paper](https://arxiv.org/abs/2209.15425) |
 | 2023 | **Spike-driven Transformer** —— *纯脉冲驱动注意力* | NeurIPS | [paper](https://arxiv.org/abs/2307.01694) |
 | 2024 | **SpikeGPT** —— *首个生成式脉冲大模型* | TMLR | [paper](https://arxiv.org/abs/2302.13939) |
-| 2025 | **SpikingBrain** —— *7B/76B 类脑脉冲大模型* | arXiv | [paper](https://arxiv.org/abs/2509.05276) |
+| 2026 | **SpikingBrain** —— *7B/76B 类脑脉冲大模型* | TMLR | [paper](https://arxiv.org/abs/2509.05276) |
 
 ---
 
@@ -78,6 +78,7 @@
 <details open>
 <summary><b>更新日志</b> —— 最新在前（点击折叠）</summary>
 
+- **2026-07** —— **2026 会议扫库。** 首次收录 CVPR 2026（13 篇）与 ICML 2026（11 篇），另补 ECCV / IJCAI 2026、TPAMI 2026 两篇及 Nature Communications 2026 的神经形态训练芯片，每篇均配一句话说明。SpikingBrain 标注由 **arXiv 2025 升级为 TMLR 2026**。
 - **2026-07** —— **审校与生态更新。** 修复失效/过期链接和一处已迁移的团队归属；新增 6 篇 2026 年工作、4 个重要实验室，并为 §13 各团队补充**近期成果（2024–2026）**标注。
 - **2026-07** —— **知识库上线。** 6 大 Part、340+ 条目；新增 **研究团队与实验室**（§13）、**模型库与社区**（§12），以及独立的 **脉冲大模型与 LLM** 章节（§5）。
 - **2026-07** —— **视觉改版。** 全新 banner、"必读入门"表，并把数据集/框架/模型库转为表格。
@@ -447,7 +448,7 @@
   > 首个 7B–70B 规模的脉冲大模型，用广义 IF 神经元与显著性脉冲超越量化基线。
 - SpikeZIP-TF: Conversion is All You Need for Transformer-based SNN (**ICML 2024**). \[[paper](https://arxiv.org/abs/2406.03470)\]\[[code](https://github.com/Intelligent-Computing-Research-Group/SpikeZIP-TF)\]
   > 将量化 Transformer 无损转换为 SNN，在视觉与语言上把与 ANN 的精度差距抹平。
-- SpikingBrain: Spiking Brain-inspired Large Models (**arXiv 2025**) ★. \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
+- SpikingBrain: Spiking Brain-inspired Large Models (**TMLR 2026**) ★. \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
   > 中科院自动化所（李国齐、徐波）的类脑脉冲大模型（7B 线性 / 76B 混合 MoE），自适应脉冲编码，4M 长上下文首字延迟提速百倍，并在国产（沐曦 MetaX）GPU 上训练。
 - SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.22575)\]
   > 扩展至 5B 语言/视觉语言模型，引入双空间稀疏注意力与 INT8 脉冲/FP8 双路径，支持千万级 token 及 GPU 或神经形态推理。
