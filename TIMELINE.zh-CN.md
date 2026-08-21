@@ -7,7 +7,7 @@
 
 <p><a href="TIMELINE.md">English</a> &nbsp;·&nbsp; <a href="TIMELINE.zh-CN.md"><b>中文</b></a> &nbsp;|&nbsp; <a href="README.zh-CN.md">主题版 (中文)</a> &nbsp;·&nbsp; <a href="README.md">Thematic Hub (EN)</a></p>
 
-<p><b>568</b> 篇成果，篇篇有一句话说明（225 篇精选 + 343 篇索引） &nbsp;·&nbsp; <b>44</b> 项里程碑 &nbsp;·&nbsp; <b>1943–2026</b></p>
+<p><b>597</b> 篇成果，篇篇有一句话说明（257 篇精选 + 340 篇索引） &nbsp;·&nbsp; <b>46</b> 项里程碑 &nbsp;·&nbsp; <b>1943–2026</b></p>
 
 </div>
 
@@ -19,8 +19,8 @@
 
 每个年份分**两层**：
 
-- **精选** — Hub 中 **225** 篇带深度注释的条目。每条都有一句*为什么重要*、一个可跳回主题章节的标签（如 `训练方法`、`神经形态硬件`），**★ = 领域里程碑**。
-- **当年全量索引** — 可折叠列表，收录当年主要会议与期刊的另外 **343** 篇论文，并已与精选去重，让当年的产出更完整；每篇同样配一句话说明它做了什么，方便快速扫读。
+- **精选** — Hub 中 **257** 篇带深度注释的条目。每条都有一句*为什么重要*、一个可跳回主题章节的标签（如 `训练方法`、`神经形态硬件`），**★ = 领域里程碑**。
+- **当年全量索引** — 可折叠列表，收录当年主要会议与期刊的另外 **340** 篇论文，并已与精选去重，让当年的产出更完整；每篇同样配一句话说明它做了什么，方便快速扫读。
 
 > **自动生成** — 请勿手工编辑本文件。精选条目请加到 [README.zh-CN.md](README.zh-CN.md)，索引条目请加到[全量索引](tools/data/conference-index.md)，然后运行 `python tools/build_timeline.py`。
 
@@ -29,9 +29,9 @@
 ## 逐年论文量
 
 ```
-2026  ███████████████████████        102
-2025  ██████████████████████████████ 134
-2024  ████████████████████████       105
+2026  ████████████████████████████   127
+2025  ██████████████████████████████ 138
+2024  ███████████████████████        105
 2023  ███████████████                67
 2022  █████████                      41
 2021  ███████                        30
@@ -66,8 +66,20 @@
 
 - [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · SpikingBrain: Spiking Brain-inspired Large Models (**TMLR 2026**). \[[paper](https://arxiv.org/abs/2509.05276)\]\[[code](https://github.com/BICLab/SpikingBrain-7B)\]
   > 中科院自动化所（李国齐、徐波）的类脑脉冲大模型（7B 线性 / 76B 混合 MoE），自适应脉冲编码，4M 长上下文首字延迟提速百倍，并在国产（沐曦 MetaX）GPU 上训练。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) ★ · Neuromorphic Spike-based Large Language Model (NSLLM) (**National Science Review 2026**). \[[paper](https://academic.oup.com/nsr/article/13/4/nwaf551/8365570)\]
+  > 中科院自动化所/智源/UCSC 把 LLM 转为免矩阵乘的脉冲模型——1.5B NSLLM 在 AMD VCK190 FPGA 上约 13.8 W 运行，较 A800 能效提升 19.8 倍、显存降低 21.3 倍。
+- [`神经元模型`](README.zh-CN.md#2--神经元模型) · PMSN: A Parallel Multi-compartment Spiking Neuron for Multi-scale Temporal Processing (**IEEE TNNLS 2026**). \[[paper](https://arxiv.org/abs/2408.14917)\]
+  > 港理工的多腔室神经元，动力学可跨时间尺度并行化——较 LIF 训练加速 10 倍以上，Sequential CIFAR-10 精度提升 30%。
+- [`神经元模型`](README.zh-CN.md#2--神经元模型) · Burst Spiking Neural Networks (BuSNN) (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2607.11914)\]
+  > BICLab 主张 SNN 的进步不止于精度更在于鲁棒性——带分级脉冲的爆发式（burst）神经元配合动态权重约束。
+- [`训练方法`](README.zh-CN.md#3--训练方法) · Reducing ANN-SNN Conversion Error via Residual Membrane Potential Alignment (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2608.13952)\]
+  > 北大转换一脉（QCFS 作者团队）以动态初始膜电位与残差对齐正则，进一步压低小时间步下的转换误差。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · Advancing Spatiotemporal Representations in SNNs via Parametric Invertible Transformation (PIT) (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=3JwNXQzxll)\]\[[code](https://github.com/YinsongYan/ICLR26)\]
   > 将可逆变换与神经元动力学共轭结合，并校正代理梯度失配，扩展二值脉冲可用的时空表征空间。
+- [`训练方法`](README.zh-CN.md#3--训练方法) · Scalable Training of Continuous-Time SNNs with Differentiable Spike-Time Discretization (DSTD) (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2607.14672)\]
+  > 把不规则脉冲映射到可微的固定时间点，使精确脉冲时刻（连续时间、事件驱动）训练的显存开销可控。
+- [`训练方法`](README.zh-CN.md#3--训练方法) · Spike-Based Alignment Learning Solves the Weight Transport Problem (**Nature Communications 2026**). \[[paper](https://www.nature.com/articles/s41467-026-74460-8)\]
+  > 伯尔尼/海德堡团队用脉冲时序规则在本地对齐反馈权重——为生物可行与片上信用分配解决"权重传输"难题。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · TP-Spikformer: Token Pruned Spiking Transformer (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=L5llQD0nMf)\]
   > 在多个脉冲 Transformer 家族中免训练剪除低信息 token，在保持竞争性精度的同时降低存储与计算开销。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · Towards Lossless Memory-efficient Training of SNNs via Gradient Checkpointing and Spike Compression (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=nrBJ0Uvj7c)\]\[[code](https://github.com/AllenYolk/snn-gradient-checkpointing)\]
@@ -76,13 +88,57 @@
   > 用全脉冲（膜电位）残差取代 Spikformer 的非脉冲连接，消除整数-浮点乘法，更契合硬件。
 - [`网络结构`](README.zh-CN.md#4--网络架构) · Neural Dynamics Self-Attention for Spiking Transformers (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=jJedqisfOt)\]
   > 引入局部感受野偏置，并以充电—发放—复位动力学实现注意力，推理时无需显式存储注意力矩阵。
-- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.22575)\]
-  > 扩展至 5B 语言/视觉语言模型，引入双空间稀疏注意力与 INT8 脉冲/FP8 双路径，支持千万级 token 及 GPU 或神经形态推理。
+- [`网络结构`](README.zh-CN.md#4--网络架构) · Ge²mS-T: Multi-Dimensional Grouping for Ultra-High Energy Efficiency in Spiking Transformer (**ACM MM 2026**). \[[paper](https://arxiv.org/abs/2604.08894)\]
+  > 北大的多维分组计算配合指数编码 ExpG-IF 神经元，兼顾显存、学习与能耗（Oral）。
+- [`网络结构`](README.zh-CN.md#4--网络架构) · Rethinking Attention Locality in Spiking Transformers (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2608.08541)\]
+  > 用平均注意力距离分析表明"局部"脉冲注意力未必带来空间局部性，并以区域连续注意力修正。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · SpikingBrain2.0: Brain-Inspired Foundation Models for Efficient Long-Context and Cross-Platform Inference (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.22575)\]\[[code](https://github.com/BICLab/SpikingBrain2.0)\]
+  > 扩展至 5B 语言/视觉语言模型，引入双空间稀疏注意力与 INT8 脉冲/FP8 双路径，支持千万级 token 及 GPU 或神经形态推理——5B base/instruct/think 与 VL-5B 权重已于 2026 年 5 月开源。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · Spike-driven Large Language Model (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.16475)\]
+  > 以两步 γ-SQP 脉冲编码把稠密矩阵乘替换为稀疏加法——较此前脉冲 LLM 能耗约降 7 倍、精度提升 4.2%。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · SpikeMLLM: Spike-based Multimodal Large Language Models (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2604.18610)\]
+  > 首个脉冲多模态大模型框架——按模态设置时间尺度并用时间压缩 LIF 把时间步压到 log₂(L)−1，精度近乎无损。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · LAS: Loss-less ANN-SNN Conversion for Fully Spike-Driven Large Language Models (**AAAI 2026**). \[[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37151)\]
+  > 四川大学设计的新神经元处理激活离群值与非线性算子，使 LLM/VLM 转换无损，在六个语言模型与两个视觉语言模型上验证。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · SpikeVLA: Vision-Language-Action Models with Spiking Neural Networks (**ICML 2026**). \[[paper](https://arxiv.org/abs/2606.27807)\]
+  > 首个脉冲"视觉-语言-动作"框架——脉冲视觉编码器、多模态脉冲语言模型与群体编码动作策略，面向具身控制。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · Neuromorphic Diffusion Language Models (N-MDLM) (**IEEE SiPS 2026**). \[[paper](https://arxiv.org/abs/2607.24841)\]
+  > KCL 将块扩散语言模型与脉冲计算结合——单次读参生成多 token，并利用脉冲稀疏跳过非活跃通道。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Efficient Training of Neuromorphic Electronics (**Nature Electronics 2026**). \[[paper](https://www.nature.com/articles/s41928-026-01631-2)\]
+  > 重量级综述（Tang、Linares-Barranco、Indiveri 等）：系统梳理数字、混合信号与新兴神经形态硬件上的片外/片上/混合训练策略。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · The SpiNNaker2 Chip: A Many-Core Platform for Flexible and Scalable Brain-Inspired Computing (**IEEE OJCAS 2026**). \[[paper](https://arxiv.org/abs/2607.24396)\]
+  > SpiNNaker2 芯片的权威定稿论文——152 个带 MAC/exp/log 加速器的 ARM M4F 处理单元，最高 4.5 TOPS（2.7 TOPS/W），单芯片超 15 万神经元。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · UniSpike: Accelerating SNNs on Neuromorphic Systems via Eliminating Address Redundancy (**DAC 2026**). \[[paper](https://arxiv.org/abs/2605.23796)\]
+  > 浙大软硬协同设计：把发往同一核心的脉冲聚合成紧凑数据包——众核系统片上网络流量降 1.93 倍、加速 1.77 倍。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · SpikeRAM: An Event-Driven Spiking Compute-Near/In-Memory Processor Enabling Life-Long On-Chip Learning (**IEEE ISSCC 2026**). \[[paper](https://submissions.mirasmart.com/ISSCC2026/PDF/ISSCC2026AdvanceProgram.pdf)\]
+  > 港科大（广州）+ 时识科技的芯片：神经形态传感器搭配 48.1 pW/突触/位的近存/存内计算，支持终身片上学习。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Algorithm–Hardware Co-Design of Neuromorphic Networks with Dual Memory Pathways (**Nature Machine Intelligence 2026**). \[[paper](https://www.nature.com/articles/s42256-026-01255-3)\]
+  > 快/慢双记忆通路脉冲网络与定制芯片协同设计——吞吐超 4 倍、能效约 5 倍，参数量减少 40–60%。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Spiking Neural Networks with Fatigue Spike-Timing-Dependent Plasticity Learning Using Hybrid Memristor Arrays (**Nature Electronics 2026**). \[[paper](https://www.nature.com/articles/s41928-025-01554-4)\]
+  > 北大杨玉超团队把"会疲劳"的动态忆阻器与铪基 1T1R 器件配对，在硬件上实现疲劳-STDP，获得抗噪的无监督在线学习。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Printed MoS₂ Memristive Nanosheet Networks for Spiking Neurons with Multi-Order Complexity (**Nature Nanotechnology 2026**). \[[paper](https://www.nature.com/articles/s41565-026-02149-6)\]
+  > 西北大学打印的纳米片脉冲神经元（可调至 20 kHz、稳定超 10⁶ 次），甚至能刺激活体小鼠浦肯野细胞——"打印神经元与真神经元对话"。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Nonlinear Photonic Neuromorphic Chips for Spiking Reinforcement Learning (**Optica 2026**). \[[paper](https://doi.org/10.1364/OPTICA.578687)\]
+  > 西电双芯片系统（16×16 MZI 网格 + DFB 激光阵列）在光域同时完成线性*与*非线性脉冲计算——320 ps 延迟的实时强化学习。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Accelerating Spiking Neural Networks with Photonic Reconfigurable Devices (**Nature Communications 2026**). \[[paper](https://www.nature.com/articles/s41467-026-72119-y)\]
+  > 复旦的可编程光子器件统一突触与神经元功能——精度不变下延迟降低 1176 倍、能耗节省 239 倍。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Compact Photonic Spiking Neuron with Inherent Stochasticity for Probabilistic Computing (**Nature Communications 2026**). \[[paper](https://www.nature.com/articles/s41467-026-73070-8)\]
+  > 华中科大 1.5 μm² 相变光子神经元，把本征开关随机性变为带不确定度估计的贝叶斯脉冲计算。
+- [`应用`](README.zh-CN.md#7--应用) · Neuromorphic Object Detection: An In-Depth Study and Future Directions (**Proceedings of the IEEE 2026**). \[[paper](https://arxiv.org/abs/2607.23576)\]
+  > 事件驱动目标检测的重量级综述 + 标准化基准（李佳宁、李国齐、Bartolozzi、Benosman、田永鸿）。
+- [`应用`](README.zh-CN.md#7--应用) · SpikingNav: Robust Embodied Navigation with Spiking Neural Policies (**arXiv 2026**). \[[paper](https://arxiv.org/abs/2608.05078)\]
+  > 脉冲感知编码器 + 脉冲策略网络，在视觉退化下保持室内导航鲁棒——SNN 进军具身智能。
+- [`应用`](README.zh-CN.md#7--应用) · Spiking Neural Network Decoders of Finger Forces from High-Density Intramuscular Microelectrode Arrays (**Nature Communications 2026**). \[[paper](https://www.nature.com/articles/s41467-026-74243-1)\]
+  > 苏黎世 INI + 帝国理工从运动单元活动解码单指力量——神经形态假肢方向的具体里程碑。
 - [`能效与鲁棒`](README.zh-CN.md#8--能耗鲁棒性与安全) · Robust Spiking Neural Networks Against Adversarial Attacks (**ICLR 2026**). \[[paper](https://openreview.net/forum?id=qTqAL2t8Aa)\]
   > 将阈值邻近神经元识别为主要攻击面，并以阈值感知优化保护膜电位安全裕量。
+- [`能效与鲁棒`](README.zh-CN.md#8--能耗鲁棒性与安全) · Robust Spiking Neural Networks by Temporal Mutual Information (**CVPR 2026**). \[[paper](https://openaccess.thecvf.com/content/CVPR2026/html/Xu_Robust_Spiking_Neural_Networks_by_Temporal_Mutual_Information_CVPR_2026_paper.html)\]
+  > 浙大潘纲团队基于信息瓶颈分析提出时序互信息正则，在多种架构与攻击设置下提升鲁棒性。
+- [`理论与神经科学`](README.zh-CN.md#9--理论与神经科学) · Neural Sampling from Cognitive Maps Enables Goal-Directed Imagination and Planning (**Nature Machine Intelligence 2026**). \[[paper](https://www.nature.com/articles/s42256-026-01254-4)\]
+  > Maass 与清华赵蓉等：脉冲网络从习得的认知地图中采样，仅靠局部可塑性即可对新目标进行想象与规划。
 
 <details>
-<summary><b>当年另有 94 篇</b> — 当年全量索引，每篇一句话</summary>
+<summary><b>当年另有 91 篇</b> — 当年全量索引，每篇一句话</summary>
 
 - A highly energy-efficient multi-core neuromorphic architecture for training deep spiking neural networks (**Nature Communications 2026**) [[paper](https://www.nature.com/articles/s41467-026-70586-x)]
   > 在每个核内设置三种专用计算引擎，让神经形态芯片能在端侧直接反向传播训练深度脉冲网络，并在 FPGA 上以 20 核验证，涵盖联邦学习场景。
@@ -192,8 +248,6 @@
   > 以解析式膜动力学刻画去极化、复极化与超极化，把膜电位约束在合理区间，稳定深层网络梯度，无需可学习门控与代理梯度调参。
 - Spike Stream Memory Transfer for Dynamic Scene Reconstruction (**AAAI 2026**)
   > 借鉴视觉记忆机制，将此前推断的光强与运动信息前传，扩展脉冲流的长时感知范围，并抑制片段间与片段内的运动模糊。
-- LAS: Loss-less ANN-SNN Conversion for Fully Spike-Driven Large Language Models (**AAAI 2026**) [[paper](https://ojs.aaai.org/index.php/AAAI/article/view/37151)]
-  > 用两类新神经元处理激活离群值与非线性算子，并配以脉冲等价的 Transformer 组件，把预训练 LLM 无损转换为全脉冲驱动模型。
 - Spike Imaging Velocimetry: Dense Motion Estimation of Fluids Using Spike Streams (**AAAI 2026**)
   > 以细节保持的分层变换、图编码器与多尺度细化，从脉冲相机流估计复杂流场的稠密速度场，并发布带标注的粒子成像数据集。
 - BulletTime4D: Towards High Spatio-Temporal Resolution Dynamic Scene Rendering via Spike-Guided Stereo Vision (**AAAI 2026**)
@@ -238,8 +292,6 @@
   > 将动态内容与静态背景分离，分别用脉冲神经元建模，避免动态场景的新视角合成把两者混为一体。
 - On the Role of Temporal Granularity in the Robustness of Spiking Neural Networks (**CVPR 2026**)
   > 系统研究时间离散粒度如何影响脉冲网络的鲁棒性，把时间步分辨率视作可调的设计变量而非固定开销。
-- SpikeVLA: Vision-Language-Action Models with Spiking Neural Networks (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/63548)][[arxiv](https://arxiv.org/abs/2606.27807)]
-  > 把视觉-语言-动作模型整条链路脉冲化：事件驱动视觉编码器、脉冲多模态大模型与群体编码策略头，面向低功耗具身导航与控制。
 - SVL: Spike-based Vision-language Pretraining for Efficient 3D Open-world Understanding (**ICML 2026**) [[paper](https://arxiv.org/abs/2505.17674)][[code](https://github.com/bollossom/SVL)]
   > 通过点云、图像与文本的三元对比对齐预训练脉冲 3D 主干，再把语言分支重参数化移除，使推理保持脉冲驱动且轻量。
 - UltraLIF: Fully Differentiable Spiking Neural Networks via Ultradiscretization and Max-Plus Algebra (**ICML 2026**) [[paper](https://icml.cc/virtual/2026/poster/64130)]
@@ -270,8 +322,6 @@
   > 直接在脉冲相机流上做多目标跟踪：用动态神经场注意力检测目标，再以胜者为王模块结合在线 STDP 学习轨迹，全程无需先重建图像。
 - DSNeRF: Dynamic View Synthesis for Ultra-Fast Scenes From Continuous Spike Streams (**TPAMI 2026**) [[paper](https://pubmed.ncbi.nlm.nih.gov/41570103/)]
   > 把像素射线到脉冲的生成过程写入 NeRF 训练，用积分发放层刻画传感器噪声，并以运动引导的脉冲层处理动态场景，实现超高速场景的新视角合成。
-- Spiking neural networks with fatigue spike-timing-dependent plasticity learning using hybrid memristor arrays (**Nature Electronics 2026**) [[paper](https://www.nature.com/articles/s41928-025-01554-4)]
-  > 将动态忆阻器的固有疲劳特性与非易失 1T1R 单元配对，使单个突触同时承载短时与长时记忆，在硬件上实现 fatigue-STDP 的无监督在线学习。
 
 </details>
 
@@ -279,16 +329,24 @@
 
 **精选**
 
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) ★ · 浙大"达尔文猴"（悟空）—— 首台 20 亿神经元类脑计算机 (**Zhejiang University 2025**). \[[link](https://www.zju.edu.cn/english/2025/0910/c19573a3079424/page.htm)\]
+  > 15 台刀片服务器集成 960 颗 Darwin3，超 20 亿脉冲神经元、千亿级突触（猕猴大脑量级），典型功耗约 2 kW——超越 Hala Point 成为最大的专用类脑芯片系统；搭载达尔文类脑操作系统，可运行基于 DeepSeek 的类脑大模型。
 - [`训练方法`](README.zh-CN.md#3--训练方法) · Backpropagation-Free Spiking Neural Networks with the Forward-Forward Algorithm (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2502.20411)\]
   > 将 Hinton 的 Forward-Forward（两次对比性前向、逐层局部目标）搬到脉冲神经元。
 - [`网络结构`](README.zh-CN.md#4--网络架构) · Scaling Spike-driven Transformer with Efficient Spike Firing Approximation (V3) (**IEEE TPAMI 2025**). \[[paper](https://arxiv.org/abs/2411.16061)\]\[[code](https://github.com/BICLab/Spike-Driven-Transformer-V3)\]
   > 用整数训练+脉冲推理（脉冲发放近似）与脉冲 MAE，把 SNN 扩展到 ImageNet 86.2%。
 - [`网络结构`](README.zh-CN.md#4--网络架构) · Spiking Transformer with Spatial-Temporal Attention (STAtten) (**CVPR 2025**). \[[paper](https://arxiv.org/abs/2409.19764)\]\[[code](https://github.com/Intelligent-Computing-Lab-Panda/STAtten)\]
   > 提出分块的时空联合注意力，在与纯空间注意力相同复杂度下融合时序信息。
+- [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · Neuromorphic Principles for Efficient Large Language Models on Intel Loihi 2 (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2503.18002)\]
+  > Intel Labs + UCSC 把 370M 免矩阵乘 LLM 跑上 Loihi 2——较边缘 GPU 吞吐最高 3 倍、能耗减半。
 - [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · Sorbet: A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model (**ICML 2025**). \[[paper](https://arxiv.org/abs/2409.15298)\]
   > 用移位型 PTsoftmax 与 BSPN 替代 softmax 和层归一化，得到硬件友好的脉冲语言模型，在 GLUE 上相比 BERT 节能约 27 倍。
 - [`脉冲大模型`](README.zh-CN.md#5--脉冲大模型与-llm) · SpikeCLIP: A Contrastive Language-Image Pretrained Spiking Neural Network (**Neural Networks 2025**). \[[paper](https://arxiv.org/abs/2310.06488)\]\[[code](https://github.com/Lvchangze/SpikeCLIP)\]
   > 脉冲版 CLIP *多模态* 模型，在脉冲空间对齐图文表征，把 SNN 拓展到视觉-语言。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · Bio-Plausible Reconfigurable Spiking Neuron for Neuromorphic Computing (**Science Advances 2025**). \[[paper](https://www.science.org/doi/10.1126/sciadv.adr6733)\]
+  > 浙大 + 西湖大学的 Mott 忆阻器 + ECRAM 人工神经元，仅靠编程器件状态即可在多种生物放电模式间切换。
+- [`神经形态硬件`](README.zh-CN.md#6--神经形态硬件) · DarwinWafer: A Wafer-Scale Neuromorphic Chip (**arXiv 2025**). \[[paper](https://arxiv.org/abs/2509.16213)\]
+  > 浙大将 64 颗 Darwin3 芯粒键合到 300 mm 硅转接板上——单晶圆 1.5 亿神经元/64 亿突触，约 100 W（4.9 pJ/SOP），并以斑马鱼与小鼠全脑模型验证。
 - [`应用`](README.zh-CN.md#7--应用) · Spike2Former: Efficient Spiking Transformer for High-Performance Image Segmentation (**AAAI 2025**). \[[paper](https://arxiv.org/abs/2412.14587)\]\[[code](https://github.com/BICLab/Spike2Former)\]
   > 基于归一化整数神经元的脉冲版 Mask2Former，在 ADE20K 等分割任务上刷新 SNN 最优（+12.7% mIoU）。
 - [`能效与鲁棒`](README.zh-CN.md#8--能耗鲁棒性与安全) · On the Privacy Risks of Spiking Neural Networks: A Membership Inference Analysis (**UAI 2025**). \[[paper](https://arxiv.org/abs/2502.13191)\]
