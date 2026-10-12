@@ -1170,7 +1170,7 @@
   > 浙大脑机智能全国重点实验室主任，与之江实验室共研 **达尔文 Darwin** 系列类脑芯片（Darwin3）及"达尔文鼠/猴"类脑计算机。**近期：** "达尔文猴"——首台 20 亿神经元类脑计算机（2025）；DarwinWafer 晶圆级芯片（2025）；UniSpike 软硬协同（DAC 2026）与 TMI 鲁棒性（CVPR 2026）。
 - **张悠慧** — 清华大学 — 神经形态完备性、类脑计算系统与编译。\[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > 提出"神经形态完备性"与类脑计算系统层次结构（2020 年 Nature）。
-- **张马路 / 瞿宏** — 电子科技大学 — SNN 学习算法、时间编码、ANN-SNN 转换。\[[homepage](https://yjsjy.uestc.edu.cn/gmis/jcsjgl/dsfc/dsgrjj/20675)\]
+- **张马路** — 电子科技大学 — SNN 学习算法、时间编码、ANN-SNN 转换。\[[homepage](https://yjsjy.uestc.edu.cn/gmis/jcsjgl/dsfc/dsgrjj/20675)\]
   > 活跃的 SNN 算法团队，聚焦高效、量化与时间编码脉冲网络（AAAI/ICLR/TNNLS）。**近期：** Sub-bit 脉冲网络与扫视注意力脉冲 ViT（ICLR 2025）。
 - **刘明** — 中科院微电子所（IMECAS）— 忆阻器/RRAM 器件、人工突触、存算一体。\[[homepage](http://english.ime.cas.cn/)\]
   > 中科院院士，长期从事忆阻器/RRAM 研究，打造人工突触与存算一体硬件，支撑类脑与脉冲系统。

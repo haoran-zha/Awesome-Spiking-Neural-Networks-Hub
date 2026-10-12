@@ -1170,7 +1170,7 @@ The central difficulty is that a spike is a **step function — non-differentiab
   > Director of ZJU's State Key Lab of Brain-Machine Intelligence; co-developed the **Darwin 达尔文** chip series (Darwin3) and Darwin neuromorphic computers. **Latest:** Darwin Monkey — the first 2B-neuron neuromorphic computer (2025); DarwinWafer wafer-scale chip (2025); UniSpike co-design (DAC 2026) and TMI-robustness (CVPR 2026).
 - **Zhang Youhui (张悠慧)** — Tsinghua University — neuromorphic completeness, brain-inspired computing systems & compilers. \[[homepage](https://www.cs.tsinghua.edu.cn/csen/info/1300/4375.htm)\]
   > Proposed "neuromorphic completeness" and a system/software hierarchy for brain-inspired computing (Nature 2020).
-- **Zhang Malu (张马路) / Qu Hong (瞿宏)** — UESTC — SNN learning algorithms, temporal coding, ANN-to-SNN conversion. \[[homepage](https://yjsjy.uestc.edu.cn/gmis/jcsjgl/dsfc/dsgrjj/20675)\]
+- **Zhang Malu (张马路)** — UESTC — SNN learning algorithms, temporal coding, ANN-to-SNN conversion. \[[homepage](https://yjsjy.uestc.edu.cn/gmis/jcsjgl/dsfc/dsgrjj/20675)\]
   > An active SNN-algorithm group publishing at AAAI/ICLR/TNNLS on efficient, quantized and temporally-coded spiking networks. **Latest:** Sub-bit SNNs & Saccadic-attention spiking ViT (ICLR 2025).
 - **Liu Ming (刘明)** — Institute of Microelectronics, CAS (IMECAS) — memristor/RRAM devices, artificial synapses, compute-in-memory. \[[homepage](http://english.ime.cas.cn/)\]
   > CAS academician leading RRAM/memristor research for artificial synapses and in-memory hardware underpinning neuromorphic systems.
